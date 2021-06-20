@@ -1,0 +1,24 @@
+const Discord = require("discord.js");
+const Client = new Discord.Client();
+
+module.exports = {
+    name: "uptime",
+    timeout: 1000,
+    hidden: true,
+    run: async(Client, message, args) => {
+            let days = Math.floor(Client.uptime / 86400000);
+    let hours = Math.floor(Client.uptime / 3600000) % 24;
+    let minutes = Math.floor(Client.uptime / 60000) % 60;
+    let seconds = Math.floor(Client.uptime / 1000) % 60;
+
+    let uptimeE = new Discord.MessageEmbed()
+    .setTitle("UPTIME")
+    .setColor("RANDOM")
+    .setDescription(`\nDay(S) Online: \`${days}\`\n\nHour(S) Online: \`${hours}\`\n\nMinute(S) Online: \`${minutes}\`\n\nSecond(S) Online: \`${seconds}\``)
+     .setFooter(`Requested By : ${message.author.username}`, message.author.displayAvatarURL({
+                    dynamic: true
+                }))
+    message.channel.send(uptimeE)
+    return;
+        }
+    }
