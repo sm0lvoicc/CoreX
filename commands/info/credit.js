@@ -23,7 +23,7 @@ module.exports = {
             },
             {
                 name: 'Ultima#8878',
-                value: 'A team member in CoreX, he has helped fix bugs and make CoreX better, also you can join his [Server](https://discord.gg/g9mVqBjajf)'
+                value: 'A team member in CoreX, he has helped fix bugs and make CoreX better, also you can join his [Server](https://discord.gg/8qPDvefgHz)'
             },
             {
                 name: 'Tommy',
