@@ -34,11 +34,12 @@ CoreX is a multi-purpose discord bot aimed to serve your needs and help your ser
 ✅ = started making command
 ❌ = Didn't start making command
 
-| Command          | Status |
-| ---------------- | ------ |
-| Start giveaway   | ❌     |
-| End Giveaway     | ❌     |
-| Re-Roll Giveaway | ❌     |
+| Command           | Status |
+| ----------------- | ------ |
+| Start giveaway    | ❌     |
+| End Giveaway      | ❌     |
+| Re-Roll Giveaway  | ❌     |
+| starboard-channel | ❌     |
 
 - You can also help make a command by creating an issue
 
