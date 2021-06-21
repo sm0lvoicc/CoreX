@@ -20,7 +20,7 @@ require('events').EventEmitter.defaultMaxListeners = 100;
 
 client.commands = new Collection();
 client.aliases = new Collection();
-client.snipes = []
+client.snipes = new Collection()
 
 
 
