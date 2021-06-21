@@ -30,7 +30,7 @@ module.exports = {
             .setAuthor(msg.author.tag, msg.author.displayAvatarURL())
             .setImage(image)
             .setDescription(msg.content)
-            .setFooter(`${moment(time).fromNow()} | ${snipes + 1}/${snipes.length}`)
+            .setFooter(`${moment(time).fromNow()} | ${snipe + 1} / ${snipes.length}`)
         )
     }
 }
