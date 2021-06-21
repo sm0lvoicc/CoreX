@@ -40,7 +40,7 @@ client.on('guildMemberAdd', async(member) => {
     })
 
     await altlog.findOne({ Guild: member.guild.id }, async(err,data) => {
-      if(!data1) return;
+      if(!data) return;
     const channel = await member.guild.channels.cache.get(data.Channel)
     const embed = new MessageEmbed()
       .setTitle(`CoreX Alt Identifier`)
