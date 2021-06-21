@@ -42,13 +42,16 @@ client.on('messageDelete', async(message) => {
         }
       })
       
-      client.snipes.push({
-        channel: message.channel,
-        content: message.content,
-        author: message.author,
-        image: message.attachments.first() ? message.attachments.first().proxyURL : null,
-        date: new Date()
- })
+    let snipes = client.snipes.get(message.channel.id) || [];
+      if(snipes.length > 5) snipes = snipes.slice(0, 4)
+
+      snipes.unshift({
+        msg: message,
+        image: message.attachments.first()?.proxyURL || null,
+        time: Date.now()
+      })
+
+      client.snipes.get(message.channel.id, snipes)
 })
 
 
