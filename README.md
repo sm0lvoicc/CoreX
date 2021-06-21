@@ -6,7 +6,7 @@ CoreX is a multi-purpose discord bot aimed to serve your needs and help your ser
 
 - CoreX is a multi-purpose discord bot and has many great features including:
 
-### **Command Categories include:**
+## **Command Categories include:**
 
 - `Automod` => A great automod meant to serve your server and keep it great
 - `Backup` => Backup your server with ease with this category
@@ -20,11 +20,15 @@ CoreX is a multi-purpose discord bot aimed to serve your needs and help your ser
 - `Moderation` => Generic moderation commands to keep control of your server
 - `Utility` => Commands that are very useful!
 
-### Hosting the bot
+## Hosting the bot
 
 - Under no circumstance can you self host the bot, This code is just to show what we store in our bot and if people would like to help and expand it even further.
 
-### Links:
+## Info:
+
+- If you would like to help and update CoreX feel free too!
+
+## Links:
 
 [![Discord Bots](https://top.gg/api/widget/819643325177921587.svg)](https://top.gg/bot/819643325177921587)
 
