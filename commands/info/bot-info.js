@@ -43,7 +43,7 @@ module.exports = {
         .addField(`❗ Prefix`, `\`\`\`${p}\`\`\``, true)
         .addField(`🦺 Developers`, `\`\`\`Tagliatelle#2576 | Novà#1039\`\`\``, true)
         .addField(`📈 Uptime`, `\`\`\`${Uptime}\`\`\``, true)
-        .addField(`🔗 Links`, `[Add Me](dsc.gg/corex) | [Join Server](https://discord.gg/VuzcK4Fa6K) | [Vote](https://top.gg/bot/819643325177921587/vote)`)
+        .addField(`🔗 Links`, `[Add Me](https://dsc.gg/corex) | [Join Server](https://discord.gg/VuzcK4Fa6K) | [Vote](https://top.gg/bot/819643325177921587/vote)`)
         .setColor(message.guild.me.displayHexColor)
         .setTimestamp()
 
