@@ -27,6 +27,7 @@ CoreX is a multi-purpose discord bot aimed to serve your needs and help your ser
 ## Info:
 
 - If you would like to help and update CoreX feel free too!
+- If you will self host the bot, you will not get any sort of help and you will be banned from the support server and usage of CoreX
 
 ## Links:
 
