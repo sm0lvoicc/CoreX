@@ -29,6 +29,17 @@ CoreX is a multi-purpose discord bot aimed to serve your needs and help your ser
 - If you would like to help and update CoreX feel free too!
 - If you will self host the bot, you will not get any sort of help and you will be banned from the support server and usage of CoreX
 
+## What are going to be added
+
+✅ = started making command
+❌ = Didn't start making command
+
+| Command          | Status |
+| ---------------- | ------ |
+| Start giveaway   | ❌     |
+| End Giveaway     | ❌     |
+| Re-Roll Giveaway | ❌     |
+
 ## Links:
 
 [![Discord Bots](https://top.gg/api/widget/819643325177921587.svg)](https://top.gg/bot/819643325177921587)
