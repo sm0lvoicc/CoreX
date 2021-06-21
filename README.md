@@ -34,3 +34,4 @@ CoreX is a multi-purpose discord bot aimed to serve your needs and help your ser
 [![Discord Bots](https://top.gg/api/widget/819643325177921587.svg)](https://top.gg/bot/819643325177921587)
 
 ![Discord Banner](https://discordapp.com/api/guilds/818760629920989225/widget.png?style=banner2)
+test
