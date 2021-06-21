@@ -40,6 +40,8 @@ CoreX is a multi-purpose discord bot aimed to serve your needs and help your ser
 | End Giveaway     | ❌     |
 | Re-Roll Giveaway | ❌     |
 
+- You can also help make a command by creating an issue
+
 ## Links:
 
 [![Discord Bots](https://top.gg/api/widget/819643325177921587.svg)](https://top.gg/bot/819643325177921587)
