@@ -10,7 +10,9 @@ client.on('ready', () => {
         'the developers console💻',
         'With love💖',
         '🤖Join the support server!',
-        'use ?help'
+        'use ?help',
+        'dsc.gg/corex',
+        'github repo'
     ];
 
     let index = 0;
