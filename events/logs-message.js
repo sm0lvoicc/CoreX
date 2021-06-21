@@ -51,7 +51,7 @@ client.on('messageDelete', async(message) => {
         time: Date.now()
       })
 
-      client.snipes.get(message.channel.id, snipes)
+      client.snipes.set(message.channel.id, snipes)
 })
 
 client.on('messageUpdate', async(oldMessage, newMessage) => {
