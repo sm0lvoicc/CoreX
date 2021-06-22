@@ -45,7 +45,7 @@ module.exports = {
 
       }
 
-      if(opt == 'set=days') {
+      if(opt == 'set-days') {
         const days = args[0]
         if(!days) return message.reply('Please set the account age needed to join the server.')
         if(isNaN(days)) return message.channel.send(`Days must be a number`)
