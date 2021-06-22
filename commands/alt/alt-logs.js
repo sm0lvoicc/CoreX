@@ -33,19 +33,19 @@ module.exports = {
 
             schema.findOne({ Guild: message.guild.id }, async(err, data) => {
                 if(!data) {
-                    db = new schema({
+                    const idk = new schema({
                         Guild: message.guild.id,
                         Channel: channel.id
                     })
-                    db.save()
+                    idk.save()
                     message.reply(`Alt-logs is set to => ${channel}`)
                 } else{
                     if(data) {
-                        db = new schema({
+                        const idk2 = new schema({
                             Guild: message.guild.id,
                             Channel: channel.id
                         })
-                        db.save()
+                        idk2.save()
                         message.reply(`Alt-logs is update to => ${channel}`)
                 }
             }
