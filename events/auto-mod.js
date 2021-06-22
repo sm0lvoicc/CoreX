@@ -15,6 +15,7 @@ client.on('message', async(message) => {
     if(!message.guild) return;
 
     //spam
+
     await spamSchema.findOne({ Guild: message.guild.id}, async(err, data) => {
         if(!data) return;
         if(data.Messages <= 2) return data.delete();
