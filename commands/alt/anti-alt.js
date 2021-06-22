@@ -3,7 +3,7 @@ const schema = require('../../models/alt')
 
 module.exports = {
     name: 'anti-alt',
-    description: 'True/False if you would like to kick people with a default avatar, second step account age',
+    description: 'Setup anti-alt for the server',
     timeout: 7000,
     usage: '<true/false> <No. of days>',
     aliases: ['set-alt'],
@@ -22,12 +22,12 @@ module.exports = {
           'disable'
       ]
 
-      if (!args.length) return message.reply("Please enter either **Set-days**, **set-avatar** or **disable**")
+      if (!args.length) return message.reply("Please enter either **set-days**, **set-avatar** or **disable**")
       const opt = args[0].toLowerCase();
-      if (!opt) return message.reply("Please enter either **Set-days**, **set-avatar** or **disable**")
+      if (!opt) return message.reply("Please enter either **set-days**, **set-avatar** or **disable**")
 
 
-      if (!options.includes(opt)) return message.reply("Please enter either **Set-days**, **set-avatar** or **disable**")
+      if (!options.includes(opt)) return message.reply("Please enter either **set-days**, **set-avatar** or **disable**")
 
       if(opt == 'set-avatar') {
         const avatar = args[0]
