@@ -41,7 +41,8 @@ client.on('guildMemberAdd', async(member) => {
 
     await altlog.findOne({ Guild: member.guild.id }, async(err,data) => {
       if(!data) return;
-    const channel = await member.guild.channels.cache.get(data.Channel)
+    const altChannel = await member.guild.channels.cache.get(data.Channel)
+    if(!altChannel || altChannel.available) return;
     const embed = new MessageEmbed()
       .setTitle(`CoreX Alt Identifier`)
       .setDescription(`**:Caution: New Alt Found**`)
@@ -66,7 +67,8 @@ client.on('guildMemberAdd', async(member) => {
       .setThumbnail(member.user.displayAvatarURL({dynamic: true}))
       .setColor("RED")
       .setFooter(`Kicked That Alt`)
-    channel.send(embed)
+    
+      altChannel.send(embed)
     })
 })
 
