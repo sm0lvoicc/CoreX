@@ -25,7 +25,7 @@ module.exports = {
                 new schema({
                     Guild: message.guild.id,
                     Days: days
-                })
+                }).save()
                 message.channel.send(`Set minimum account age to \`${days}\` days`)
             } else {
                 data.updateOne({

@@ -36,16 +36,14 @@ module.exports = {
                     new schema({
                         Guild: message.guild.id,
                         Channel: channel.id
-                    })
-                    data.save()
+                    }).save()
                     message.reply(`Alt-logs is set to => ${channel}`)
                 } else{
                     if(data) {
                         new schema({
                             Guild: message.guild.id,
                             Channel: channel
-                        })
-                        data.save()
+                        }).save()
                         message.reply(`Alt-logs is update to => ${channel}`)
                 }
             }

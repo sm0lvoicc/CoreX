@@ -52,7 +52,7 @@ module.exports = {
                         Guild: message.guild.id,
                         Days: 7,
                         Avatar: false
-                    })
+                    }).save()
                     message.channel.send('Disabled kick default avatars')
                 } else {
                     data.updateOne({
