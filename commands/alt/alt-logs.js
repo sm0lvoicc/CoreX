@@ -33,19 +33,19 @@ module.exports = {
 
             schema.findOne({ Guild: message.guild.id }, async(err, data) => {
                 if(!data) {
-                    const idk = new schema({
+                    new schema({
                         Guild: message.guild.id,
-                        Channel: channel.id
+                        Channel: channel
                     })
-                    idk.save()
+                    data.save()
                     message.reply(`Alt-logs is set to => ${channel}`)
                 } else{
                     if(data) {
-                        const idk2 = new schema({
+                        new schema({
                             Guild: message.guild.id,
-                            Channel: channel.id
+                            Channel: channel
                         })
-                        idk2.save()
+                        data.save()
                         message.reply(`Alt-logs is update to => ${channel}`)
                 }
             }
@@ -54,9 +54,9 @@ module.exports = {
 
     if(opt === 'disable') {
         schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-            if(!data) message.reply('The Alt-logs is already disabled')
+            if(!data) message.reply('The Member-logs is already disabled')
             data.delete()
-            message.reply('Alt logging has been disabled')
+            message.reply('Member logging has been disabled')
         })
     }
 
