@@ -7,6 +7,8 @@ const moment = require('moment')
 client.on('guildMemberAdd', async(member) => {
     altSchema.findOne({ Guild: member.guild.id}, async(err, data) => {
         if(!data) return;
+        let arr = data.Allowed_Alts;
+        if(arr.includes(member.id)) return;
         if(data.Avatar == true) {
           if(member.user.avatar == null) {
           await member.send(new MessageEmbed()
