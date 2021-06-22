@@ -16,7 +16,7 @@ module.exports = {
     var ping = Date.now() - message.createdTimestamp;
         const embedPing = new MessageEmbed() 
         .setColor('RANDOM')
-        .setDescription(`Latency: **${ping}**ms 🚀\nAPI Latency: **${Math.round(client.ws.ping)}**ms [Shard: ${client.options.shardCount}]`);
+        .setDescription(`Latency: **${ping}**ms 🚀\nAPI Latency: **${Math.round(client.ws.ping)}**ms`);
 
         message.channel.send(embedPing);
     }
