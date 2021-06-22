@@ -1,5 +1,5 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
-const schema = require('../../models/alt-logs')
+const schema = require('../../models/alt')
 
 module.exports = {
     name: 'alt-logs',
@@ -33,21 +33,19 @@ module.exports = {
 
             schema.findOne({ Guild: message.guild.id }, async(err, data) => {
                 if(!data) {
-                    new schema({
+                    const newData = new schema({
                         Guild: message.guild.id,
+                        Days: 7,
+                        Avatar: false,
                         Channel: channel.id
                     })
-                    data.save()
+                    newData.save()
                     message.reply(`Alt-logs is set to => ${channel}`)
                 } else{
-                    if(data) {
-                        new schema({
-                            Guild: message.guild.id,
-                            Channel: channel.id
-                        })
-                        data.save()
-                        message.reply(`Alt-logs is update to => ${channel}`)
-                }
+                    data.updateOne({
+                        Channel: channel.id
+                    })
+                message.reply(`Alt-logs is set to => ${channel}`)
             }
         })
     }

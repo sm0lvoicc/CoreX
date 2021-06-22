@@ -1,6 +1,5 @@
 const client = require('../index')
 const altSchema = require('../models/alt')
-const altlog = require('../models/alt-logs')
 const { MessageEmbed } = require('discord.js')
 const moment = require('moment')
 
@@ -39,39 +38,39 @@ client.on('guildMemberAdd', async(member) => {
         })
 	      await member.kick(`The Age Of This Account Is Below Age Requirements`)
         }
+        
+        
+      const altChannel = await member.guild.channels.cache.get(data.Channel)
+      if(!altChannel || altChannel.available) return;
+      const embed = new MessageEmbed()
+        .setTitle(`CoreX Alt Identifier`)
+        .setDescription(`**:Caution: New Alt Found**`)
+        .addField(`General Information`, [
+          `Name: ${member.user.username}`,
+          `Discriminator: ${member.user.discriminator}`
+        ])
+        .addField(`Additional Information`, [
+          `Bot: ${member.user.bot}`,
+          `Created: ${moment(member.user.createdTimestamp).format(
+                  "LT"
+              )} ${moment(member.user.createdTimestamp).format(
+                  "LL"
+              )}  ${moment(member.user.createdTimestamp).fromNow()}`,
+          `Joined: ${moment(member.joinedTimestamp).format(
+                  "LT"
+              )} ${moment(member.joinedTimestamp).format(
+                  "LL"
+              )}  ${moment(member.joinedTimestamp).fromNow()}`,
+          `Avatar: ${member.user.avatar || `No Avatar`}`,
+        ])
+        .setThumbnail(member.user.displayAvatarURL({dynamic: true}))
+        .setColor("RED")
+        .setFooter(`Kicked That Alt`)
+      
+        altChannel.send(embed)
     })
 
-    await altlog.findOne({ Guild: member.guild.id }, async(err,data) => {
-      if(!data) return;
-    const altChannel = await member.guild.channels.cache.get(data.Channel)
-    if(!altChannel || altChannel.available) return;
-    const embed = new MessageEmbed()
-      .setTitle(`CoreX Alt Identifier`)
-      .setDescription(`**:Caution: New Alt Found**`)
-      .addField(`General Information`, [
-        `Name: ${member.user.username}`,
-        `Discriminator: ${member.user.discriminator}`
-      ])
-      .addField(`Additional Information`, [
-        `Bot: ${member.user.bot}`,
-        `Created: ${moment(member.user.createdTimestamp).format(
-                "LT"
-            )} ${moment(member.user.createdTimestamp).format(
-                "LL"
-            )}  ${moment(member.user.createdTimestamp).fromNow()}`,
-        `Joined: ${moment(member.joinedTimestamp).format(
-                "LT"
-            )} ${moment(member.joinedTimestamp).format(
-                "LL"
-            )}  ${moment(member.joinedTimestamp).fromNow()}`,
-        `Avatar: ${member.user.avatar || `No Avatar`}`,
-      ])
-      .setThumbnail(member.user.displayAvatarURL({dynamic: true}))
-      .setColor("RED")
-      .setFooter(`Kicked That Alt`)
-    
-      altChannel.send(embed)
-    })
+   
 })
 
 
