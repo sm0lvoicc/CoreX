@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-let Schema = new mongoose.Schema({
+const Schema = new mongoose.Schema({
     Guild : String,
     Channel: String,
 })
