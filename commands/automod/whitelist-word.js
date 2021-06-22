@@ -2,8 +2,8 @@ const { Client, Message, MessageEmbed } = require('discord.js');
 const schema = require('../../models/whitelist-channel')
 
 module.exports = {
-    name: 'whitelist-link',
-    description: 'Whitelist channel from a Anti_curse',
+    name: 'whitelist-word',
+    description: 'Whitelist channel from a Anti-curse',
     timeout: 3000,
     usage: '<add/remove/dislay <#channel>',
     aliases: ['wl-link'],
