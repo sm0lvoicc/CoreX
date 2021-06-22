@@ -56,7 +56,7 @@ module.exports = {
         )
         )
         await member.roles.remove(roleD.id)
-        message.channel.send(new MessageEmbed().setDescription(`**${member}** was unmuted by **${message.author.tag}** with reason \`${reason}\`**`).setColor("GREEN"))
+        message.channel.send(new MessageEmbed().setDescription(`**${member}** was unmuted by **${message.author.tag}** with reason \`${reason}\``).setColor("GREEN"))
         .catch(err => {
         console.log(err)
         message.channel.send(`**An error occured while trying to unmute that user**`)

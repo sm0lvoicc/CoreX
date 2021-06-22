@@ -1,11 +1,13 @@
+const muteSchema = require('../models/mutes')
 const spamSchema = require('../models/anti-spam')
 const warnSchema = require('../models/warns')
-const muteSchema = require('../models/mutes')
+const linkSchema = require('../models/anti-link')
+const adSchema = require('../models/anti-ad')
+const blacklistWord = require('../models/bad-word')
 const whitelist = require('../models/whitelist-channel')
 const client = require('../index')
-const { MessageEmbed }  = require('discord.js')
+const { MessageEmbed } = require('discord.js')
 const usersMap = new Map()
-
 
 client.on('message', message => {
     if(!message.guild) return;
@@ -665,7 +667,7 @@ client.on('message', message => {
 
     whitelist.findOne({ Guild: message.guild.id}, async(err, db3) => {
         if(db3) {
-            if(data3.Anti_Invite.includes(message.channel.id)) return;
+            if(db3.Anti_Invite.includes(message.channel.id)) return;
 
             if(adURL(message.content)) {
                 await adSchema.findOne({ Guild: message.guild.id}, async(err, data) => {
@@ -979,8 +981,8 @@ client.on('message', message => {
 
     //Anti-curse
     whitelist.findOne({ Guild: message.guild.id}, async(err, db4) => {
-        if(db3) {
-            if(db3.Anti_curse.includes(message.channel.id)) return;
+        if(db4) {
+            if(db4.Anti_curse.includes(message.channel.id)) return;
 
             const spilittedMsg = message.content.split("")
     const reason = "Cursing"
