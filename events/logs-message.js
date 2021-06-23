@@ -3,6 +3,7 @@ const db = require('../models/logs-message')
 const { MessageEmbed } = require('discord.js');
 const pingSchema = require('../models/ghostping')
 
+//message logging
 client.on('messageDelete', async(message) => {
   if(!message.guild.id) return;
     db.findOne({ Guild: message.guild.id}, async(err, data) => {
@@ -24,7 +25,16 @@ client.on('messageDelete', async(message) => {
         .setTimestamp(new Date())
         .setFooter(`Message ID: ${message.id}`)
         if(message.content.length >= 2000) return;
-        channel.send(messageDeleteEmbed);
+        channel.createWebhook(
+          client.user.username, 
+          {avatar: client.user.displayAvatarURL({ format: "png"})}
+          ).then(webhook =>{ 
+            webhook.send(
+              {username: 'CoreX Logging', 
+                avatarURL: client.user.displayAvatarURL({ format: "png"}), 
+                embeds: [messageDeleteEmbed]
+              })
+            })
     })
 
     pingSchema.findOne({ Guild: message.guild.id }, async(err, data) => {
@@ -57,6 +67,7 @@ client.on('messageDelete', async(message) => {
 
 client.on('messageUpdate', async(oldMessage, newMessage) => {
   if(!newMessage.guild) return;
+  if(newMessage.author.bot) return;
   db.findOne({Guild: newMessage.guild.id}, async(err, data) => {
       if (!newMessage.channel.guild || !newMessage.author) return;
       if (!oldMessage) return;
@@ -83,7 +94,17 @@ client.on('messageUpdate', async(oldMessage, newMessage) => {
       if(newMessage.cleanContent.length >= 1000) return;
       if(oldMessage.cleanContent === newMessage.cleanContent) return;
 
-      channel.send(messageUpdateEmbed)
+      channel.createWebhook(
+        client.user.username, 
+        {avatar: client.user.displayAvatarURL({ format: "png"})}
+        ).then(webhook =>{ 
+          webhook.send(
+            {username: 'CoreX Logging', 
+              avatarURL: client.user.displayAvatarURL({ format: "png"}), 
+              embeds: [messageUpdateEmbed]
+            })
+          })
+
   })
 })
 
