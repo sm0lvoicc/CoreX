@@ -75,13 +75,6 @@ client.on('guildMemberAdd', async(member) => {
 
 
 client.on('guildDelete', async(guild) => {
-  altlog.findOne({ Guild: guild.id }, async (err, data) => {
-    if (err) throw err;
-    if (data) {
-      altlog.findOneAndDelete({ Guild : guild.id }).then(console.log('deleted data.'))
-    }
-})
-
 altSchema.findOne({ Guild: guild.id}, async(err, data) => {
   if (err) throw err;
     if (data) {
