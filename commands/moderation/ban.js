@@ -28,8 +28,10 @@ module.exports = {
            message.channel.send('Please mention a member to ban.')
         }
         
-        if(message.guild.me.roles.highest.position < member.roles.highest.position) return message.reply('I cannot ban someone with a role higher than me!');
-        if(message.member.roles.highest.position < member.roles.highest.position) return message.reply('You cannot ban someone with a role higher than you!');
+        if (member.roles.highest.position > message.member.roles.highest.position) return message.reply(` You cannot ban that member because of role hierarchy issues`);
+        
+        if (member.roles.highest.position > message.guild.me.roles.highest.position) return message.reply(` I cannot ban that member because of role hierarchy issues`);
+
 
 
         if (!args[1]) {

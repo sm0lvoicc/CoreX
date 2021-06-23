@@ -21,8 +21,9 @@ module.exports = {
         }
         if(!user) return message.reply('Please mention a user to moderate them')
 
-        if(user.roles.highest.position >= message.guild.me.roles.highest.position) return message.reply(`I cannot moderate a member's nickname that is higher/equal than my role`);
-        if(user.roles.highest.position >= message.member.roles.highest.position) return message.reply(`You cannot moderate a member's nickname that is higher/equal than ypur role`);
+        if (member.roles.highest.position > message.member.roles.highest.position) return message.reply(` You cannot mod-nick that member because of role hierarchy issues`);
+        
+        if (member.roles.highest.position > message.guild.me.roles.highest.position) return message.reply(` I cannot mod-nick that member because of role hierarchy issues`);
 
         
         function generateRandomString(length){

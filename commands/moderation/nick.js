@@ -29,8 +29,9 @@ module.exports = {
     
         if (!arguments) return message.reply("Please specify a nickname!");
 
-        if(message.member.roles.highest.position < member.roles.highest.position) return message.reply('You cannot nick someone with a role higher than you!');
-        if(message.guild.me.roles.highest.position <= member.roles.highest.position) return message.reply('I cannot nick someone with a role higher than me!');
+        if (member.roles.highest.position > message.member.roles.highest.position) return message.reply(` You cannot nick that member because of role hierarchy issues`);
+        
+        if (member.roles.highest.position > message.guild.me.roles.highest.position) return message.reply(` I cannot nick that member because of role hierarchy issues`);
     
         try {
           member.setNickname(arguments);
