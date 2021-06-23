@@ -4,6 +4,7 @@ const { MessageEmbed } = require('discord.js');
 const pingSchema = require('../models/ghostping')
 
 client.on('messageDelete', async(message) => {
+  if(!message.guild.id) return;
     db.findOne({ Guild: message.guild.id}, async(err, data) => {
         if(!data) return;
         if(err) throw err;
@@ -55,7 +56,8 @@ client.on('messageDelete', async(message) => {
 })
 
 client.on('messageUpdate', async(oldMessage, newMessage) => {
-  db.findOne({Guild: oldMessage.guild.id}, async(err, data) => {
+  if(!newMessage.guild) return;
+  db.findOne({Guild: newMessage.guild.id}, async(err, data) => {
       if (!newMessage.channel.guild || !newMessage.author) return;
       if (!oldMessage) return;
       if(!oldMessage.content === newMessage.content) return;
