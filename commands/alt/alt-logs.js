@@ -52,9 +52,9 @@ module.exports = {
 
     if(opt === 'disable') {
         schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-            if(!data) message.reply('The Member-logs is already disabled')
-            data.delete()
-            message.reply('Member logging has been disabled')
+            if(!data) message.reply('The Alt-logs is already disabled')
+            data.deleteOne(Channel)
+            message.reply('Alt logging has been disabled')
         })
     }
 
