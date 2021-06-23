@@ -14,6 +14,7 @@ module.exports = {
      * @returns 
      */
     run: async(client, message, args) => {
+        try{
         let language = args[0]
         if(!language){ return message.channel.send("Please enter a **language code**! Example `fr` / `de` / `en` etc")}
 
@@ -31,5 +32,8 @@ module.exports = {
         .setColor('GREEN')
         .setTimestamp()
         message.channel.send(translateEmbed)
+        } catch(e) {
+            message.channel.send(`There has been an error: **${e}**`)
+        }
     }
 }
