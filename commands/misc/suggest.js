@@ -25,11 +25,10 @@ module.exports = {
                 if(channel) {
                     if(suggest.length > 256) return message.channel.send(`Suggestion Text must be 256 or fewer in length`)
                     const suggestEmbed = new MessageEmbed()
-                    .setTitle(`Suggestion by ${message.author.tag}`)
                     .setDescription(suggest)
                     .setFooter(`A Suggestion Requested By: ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
                     .setColor("RANDOM")
-                    const msg =  channel.createWebhook(
+                     channel.createWebhook(
                         'CoreX Suggestions', 
                         {avatar: client.user.displayAvatarURL({ format: "png"})}
                         ).then(webhook =>{ 
