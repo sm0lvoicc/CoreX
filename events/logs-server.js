@@ -16,16 +16,7 @@ client.on('guildUpdate', async(oldGuild, newGuild) => {
             .addField('New Server Name', `\`\`\`${newGuild.name}\`\`\``)
             .setFooter(`Server ID: ${newGuild.id}`)
 
-            channel.createWebhook(
-                client.user.username, 
-                {avatar: client.user.displayAvatarURL({ format: "png"})}
-                ).then(webhook =>{ 
-                  webhook.send(
-                    {username: 'CoreX Logging', 
-                      avatarURL: client.user.displayAvatarURL({ format: "png"}), 
-                      embeds: [nameChange]
-                    })
-                  })
+            channel.send(nameChange)
 
         } else if(oldGuild.region !== newGuild.region) {
             const regionChange = new MessageEmbed()
@@ -34,6 +25,7 @@ client.on('guildUpdate', async(oldGuild, newGuild) => {
             .addField('Old Server region', `\`\`\`${oldGuild.region}\`\`\``)
             .addField('New Server region', `\`\`\`${newGuild.region}\`\`\``)
             .setFooter(`Server ID: ${newGuid.id}`)
+
             channel.send(regionChange)
         } else if(oldGuild.description !== newGuild.description) {
             const descChange = new MessageEmbed()
@@ -43,16 +35,8 @@ client.on('guildUpdate', async(oldGuild, newGuild) => {
             .addField('New Server description', `\`\`\`${newGuild.description}\`\`\``)
             .setFooter(`Server ID: ${newGuid.id}`)
 
-           channel.createWebhook(
-                client.user.username, 
-                {avatar: client.user.displayAvatarURL({ format: "png"})}
-                ).then(webhook =>{ 
-                  webhook.send(
-                    {username: 'CoreX Logging', 
-                      avatarURL: client.user.displayAvatarURL({ format: "png"}), 
-                      embeds: [descChange]
-                    })
-                  })
+            channel.send(descChange)
+
         }
     })
 })
@@ -71,16 +55,7 @@ client.on('emojiCreate', async(emoji) => {
         .addField('Emoji', emoji)
         .setFooter(`Emoji ID: ${emoji.id}`)
 
-        channel.createWebhook(
-            client.user.username, 
-            {avatar: client.user.displayAvatarURL({ format: "png"})}
-            ).then(webhook =>{ 
-              webhook.send(
-                {username: 'CoreX Logging', 
-                  avatarURL: client.user.displayAvatarURL({ format: "png"}), 
-                  embeds: [emojiCreate]
-                })
-              })
+       channel.send(emojiCreate)
     })
 })
 
@@ -97,16 +72,7 @@ client.on('emojiDelete', async(emoji) => {
         .addField('Emoji URL', `${emoji.url}`)
         .setFooter(`Emoji ID: ${emoji.id}`)
 
-        channel.createWebhook(
-            client.user.username, 
-            {avatar: client.user.displayAvatarURL({ format: "png"})}
-            ).then(webhook =>{ 
-              webhook.send(
-                {username: 'CoreX Logging', 
-                  avatarURL: client.user.displayAvatarURL({ format: "png"}), 
-                  embeds: [emojiDelete]
-                })
-              })
+        channel.send(emojiDelete)
     })
 })
 
@@ -126,16 +92,7 @@ client.on('emojiUpdate', async(oldEmoji, newEmoji) => {
             .addField('Emoji', newEmoji)
             .setFooter(`Emoji ID: ${newEmoji.id}`)
             
-            channel.createWebhook(
-                client.user.username, 
-                {avatar: client.user.displayAvatarURL({ format: "png"})}
-                ).then(webhook =>{ 
-                  webhook.send(
-                    {username: 'CoreX Logging', 
-                      avatarURL: client.user.displayAvatarURL({ format: "png"}), 
-                      embeds: [emojiUpdate]
-                    })
-                  })
+            channel.send(emojiUpdate)
         }
     })
 })

@@ -27,16 +27,7 @@ client.on('channelCreate', async(channel) => {
         .addField('Channel ID', channel.id)
         .addField('Channel Type', `\`\`\`${types[channel.type]}\`\`\``)
 
-        channelSend.createWebhook(
-            client.user.username, 
-            {avatar: client.user.displayAvatarURL({ format: "png"})}
-            ).then(webhook =>{ 
-              webhook.send(
-                {username: 'CoreX Logging', 
-                  avatarURL: client.user.displayAvatarURL({ format: "png"}), 
-                  embeds: [channelCreate]
-                })
-              })
+        channelSend.send(channelCreate)
     })
 })
 
@@ -65,16 +56,7 @@ client.on('channelDelete', async(channel) => {
         .addField('Channel ID', channel.id)
         .addField('Channel Type', `\`\`\`${types[channel.type]}\`\`\``)
 
-        channelSend.createWebhook(
-            client.user.username, 
-            {avatar: client.user.displayAvatarURL({ format: "png"})}
-            ).then(webhook =>{ 
-              webhook.send(
-                {username: 'CoreX Logging', 
-                  avatarURL: client.user.displayAvatarURL({ format: "png"}), 
-                  embeds: [channelDelete]
-                })
-              })
+        channelSend.send(channelDelete)
     })
 })
 
@@ -95,16 +77,7 @@ client.on('channelUpdate', async(oldChannel, newChannel) => {
             .addField('New Name', newChannel.name)
             .addField('Channel ID', `\`\`\`${newChannel.id}\`\`\``)
             
-            channel.createWebhook(
-                client.user.username, 
-                {avatar: client.user.displayAvatarURL({ format: "png"})}
-                ).then(webhook =>{ 
-                  webhook.send(
-                    {username: 'CoreX Logging', 
-                    avatarURL: client.user.displayAvatarURL({ format: "png"}), 
-                    embeds: [channelNameChange]
-                })
-            })
+            channel.send(channelNameChange)
         }
         
         let types = {
@@ -128,16 +101,7 @@ client.on('channelUpdate', async(oldChannel, newChannel) => {
             .addField('New Type', `${types[newChannel.type]}`)
             .addField('Channel ID', `\`\`\`${newChannel.id}\`\`\``)
 
-            channel.createWebhook(
-                client.user.username, 
-                {avatar: client.user.displayAvatarURL({ format: "png"})}
-                ).then(webhook =>{ 
-                  webhook.send(
-                    {username: 'CoreX Logging', 
-                      avatarURL: client.user.displayAvatarURL({ format: "png"}), 
-                      embeds: [channelTypeChange]
-                    })
-                  })
+            channel.send(channelTypeChange)
           }
 
           if(oldChannel.topic !== newChannel.topic) {
@@ -155,16 +119,8 @@ client.on('channelUpdate', async(oldChannel, newChannel) => {
             .addField('Old Topic', `\`\`\`${oldChannel.topic}\`\`\``)
             .addField('New Topic', `\`\`\`${newChannel.topic}\`\`\``)
 
-            channel.createWebhook(
-                client.user.username, 
-                {avatar: client.user.displayAvatarURL({ format: "png"})}
-                ).then(webhook =>{ 
-                  webhook.send(
-                    {username: 'CoreX Logging', 
-                      avatarURL: client.user.displayAvatarURL({ format: "png"}), 
-                      embeds: [channelTopicChange]
-                    })
-                  })
+            channel.send(channelTopicChange)
+
           }
     })
 })
@@ -186,16 +142,7 @@ client.on('channelPinsUpdate', async(channel, time) => {
         .addField('Channel ID', channel.id)
         .addField('Pinned At', time)
 
-        channelSend.createWebhook(
-            client.user.username, 
-            {avatar: client.user.displayAvatarURL({ format: "png"})}
-            ).then(webhook =>{ 
-              webhook.send(
-                {username: 'CoreX Logging', 
-                  avatarURL: client.user.displayAvatarURL({ format: "png"}), 
-                  embeds: [channelPinsChange]
-                })
-              })
+       channelSend.send(channelPinsChange)
         
     })
 })

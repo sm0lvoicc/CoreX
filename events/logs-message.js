@@ -25,16 +25,8 @@ client.on('messageDelete', async(message) => {
         .setTimestamp(new Date())
         .setFooter(`Message ID: ${message.id}`)
         if(message.content.length >= 2000) return;
-        channel.createWebhook(
-          client.user.username, 
-          {avatar: client.user.displayAvatarURL({ format: "png"})}
-          ).then(webhook =>{ 
-            webhook.send(
-              {username: 'CoreX Logging', 
-                avatarURL: client.user.displayAvatarURL({ format: "png"}), 
-                embeds: [messageDeleteEmbed]
-              })
-            })
+
+        channel.send(messageDeleteEmbed)
     })
 
     pingSchema.findOne({ Guild: message.guild.id }, async(err, data) => {
@@ -93,16 +85,7 @@ client.on('messageUpdate', async(oldMessage, newMessage) => {
       if(newMessage.cleanContent.length >= 1000) return;
       if(oldMessage.cleanContent === newMessage.cleanContent) return;
 
-      channel.createWebhook(
-        client.user.username, 
-        {avatar: client.user.displayAvatarURL({ format: "png"})}
-        ).then(webhook =>{ 
-          webhook.send(
-            {username: 'CoreX Logging', 
-              avatarURL: client.user.displayAvatarURL({ format: "png"}), 
-              embeds: [messageUpdateEmbed]
-            })
-          })
+      channel.send(messageUpdateEmbed)
 
   })
 })

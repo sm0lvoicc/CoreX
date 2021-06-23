@@ -22,17 +22,7 @@ client.on('guildMemberAdd', async(member) => {
         .setColor('GREEN')
         .setTimestamp(new Date())
 
-        channel.createWebhook(
-            client.user.username, 
-            {avatar: client.user.displayAvatarURL({ format: "png"})}
-            ).then(webhook =>{ 
-              webhook.send(
-                {username: 'CoreX Logging', 
-                  avatarURL: client.user.displayAvatarURL({ format: "png"}), 
-                  embeds: [guildMemberAddEmbed]
-                })
-              })
-        
+        channel.send(guildMemberAddEmbed)
 
     })
 })
@@ -56,16 +46,10 @@ client.on('guildMemberRemove', async(member) => {
         .setColor('RED')
         .setTimestamp(new Date())
 
-        channel.createWebhook(
-            client.user.username, 
-            {avatar: client.user.displayAvatarURL({ format: "png"})}
-            ).then(webhook =>{ 
-              webhook.send(
-                {username: 'CoreX Logging', 
-                  avatarURL: client.user.displayAvatarURL({ format: "png"}), 
-                  embeds: [guildMemberRemoveEmbed]
-                })
-              })
+        channel.send(guildMemberRemoveEmbed)
+
+
+
     })
 })
 
@@ -93,16 +77,9 @@ client.on('guildMemberUpdate', async(oldMember, newMember) => {
             .addField('New Nickname', `\`\`\`${newMember.nickname}\`\`\``)
             .setFooter(`Member ID: ${newMember.id}`)
 
-            channel.createWebhook(
-                client.user.username, 
-                {avatar: client.user.displayAvatarURL({ format: "png"})}
-                ).then(webhook =>{ 
-                  webhook.send(
-                    {username: 'CoreX Logging', 
-                      avatarURL: client.user.displayAvatarURL({ format: "png"}), 
-                      embeds: [nickChangeEmbed]
-                    })
-                  })
+            channel.send(nickChangeEmbed)
+
+
         }
 
 
@@ -149,16 +126,7 @@ client.on('guildMemberUpdate', async(oldMember, newMember) => {
                 .addField('Removed Role', roleremoved)
                 .setFooter(`Member ID: ${newMember.id}`)
 
-                channel.createWebhook(
-                    client.user.username, 
-                    {avatar: client.user.displayAvatarURL({ format: "png"})}
-                    ).then(webhook =>{ 
-                      webhook.send(
-                        {username: 'CoreX Logging', 
-                          avatarURL: client.user.displayAvatarURL({ format: "png"}), 
-                          embeds: [roleRemovedEmbed]
-                        })
-                      })
+              channel.send(roleRemovedEmbed)
             }
 
             if(roleadded) {
@@ -169,16 +137,8 @@ client.on('guildMemberUpdate', async(oldMember, newMember) => {
                 .addField('Added Role', roleadded)
                 .setFooter(`Member ID: ${newMember.id}`)
 
-                channel.createWebhook(
-                    client.user.username, 
-                    {avatar: client.user.displayAvatarURL({ format: "png"})}
-                    ).then(webhook =>{ 
-                      webhook.send(
-                        {username: 'CoreX Logging', 
-                          avatarURL: client.user.displayAvatarURL({ format: "png"}), 
-                          embeds: [roleAddedEmbed]
-                        })
-                      })
+                channel.send(roleAddedEmbed)
+
             }
 
         }
@@ -203,16 +163,9 @@ client.on('guildBanAdd', async(guild, user) => {
         .setThumbnail(user.displayAvatarURL({ dynamic: true}))
         .setTimestamp(new Date())
 
-        channel.createWebhook(
-            client.user.username, 
-            {avatar: client.user.displayAvatarURL({ format: "png"})}
-            ).then(webhook =>{ 
-              webhook.send(
-                {username: 'CoreX Logging', 
-                  avatarURL: client.user.displayAvatarURL({ format: "png"}), 
-                  embeds: [guildBanAddEmbed]
-                })
-              })
+        channel.send(guildBanAddEmbed)
+
+    
 
     })
 })
@@ -235,17 +188,10 @@ client.on('guildBanRemove', async(guild, user) => {
         .setThumbnail(user.displayAvatarURL({ dynamic: true}))
         .setTimestamp(new Date())
 
-        channel.createWebhook(
-            client.user.username, 
-            {avatar: client.user.displayAvatarURL({ format: "png"})}
-            ).then(webhook =>{ 
-              webhook.send(
-                {username: 'CoreX Logging', 
-                  avatarURL: client.user.displayAvatarURL({ format: "png"}), 
-                  embeds: [guildBanRemoveEmbed]
-                })
-              })
+        channel.send(guildBanRemoveEmbed)
 
+
+        
     })
 })
 
