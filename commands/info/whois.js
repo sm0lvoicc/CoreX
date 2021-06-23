@@ -4,6 +4,7 @@ module.exports = {
     name: "whois",
     description: 'Shows info about a user.',
     timeout: 1000,
+    aliases: ['user-info'],
     run: async (client, message, args) => {
         let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
 
