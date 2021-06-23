@@ -72,7 +72,6 @@ client.on('messageUpdate', async(oldMessage, newMessage) => {
       if (!newMessage.channel.guild || !newMessage.author) return;
       if (!oldMessage) return;
       if(!oldMessage.content === newMessage.content) return;
-      if(newMessage.author.bot) return;
       if(newMessage.embeds[0]) return;
       if(!data) return;
       if(err) throw err;
