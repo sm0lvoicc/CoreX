@@ -24,14 +24,23 @@ module.exports = {
                 }
                 if(channel) {
                     if(suggest.length > 256) return message.channel.send(`Suggestion Text must be 256 or fewer in length`)
-                    const msg = await channel.send(new MessageEmbed()
-                        .setTitle(`Suggestion by ${message.author.tag}`)
-                        .setDescription(suggest)
-                        .setFooter(`A Suggestion Requested By: ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
-                        .setColor("RANDOM")
-                    )
-                    await msg.react(`✅`)
-                    await msg.react(`❌`)
+                    const suggestEmbed = new MessageEmbed()
+                    .setTitle(`Suggestion by ${message.author.tag}`)
+                    .setDescription(suggest)
+                    .setFooter(`A Suggestion Requested By: ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
+                    .setColor("RANDOM")
+                    const msg =  channel.createWebhook(
+                        'CoreX Suggestions', 
+                        {avatar: client.user.displayAvatarURL({ format: "png"})}
+                        ).then(webhook =>{ 
+                          webhook.send(
+                            {username: message.author.tag, 
+                              avatarURL: message.author.displayAvatarURL({ format: "png"}), 
+                              embeds: [suggestEmbed]
+                            })
+                          })
+                          
+
                     message.reply(`Your suggestion has been sent!`)
                 }
             }
