@@ -33,11 +33,11 @@ module.exports = {
 
             schema.findOne({ Guild: message.guild.id }, async(err, data) => {
                 if(!data) {
-                    new schema({
+                    newData = new schema({
                         Guild: message.guild.id,
                         Channel: channel.id
                     })
-                    data.save()
+                    newData.save()
                     message.reply(`Server-logs is set to => ${channel}`)
                 } else{
                     if(data) {
