@@ -65,8 +65,7 @@ module.exports = {
 
                 message.channel.send('I have successfully sent the reason to the user!')
             } catch (e) {
-                message.channel.send('I could not DM the user! Reason logged.')
-                console.log('An error occured while sending the DM embed! ' + e)
+                message.channel.send(`There has been an error, **${e}**`)
             }
             
         try {
@@ -77,8 +76,8 @@ module.exports = {
             message.channel.send(bannedEmbed)
 
         } catch (e) {
-            message.channel.send('An error occured while executing the action!')
-            console.log("An error occured while executing the ban command!" + e)
+            message.channel.send(`There has been an error, **${e}**`)
+
         }
 
         client.modlogs ({
