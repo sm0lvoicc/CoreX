@@ -14,7 +14,9 @@ module.exports = {
      * @returns 
      */
     run: async(client, message, args) => {
-        if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply('You do not have the permission \`MANAGE_ROLES\`');
+        try {
+
+            if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply('You do not have the permission \`MANAGE_ROLES\`');
         if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES')) return message.reply('I do not have the permission \`MANAGE_ROLES\`');
         
         let member = message.mentions.members.first()
@@ -44,5 +46,8 @@ module.exports = {
             .setTitle('Role Added!')
             .setDescription(`**${message.author}**, I've added the **${rname}** role to **${message.mentions.users.first().username}**`);
         message.channel.send(be);
+        } catch(e) {
+            message.channel.send(`There has been an error, **${e}**`)
+        }
     }
 }

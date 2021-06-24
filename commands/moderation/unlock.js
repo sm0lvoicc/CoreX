@@ -12,7 +12,8 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have the permission \`ADMINISTRATOR\`')
+        try {
+            if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have the permission \`ADMINISTRATOR\`')
         if(!message.guild.me.hasPermission('MANAGE_CHANNELS')) return message.reply('I do not have the permission \`MANAGE_CHANNELS\`')
 
         let channel = message.mentions.channels.first();
@@ -33,5 +34,9 @@ module.exports = {
             console.log(err)
             message.channel.send(new MessageEmbed().setTitle(`Error`).setDescription(`**${error} An error occured when I'm trying to unlock this channel**`).setColor("RED"))
         })
+
+        } catch(e) {
+            message.channel.send(`There has been an error, **${e}**`)
+        }
     }
 }

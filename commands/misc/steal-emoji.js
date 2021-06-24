@@ -13,6 +13,7 @@ module.exports = {
      * @returns 
      */
     run: async(client, message, args) => {
+        try {
 
         if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have the permission \`ADMINISTRATOR\`');
 
@@ -29,4 +30,8 @@ module.exports = {
                     .then((emoji) => message.channel.send(`Added: \`${rawEmoji}\``))
             }
         }
-    }}
+        } catch(e) {
+            message.channel.send(`There has been an error, **${e}**`)
+        } 
+    }
+}

@@ -14,7 +14,8 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        const prefix = await client.prefix(message)
+        try {
+            const prefix = await client.prefix(message)
         if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply(`You do not have the permission \`MANAGE_ROLES\``)
         if(!message.guild.me.hasPermission('MANAGE_ROLES')) return  message.reply(`I do not have the permission \`MANAGE_ROLES\``)
 
@@ -87,4 +88,8 @@ client.modlogs ({
     Action: 'Tempmute'
 }, message)
 
+
+        } catch(e) {
+            message.channel.send(`There has been an error, **${e}**`)
+        }
 }}

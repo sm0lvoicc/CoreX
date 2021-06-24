@@ -11,6 +11,7 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
+        try {
         if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You do not have permission to use this command');
 
         let mention;
@@ -31,6 +32,9 @@ module.exports = {
                 .setColor('RANDOM')
         )
 
+        } catch(e) {
+            message.channel.send(`There has been an error, **${e}**`)
+        }
 
     }
 }

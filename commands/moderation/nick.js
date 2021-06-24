@@ -12,6 +12,8 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
+      try {
+
         if(!message.member.hasPermission('MANAGE_NICKNAMES')) return message.reply('You do not have the permission \`MANAGE_NICKNAMES\`')
         if(!message.guild.me.hasPermission('MANAGE_NICKNAMES')) return message.reply('I do not have the permission \`MANAGE_NICKNAMES\`')
         
@@ -53,5 +55,9 @@ module.exports = {
             Reason: 'Nickname changed',
             Action: 'Nick'
         }, message)
+        
+      } catch(e) {
+        message.channel.send(`There has been an error, **${e}**`)
+      }
     }
 }

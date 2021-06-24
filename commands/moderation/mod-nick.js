@@ -12,7 +12,9 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if(!message.member.hasPermission('MANAGE_NICKNAMES')) return message.reply('You do not have the permission \`MANAGE_NICKNAMES\`')
+        try {
+
+            if(!message.member.hasPermission('MANAGE_NICKNAMES')) return message.reply('You do not have the permission \`MANAGE_NICKNAMES\`')
         if(!message.guild.me.hasPermission("MANAGE_NICKNAMES")) return message.reply(`I do not have the permission \`MANAGE_NICKNAMES\``)
 
         let user = message.mentions.members.first();
@@ -21,9 +23,9 @@ module.exports = {
         }
         if(!user) return message.reply('Please mention a user to moderate them')
 
-        if (member.roles.highest.position > message.member.roles.highest.position) return message.reply(` You cannot mod-nick that member because of role hierarchy issues`);
+        if (user.roles.highest.position > message.member.roles.highest.position) return message.reply(` You cannot mod-nick that member because of role hierarchy issues`);
         
-        if (member.roles.highest.position > message.guild.me.roles.highest.position) return message.reply(` I cannot mod-nick that member because of role hierarchy issues`);
+        if (user.roles.highest.position > message.guild.me.roles.highest.position) return message.reply(` I cannot mod-nick that member because of role hierarchy issues`);
 
         
         function generateRandomString(length){
@@ -55,5 +57,9 @@ module.exports = {
             Reason: `Nickname changed to: ${random}`,
             Action: 'Mod Nick'
         }, message)
+
+        } catch(e) {
+            message.channel.send(`There has been an error, **${e}**`)
+        }
     }
 }

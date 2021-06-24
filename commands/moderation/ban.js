@@ -12,6 +12,7 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
+        try {
         if (!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send('You do not have the permission \`BAN_MEMBERS\`')
 
         if (!message.guild.me.hasPermission('BAN_MEMBERS')) return message.channel.send('I do not have the permission \`BAN_MEMBERS\`')
@@ -86,5 +87,8 @@ module.exports = {
             Reason: banReason,
             Action: 'Ban'
         }, message)
+    } catch(e) {
+        message.channel.send(`There has been an error, **${e}**`)
+    }
     }
 }

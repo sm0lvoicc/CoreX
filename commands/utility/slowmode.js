@@ -5,7 +5,9 @@ module.exports = {
     timeout: 1000 * 1,
     description: 'Sets the slowmode for the channel.',
     run: async(clietn, message, args) => {
-        if(!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply('You do not have the permission \`MANAGE_CHANNELS\`');
+        try {
+
+            if(!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply('You do not have the permission \`MANAGE_CHANNELS\`');
 
 
         if(!message.guild.me.hasPermission('MANAGE_CHANNELS')) return message.channel.send('I do not have the permission \`MANAGE_CHANNELS\`')
@@ -23,5 +25,9 @@ module.exports = {
         .setDescription(`Channel slowmode has been set to \`${args[0]}\` seconds.`)
         .setTimestamp()
         message.channel.send(verify);
+
+        }catch(e) {
+            message.channel.send(`There has been an error, **${e}**`)
+        }
     }
 }

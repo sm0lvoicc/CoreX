@@ -12,6 +12,7 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
+        
         if(!message.member.hasPermission('BAN_MEMBERS')) return message.reply('You do not have the permission \`BAN_MEMBERS\`')
         if(!message.guild.me.hasPermission('BAN_MEMBERS')) return message.reply('I do not have the permission \`BAN_MEMBERS\`')
 
@@ -39,7 +40,7 @@ module.exports = {
             }, message)
             
         }).catch(err => {
-            return message.reply(`There has been an error: **${err}**`)
+            return message.reply(`There has been an error, **${err}**`)
         }) 
         
         
