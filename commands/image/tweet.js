@@ -7,25 +7,20 @@ module.exports = {
     timeout: 20000,
     description: 'Sends a tweet comment with the provided text',
     usage: '<text>',
+    aliases: ['biden'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        const user1 = message.member;
-
-        const avatar = user1.user.displayAvatarURL({ dynamic: false })
-
-        const text = args.join(' ');
-
-        if (!text) return message.reply(`Please provide a text.`);
-
-        const username = user1.user.username;
-
-        memer.tweet(avatar, username, text).then(image => {
-            const attachment = new MessageAttachment(image, "tweet.png")
-            message.channel.send(attachment)
-        })
+        const sentence = args.join(" ")
+        if (!sentence) return message.channel.send('Please specify a query.')
+        let embed = new Discord.MessageEmbed()
+          .setTitle('Joe Biden')
+          .setImage(`https://api.popcatdev.repl.co/biden?text=${encodeURIComponent(sentence)}`)
+          .setColor('BLURPLE')
+          .setFooter(' ');
+        message.channel.send(embed)
     }
 }
