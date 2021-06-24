@@ -16,7 +16,7 @@ module.exports = {
     run: async(client, message, args) => {
         const sentence = args.join(" ")
         if (!sentence) return message.channel.send('Please specify a query.')
-        let embed = new Discord.MessageEmbed()
+        let embed = new MessageEmbed()
           .setTitle('Joe Biden')
           .setImage(`https://api.popcatdev.repl.co/biden?text=${encodeURIComponent(sentence)}`)
           .setColor('BLURPLE')
