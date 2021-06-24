@@ -49,8 +49,6 @@ module.exports = {
         if (member.roles.highest.position > message.member.roles.highest.position) return message.reply(` You cannot mute that member because of role hierarchy issues`);
         
         if (member.roles.highest.position > message.guild.me.roles.highest.position) return message.reply(` I cannot mute that member because of role hierarchy issues`);
-
-        if(roleD.roles.highest.position > message.guild.me.roles.highest.position) return message.reply('I cannot access the mute role because of role hierarchy issues')
         
         if(roleD.deleteable) return message.channel.send(new MessageEmbed()
         .setDescription(`**I can't add muted role manually**`)

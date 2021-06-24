@@ -23,7 +23,7 @@ module.exports = {
         backup.load(id, message.guild)
         }catch(err) {
         msg.delete()
-        message.channel.send(`An error occured when I'm trying to load backup. Make sure I have enough permissions and the Backup ID is correct`)
+        message.channel.send(`There has been an error, **${error}**`)
         }
     }
 }

@@ -29,7 +29,7 @@ module.exports = {
             })
         }catch(err) {
         msg.delete()
-        message.channel.send(`**${error} An error occured while  trying to create a backup. Please check my permissions first**`)
+        message.channel.send(`There has been an error. **${error}**`)
         }
     }
 }
