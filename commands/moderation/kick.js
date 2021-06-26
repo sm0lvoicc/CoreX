@@ -22,9 +22,9 @@ module.exports = {
     
             if(member === message.guild.me) return message.reply('Are you seriously tryna kick me with my own command? You should be ashamed of yourself');
     
-            if (member.roles.highest.position > message.member.roles.highest.position) return message.reply(` You cannot kick that member because of role hierarchy issues`);
-            
-            if (member.roles.highest.position > message.guild.me.roles.highest.position) return message.reply(` I cannot kick that member because of role hierarchy issues`);
+            if (message.member.user.id.roles.highest.position < member.user.id.roles.highest.position) return message.reply(` You cannot kick that member because of role hierarchy issues`);
+        
+        if (message.guild.me.roles.highest.position < member.user.id.roles.highest.position) return message.reply(` I cannot kick that member because of role hierarchy issues`);
     
     
             let kickReason = args.slice(1).join(' ');
