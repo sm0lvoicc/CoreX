@@ -404,7 +404,7 @@ client.on('message', message => {
                         if(message.member.hasPermission('ADMINISTRATOR')) return;
                         if(message.member.hasPermission('MANAGE_GUILD')) return;
                         await message.delete()
-                        await (await message.channel.send(`${message.member} No links allowed`)).attachments(msg => msg.delete({ timeout: 6000 }))
+                        await await message.channel.send(`${message.member} No links allowed`).then(msg => msg.delete({ timeout: 6000 }))
                     } else if(data.Action == 'mute') {
                         await message.delete()
                         if(message.member.hasPermission('ADMINISTRATOR')) return;
@@ -883,7 +883,7 @@ client.on('message', message => {
                         if(message.member.hasPermission('ADMINISTRATOR')) return;
                         if(message.member.hasPermission('MANAGE_GUILD')) return;
                         await message.delete()
-                        await (await message.channel.send(`${message.member} No Invite links allowed`)).attachments(msg => msg.delete({ timeout: 6000 }))
+                        await message.channel.send(`${message.member} No Invite links allowed`).then(msg => msg.delete({ timeout: 6000 }))
                     } else if(data.Action == 'mute') {
                         await message.delete()
                         if(message.member.hasPermission('ADMINISTRATOR')) return;
@@ -992,7 +992,6 @@ client.on('message', message => {
       data.Words.forEach(c => {
         if(message.content.toLowerCase().includes(c)) {
             if(data.Action == 'ban') {
-                 message.delete()
                 if(!message.member.bannable) return message.channel.send(`**[CoreX Auto-Mod] I couldn't ban ${message.member}**`)
 
                 const dmWordBan = new MessageEmbed()
