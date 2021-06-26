@@ -504,7 +504,6 @@ client.on('message', message => {
                     if(!data) return;
                     const linkReason = 'Posting links'
                     if(data.Action == 'ban') {
-                        await message.delete()
                         if(message.member.hasPermission('ADMINISTRATOR')) return;
                         if(message.member.hasPermission('MANAGE_GUILD')) return;
                         if(!message.member.bannable) return message.channel.send(`**[CoreX Auto-Mod] I couldn't ban ${message.member}**`)
@@ -675,7 +674,6 @@ client.on('message', message => {
                     if(!data) return;
                     const AdReason = 'Posting Invite links'
                     if(data.Action == 'ban') {
-                        await message.delete()
                         if(message.member.hasPermission('ADMINISTRATOR')) return;
                         if(message.member.hasPermission('MANAGE_GUILD')) return;
                         if(!message.member.bannable) return message.channel.send(`**[CoreX Auto-Mod] I couldn't ban ${message.member}**`)
@@ -829,7 +827,6 @@ client.on('message', message => {
                     if(!data) return;
                     const AdReason = 'Posting Invite links'
                     if(data.Action == 'ban') {
-                        await message.delete()
                         if(message.member.hasPermission('ADMINISTRATOR')) return;
                         if(message.member.hasPermission('MANAGE_GUILD')) return;
                         if(!message.member.bannable) return message.channel.send(`**[CoreX Auto-Mod] I couldn't ban ${message.member}**`)
@@ -1140,7 +1137,6 @@ client.on('message', message => {
       data.Words.forEach(c => {
         if(message.content.toLowerCase().includes(c)) {
             if(data.Action == 'ban') {
-                 message.delete()
                 if(!message.member.bannable) return message.channel.send(`**[CoreX Auto-Mod] I couldn't ban ${message.member}**`)
 
                 const dmWordBan = new MessageEmbed()
