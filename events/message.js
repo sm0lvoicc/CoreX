@@ -72,7 +72,7 @@ client.on('message', async message =>{
                 }
             }
         }else{
-            let server = '[Server](https://dsc.gg/support-corex)';
+            let server = '[Server](https://discord.gg/VuzcK4Fa6K)';
 
             message.channel.send(new MessageEmbed()
             .setColor('RED')
