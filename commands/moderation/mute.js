@@ -50,7 +50,7 @@ module.exports = {
         )
         if (message.member.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than you.');
         if (message.guild.me.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than me.');
-        
+        if(roleD.position > message.guild.me.roles.highest.position) return message.channel.send(`I cannot access the mute role, please make sure my role is higher than the mute role.`)
         if(roleD.deleteable) return message.channel.send(new MessageEmbed()
         .setDescription(`**I can't add muted role manually**`)
         .setColor("RED")
