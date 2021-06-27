@@ -48,9 +48,8 @@ module.exports = {
                 message.author.displayAvatarURL({ dynamic: true })
             )
         )
-        if (member.roles.highest.position > message.member.roles.highest.position) return message.reply(` You cannot mute that member because of role hierarchy issues`);
-        
-        if (member.roles.highest.position > message.guild.me.roles.highest.position) return message.reply(` I cannot mute that member because of role hierarchy issues`);
+        if (message.member.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than you.');
+        if (message.guild.me.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than me.');
         
         if(roleD.deleteable) return message.channel.send(new MessageEmbed()
         .setDescription(`**I can't add muted role manually**`)

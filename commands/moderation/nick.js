@@ -31,9 +31,8 @@ module.exports = {
     
         if (!arguments) return message.reply("Please specify a nickname!");
 
-        if (member.roles.highest.position > message.member.roles.highest.position) return message.reply(` You cannot nick that member because of role hierarchy issues`);
-        
-        if (member.roles.highest.position > message.guild.me.roles.highest.position) return message.reply(` I cannot nick that member because of role hierarchy issues`);
+        if (message.member.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than you.');
+        if (message.guild.me.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than me.');
     
         try {
           member.setNickname(arguments);
