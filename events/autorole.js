@@ -14,9 +14,10 @@ client.on('guildMemberAdd', async member => {
 
 client.on('guildDelete', async(guild) => {
 	RoleSchema.findOne({ Guild: guild.id }, async (err, data) => {
+	if(!data) return;
 	  if (err) throw err;
 	  if (data) {
-		RoleSchema.findOneAndDelete({ Guild : guild.id }).then(console.log('deleted data.'))
+		RoleSchema.findOneAndDelete({ Guild : guild.id })
 	}
 })
 })

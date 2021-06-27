@@ -90,11 +90,12 @@ client.on('messageUpdate', async(oldMessage, newMessage) => {
   })
 })
 
-client.on('guildDelete', async (guild) => {
-    db.findOne({ Guild: guild.id }, async (err, data) => {
-        if (err) throw err;
-        if (data) {
-            db.findOneAndDelete({ Guild : guild.id }).then(console.log('deleted data.'))
-        }
-    })
+client.on('guildDelete', async(guild) => {
+  db.findOne({ Guild: guild.id }, async (err, data) => {
+    if(!data) return;
+    if (err) throw err;
+    if (data) {
+      db.findOneAndDelete({ Guild : guild.id })
+    }
+})
 })

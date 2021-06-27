@@ -195,11 +195,12 @@ client.on('guildBanRemove', async(guild, user) => {
     })
 })
 
-client.on('guildDelete', async (guild) => {
+client.on('guildDelete', async(guild) => {
     db.findOne({ Guild: guild.id }, async (err, data) => {
-        if (err) throw err;
-        if (data) {
-            db.findOneAndDelete({ Guild : guild.id }).then(console.log('deleted data.'))
-        }
-    })
+        if(!data) return;
+      if (err) throw err;
+      if (data) {
+        db.findOneAndDelete({ Guild : guild.id })
+      }
+})
 })

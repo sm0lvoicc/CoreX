@@ -146,3 +146,13 @@ client.on('channelPinsUpdate', async(channel, time) => {
         
     })
 })
+
+client.on('guildDelete', async(guild) => {
+    schema.findOne({ Guild: guild.id }, async (err, data) => {
+        if(!data) return;
+      if (err) throw err;
+      if (data) {
+        schema.findOneAndDelete({ Guild : guild.id })
+      }
+})
+})

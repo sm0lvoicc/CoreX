@@ -100,9 +100,10 @@ client.on('emojiUpdate', async(oldEmoji, newEmoji) => {
 
 client.on('guildDelete', async (guild) => {
     db.findOne({ Guild: guild.id }, async (err, data) => {
+        if(!data) return;
         if (err) throw err;
         if (data) {
-            db.findOneAndDelete({ Guild : guild.id }).then(console.log('deleted data.'))
+            db.findOneAndDelete({ Guild : guild.id })
         }
     })
 })

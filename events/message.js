@@ -82,30 +82,34 @@ client.on('message', async message =>{
             )
         }
 })
-
-client.on('guildDelete', async (guild) => {
-    prefixSchema.findOne({ Guild: guild.id }, async (err, data) => {
-        if (err) throw err;
-        if (data) {
-            prefixSchema.findOneAndDelete({ Guild : guild.id }).then(console.log('deleted data.'))
-        }
-    })
-})})
+})
 
 client.on('guildDelete', async(guild) => {
-    schema.findOne({ Guild: guild.id }, async (err, data) => {
-      if (err) throw err;
-      if (data) {
-        schema.findOneAndDelete({ Guild : guild.id }).then(console.log('deleted data.'))
-      }
-  })
-  })
+  prefixSchema.findOne({ Guild: guild.id }, async (err, data) => {
+    if(!data) return;
+    if (err) throw err;
+    if (data) {
+      prefixSchema.findOneAndDelete({ Guild : guild.id })
+    }
+})
+})
 
-  client.on('guildDelete', async(guild) => {
-    antiPing.findOne({ Guild: guild.id }, async (err, data) => {
-      if (err) throw err;
-      if (data) {
-        antiPing.findOneAndDelete({ Guild : guild.id }).then(console.log('deleted data.'))
-      }
-  })
-  })
+client.on('guildDelete', async(guild) => {
+  schema.findOne({ Guild: guild.id }, async (err, data) => {
+    if(!data) return;
+    if (err) throw err;
+    if (data) {
+      schema.findOneAndDelete({ Guild : guild.id })
+    }
+})
+})
+
+client.on('guildDelete', async(guild) => {
+  antiPing.findOne({ Guild: guild.id }, async (err, data) => {
+    if(!data) return;
+    if (err) throw err;
+    if (data) {
+      antiPing.findOneAndDelete({ Guild : guild.id })
+    }
+})
+})
