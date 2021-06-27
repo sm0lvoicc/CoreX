@@ -72,7 +72,7 @@ client.on('message', async message =>{
                 }
             }
         }else{
-            let server = '[Server](https://discord.gg/VuzcK4Fa6K)';
+            let server = `[Server](${invite})`;
 
             message.channel.send(new MessageEmbed()
             .setColor('RED')
