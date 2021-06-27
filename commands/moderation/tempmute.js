@@ -45,8 +45,11 @@ module.exports = {
               message.author.displayAvatarURL({ dynamic: true })
             )
       )
-      if(member.roles.highest.position >= message.member.roles.highest.position) return  message.reply('You cannote mute a person higher/equal than you')
-      if(MuteRole.position >= message.guild.me.roles.highest.position) return message.reply(`The mute role is higher/equal to my role.`)
+      
+        if (message.member.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than you.');
+        if (message.guild.me.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than me.');
+      
+        if(MuteRole.position >= message.guild.me.roles.highest.position) return message.reply(`The mute role is higher/equal to my role.`)
      await member.roles.add(MuteRole.id)
 
       message.channel.send(new MessageEmbed()
