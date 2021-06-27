@@ -86,7 +86,7 @@ module.exports = {
             Action: 'Ban'
         }, message)
     } catch(e) {
-        console.log(e)
+        message.channel.send(`There has been an error, **${e}**`)
     }
     }
 }
