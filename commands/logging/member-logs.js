@@ -41,6 +41,7 @@ module.exports = {
                     message.reply(`Member-logs is set to => ${channel}`)
                 } else{
                     if(data) {
+                        data.delete()
                         new schema({
                             Guild: message.guild.id,
                             Channel: channel.id
