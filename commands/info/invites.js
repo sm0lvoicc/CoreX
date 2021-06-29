@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
   name: "invites",
   description: "Check your invites in the server!",
+  timeout: 2000,
   usage: "[@user]",
   /**
    * @param {Client} client
