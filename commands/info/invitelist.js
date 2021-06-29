@@ -4,7 +4,7 @@ module.exports = {
     name: "invitelist",
     timeout: 1000,
     description: "Sends the top 10 inviters in the server",
-    aliases: ['invites'],
+    aliases: [''],
     run: async(client, message) => {
        
     if (!message.guild.me.hasPermission("MANAGE_GUILD")) return message.reply('I do not have the permission \`MANAGE_SERVER\`')
