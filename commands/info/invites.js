@@ -27,6 +27,6 @@ module.exports = {
       var invite = userInvites[i];
       userInviteCount += invite["uses"];
     }
-    message.reply(`${user.user.tag} has ${userInviteCount} invites.`);
+    message.channel.send(`**${user.user.tag}** has \`${userInviteCount}\` invites.`);
   },
 };
