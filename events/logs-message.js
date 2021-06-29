@@ -50,7 +50,7 @@ client.on('messageDelete', async(message) => {
 
       snipes.unshift({
         msg: message,
-        image: message.attachments.first()?.proxyURL || null,
+        image: message.attachments.first()? message.attachments.first().proxyURL : null,
         time: Date.now()
       })
 
