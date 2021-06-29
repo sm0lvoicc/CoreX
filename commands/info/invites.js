@@ -1,5 +1,4 @@
 const { MessageEmbed } = require("discord.js");
-const Client = require("../../classes/client.js");
 module.exports = {
   name: "invites",
   description: "Check your invites in the server!",
@@ -27,6 +26,6 @@ module.exports = {
       var invite = userInvites[i];
       userInviteCount += invite["uses"];
     }
-    message.lineReply(`${user.user.tag} has ${userInviteCount} invites.`);
+    message.reply(`${user.user.tag} has ${userInviteCount} invites.`);
   },
 };
