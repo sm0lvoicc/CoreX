@@ -66,11 +66,10 @@ module.exports = {
         .setColor('RED')
         .setDescription(`${member} was muted by ${message.author} for: \`${muteReason}\``)
         .setTimestamp())
-        .catch(err => {
+        .catch(e => {
 
-        console.log(err)
+            message.channel.send(`There has been an error, **${e}**`)
 
-        message.channel.send(`**An error occured while trying to mute that user**`)
         })
 
         const dmEmbed = new MessageEmbed()
@@ -83,8 +82,8 @@ module.exports = {
             try{
                 await member.send(dmEmbed)
             } catch(e) {
-              message.channel.send('I could not DM the user! Reason logged.')
-              console.log('An error occured while sending the DM embed! ' + e)
+              message.channel.send('I could not DM the user!')
+              message.channel.send(`There has been an error, **${e}**`)
             }
             }
         })

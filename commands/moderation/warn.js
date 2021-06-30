@@ -86,8 +86,8 @@ module.exports = {
         .setTimestamp()
         try {
             user.send(userSend)
-        } catch(err) {
-            message.channel.send('Couldn\'t DM the person')
+        } catch(e) {
+            message.channel.send(`There has been an error, **${e}**`)
         }
 
         client.modlogs({
