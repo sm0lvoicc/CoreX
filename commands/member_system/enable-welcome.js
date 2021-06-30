@@ -13,7 +13,7 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-      if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You do not have the permission \`MANAGE_SERVER\`')
+      if(!message.member.hasPermission('SEND_MESSAGES')) return message.reply('You do not have the permission \`SEND_MESSAGES\`')
       if(!message.guild.me.hasPermission('MANAGE_GUILD')) return message.reply('I do not have the permission \`MANAGE_SERVER\`')
       
       const channel = await message.mentions.channels.first();
@@ -29,7 +29,18 @@ module.exports = {
       if(!text) return message.channel.send(noText)
     
 
-      if(!channel.permissionsFor(message.guild.me).has(["VIEW_CHANNEL", "SEND_MESSAGES"])) return message.reply(`I need the permissions \`VIEW_CHANNEL\` and \`SEND_MESSAGES\` in the welcome channel`)
+      if(!channel.permissionsFor(message.guild.me).has(["VIEW_CHANNEL", "SEND_MESSAGES"])) {
+        try {
+         message.member.send(`I need the permissions \`VIEW_CHANNEL\` and \`SEND_MESSAGES\` in the welcome channel`)
+
+        } catch(e){
+          const NoPerm = guild.channels.cache.find(ch => ch.type === 'text' && channel.permissionsFor(guild.me).has('SEND_MESSAGES'))
+          NoPerm.send(`${message.member} I tried to DM You with the error: ${e},
+          I cannot send messages to ${channel} due to permission errors
+          `)
+        }
+
+      }
 
     schema.findOne({ Guild: message.guild.id }, async(err, data) => {
       if(err) throw err;
