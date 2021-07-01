@@ -13,7 +13,7 @@ module.exports = {
      */
     run: async(client, message, args) => {
         try {
-            
+
         if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You do not have the permission \`MANAGE_MESSAGES\`')
         if(!message.guild.me.hasPermission('MANAGE_MESSAGES')) return message.reply('I do not have the permission \`MANAGE_MESSAGES\`')
     
@@ -22,9 +22,9 @@ module.exports = {
         const amount = parseInt(args[0]);
         if (isNaN(amount) === true || !amount || amount < 0 || amount > 100) return message.reply('Please provide a message count between 1 and 100');
 
-        let messages = (await message.channel.fetch({
-            limit: amount, 
-        })).filter(msg => msg.content.startsWith('http') || msg.content.startsWith('https') || msg.content.includes('https'))
+        let messages = (await channel.messages.fetch({
+      limit: amount
+    })).filter(m => m.content.startsWith('http') || m.content.startsWith('https') || m.content.includes('https'));
         
         if(messages.size === 0) {
             message.channel.send(
