@@ -4,7 +4,7 @@ module.exports = {
     name: 'pooh',
     description: 'Change the meaning of words using winnie the pooh meme',
     timeout: 5000,
-    usage: '<text1> <text2>',
+    usage: '<text1> / <text2>',
     aliases: ['winnie'],
     /** 
      * @param {Client} client 
