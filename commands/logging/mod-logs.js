@@ -38,7 +38,7 @@ module.exports = {
                         Channel: channel.id
                     })
                     newData.save()
-                    message.reply(`Mod-logs is set to => ${channel}`)
+                    message.channel.send(`<:corexyes:860561725916053514> Mod-logs is set to => ${channel}`)
                 } else{
                     if(data) {
                         data.delete()
@@ -47,7 +47,7 @@ module.exports = {
                             Channel: channel.id
                         })
                         data.save()
-                        message.reply(`Mod-logs is update to => ${channel}`)
+                        message.channel.send(`<:corexyes:860561725916053514> Mod-logs is updated to => ${channel}`)
                 }
             }
         })
@@ -55,9 +55,9 @@ module.exports = {
 
     if(opt === 'disable') {
         schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-            if(!data) message.reply('The Mod-logs is already disabled')
+            if(!data) message.reply('<:corexerror:860580531825147994> The Mod-logs is already disabled')
             data.delete()
-            message.reply('Mod logging has been disabled')
+            message.reply('<:corexyes:860561725916053514> Mod logging has been disabled')
         })
     }
 
