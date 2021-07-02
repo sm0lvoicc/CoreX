@@ -6,7 +6,7 @@ module.exports = {
     description: '<Add/remove/Display> Bad words that are not allowed',
     timeout: 10000,
     usage: '<add/remove/display> <bad word> || <action> <Action for saying a word>',
-    aliases: [''],
+    aliases: ['anti-curse'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
@@ -36,41 +36,41 @@ module.exports = {
         if(opt == 'add') {
             const word = args[1]
             
-            if(!word) return message.reply('Please enter a word to add to the blacklist')
+            if(!word) return message.reply('<:corexwarn:860597628882780200> Please enter a word to add to the blacklist')
             if((['@everyone', '@here']).includes(word.toLowerCase())) return message.reply('You cannot add a ping to the blacklist')
 
             schema.findOne({ Guild: message.guild.id}, async(err, data) => {
                 if(err) throw err
                 if(data) {
-                    if(data.Words.includes(word)) return message.reply('This word is already added to the blacklist')
+                    if(data.Words.includes(word)) return message.reply('<:corexerror:860580531825147994> This word is already added to the blacklist')
                     data.Words.push(word)
                     data.save()
-                    message.reply(`Added \`${word}\` to the blacklist`)
+                    message.reply(`<:corexyes:860561725916053514> Added \`${word}\` to the blacklist`)
                 } else {
                     new schema({
                         Guild: message.guild.id,
                         Words: word,
                     }).save()
-                    message.reply(`Added \`${word}\` to the blacklist`)
+                    message.reply(`<:corexyes:860561725916053514> Added \`${word}\` to the blacklist`)
                 }
             })
         }
 
         if(opt == 'remove') {
             const word2 = args.slice(1).join(' ')
-            if(!word2) return message.reply('Please enter a word to remove from the blacklist')
+            if(!word2) return message.reply('<:corexwarn:860597628882780200> Please enter a word to remove from the blacklist')
 
             schema.findOne({ Guild: message.guild.id}, async(err, data) => {
                 if(err) throw err;
-                if(!data) return message.reply('There are no blacklisted words')
-                if(!data.Words.includes(word)) return message.reply(`\`${word}\` is not a blacklisted word`)
+                if(!data) return message.reply('<:corexerror:860580531825147994> There are no blacklisted words')
+                if(!data.Words.includes(word)) return message.reply(`<:corexerror:860580531825147994> \`${word}\` is not a blacklisted word`)
                 const filtered = data.Words.filter(target => target !== word);
                 
                 await schema.findOneAndUpdate({ Guild: message.guild.id}, {
                     Guild: message.guild.id,
                     Words: filtered
                 })
-                message.reply(`Removed \`${word}\` from the blacklist`)
+                message.reply(`<:corexyes:860561725916053514> Removed \`${word}\` from the blacklist`)
 
             })
         }
@@ -79,9 +79,9 @@ module.exports = {
         if(opt == 'display') {
             schema.findOne({ Guild: message.guild.id}, async(err,data) => {
                 if(err) throw err;
-                if(!data) return message.channel.send(`There are no words blacklisted`)
+                if(!data) return message.channel.send(`<:corexerror:860580531825147994> There are no words blacklisted`)
                 message.channel.send(new MessageEmbed()
-                    .setTitle(`Blacklisted Words`)
+                    .setTitle(`<:corexinfo:860565886111580172> Blacklisted Words`)
                     .setDescription( data.Words.join(` `) || `There are no words blacklisted` )
                     .setColor("RANDOM")
                 )
@@ -92,13 +92,13 @@ module.exports = {
             const action = args[1]
             if(!action) return message.reply(new MessageEmbed()
             .setColor('RED')
-            .setTitle('Please specify an Action.')
+            .setTitle('<:corexwarn:860597628882780200> Please specify an Action.')
             .setDescription('**Kick**, **Ban**, **Delete**, **Warn**, **Mute**')
             )
 
             if(!(["warn","mute", "delete" ,"kick","ban"]).includes(action.toLowerCase())) return message.reply(new MessageEmbed()
             .setColor('RED')
-            .setTitle('Please specify a correct action')
+            .setTitle('<:corexwarn:860597628882780200> Please specify a correct action')
             .setDescription('**Kick**, **Ban**, **Delete**, **Warn**, **Mute**')
             )
 
@@ -111,15 +111,18 @@ module.exports = {
                     })
                 } 
 
-                message.channel.send(`Action for cursing is \`${action}\``)
+                message.channel.send( new MessageEmbed()
+                .setColor('GREEN')
+                .setDescription(`<:corexyes:860561725916053514> Action for cursing is \`${action}\``)
+                )
             })
 
         }
         if(opt == 'disable') {
             schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-                if(!data) return message.reply('The anti-curse module is already disabled')
+                if(!data) return message.reply('<:corexerror:860580531825147994> The anti-curse module is already disabled')
                 data.delete() 
-                message.reply('The anti-curse module has been disabled')
+                message.reply('<:corexyes:860561725916053514> The anti-curse module has been disabled')
             })
         }
 

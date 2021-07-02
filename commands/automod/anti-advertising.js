@@ -32,13 +32,13 @@ module.exports = {
             const action = args[1]
             if(!action) return message.reply(new MessageEmbed()
             .setColor('RED')
-            .setTitle('Please specify an Action.')
+            .setTitle('<:corexwarn:860597628882780200> Please specify an Action.')
             .setDescription('**Kick**, **Ban**, **Delete**, **Warn**, **Mute**')
             )
 
             if(!(["warn","mute", "delete" ,"kick","ban"]).includes(action.toLowerCase())) return message.reply(new MessageEmbed()
             .setColor('RED')
-            .setTitle('Please specify a correct action')
+            .setTitle('<:corexwarn:860597628882780200> Please specify a correct action')
             .setDescription('**Kick**, **Ban**, **Delete**, **Warn**, **Mute**')
             )
 
@@ -51,15 +51,14 @@ module.exports = {
                 newData.save()
                 message.channel.send(new MessageEmbed()
                 .setColor('GREEN')
-                .setTitle('Anti-Ad set!')
-                .setDescription(`Anti-Ad has been set with Action: **${action}**`))
+                .setDescription(`<:corexyes:860561725916053514> Anti-Ad has been set with Action: **${action}**`))
             })
         }
         if(opt == 'disable') {
             schema.findOne({Guild: message.guild.id}, async(err, data) => {
-                if(!data) return message.reply('Anti-Ad is already disabled')
+                if(!data) return message.reply('<:corexerror:860580531825147994> Anti-Ad is already disabled')
                 data.delete()
-                message.reply('Anti-Ad has been disabled')
+                message.reply('<:corexyes:860561725916053514> Anti-Ad has been disabled')
             })
         }
     }

@@ -36,13 +36,13 @@ module.exports = {
 
             if(!action) return message.reply(new MessageEmbed()
             .setColor('RED')
-            .setTitle('Please specify an Action.')
+            .setTitle('<:corexwarn:860597628882780200> Please specify an Action.')
             .setDescription('**Kick**, **Ban**, **Warn**, **Mute**')
             )
 
             if(!(["warn","mute","kick","ban"]).includes(action.toLowerCase())) return message.reply(new MessageEmbed()
             .setColor('RED')
-            .setTitle('Please specify a correct action')
+            .setTitle('<:corexwarn:860597628882780200> Please specify a correct action')
             .setDescription('**Kick**, **Ban**, **Warn**, **Mute**')
             )
 
@@ -58,16 +58,15 @@ module.exports = {
 
             message.channel.send(new MessageEmbed()
             .setColor('GREEN')
-            .setTitle('Anti-spam set!')
-            .setDescription(`Anti-Spam has been set to **${messages}** messages and with an Action: **${action}**`)
+            .setDescription(`<:corexwarn:860597628882780200> Anti-Spam has been set to **${messages}** messages and with an Action: **${action}**`)
             )
         }
 
         if(opt === 'disable') {
             schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-                if(!data) return message.reply('The anti-spam module is already disabled')
+                if(!data) return message.reply('<:corexerror:860580531825147994> The anti-spam module is already disabled')
                 data.delete() 
-                message.reply('The anti-spam module has been disabled')
+                message.reply('<:corexyes:860561725916053514> The anti-spam module has been disabled')
             })
         }
     }
