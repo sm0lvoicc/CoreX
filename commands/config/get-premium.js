@@ -15,7 +15,7 @@ module.exports = {
     run: async(client, message, args) => {
         const getEmbed = new MessageEmbed()
         .setColor('BLUE')
-        .setTitle('Great choice for picking our premium.')
+        .setTitle('<:corexlike:860603776348192778> Great choice for picking our premium.')
         .setDescription(`To get premium just simply join the [Support Server](${config.invite}) and then head on over to [Patreon](https://www.patreon.com/corex_dev) and pick the premium tier\nThen just DM the owners that you bought the premium.`)
         .setFooter('Automatic premium system coming soon')
         message.channel.send(getEmbed)

@@ -15,8 +15,8 @@ module.exports = {
         if(!name) return message.channel.send('Please specify a command name');
 
         const data = await schema.findOne({ Guild: message.guild.id, Command: name });
-        if(!data) return message.channel.send('That custom command does not exist!');
+        if(!data) return message.channel.send('<:corexerror:860580531825147994> That custom command does not exist!');
         await schema.findOneAndDelete({ Guild: message.guild.id, Command: name });
-        message.channel.send(`Removed **${name}** from custom commands!`);
+        message.channel.send(`<:corexyes:860561725916053514> Removed **${name}** from custom commands!`);
     }
 }

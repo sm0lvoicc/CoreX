@@ -18,9 +18,7 @@ module.exports = {
             message.author.id
           )
         )
-          return message.channel.send(
-            createEmbed("fail", "You cannot create keys")
-          );
+          return;
         new premKey({
           Key: Math.floor(Math.random() * 600000000000000),
         })

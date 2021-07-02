@@ -29,7 +29,7 @@ module.exports = {
     try {
     let msg = await channel.messages.fetch(msg1)
     }catch(err) {
-      return message.channel.send(`I can't find Message ID \`${msg1}\` in ${channel}`)
+      return message.channel.send(`<:corexerror:860580531825147994> I can't find Message ID \`${msg1}\` in ${channel}`)
     }
     
     let msg = await channel.messages.fetch(msg1)
@@ -39,9 +39,17 @@ module.exports = {
       Message: msg.id,
       Emoji: emoji,
     }, async (err, data) => {
-      if (!data) return message.channel.send(`This Reaction Roles is not exist`);
+      if (!data) return message.channel.send(`This Reaction Roles does not exist`);
       await data.delete()
-      message.channel.send(new MessageEmbed().setTitle(`Reaction Roles Removed`).addField(`Role`, role, true).addField(`Channel`, channel , true).addField(`Message`, msg.id , true).addField(`Emoji`, emoji, true).setColor("RED").setTimestamp().addField(`Link`, `[Jump](https://discord.com/channels/${message.guild.id}/${channel.id}/${msg.id})`))
+      message.channel.send(new MessageEmbed()
+      .setTitle(`<:corexyes:860561725916053514> Reaction Roles Removed`)
+      .addField(`<:corexmention:860565536835502110> Role`, role, true)
+      .addField(`<:corexchannel:860560876792840202> Channel`, channel , true)
+      .addField(`<:corexchat:860569658657865728> Message`, msg.id , true)
+      .addField(`<:corexinbox:860563596818513920> Emoji`, emoji, true)
+      .setColor("RED")
+      .setTimestamp()
+      .addField(`<:corexlink:860584013189742612> Link`, `[Jump](https://discord.com/channels/${message.guild.id}/${channel.id}/${msg.id})`))
     })
   }
 }

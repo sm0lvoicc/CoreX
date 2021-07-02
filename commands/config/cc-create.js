@@ -16,13 +16,13 @@ module.exports = {
         if(!response) return message.channel.send('Please specify a response for the command');
 
         const data = await schema.findOne({ Guild: message.guild.id, Command: name });
-        if(data) return message.channel.send('This custom commands exists already.');
+        if(data) return message.channel.send('<:corexerror:860580531825147994> This custom commands exists already.');
         const newData =  new schema({
             Guild: message.guild.id,
             Command: name,
             Response: response
         })
         await newData.save();
-        message.channel.send(`Saved \`${name}\` as a custom command!`);
+        message.channel.send(`<:corexyes:860561725916053514> Saved \`${name}\` as a custom command!`);
     }
 }

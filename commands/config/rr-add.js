@@ -20,19 +20,19 @@ module.exports = {
     if (!role) return message.channel.send(`You must provide role to add`)
     if (!emoji) return message.channel.send(`You must provide emoji`)
 
-    if(role.position >= message.guild.me.roles.highest.position) return message.reply('I cannot add a role that is higher/equal to my role')
+    if(role.position >= message.guild.me.roles.highest.position) return message.reply('<:corexerror:860580531825147994> I cannot add a role that is higher/equal to my role')
 
     
     function isCustomEmoji(emoji) {
       return emoji.split(":").length == 1 ? false : true
     }
     
-    if (isCustomEmoji(emoji)) return message.channel.send(`I currently do not support custom emojis.`)
+    if (isCustomEmoji(emoji)) return message.channel.send(`<:corexerror:860580531825147994> I currently do not support custom emojis.`)
     
     try {
     let msg = await channel.messages.fetch(msg1)
     }catch(err) {
-      return message.channel.send(`I can't find the Message ID \`${msg1}\` in ${channel}`)
+      return message.channel.send(`<:corexerror:860580531825147994> I can't find the Message ID \`${msg1}\` in ${channel}`)
     }
    
     let msg = await channel.messages.fetch(msg1)
@@ -43,12 +43,12 @@ module.exports = {
       Message: msg.id,
       Emoji: emoji
     }, async (err, data) => {
-      if (data) return message.channel.send(`This Reaction Roles already existes`);
+      if (data) return message.channel.send(`<:corexerror:860580531825147994> This Reaction Roles already existes`);
       
       try {
       await msg.react(emoji)
       }catch(err) {
-        return message.channel.send(`Please provide valid emoji`)
+        return message.channel.send(`<:corexerror:860580531825147994> Please provide valid emoji`)
       }
 
       new schema({
@@ -59,7 +59,15 @@ module.exports = {
         Role: role.id
       }).save()
 
-      message.channel.send(new MessageEmbed().setTitle(`Reaction Roles Added`).addField(`Role`, role, true).addField(`Channel`, channel , true).addField(`Message`, msg.id , true).addField(`Emoji`, emoji, true).setColor("GREEN").setTimestamp().addField(`Link`, `[Jump](https://discord.com/channels/${message.guild.id}/${channel.id}/${msg.id})`))
+      message.channel.send(new MessageEmbed()
+      .setTitle(`<:corexyes:860561725916053514> Reaction Roles Added`)
+      .addField(`<:corexmention:860565536835502110> Role`, role, true)
+      .addField(`<:corexchannel:860560876792840202> Channel`, channel , true)
+      .addField(`<:corexchat:860569658657865728> Message`, msg.id , true)
+      .addField(`<:corexinbox:860563596818513920> Emoji`, emoji, true)
+      .setColor("GREEN")
+      .setTimestamp()
+      .addField(`<:corexlink:860584013189742612> Link`, `[Jump](https://discord.com/channels/${message.guild.id}/${channel.id}/${msg.id})`))
     })
   }
 }

@@ -25,7 +25,7 @@ module.exports = {
                 data.save()
                 message.channel.send(new MessageEmbed()
                 .setColor('GREEN')
-                .setDescription(`Your prefix has been updated to \`${res}\``)
+                .setDescription(`<:corexyes:860561725916053514> Server prefix has been updated to \`${res}\``)
                 .setTimestamp()
                 )
             } else {
@@ -36,7 +36,7 @@ module.exports = {
                 data.save()
                 message.channel.send(new MessageEmbed()
                 .setColor('GREEN')
-                .setDescription(`Custom prefix in this server is now set to \`${res}\``)
+                .setDescription(`<:corexyes:860561725916053514> Custom prefix in this server is now set to \`${res}\``)
                 .setTimestamp()
                 )
             }

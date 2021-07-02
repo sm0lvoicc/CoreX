@@ -19,12 +19,12 @@ module.exports = {
                 await prefixSchema.findOneAndDelete({ Guild : message.guild.id })
                 message.channel.send(new MessageEmbed()
                 .setColor('RED')
-                .setDescription(`The prefix has been reset to \`${prefix}\``)
+                .setDescription(`<:corexyes:860561725916053514> The prefix has been reset to \`${prefix}\``)
                 )
             }
             if(emoji === '❌') {
                 msg.delete()
-                message.channel.send('reset prefix has been cancelled.')
+                message.channel.send('<:corexerror:860580531825147994> reset prefix has been cancelled.')
             }
         })
 
