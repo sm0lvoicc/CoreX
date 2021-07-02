@@ -15,7 +15,7 @@ module.exports = {
     malScraper.getInfoFromName(search)
       .then((data) => {
         const malEmbed = new Discord.MessageEmbed()
-          .setAuthor(`My Anime List search result for ${args}`.split(',').join(' '))
+          .setAuthor(`<:corexsearch:860609884924149801> My Anime List search result for ${args}`.split(',').join(' '))
           .setThumbnail(data.picture)
           .setColor('RANDOM') //What ever u want color!
           .addField('Premiered', `\`${data.premiered}\``, true)

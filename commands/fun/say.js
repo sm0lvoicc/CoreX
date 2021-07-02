@@ -8,6 +8,6 @@ module.exports = {
 
         if(!sayMessage) return message.reply('Please specify something to say')
         message.delete().catch(O_o=>{}); 
-        message.channel.send(`${sayMessage}\n\nBy- **${message.author.tag}**`);
+        message.channel.send(`${sayMessage}\n\nBy: **${message.author.tag}**`);
     }
 }

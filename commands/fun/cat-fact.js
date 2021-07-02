@@ -17,6 +17,6 @@ module.exports = {
       .then((res) => res.json())
       .then(({ fact }) => fact);
 
-        return message.channel.send(`**Catfact:** *${fact}*`);
+        return message.channel.send(`<:corexsearch:860609884924149801> **Catfact:** *${fact}*`);
     }
 }

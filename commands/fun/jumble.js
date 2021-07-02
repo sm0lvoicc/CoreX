@@ -21,11 +21,11 @@ module.exports = {
         .then(collected => {
             const m = collected.first();
             if (m.content.toLowerCase() != word[0].word.toLowerCase()) return message.channel.send(`Your choice is incorrect!. Correct word was \`${word[0].word}\``);
-            return message.channel.send(`Correct guess! The word was \`${word[0].word}\``);
+            return message.channel.send(`<:corexyes:860561725916053514> Correct guess! The word was \`${word[0].word}\``);
 
         })
         .catch(() => {
-            message.channel.send(`You didn't answer in time. The correct word was \`${word[0].word}\``);
+            message.channel.send(`<:corexerror:860580531825147994> You didn't answer in time. The correct word was \`${word[0].word}\``);
 
 
         })
