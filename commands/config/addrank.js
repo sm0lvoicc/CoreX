@@ -38,9 +38,11 @@ module.exports = {
             } else {
                 if(!data) {
                     newData = new schema({
+                        Guild: message.guild.id,
                         Rank: rankName,
                         Role: rankRole.id
                     })
+                    newData.save()
 
                     const embed = new MessageEmbed()
                     .setColor(hexColor)
