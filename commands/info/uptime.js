@@ -12,7 +12,7 @@ module.exports = {
     let seconds = Math.floor(Client.uptime / 1000) % 60;
 
     let uptimeE = new Discord.MessageEmbed()
-    .setTitle("UPTIME")
+    .setTitle("<:corexrocket:860566875174731776> Uptime")
     .setColor("RANDOM")
     .setDescription(`\nDay(S) Online: \`${days}\`\n\nHour(S) Online: \`${hours}\`\n\nMinute(S) Online: \`${minutes}\`\n\nSecond(S) Online: \`${seconds}\``)
      .setFooter(`Requested By : ${message.author.username}`, message.author.displayAvatarURL({

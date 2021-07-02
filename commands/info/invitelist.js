@@ -22,9 +22,9 @@ module.exports = {
         }))
 
         let replyText = new MessageEmbed()
-            .setTitle(`📩 Invitation Cards ${message.guild.name}`)
+            .setTitle(`<:corexinvite:860570964311932979> Invitation Cards ${message.guild.name}`)
             .setDescription(` \n`)
-            .setColor("BLUE")
+            .setColor("BLURPLE")
         const sortedInvites = Object.keys(inviteCounter).sort((a, b) => inviteCounter[b] - inviteCounter[a])
 
         if (sortedInvites.length > 10) sortedInvites.length = 10

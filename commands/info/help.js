@@ -34,19 +34,19 @@ module.exports = {
             ];
 
             const emo = {
-                info: '📁',
+                info: '<:corexinfo:860565886111580172>',
                 utility: '🔧',
                 fun: '🤣',
-                moderation: '🚨',
+                moderation: '<:corexmod:860581398532718602>',
                 misc: '🌌',
-                support: '🧲',
+                support: '<:corexsupport:860567555114270740>',
                 image: '📷',
                 config: '🔨',
-                logging: '💾',
-                member_system: '💁‍♂️',
+                logging: '<:corexinbox:860563596818513920>',
+                member_system: '<:corexmembers:860568826046840862>',
                 backup: '📇',
                 automod: '⚡',
-                alt: '💈'
+                alt: '<:corexglobe:860568508566994964>'
             }
 
             readdirSync("./commands/").forEach((dir) => {
@@ -144,7 +144,7 @@ module.exports = {
 
             if (!command) {
                 const embed = new MessageEmbed()
-                    .setTitle(`Invalid command! Use \`${p}help\` for all of my commands!`)
+                    .setTitle(`<:corexerror:860580531825147994> Invalid category/command! Use \`${p}help\` for all of my commands!`)
                     .setColor("RED");
                 return message.channel.send(embed);
             }

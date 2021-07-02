@@ -23,7 +23,7 @@ module.exports = {
         `;
 
         const embed = new MessageEmbed()
-        .setTitle(`💻 My System Information!!`)
+        .setTitle(`<:corexdesktop:860563196100214785> My System Information!!`)
         .setDescription(`\`\`\`yaml\n${systeminfo}\`\`\``)
         .setTimestamp()
         .setColor(message.guild.me.displayHexColor)

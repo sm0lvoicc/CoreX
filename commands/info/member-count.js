@@ -13,7 +13,7 @@ module.exports = {
      */
     run: async(client, message, args) => {
         const embed = new MessageEmbed()
-        .setDescription(`**🧑 Human Count: ${message.guild.members.cache.filter(u => !u.user.bot).size}\n\n🤖 Bots Count: ${message.guild.members.cache.filter(u => u.user.bot).size}\n\n👥 Total Members: ${message.guild.memberCount}\n\n**`)
+        .setDescription(`<:corexmembers:860568826046840862> Human Count: ${message.guild.members.cache.filter(u => !u.user.bot).size}\n\n<:corexbot:860569029029658684> Bots Count: ${message.guild.members.cache.filter(u => u.user.bot).size}\n\n<:corexglobe:860568508566994964> Total Members: ${message.guild.memberCount}\n\n`)
         .setColor("GREEN")
         .setThumbnail(message.guild.iconURL({ dynamic: true }))
     message.channel.send(embed)

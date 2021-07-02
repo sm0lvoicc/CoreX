@@ -22,23 +22,19 @@ module.exports = {
         if(!channel) return message.reply('Please provide a channel from this server!');
 
         const totalUsers = channel.members.size;
-        const bots = channel.members.array().filter(b => b.user.bot).length;
-        const humans = channel.members.size - bots;
         const NFSW = {
             true: 'Yes',
             false: 'No'
         }
 
         const embed = new MessageEmbed()
-        .setTitle('Channel Info!!')
-        .addField('Name', channel, true)
-        .addField('ID', `\`${channel.id}\``, true)
-        .addField('Type', types[channel.type], true)
-        .addField('Total Users', `\`${totalUsers}\``, true)
-        .addField('Humans', `\`${humans}\``, true)
-        .addField('Bots', `\`${bots}\``, true)
-        .addField('Creation Date', `\`${moment(channel.createdAt).format('DD/MMM/YYYY')}\``, true)
-        .addField('NSFW ', `\`${NFSW[channel.nsfw]}\``, true)
+        .setTitle('<:corexinfo:860565886111580172> Channel Info!!')
+        .addField('<:corexchat:860569658657865728> Name', channel, true)
+        .addField('<:corexchannel:860560876792840202> ID', `\`${channel.id}\``, true)
+        .addField('<:corexfilter:860582132702904320> Type', types[channel.type], true)
+        .addField('<:corexmembers:860568826046840862> Total Users', `\`${totalUsers}\``, true)
+        .addField('<:corexinbox:860563596818513920> Creation Date', `\`${moment(channel.createdAt).format('DD/MMM/YYYY')}\``, true)
+        .addField('<:corexnsfw:860582526556045332> NSFW ', `\`${NFSW[channel.nsfw]}\``, true)
         .setColor(message.guild.me.displayHexColor)
         .setTimestamp()
 
