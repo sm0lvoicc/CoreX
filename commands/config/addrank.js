@@ -13,8 +13,8 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if(!message.member.hasPermissions('MANAGE_SERVER')) return message.reply('You do not have the permission \`MANAGE_SERVER\`')
-        if(!message.guild.me.hasPermissions('MANAGE_SERVER')) return message.reply('I do not have the permission \`MANAGE_SERVER\`')
+        if(!message.member.hasPermission('MANAGE_SERVER')) return message.reply('You do not have the permission \`MANAGE_SERVER\`')
+        if(!message.guild.me.hasPermission('MANAGE_SERVER')) return message.reply('I do not have the permission \`MANAGE_SERVER\`')
 
         const rankName = args.join(' ')
         const hexColor = args[1]
