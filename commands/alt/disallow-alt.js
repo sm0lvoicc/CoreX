@@ -16,10 +16,11 @@ module.exports = {
         if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You do not have the permission \`MANAGE_SERVER\`')
 
         await schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-            if(!data) return message.reply('The alt Module is disabled')
+            if(!data) return message.reply('<:corexerror:860580531825147994> The alt Module is disabled')
+            
             if(!args[0]) return message.reply('Please specify a user ID to remove from the whitelist')
             if(isNaN(args[0])) return message.reply('The user ID must be a number')
-            if(!data.Allowed_Alts.includes(args[0])) return message.reply('This user has not been whitelisted')
+            if(!data.Allowed_Alts.includes(args[0])) return message.reply('<:corexerror:860580531825147994> This user has not been whitelisted')
             let arr = db.allowedAlts
             let newArr = removeA(arr, args[0])
 
@@ -27,7 +28,7 @@ module.exports = {
                 Allowed_Alts: newArr
             })
 
-            message.channel.send(`Succesfully removed <@${args[0]}> from the whitelist`)
+            message.channel.send(`<:corexyes:860561725916053514> Succesfully removed <@${args[0]}> from the whitelist`)
             
             function removeA(arr) {
                 var what, a = arguments, L = a.length, ax;

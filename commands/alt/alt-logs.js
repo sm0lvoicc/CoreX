@@ -40,21 +40,21 @@ module.exports = {
                         Channel: channel.id
                     })
                     newData.save()
-                    message.reply(`Alt-logs is set to => ${channel}`)
+                    message.reply(`<:corexyes:860561725916053514> Alt-logs is set to => ${channel}`)
                 } else{
                     data.updateOne({
                         Channel: channel.id
                     })
-                message.reply(`Alt-logs is set to => ${channel}`)
+                message.reply(`<:corexyes:860561725916053514> Alt-logs is set to => ${channel}`)
             }
         })
     }
 
     if(opt === 'disable') {
         schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-            if(!data) message.reply('The Alt-logs is already disabled')
+            if(!data) message.reply('<:corexerror:860580531825147994> The Alt-logs is already disabled')
             data.deleteOne(Channel)
-            message.reply('Alt logging has been disabled')
+            message.reply('<:corexyes:860561725916053514> Alt logging has been disabled')
         })
     }
 

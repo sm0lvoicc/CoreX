@@ -34,12 +34,12 @@ module.exports = {
                         Days: 7,
                         Avatar: true
                     })
-                    message.channel.send('Enabled kick default avatars')
+                    message.channel.send('<:corexyes:860561725916053514> Enabled kick default avatars')
                 } else {
                     data.updateOne({
-                        Avatar: false
+                        Avatar: true
                     })
-                    message.channel.send('Enabled kick default avatars')
+                    message.channel.send('<:corexyes:860561725916053514> Enabled kick default avatars')
 
                 }
             })
@@ -53,12 +53,12 @@ module.exports = {
                         Days: 7,
                         Avatar: false
                     }).save()
-                    message.channel.send('Disabled kick default avatars')
+                    message.channel.send('<:corexyes:860561725916053514> Disabled kick default avatars')
                 } else {
                     data.updateOne({
                         Avatar: false
                     })
-                    message.channel.send('Disabled kick default avatars')
+                    message.channel.send('<:corexyes:860561725916053514> Disabled kick default avatars')
                 }
             })
         }

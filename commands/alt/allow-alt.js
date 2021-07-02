@@ -21,7 +21,7 @@ module.exports = {
             if(isNaN(args[0])) return message.reply('The user ID must be a number')
 
             schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-                if(!data) return message.reply('The Anti-Alt module is disabled')
+                if(!data) return message.reply('<:corexerror:860580531825147994> The Anti-Alt module is disabled')
 
                 let allowedAlts = data.Allowed_Alts
                 if(allowedAlts.length === 10) return message.reply('The maximum amount of allowed alts is 10')
@@ -32,7 +32,7 @@ module.exports = {
                     Allowed_Alts: allowedAlts
                 })
 
-                message.reply(`White-listed <@${args[0]}>`)
+                message.reply(`<:corexyes:860561725916053514> White-listed <@${args[0]}>`)
                 
             })
         })

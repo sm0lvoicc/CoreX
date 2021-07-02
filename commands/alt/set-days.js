@@ -26,12 +26,12 @@ module.exports = {
                     Guild: message.guild.id,
                     Days: days
                 }).save()
-                message.channel.send(`Set minimum account age to \`${days}\` days`)
+                message.channel.send(`<:corexyes:860561725916053514> Set minimum account age to \`${days}\` days`)
             } else {
                 data.updateOne({
                     Days: days
                 })
-                message.channel.send(`Set minimum account age to \`${days}\` days`)
+                message.channel.send(`<:corexyes:860561725916053514> Set minimum account age to \`${days}\` days`)
             }
         })
     }
