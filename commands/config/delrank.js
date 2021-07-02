@@ -26,7 +26,7 @@ module.exports = {
                 await schema.findOneAndDelete({ Guild: message.guild.id, Rank: rankName})
                 message.channel.send(new MessageEmbed()
                 .setColor('GREEN')
-                .setDescription(`Removed ${rankName} rank from the server`)
+                .setDescription(`Removed **${rankName}** rank from the server`)
                 .setTimestamp()
                 )
             }
