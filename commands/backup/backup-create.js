@@ -16,7 +16,7 @@ module.exports = {
         if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have the permission \`ADMINISTRATOR\`')
         if(!message.guild.me.hasPermission('ADMINISTRATOR')) return message.reply('I do not have the permission \`ADMINISTRATOR\`')
 
-        const msg = await message.channel.send(`**Creating Backup...**`)
+        const msg = await message.channel.send(`<a:corexloading:860601769675456513> **Creating Backup...**`)
         try {
         backup
             .create(message.guild, {
@@ -25,7 +25,9 @@ module.exports = {
                 jsonBeautify: true,
             }).then(b => {
                 msg.delete()
-                message.channel.send(new MessageEmbed().setDescription(`Backup Created: \`${b.id}\`. Make sure to remember this code`).setColor("GREEN"))
+                message.channel.send(new MessageEmbed()
+                .setDescription(`<:corexyes:860561725916053514> Backup Created: \`${b.id}\`. Make sure to remember this code`)
+                .setColor("GREEN"))
             })
         }catch(err) {
         msg.delete()

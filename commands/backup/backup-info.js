@@ -26,15 +26,15 @@ module.exports = {
             const formatedDate = `${yyyy}/${(mm[1]?mm:"0"+mm[0])}/${(dd[1]?dd:"0"+dd[0])}`;
             
             let embed = new MessageEmbed()
-                .setAuthor("Backup Informations")
-                .addField("Backup ID", backupInfos.id, false)
-                .addField("Server ID", backupInfos.data.guildID, false)
-                .addField("Size", `${backupInfos.size} kb`, false)
-                .addField("Created at", formatedDate, false)
+                .setAuthor("<:corexinfo:860565886111580172> Backup Informations")
+                .addField("<:corexchannel:860560876792840202> Backup ID", backupInfos.id, false)
+                .addField("<:corexinbox:860563596818513920> Server ID", backupInfos.data.guildID, false)
+                .addField("<:corexsupport:860567555114270740> Size", `${backupInfos.size} kb`, false)
+                .addField("<:corexjoin:860563858301517864> Created at", formatedDate, false)
                 .setColor("RANDOM");
             message.channel.send(embed);
         }).catch((err) => {
-            return message.reply("No backup found for `"+backupID+"`!");
+            return message.reply("<:corexerror:860580531825147994> No backup found for `"+backupID+"`!");
         });
     }
 }

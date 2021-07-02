@@ -18,7 +18,7 @@ module.exports = {
 
         const id = args[0]
         if(!id) return message.reply(`You must provide a Backup ID to load**`)
-        const msg = await message.channel.send(`**Loading Backup...**`)
+        const msg = await message.channel.send(`<a:corexloading:860601769675456513> **Loading Backup...**`)
         try {
         backup.load(id, message.guild)
         }catch(err) {
