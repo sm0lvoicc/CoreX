@@ -17,7 +17,7 @@ module.exports = {
         if(!message.guild.me.hasPermission('MANAGE_SERVER')) return message.reply('I do not have the permission \`MANAGE_SERVER\`')
 
         const rankName = args.join(' ')
-        const hexColor = args[1]
+        const hexColor = args.slice(1)
 
         if(!rankName) return message.reply('Please set a rank name')
 
