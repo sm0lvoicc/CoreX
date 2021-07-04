@@ -891,7 +891,7 @@ client.on('message', message => {
                             const role = await message.guild.roles.cache.get(data2.Role)
                             if(!role) return message.channel.send(`**[CoreX Auto-Mod] The muted role has been deleted**`)
                             if(message.member.roles.cache.get(role.id)) return;
-                            await message.member.roles.add(role.id, `[CoreX Auto-Mod] -  ${linkReason}`)
+                            await message.member.roles.add(role.id, `[CoreX Auto-Mod] -  ${AdReason}`)
                             await message.channel.send(`**${message.member}** No Invite links allowed`).then(msg => msg.delete({ timeout: 6000}))
                             
                             const dmAdMute = new MessageEmbed()
