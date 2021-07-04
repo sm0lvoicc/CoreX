@@ -20,8 +20,8 @@ module.exports = {
 				Bio: args.join(" ")
 			}).save();
 		})
-		message.reply(
-			`Successfully Updated Your Bio`
+		message.channel.send( new MessageEmbed()
+		.setDescription(`<:corexyes:860561725916053514> Successfully Updated Your Bio`)
 		)
 	}
 }

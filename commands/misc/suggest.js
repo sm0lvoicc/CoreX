@@ -40,7 +40,9 @@ module.exports = {
                           })
                           
 
-                    message.reply(`Your suggestion has been sent!`)
+                    message.channel.send(new MessageEmbed()
+                    .setDescription('<:corexyes:860561725916053514> Your Suggestion has been sent')
+                    )
                 }
             }
         })

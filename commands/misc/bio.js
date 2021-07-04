@@ -22,7 +22,7 @@ module.exports = {
 			return message.reply(
 				new MessageEmbed()
 				.setColor('RED')
-				.setDescription(`${member.toString()} doesn't have a bio`)
+				.setDescription(`<:corexerror:860580531825147994> ${member.toString()} doesn't have a bio`)
 				.setFooter(`looks like there is no bio, you can set it by typing ${p}setbio`)
 			);
 		}
