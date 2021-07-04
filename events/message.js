@@ -76,7 +76,7 @@ client.on('message', async message =>{
 
             message.channel.send(new MessageEmbed()
             .setColor('RED')
-            .setTitle(`You have been blacklisted from using **${client.user.tag}**`)
+            .setTitle(`<:corexerror:860580531825147994> You have been blacklisted from using **${client.user.tag}**`)
             .addField('Reason', `\`\`\`${data.reason}\`\`\``)
             .setDescription('If you would like to get whitelisted you can join the support ' + server)
             )
