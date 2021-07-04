@@ -15,21 +15,25 @@ module.exports = {
         return;
       }
 
-        let User = message.guild.members.cache.get(args[0])
-        if(!User) return message.channel.send('User is not valid.')
-        const blReason = args.slice(1).join(" ");;
+        let userID = message.guild.members.cache.get(args[0])
+        if(!userID) return message.channel.send('User is not valid.')
+        const blReason = args.slice(1).join(" ");
 
-        blacklist.findOne({ id : User.user.id }, async(err, data) => {
-            if(err) throw err;
-            if(data) {
-                message.channel.send(`**${User.displayName}** has already been blacklisted!`)
-            } else {
-                data = new blacklist({ id : User.user.id, reason : blReason })
-                data.save()
-                .catch(err => console.log(err))
-            message.channel.send(`**${User.user.tag}** has been added to blacklist.`)
-            }
-           
+        client.users.fetch(userID).then(async(user) => {
+            blacklist.findOne({ id : user.id }, async(err, data) => {
+                if(err) throw err;
+                if(data) {
+                    message.channel.send(`<:corexerror:860580531825147994> **${user.tag}** has already been blacklisted!`)
+                } else {
+                    data = new blacklist({ id : user.id, reason : blReason })
+                    data.save()
+                    .catch(err => console.log(err))
+                message.channel.send(`<:corexyes:860561725916053514> **${user.tag}** has been added to blacklist.`)
+                }
+               
+            })
         })
+        
+       
     }
 }

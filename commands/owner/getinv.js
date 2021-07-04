@@ -22,12 +22,12 @@ module.exports = {
             guild = found
         }
     } else {
-        return message.channel.send("That's the Invalid Guild Name");
+        return message.channel.send("That's an Invalid Guild Name");
     }
     if(guild){
         let tChannel = guild.channels.cache.find(ch => ch.type == "text" && ch.permissionsFor(ch.guild.me).has("CREATE_INSTANT_INVITE"));
         if(!tChannel) {
-            return message.channel.send("Sorry, I don't have CREATE_INSTANT_INVITE Permission There!"); 
+            return message.channel.send("Sorry, I don't have \`CREATE_INSTANT_INVITE\` Permission There!"); 
         }
         let invite = await tChannel.createInvite({ temporary: false, maxAge: 0 }).catch(err => {
             return message.channel.send(`${err} has occured!`);

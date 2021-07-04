@@ -21,7 +21,7 @@ module.exports = {
           .setAuthor(message.author.tag, message.author.displayAvatarURL())
           .setColor("RED")
           .setFooter(client.user.username)
-          .setTitle(`Shutdown?`)
+          .setTitle(`Restart?`)
           .setDescription('✅ Click this to restart me \n ❌ Click this to cancel');
           
           const msg = await message.channel.send(embed);

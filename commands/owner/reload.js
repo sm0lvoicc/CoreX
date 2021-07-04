@@ -32,7 +32,9 @@ module.exports = {
 					})
 				}
 			})
-			message.channel.send('Reloaded all the commands')
+			message.channel.send(new MessageEmbed()
+			.setDescription(`<:corexyes:860561725916053514>	Reloaded all the commands`)
+			)
 		})
 
     }
