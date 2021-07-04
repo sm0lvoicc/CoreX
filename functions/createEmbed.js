@@ -19,9 +19,9 @@ module.exports = (type, description, ...otherArgs) => {
     .setDescription(
       `${
         type === "success"
-          ? "✅"
+          ? "<:corexyes:860561725916053514>"
           : type === "fail"
-          ? "❌"
+          ? "<:corexerror:860580531825147994>"
           : ""
       } ${description}`
     );
