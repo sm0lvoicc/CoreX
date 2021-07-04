@@ -33,12 +33,13 @@ module.exports = {
 
         schema.findOne({ Guild: message.guild.id }, async(err, data) => {
             if(!data) {
-                message.channel.send(`No Muted role found! Please set the mute role using ${prefix}set-muterole <@role>`)
+                message.channel.send(`<:corexerror:860580531825147994> No Muted role found! Please set the mute role using ${prefix}set-muterole <@role>`)
             } else {
                 const MuteRole = message.guild.roles.cache.find(role => role.id === data.Role)
                 if(!MuteRole) return message.channel.send(`The Muted Role for this server was deleted. Please set the mute role using ${prefix}set-muterole <@role>`)
+                
                 if(member.roles.cache.get(MuteRole.id)) return message.channel.send(new MessageEmbed()
-          .setDescription(`**${member.user.username} was muted already. So I cannot mute them again**`)
+          .setDescription(`<:corexerror:860580531825147994> **${member.user.username} was muted already. So I cannot mute them again**`)
           .setColor("RED")
           .setFooter(
               `Requested by ${message.author.tag}`,
@@ -54,26 +55,29 @@ module.exports = {
 
       message.channel.send(new MessageEmbed()
       .setColor('GREEN')
-      .setDescription(`${member} has been tempmuted for: ${time} because: \`${muteReason}\``)
+      .setDescription(`<:corexyes:860561725916053514> ${member} has been tempmuted for: ${time} because: \`${muteReason}\``)
       .setTimestamp()
       )
       .catch(err => console.log(err))
 
   const dmEmbed = new MessageEmbed()
-  .setColor('RED')
-  .setDescription(`**Server:** ${message.guild.name}\n**Moderator:** ${message.author}\n**Action:** Tempmute\n**Duration:** ${time}\n**Reason:** ${muteReason}`)
-  .setTimestamp()
+  .setTitle(`Tempmute!`)
+    .addField(`Muted User:`, `${member.user.tag} (You)`,true)
+    .addField(`Action By:`,message.author.tag,true)
+    .addField(`Muted In:`,message.guild.name,true)
+    .addField(`Reason:`, muteReason)
+    .addField('Duration', time)
 
   try{
       await member.send(dmEmbed)
   } catch(e) {
-    message.channel.send('I could not DM the user! Reason logged.')
-    console.log('An error occured while sending the DM embed! ' + e)
-  }
+    message.channel.send('<:corexerror:860580531825147994> I could not DM the user! Reason logged.')
+    message.channel.send(`There has been an error, **${e}**`)
+}
 setTimeout(async function () {
     await member.roles.remove(MuteRole.id)
     message.channel.send(new MessageEmbed()
-        .setDescription(` ${member.user.username} was unmuted || muteReason: \`Mute Duration was expired\``)
+        .setDescription(`<:corexyes:860561725916053514> ${member.user.username} was unmuted || muteReason: \`Mute Duration was expired\``)
         .setColor("GREEN")
         .setFooter(
             `Requested by ${message.author.tag}`,

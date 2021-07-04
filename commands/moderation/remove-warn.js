@@ -21,8 +21,6 @@ module.exports = {
         }
                 
 
-        if(!message.guild.me.hasPermission('MANAGE_MESSAGES')) return message.reply('I do not have the permission \`MANAGE_MESSAGES\`')
-
         let removeWarnReason = args.slice(1).join(' ');
         if(!removeWarnReason) {
             removeWarnReason = 'No reason Specified'
@@ -35,14 +33,14 @@ module.exports = {
                 data.content.splice(number, 1)
                 message.channel.send(new MessageEmbed()
                 .setColor('GREEN')
-                .setDescription(`Removed warns from ${member.user.tag}`)
+                .setDescription(`<:corexyes:860561725916053514> Removed warns from ${member.user.tag}`)
                 .setTimestamp()                
                 )
                 data.save()
             } else {
                 message.channel.send(new MessageEmbed()
                 .setColor('GREEN')
-                .setDescription('This user is squeaky clean!')
+                .setDescription('<:corexerror:860580531825147994> This user does not have any warns')
                 .setTimestamp()                
                 )
             }

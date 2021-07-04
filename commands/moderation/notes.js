@@ -36,7 +36,7 @@ module.exports = {
                 )
             } else {
                 message.channel.send(new MessageEmbed()
-                    .setDescription(`**${user.user.tag}** doesn't have any notes.`)
+                    .setDescription(`<:corexerror:860580531825147994> **${user.user.tag}** doesn't have any notes.`)
                     .setColor("GREEN")
                 )
             }

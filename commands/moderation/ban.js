@@ -13,9 +13,9 @@ module.exports = {
      */
     run: async(client, message, args) => {
         try {
-        if (!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send('You do not have the permission \`BAN_MEMBERS\`')
+        if (!message.member.hasPermission('BAN_MEMBERS')) return message.reply('You do not have the permission \`BAN_MEMBERS\`')
 
-        if (!message.guild.me.hasPermission('BAN_MEMBERS')) return message.channel.send('I do not have the permission \`BAN_MEMBERS\`')
+        if (!message.guild.me.hasPermission('BAN_MEMBERS')) return message.reply('I do not have the permission \`BAN_MEMBERS\`')
 
         let member = message.mentions.members.first()
         let banReason = args[1]
@@ -44,7 +44,7 @@ module.exports = {
 
         const bannedEmbed = new MessageEmbed()
         .setColor('RED')
-        .setDescription(`${member} was banned by ${message.author} for: \`${banReason}\``)
+        .setDescription(`<:corexyes:860561725916053514> ${member} was banned by ${message.author} for: \`${banReason}\``)
         
 
         const dmEmbed = new MessageEmbed()
@@ -62,7 +62,7 @@ module.exports = {
             try {
                 await member.send(dmEmbed)
 
-                message.channel.send('I have successfully sent the reason to the user!')
+                message.channel.send('<:corexyes:860561725916053514> I have successfully sent the reason to the user!')
             } catch (e) {
                 message.channel.send(`There has been an error, **${e}**`)
             }

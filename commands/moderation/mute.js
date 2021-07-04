@@ -28,11 +28,11 @@ module.exports = {
 
             const muteReason = args.slice(1).join(" ") || "No reason specified."
 
-            if(member.user.id === message.author.id) return message.reply(`You cannot mute yourself`);
+            if(member.user.id === message.author.id) return message.channel.send(`<:corexerror:860580531825147994> You cannot mute yourself`);
             
             schema.findOne({ Guild: message.guild.id }, async(err, data) => {
             if(!data) {
-                message.channel.send(`There seems to be no muted role set, use ${prefix}set-muterole <@role> to set one up!`)
+                message.channel.send(`<:corexerror:860580531825147994> There seems to be no muted role set, use ${prefix}set-muterole <@role> to set one up!`)
             } else {
                 const roleD = message.guild.roles.cache.find(role => role.id === data.Role)
                 if(!roleD) {
@@ -41,7 +41,7 @@ module.exports = {
                 }
 
                 if(member.roles.cache.get(roleD.id)) return message.channel.send(new MessageEmbed()
-            .setDescription(`**${member.user.username} was muted already. So I cannot mute them again**`)
+            .setDescription(`<:corexerror:860580531825147994> **${member.user.username} was muted already. So I cannot mute them again**`)
             .setColor("RED")
             .setFooter(
                 `Requested by ${message.author.tag}`,
@@ -52,7 +52,7 @@ module.exports = {
         if (message.guild.me.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than me.');
         if(roleD.position > message.guild.me.roles.highest.position) return message.channel.send(`I cannot access the mute role, please make sure my role is higher than the mute role.`)
         if(roleD.deleteable) return message.channel.send(new MessageEmbed()
-        .setDescription(`**I can't add muted role manually**`)
+        .setDescription(`<:corexerror:860580531825147994> *I can't add muted role manually`)
         .setColor("RED")
         .setFooter(
             `Requested by ${message.author.tag}`,
@@ -64,7 +64,7 @@ module.exports = {
 
         message.channel.send(new MessageEmbed()
         .setColor('RED')
-        .setDescription(`${member} was muted by ${message.author} for: \`${muteReason}\``)
+        .setDescription(`<:corexyes:860561725916053514> ${member} was muted by ${message.author} for: \`${muteReason}\``)
         .setTimestamp())
         .catch(e => {
 
@@ -73,9 +73,8 @@ module.exports = {
         })
 
         const dmEmbed = new MessageEmbed()
-            .setTitle(`CoreX Moderation`)
-            .addField(`Muted User:`, `${member.user.tag} (You)`,true)
-            .addField(`Action By:`,message.author.tag,true)
+            .setTitle(`Muted!`)
+            .addField(`Moderator:`,message.author.tag,true)
             .addField(`Muted In:`,message.guild.name,true)
             .addField(`Reason:`, muteReason)
 

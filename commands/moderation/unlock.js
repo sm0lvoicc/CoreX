@@ -29,10 +29,9 @@ module.exports = {
         await channel.updateOverwrite(everyone, {
             SEND_MESSAGES: null,
         },`CoreX Moderation - Unlock Command - Action By: ${message.author.tag}`)
-        channel.send(new MessageEmbed().setDescription(`**${message.author.tag}** unlocked this channel`).setColor("GREEN"))
+        channel.send(new MessageEmbed().setDescription(`<:corexlock:861289466798538772> **${message.author.tag}** unlocked this channel`).setColor("GREEN"))
         .catch(err => {
-            console.log(err)
-            message.channel.send(new MessageEmbed().setTitle(`Error`).setDescription(`**${error} An error occured when I'm trying to unlock this channel**`).setColor("RED"))
+            message.channel.send(`There has been an error, **${err}**`)
         })
 
         } catch(e) {

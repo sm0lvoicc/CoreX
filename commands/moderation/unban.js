@@ -24,17 +24,17 @@ module.exports = {
                 unBanReason = 'No reason specified'
             }
     
-            if(!userUnban) message.reply('Oy are you retarded or something? Pass in a user id bruh.');
+            if(!userUnban) message.reply('Please specify a user id, to unban');
     
             const bannedMembers = await message.guild.fetchBans();
     
-            if(!bannedMembers.find((user) => user.user.id ===  userUnban)) return message.channel.send('Lmfao the user is not banned. Ironic');
+            if(!bannedMembers.find((user) => user.user.id ===  userUnban)) return message.channel.send('This user is not banned');
     
             message.guild.members.unban(userUnban);
     
             message.channel.send(new MessageEmbed()
             .setColor('GREEN')
-            .setDescription(`<@${userUnban}> has been successfully unbanned `)
+            .setDescription(`<:corexyes:860561725916053514> <@${userUnban}> has been successfully unbanned `)
             )
 
         } catch(e) {

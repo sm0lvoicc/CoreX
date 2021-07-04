@@ -21,20 +21,20 @@ module.exports = {
         }
         if(!user) return message.reply('Please specify a user.')
 
-        if(user.user.id === message.author.id) return message.reply('You cannot clear your own notes.')
+        if(user.user.id === message.author.id) return message.channel.send('<:corexerror:860580531825147994> You cannot clear your own notes.')
 
         db.findOne({ guildid : message.guild.id, user: user.user.id}, async(err,data) => {
             if(err) throw err;
             if(data) {
                 await db.findOneAndDelete({ user : user.user.id, guildid: message.guild.id})
                 message.channel.send(new MessageEmbed()
-                    .setDescription(`Cleared all the notes of **${user.user.username}**`)
+                    .setDescription(`<:corexyes:860561725916053514> Cleared all the notes of **${user.user.username}**`)
                     .setTimestamp()
                     .setColor("GREEN")
                 )
             } else {
                 message.channel.send(new MessageEmbed()
-                .setDescription(`**${user.user.tag}** doesn't have any notes.`)
+                .setDescription(`<:corexerror:860580531825147994> **${user.user.tag}** doesn't have any notes.`)
                 .setColor("RED")
                 )
             }

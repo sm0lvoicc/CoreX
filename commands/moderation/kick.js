@@ -7,7 +7,7 @@ module.exports = {
     timeout: 8000,
     run: async(client, message, args) => {
         try {
-            if(!message.member.hasPermission(['KICK_MEMBERS', 'ADMINISTRATOR'])) return message.reply('You do not have the permission \`KICK_MEMBERS\`')
+            if(!message.member.hasPermission('KICK_MEMBERS')) return message.reply('You do not have the permission \`KICK_MEMBERS\`')
             if(!message.guild.me.hasPermission('KICK_MEMBERS')) return message.reply('I do not have the permission \`KICK_MEMBERS\` ;-;')
             
             let member = message.mentions.members.first()
@@ -49,7 +49,7 @@ module.exports = {
     
             message.channel.send(new MessageEmbed()
             .setColor('RED')
-            .setDescription(`${member} was kicked by ${message.author} for: \`${kickReason}\``)
+            .setDescription(`<:corexyes:860561725916053514> ${member} was kicked by ${message.author} for: \`${kickReason}\``)
             )
     
             client.modlogs ({

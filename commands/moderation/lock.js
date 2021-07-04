@@ -34,7 +34,7 @@ module.exports = {
         await channel.updateOverwrite(everyone, {
             SEND_MESSAGES: false,
         },`CoreX Moderation - Lock Command - Actioned By: ${message.author.tag}`)
-        channel.send(new MessageEmbed().setDescription(`**${message.author.tag}** locked this channel for: \`${reason}\``).setColor("GREEN"))
+        channel.send(new MessageEmbed().setDescription(`<:corexlock:861289466798538772> **${message.author.tag}** locked this channel for: \`${reason}\``).setColor("GREEN"))
         .catch(err => {
             message.channel.send(`There has been an error: **${err}**`)
         })

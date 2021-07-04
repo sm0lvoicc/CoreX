@@ -28,14 +28,14 @@ module.exports = {
             if(data) {
                 data.delete();
                 message.channel.send(new MessageEmbed()
-                .setDescription(`Cleared all the warns of **${member.user.username}**`)
+                .setDescription(`<:corexyes:860561725916053514> Cleared all the warns of **${member.user.username}**`)
                 .setTimestamp()
                 .setColor("GREEN")
                 )
             } else {
                 message.channel.send(new MessageEmbed()
                 .setColor('GREEN')
-                .setDescription('This user does not have any warns in this server!')
+                .setDescription('<:corexerror:860580531825147994> This user does not have any warns in this server!')
                 .setTimestamp()                
                 )
             }

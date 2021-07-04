@@ -38,12 +38,12 @@ module.exports = {
           member.setNickname(arguments);
           const embed = new MessageEmbed()
           .setColor('GREEN')
-          .setDescription(`**${member.user.tag}** has been nicked to ${arguments} `)
+          .setDescription(`<:corexyes:860561725916053514> **${member.user.tag}** has been nicked to ${arguments} `)
           .setTimestamp()
           message.channel.send(embed)
         } catch (err) {
-          message.reply(
-            "I do not have permission to set " + member.toString() + " nickname!"
+          message.channel.send(
+            "<:corexerror:860580531825147994> I do not have permission to set " + member.toString() + " nickname!"
           );
         }
 

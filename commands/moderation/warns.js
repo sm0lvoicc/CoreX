@@ -23,7 +23,6 @@ module.exports = {
         
         
 
-        if(!message.guild.me.hasPermission('MANAGE_MESSAGES')) return message.reply('I do not have the permission \`MANAGE_MESSAGES\`');
                
         db.findOne({ guildId: message.guild.id, User: member.user.id}, async(err, data) => {
             if(err) throw err;
@@ -42,14 +41,14 @@ module.exports = {
             } else {
                 message.channel.send(new MessageEmbed()
                 .setColor('RANDOM')
-                .setDescription('This user has no data!')
+                .setDescription('<:corexerror:860580531825147994> This user has no warns!')
                 )
             } 
 
         } catch(err) {
                 message.channel.send(new MessageEmbed()
                 .setColor('RANDOM')
-                .setDescription('This user is squeaky clean!')
+                .setDescription('<:corexerror:860580531825147994> This user has no warns!')
                 )
         }
 

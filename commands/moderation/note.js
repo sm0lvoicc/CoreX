@@ -22,7 +22,7 @@ module.exports = {
         if(!user) return message.reply('Please mention a user to set there note')
         
         const note = args.slice(1).join(' ')
-        if(!note) return message.reply('Please specify a note to add to that user')
+        if(!note) return message.channel.send('Please specify a note to add to that user')
 
         function generateRandomString(length){
             var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@!#$%^&*()';
@@ -62,6 +62,6 @@ module.exports = {
             data.save()
         });
 
-        message.channel.send(new MessageEmbed().setColor('GREEN').setDescription(`Added a note to **${user.user.username}**`).setTimestamp())
+        message.channel.send(new MessageEmbed().setColor('GREEN').setDescription(`<:corexyes:860561725916053514> Added a note to **${user.user.username}**`).setTimestamp())
     }
 }

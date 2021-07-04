@@ -34,9 +34,9 @@ module.exports = {
                             Guild: message.guild.id,
                         })
                         data.save()
-                        message.reply(`Success! Anti-raidmode is enabled`)
+                        message.channel.send(`<:corexyes:860561725916053514> Success! Anti-raidmode is enabled`)
                     } else{
-                        message.reply(`Anti-raidmode is already enabled`)
+                        message.channel.send(`<:corexerror:860580531825147994> Anti-raidmode is already enabled`)
                     }
                 })
             
@@ -44,9 +44,9 @@ module.exports = {
 
         if(opt === 'disable') {
             schema.findOne({ Guild: message.guild.id}, async(err,data) =>{
-            if(!data) return message.reply('The Anti-raidmode has already been disabled')
+            if(!data) return message.channel.send('<:corexerror:860580531825147994> The Anti-raidmode has already been disabled')
             data.delete()
-            message.reply('Anti-raidmode has been disabled')
+            message.channel.send('<:corexyes:860561725916053514> Anti-raidmode has been disabled')
             
             })
             

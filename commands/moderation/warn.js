@@ -23,16 +23,15 @@ module.exports = {
         }
         
         
-        if(!message.guild.me.hasPermission('MANAGE_MESSAGES')) return message.reply('I do not have the permission \`MANAGE_MESSAGES\`');
        
         let warnReason = args.splice(1).join(' ');
         if(!warnReason) {
             warnReason = 'No reason specified.'
         }
 
-        if (user  === message.member) return message.reply('You cannot warn yourself');
+        if (user  === message.member) return message.channel.send('You cannot warn yourself');
 
-        if (user === message.guild.me) return message.reply('You cannot warn me');
+        if (user === message.guild.me) return message.channel.send('You cannot warn me');
 
         function generateRandomString(length){
             var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@!#$%^&*()';
@@ -74,16 +73,23 @@ module.exports = {
 
         message.channel.send(new MessageEmbed()
         .setColor('GREEN')
-        .setDescription(`${user} was warned by ${message.author} for: \`${warnReason}\``)
+        .setDescription(`<:corexyes:860561725916053514> ${user} was warned by ${message.author} for: \`${warnReason}\``)
         .setFooter(`Warn ID: ${random}`)
         .setTimestamp()
         )
 
       
         const userSend = new MessageEmbed()
-        .setColor('RED')
-        .setDescription(`**Server:** ${message.guild.name}\n**Moderator:** ${message.author}\n**Action:** Warn\n**Reason:** ${warnReason}\n**Warn ID:** \`${random}\``)
-        .setTimestamp()
+        .setTitle("Warn!")
+        .setDescription(`You have been warned in **${message.guild}**!`)
+        .addField('Moderator', message.member, true)
+        .addField('Member', member, true)
+        .addField('Reason', warnReason)
+        .setFooter(message.member.displayName, message.author.displayAvatarURL({
+            dynamic: true
+        }))
+            .setTimestamp()
+            .setColor('RED')
         try {
             user.send(userSend)
         } catch(e) {

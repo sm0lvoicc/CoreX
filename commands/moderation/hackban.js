@@ -29,7 +29,7 @@ module.exports = {
             await message.guild.members.ban(user.id, {reason: reason})
             const bannedEmbed = new MessageEmbed()
             .setColor('RED')
-            .setDescription(`<@${user.id}> was banned by ${message.author} for: \`${reason}\``)
+            .setDescription(`<:corexyes:860561725916053514> <@${user.id}> was banned by ${message.author} for: \`${reason}\``)
             message.channel.send(bannedEmbed)
 
             client.modlogs ({

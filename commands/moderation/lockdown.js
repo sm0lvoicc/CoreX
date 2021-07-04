@@ -47,7 +47,7 @@ module.exports = {
                 })
             });
             message.channel.send(new MessageEmbed()
-              .setDescription(`**${message.author.tag}** locked down the server`)
+              .setDescription(`<:corexlock:861289466798538772> **${message.author.tag}** locked down the server`)
               .setColor("GREEN")
             )
           } else if(args[0] == 'off') { 
@@ -72,7 +72,7 @@ module.exports = {
               })
           }
            message.channel.send(new MessageEmbed()
-              .setDescription(`**${message.author.tag}** unlocked the server`)
+              .setDescription(`<:corexlock:861289466798538772> **${message.author.tag}** unlocked the server`)
               .setColor("GREEN")
            )
         }

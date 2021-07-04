@@ -44,7 +44,7 @@ module.exports = {
 
         try {
             await user.setNickname(nickname)
-            message.channel.send(new MessageEmbed().setDescription(`Moderated Nickname for **${user.user.tag}** to \`${nickname}\``).setColor("GREEN"))
+            message.channel.send(new MessageEmbed().setDescription(`<:corexyes:860561725916053514> Moderated Nickname for **${user.user.tag}** to \`${nickname}\``).setColor("GREEN"))
           } catch(err) {
             message.reply('An error occured while trying to moderate the nickname of that user.')
             console.log(err)
