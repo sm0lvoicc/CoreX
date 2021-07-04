@@ -11,7 +11,7 @@ module.exports = {
         if(!array.includes(message.author.id.toString())) {
           return;
         }
-        const userID = message.guild.members.cache.get(args[0])
+        const userID = args[0]
         if(!userID) return message.channel.send('User is not valid.')
         
         client.users.fetch(userID).then(async(user) => {

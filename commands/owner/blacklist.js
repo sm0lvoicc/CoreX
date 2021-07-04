@@ -2,7 +2,7 @@ const blacklist = require('../../models/blacklist')
 const { Message } = require('discord.js')
 
 module.exports = {
-    name : 'blacklist-user',
+    name : 'blacklist',
     /**
      * @param {Message} message
      */
@@ -15,7 +15,7 @@ module.exports = {
         return;
       }
 
-        let userID = message.guild.members.cache.get(args[0])
+        let userID = args[0]
         if(!userID) return message.channel.send('User is not valid.')
         const blReason = args.slice(1).join(" ");
 
