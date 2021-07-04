@@ -20,9 +20,9 @@ module.exports = {
                 if(data) {
                    await blacklist.findOneAndDelete({ id : user.id })
                     .catch(err => console.log(err))
-                    message.channel.send(`**${user.tag}** has been removed from blacklist.`)
+                    message.channel.send(`<:corexyes:860561725916053514> **${user.tag}** has been removed from blacklist.`)
                 } else {
-                   message.channel.send(`**${user.tag}** is not blacklisted.`)
+                   message.channel.send(`<:corexerror:860580531825147994> **${user.tag}** is not blacklisted.`)
                 }
                
             })
