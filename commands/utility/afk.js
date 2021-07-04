@@ -21,8 +21,7 @@ module.exports = {
 
         const embed = new MessageEmbed()
         .setColor('RANDOM')
-        .setThumbnail(message.author.displayAvatarURL({ dynamic: true}))
-        .setDescription(`**${message.author.tag}**, You have been set as AFK.\nReason: \`${reason}\``)
+        .setDescription(`<:corexyes:860561725916053514> **${message.author.tag}**, You have been set as AFK.\nReason: \`${reason}\``)
         .setTimestamp()
         message.channel.send(embed)
     }

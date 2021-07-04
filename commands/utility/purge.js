@@ -12,13 +12,13 @@ module.exports = {
 
         const amount = parseInt(args[0]);
         if (isNaN(amount) === true || !amount || amount < 0 || amount > 100)
-          return message.reply('Please provide a message count between 1 and 100');
+          return message.channel.send('Please provide a message count between 1 and 100');
 
         await message.channel.bulkDelete(amount, true)
             .catch(err => console.log(err))
         message.channel.send(new MessageEmbed()
         .setColor('RANDOM')
-        .setDescription(`Deleted \`${amount}\` message(s)`)
+        .setDescription(`<:corexyes:860561725916053514> Deleted \`${amount}\` message(s)`)
         .setTimestamp()
         ).then(msg => msg.delete({ timeout: 5000 }))
 

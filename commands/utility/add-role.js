@@ -16,7 +16,7 @@ module.exports = {
     run: async(client, message, args) => {
         try {
 
-            if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply('You do not have the permission \`MANAGE_ROLES\`');
+        if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply('You do not have the permission \`MANAGE_ROLES\`');
         if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES')) return message.reply('I do not have the permission \`MANAGE_ROLES\`');
         
         let member = message.mentions.members.first()
@@ -28,7 +28,7 @@ module.exports = {
         
         const rname = message.content.split(' ').splice(2).join(' ');
         const role = message.guild.roles.cache.find(val => val.name === rname);
-        if (!role) return message.reply(`❌**Error:** ${rname} isn't a role on this server!`);
+        if (!role) return message.channel.send(`<:corexerror:860580531825147994> ${rname} isn't a role on this server!`);
         
         const botRolePosition = message.guild.member(client.user).roles.highest.position;
         const rolePosition = role.position;
@@ -38,13 +38,13 @@ module.exports = {
         if (botRolePosition <= rolePosition) return message.reply('My highest role is lower than the specified role.');
         
         member.roles.add(role).catch(e => {
-            return message.reply(`❌**Error:**\n${e}`);
+            return message.channel.send(`<:corexerror:860580531825147994> **Error:**\n${e}`);
         });
         
         const be = new MessageEmbed()
             .setColor('GREEN')
             .setTitle('Role Added!')
-            .setDescription(`**${message.author}**, I've added the **${rname}** role to **${message.mentions.users.first().username}**`);
+            .setDescription(`<:corexyes:860561725916053514> **${message.author}**, I've added the **${rname}** role to **${message.mentions.users.first().username}**`);
         message.channel.send(be);
         } catch(e) {
             message.channel.send(`There has been an error, **${e}**`)

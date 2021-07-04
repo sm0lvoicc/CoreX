@@ -17,7 +17,7 @@ module.exports = {
         reason: `Created by: ${message.author.tag}`,
       })
       await message.channel.send(new MessageEmbed()
-        .setTitle(`Created Invite`)
+        .setTitle(`<:corexinvite:860570964311932979> Created Invite`)
         .setDescription(`Invite: https://discord.gg/${invite.code}\n\nTemporary: \`false\`\nExpires: \`No Expiry\`\nMaximum Users: \`100 users\``)
         .setColor("BLUE")
       )
