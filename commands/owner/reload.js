@@ -1,5 +1,6 @@
 const fs = require('fs');
 const glob = require('glob');
+const { MessageEmbed } = require('discord.js')
 
 module.exports = {
     name: 'reload',
