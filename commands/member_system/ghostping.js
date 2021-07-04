@@ -25,19 +25,19 @@ module.exports = {
 
    if(opt == 'enable') {
     Schema.findOne({ Guild: message.guild.id }, async(err, data) => {
-      if(data) return message.channel.send(`**Anti Ghost Ping** Module is enabled already`)
+      if(data) return message.channel.send(`<:corexerror:860580531825147994> **Anti Ghost Ping** Module is enabled already`)
       new Schema({
         Guild: message.guild.id
       }).save()
-      message.channel.send(`**Anti Ghost Ping** Module has been enabled.`)
+      message.channel.send(`<:corexyes:860561725916053514> **Anti Ghost Ping** Module has been enabled.`)
     })
    }
 
    if(opt == 'disable'){
     Schema.findOne({ Guild: message.guild.id }, async(err, data) => {
-      if(!data) return message.reply(`**Anti Ghost Ping** Module is disabled already`)
+      if(!data) return message.reply(`<:corexerror:860580531825147994> **Anti Ghost Ping** Module is disabled already`)
       data.delete()
-      message.reply(`**Anti Ghost Ping** Module has been disabled.`)
+      message.reply(`<:corexyes:860561725916053514> **Anti Ghost Ping** Module has been disabled.`)
     })
    }
 

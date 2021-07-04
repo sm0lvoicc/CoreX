@@ -18,7 +18,7 @@ module.exports = {
         const text = args.join(" ")
 
         const noText = new MessageEmbed()
-      .setTitle(`Available tags`)
+      .setTitle(`<:corexsearch:860609884924149801> Available tags`)
       .setDescription(` **{user}** : <@New-Member> \n **{server}** : Server Name \n **{user.tag}** : New-Member-Tag \n **{user.id}** : New-Member-ID \n **{membercount}** : Total Members`)
       .setFooter(`More Soon`)
       .setColor("RANDOM")

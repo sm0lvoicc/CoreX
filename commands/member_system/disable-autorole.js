@@ -12,10 +12,10 @@ module.exports = {
         schema.findOne({ Guild: message.guild.id }, async(err, data) => {
             if(err) throw err
             if(!data) {
-                message.reply(`The autorole module has been disabled already`)
+                message.reply(`<:corexerror:860580531825147994> The autorole module has been disabled already`)
             } else {
                 await schema.findOneAndDelete({ Guild: message.guild.id })
-                message.reply(`Success! Auto Role Module has been disabled`)
+                message.reply(`<:corexyes:860561725916053514> Success! Auto Role Module has been disabled`)
             }
         })
     }

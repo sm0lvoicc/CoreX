@@ -32,7 +32,7 @@ module.exports = {
           if(data.Member.includes(word.id)) return message.channel.send(`${word.user.tag} is already in the Anti-ping system`)
           data.Member.push(word.id)
           data.save()
-          message.channel.send(`**${word.user.tag}** has been added to Anti-Ping system`)
+          message.channel.send(`<:corexyes:860561725916053514> **${word.user.tag}** has been added to Anti-Ping system`)
         
         } else if(!data) {
           
@@ -41,7 +41,7 @@ module.exports = {
             Member: word.id
           }).save()
 
-          message.channel.send(`**${word.user.tag}** has been added to Anti-Ping system`)
+          message.channel.send(`<:corexyes:860561725916053514> **${word.user.tag}** has been added to Anti-Ping system`)
         }
       })
     } else if(query.toLowerCase() == 'remove') {
@@ -50,20 +50,20 @@ module.exports = {
       if(!word) return message.channel.send(`You need to mention member to remove from the Anti-ping system`);
 
       schema.findOne(guild, async(err,data) => {
-        if(!data) return message.channel.send(`There is no member in Anti-Ping`)
+        if(!data) return message.channel.send(`<:corexerror:860580531825147994> There is no member in Anti-Ping`)
         if(!data.Member.includes(word.id)) return message.channel.send(`${word.user.tag} isn't in the Anti-Ping system`)
         const filtered = data.Member.filter(c => c !== word.id);
         await schema.findOneAndUpdate(guild, {
           Guild: message.guild.id,
           Member: filtered
         })
-        message.channel.send(`${word.user.tag} has been removed from the Anti-Ping system`);
+        message.channel.send(`<:corexyes:860561725916053514> ${word.user.tag} has been removed from the Anti-Ping system`);
       })
     } else if(query.toLowerCase() == 'display') {
       schema.findOne(guild, async(err, data) => {
-        if(!data) return message.channel.send(`There is no member in the Anti-Ping system`);
+        if(!data) return message.channel.send(`<:corexerror:860580531825147994> There is no member in the Anti-Ping system`);
         message.channel.send(new MessageEmbed()
-        .setTitle(`Anti-Ping`)
+        .setTitle(`<:corexinfo:860565886111580172> Anti-Ping`)
         .setDescription(`<@${data.Member.join("> <@") || `There is no member in Anti-Ping system`}>`))
       })
     }

@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js')
 const schema = require('../../models/autorole')
 
 module.exports = {
@@ -17,14 +18,27 @@ module.exports = {
         schema.findOne({ Guild: message.guild.id }, async(err, data) => {
             if(err) throw err
             if(data) {
-                message.reply(`The autorole module for this server has already been enabled.`)
+                data.delete()
+                const newData = new schema({
+                    Guild: message.guild.id,
+                    Role: role.id,
+                })
+                newData.save()
+                const embed2 = new MessageEmbed()
+                .setDescription(`<:corexyes:860561725916053514> Auto-role has been updated to ${role}`)
+                .setTimestamp()
+                message.channel.send(embed2)
+
             } else {
                 data = new schema({
                     Guild: message.guild.id,
                     Role: role.id,
                 })
                 await data.save()
-                message.channel.send(`Success! Auto Role for this server has been enabled`)
+                const embed = new MessageEmbed()
+                .setDescription(`<:corexyes:860561725916053514> Auto-role has been set to ${role}`)
+                .setTimestamp()
+                message.channel.send(embed)
             }
         })
     }
