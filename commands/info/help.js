@@ -151,37 +151,16 @@ module.exports = {
                 return message.channel.send(embed);
             }
 
+            const commandCooldown =  ((command.timeout % 60000) / 1000).toFixed(0) + 's';
             const embed = new MessageEmbed()
-                .setTitle("Command Details:")
-                .addField(
-                    "Command:",
-                    command.name ? `\`${command.name}\`` : "No name for this command."
-                )
-                .addField(
-                    "Aliases:",
-                    command.aliases ?
-                    `\`${command.aliases.join("` `")}\`` :
-                    "No aliases for this command."
-                )
-                .addField(
-                    "Usage:",
-                    command.usage ?
-                    `\`${p}${command.name} ${command.usage}\`` :
-                    `\`${p}${command.name}\``
-                )
-                .addField(
-                    "Command Description:",
-                    command.description ?
-                    command.description :
-                    "No description for this command."
-                )
-                .setFooter(
-                    `Requested by ${message.author.tag}`,
-                    message.author.displayAvatarURL({
-                        dynamic: true
-                    })
-                )
-                .setTimestamp()
+                .setTitle("<:corexinfo:860565886111580172> Command Details:")
+                .setDescription(`
+                **Command:** ${ command.name ? command.name : "No name for this command."}
+                **Description:** ${ command.description ?  command.description : "No description for this command." }
+                **Aliases:** ${command.aliases ? command.aliases.join("` `") : "No aliases for this command."}
+                **Usage:** ${command.usage ? command.usage : `${p}${command.name}`}
+                **Cool Down:** ${commandCooldown ? commandCooldown : 'No cooldown'}
+                `)
                 .setColor(color);
             return message.channel.send(embed);
         }
