@@ -6,6 +6,8 @@ module.exports = {
     description: 'Sends you a random fact about cats',
     usage: '',
     timeout: 1000,
+    userPerms: [''],
+    clientPerms: [''],
     /**
      * 
      * @param {Client} client 

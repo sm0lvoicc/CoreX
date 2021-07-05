@@ -7,19 +7,18 @@ module.exports = {
     timeout: 3000,
     usage: '<add/remove/dislay <#channel>',
     aliases: ['wl-invite'],
+    userPerms: ['ADMINISTRATOR'],
+    clientPerms: ['MANAGE_GUILD'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have the permission \`ADMINISTRATOR\`')
-        if(!message.guild.me.hasPermission('MANAGE_GUILD')) return message.reply('I do not have the permission \`MANAGE_SERVER\`')
-
         const options = [
             'add',
             'remove',
-            'displays'
+            'display'
         ]
 
         if (!args.length) return message.channel.send("Please enter either **add**, **remove** or **display**")

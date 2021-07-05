@@ -6,6 +6,8 @@ module.exports = {
     timeout: 5000,
     usage: '<#channel>',
     aliases: [''],
+    userPerms: ['ADMINISTRATOR'],
+    clientPerms: ['MANAGE_CHANNELS'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
@@ -13,9 +15,6 @@ module.exports = {
      */
     run: async(client, message, args) => {
         try {
-            if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have the permission \`ADMINISTRATOR\`')
-        if(!message.guild.me.hasPermission('MANAGE_CHANNELS')) return message.reply('I do not have the permission \`MANAGE_CHANNELS\`')
-
         let channel = message.mentions.channels.first();
        if(!channel) {
            channel = message.channel

@@ -7,9 +7,10 @@ module.exports = {
   timeout: '5000',
   description: "Create an invite of the server",
   usage: '',
+  userPerms: [''],
+  clientPerms: ['CREATE_INSTANT_INVITE'],
   run: async(client, message, args) => {
     try {
-      if(!message.guild.me.hasPermission("CREATE_INSTANT_INVITE")) return message.channel.send(`I do not have the permission \`CREATE_INSTANT_INVITE\``)
       const invite = await message.channel.createInvite({
         temporary: false,
         maxAge: 0,

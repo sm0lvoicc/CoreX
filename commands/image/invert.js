@@ -6,6 +6,8 @@ module.exports = {
     timeout: 20000,
     description: 'Inverts avatar.',
     usage: '[@user]',
+    userPerms: [''],
+    clientPerms: [''],
     /**
      * 
      * @param {Client} client 

@@ -6,6 +6,8 @@ module.exports = {
     timeout: 20000,
     description: 'F in the chat.',
     usage: '[@user]',
+    userPerms: [''],
+    clientPerms: [''],
     /**
      * 
      * @param {Client} client 

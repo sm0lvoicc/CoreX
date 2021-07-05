@@ -5,6 +5,8 @@ module.exports = {
     descrption: 'Sends avatar of a user.',
     usage: '<user>',
     timeout: 1000,
+    userPerms: [''],
+    clientPerms: [''],
     /**
      * 
      * @param {Client} client 

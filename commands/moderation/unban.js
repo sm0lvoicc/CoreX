@@ -5,6 +5,8 @@ module.exports = {
     description: 'Unbans specified member.',
     usage: '<user-id> [reason]',
     timeout: 9000,
+    userPerms: ['BAN_MEMBERS'],
+    clientPerms: ['BAN_MEMBERS'],
     /**
      * 
      * @param {Client} client 
@@ -14,8 +16,6 @@ module.exports = {
      */
     run: async(client, message, args) => {
         try {
-            if(!message.member.hasPermission(['ADMINISTRATOR', 'BAN_MEMBERS'])) return message.reply('You do not have the permission \`BAN_MEMBERS\`');
-            if(!message.guild.me.hasPermission('BAN_MEMBERS')) return message.reply('I do not have the permission \`BAN_MEMBERS\` ;-;');
             const userUnban = args[0];
     
             let unBanReason = args.slice(1).join(' ');

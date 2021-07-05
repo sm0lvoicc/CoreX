@@ -6,15 +6,14 @@ module.exports = {
     timeout: 5000,
     usage: '<user.id> <reason>',
     aliases: ['globalban'],
+    userPerms: ['BAN_MEMBERS'],
+    clientPerms: ['BAN_MEMBERS'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        
-        if(!message.member.hasPermission('BAN_MEMBERS')) return message.reply('You do not have the permission \`BAN_MEMBERS\`')
-        if(!message.guild.me.hasPermission('BAN_MEMBERS')) return message.reply('I do not have the permission \`BAN_MEMBERS\`')
 
         let userID = args[0]
         let reason = args.slice(1).join(' ') || 'No reason specified.'

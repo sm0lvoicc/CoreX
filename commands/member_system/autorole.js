@@ -7,15 +7,14 @@ module.exports = {
     timeout: 3000,
     usage: '<enable> <@role> || <disable>',
     aliases: ['auto-role'],
+    userPerms: ['MANAGE_ROLES'],
+    clientPerms: ['MANAGE_ROLES'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply("You do not have the permission \`MANAGE_ROLES\`")
-        if(!message.guild.me.hasPermission("MANAGE_ROLES")) return message.reply("You do not have the permission \`MANAGE_ROLES\`")
-
         options = [
             'enable',
             'disable'

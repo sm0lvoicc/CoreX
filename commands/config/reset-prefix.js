@@ -7,8 +7,9 @@ module.exports = {
     name : 'reset-prefix',
     timeout: 6000,
     description: 'Resets the bot\'s prefix to `?`',
+    userPerms: ['MANAGE_GUILD'],
+    clientPerms: [''],
     run : async(client, message, args) => {
-        if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('You do not have the permission \`MANAGE_SERVER\`')
         message.channel.send(new MessageEmbed()
         .setColor('RANDOM')
         .setDescription("Are you sure you want to reset the prefix?")

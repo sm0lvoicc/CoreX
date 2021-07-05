@@ -9,6 +9,8 @@ module.exports = {
     description: 'Gives my system information',
     timeout: 5000,
     usage: '',
+    userPerms: [''],
+    clientPerms: [''],
     run: async(client, message, args) => {
 
         const { totalMemMb, usedMemMb } = await mem.info();

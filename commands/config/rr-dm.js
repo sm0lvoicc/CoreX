@@ -8,14 +8,14 @@ module.exports = {
     usage: '<true/false>',
     aliases: [''],
     primeOnly: true,
+    userPerms: ['ADMINISTRATOR'],
+    clientPerms: [''],
     /** 
      * @param {Client} client 
      * @param {Message} message 
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if (!message.member.hasPermission("MANAGE_GUILD")) return message.reply(`You do not have the permission \`MANAGE_SERVER\``)
-
         options = [
             'true',
             'false'

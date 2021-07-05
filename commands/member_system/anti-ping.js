@@ -8,9 +8,9 @@ module.exports = {
   aliases: ['anti-ping-set'],
   usage: '[add/remove/display]',
   primeOnly: true,
-  run: async(client, message, args) => {
-    if(!message.member.hasPermission("MANAGE_GUILD")) return message.reply(`You do not have the permission \`MANAGE_SERVERs\``)
-    
+  userPerms: ['MANAGE_MEMBERS'],
+  clientPerms: ['MANAGE_MEMBERS'],
+  run: async(client, message, args) => {    
     const query = args[0]
 
     if(!query) return message.channel.send(`You need to provide query. \`add\` to add a member ; \`remove\` to remove member ; \`display\` to display all members`);

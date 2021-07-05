@@ -6,14 +6,10 @@ module.exports = {
     timeout: 10000,
     aliases: ['atom'],
     usage: '',
+    userPerms: ['ADMINISTRATOR'],
+    clientPerms: ['MANAGE_CHANNELS'],
     run: async(client, message, args) => {
-      try {
-
-        if(!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply('You do not have the permission \`MANAGE_CHANNELS\`');
-
-
-        if(!message.guild.me.hasPermission('MANAGE_CHANNELS')) return message.channel.send('I do not have the permission \`MANAGE_CHANNELS\`')
-  
+      try {  
           if (!message.channel.parentID) {
             message.channel.clone({ position: message.channel.rawPosition }).then((ch) => {
               ch.send(new Discord.MessageEmbed()

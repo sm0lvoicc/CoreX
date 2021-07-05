@@ -7,14 +7,14 @@ module.exports = {
     timeout: 5000,
     usage: '<user_id>',
     aliases: ['d-alt'],
+    userPerms: ['ADMINISTRATOR'],
+    clientPerms: ['MANAGE_GUILD'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You do not have the permission \`MANAGE_SERVER\`')
-
         await schema.findOne({ Guild: message.guild.id}, async(err, data) => {
             if(!data) return message.channel.send('<:corexerror:860580531825147994> The alt Module is disabled')
             

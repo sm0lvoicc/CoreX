@@ -7,13 +7,14 @@ module.exports = {
     timeout: 5000,
     usage: '<set/disable>',
     aliases: [''],
+    userPerms: ['MANAGE_GUILD'],
+    clientPerms: [''],
     /** 
      * @param {Client} client 
      * @param {Message} message 
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You do not have the permission \`MANAGE_SERVER\`')
 
         options = [
             'set',

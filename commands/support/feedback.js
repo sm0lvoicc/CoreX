@@ -1,10 +1,12 @@
 const {Client, Message, MessageEmbed } = require('discord.js');
 
 module.exports = {
-    name: 'feedback',
+    name: 'bug',
     description: 'Sends bug report to the developers.',
     usage: '<text>',
     timeout: 1000,
+    userPerms: [''],
+    clientPerms: [''],
     run: async(client, message, args) => {
 
         const embed = new MessageEmbed()

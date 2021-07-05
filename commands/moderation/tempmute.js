@@ -8,6 +8,8 @@ module.exports = {
     timeout: 10000,
     usage: '<@member || member.id> <time> [reason]',
     aliases: ['t-mute'],
+    userPerms: ['MANAGE_ROLES'],
+    clientPerms: ['MANAGE_ROLES'],
     /** 
      * @param {Client} client 
      * @param {Message} message 

@@ -5,6 +5,8 @@ module.exports = {
 	name: 'bio',
     timeout: 3000,
 	description: 'Shows your bio',
+	userPerms: [''],
+  	clientPerms: [''],
 	/**
 	 * @param {Client} client
 	 * @param {Message} message

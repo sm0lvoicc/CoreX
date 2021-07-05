@@ -7,14 +7,14 @@ module.exports = {
     timeout: 50000,
     usage: '<ID>',
     aliases: ['b-load'],
+    userPerms: ['ADMINISTRATOR'],
+    clientPerms: ['ADMINISTRATOR'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have the permission \`ADMINISTRATOR\`')
-        if(!message.guild.me.hasPermission('ADMINISTRATOR')) return message.reply('I do not have the permission \`ADMINISTRATOR\`')
 
         const id = args[0]
         if(!id) return message.channel.send(`You must provide a Backup ID to load**`)

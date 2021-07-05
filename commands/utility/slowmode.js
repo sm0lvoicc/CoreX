@@ -4,15 +4,10 @@ module.exports = {
     name: 'slowmode',
     timeout: 1000 * 1,
     description: 'Sets the slowmode for the channel.',
-    run: async(clietn, message, args) => {
+    userPerms: ['MANAGE_CHANNELS'],
+    clientPerms: ['MANAGE_CHANNELS'],
+    run: async(client, message, args) => {
         try {
-
-            if(!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply('You do not have the permission \`MANAGE_CHANNELS\`');
-
-
-        if(!message.guild.me.hasPermission('MANAGE_CHANNELS')) return message.channel.send('I do not have the permission \`MANAGE_CHANNELS\`')
-
-
         if(!args[0]) return message.channel.send('You need to specify a slowmode for the channel.');
         if(isNaN(args[0])) return message.channel.send('Please specify a number.');
         if(args[0] < 0) return message.channel.send('You must specify a positive number.');

@@ -6,6 +6,8 @@ module.exports = {
     timeout: 5000, 
     aliases: ['dad'],
     description: 'Get a dad joke.',
+    userPerms: [''],
+    clientPerms: [''],
     run: async(client, message, args) => {
 
         const joke = await getdadjoke()

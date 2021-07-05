@@ -8,6 +8,8 @@ module.exports = {
     timeout: 8000,
     usage: '<@member || member.id> [reason]',
     aliases: [''],
+    userPerms: ['MANAGE_ROLES'],
+    clientPerms: ['MANAGE_ROLES'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
@@ -15,11 +17,7 @@ module.exports = {
      */
     run: async(client, message, args) => {
         try {
-            const prefix = client.prefix(message)
-
-            if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You do not have the permission \`MANAGE_ROLES\`')
-            if(!message.guild.me.hasPermission('MANAGE_MESSAGES')) return message.reply('I do not have the permission \`MANAGE_ROLES\`')
-    
+            const prefix = client.prefix(message)    
                 let member = message.mentions.members.first() 
                 if(!member) {
                     member = message.guild.members.cache.get(args[0])

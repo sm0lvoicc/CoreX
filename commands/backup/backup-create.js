@@ -7,15 +7,14 @@ module.exports = {
     timeout: 50000,
     usage: '',
     aliases: ['b-create'],
+    userPerms: ['ADMINISTRATOR'],
+    clientPerms: ['ADMINISTRATOR'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have the permission \`ADMINISTRATOR\`')
-        if(!message.guild.me.hasPermission('ADMINISTRATOR')) return message.reply('I do not have the permission \`ADMINISTRATOR\`')
-
         const msg = await message.channel.send(`<a:corexloading:860601769675456513> **Creating Backup...**`)
         try {
         backup

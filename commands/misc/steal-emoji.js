@@ -5,6 +5,8 @@ module.exports = {
     description: 'Steals emoji from a server.',
     usage: '<emoji>',
     timeout: 1000,
+    userPerms: ['MANAGE_EMOJIS'],
+    clientPerms: ['MANAGE_EMOJIS'],
     /**
      * 
      * @param {Client} client 
@@ -14,9 +16,7 @@ module.exports = {
      */
     run: async(client, message, args) => {
         try {
-
-        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have the permission \`ADMINISTRATOR\`');
-
+          
         if(!args.length) return message.channel.send('Please specify some emojis.');
 
         for(const rawEmoji of args) {

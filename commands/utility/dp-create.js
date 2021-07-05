@@ -5,7 +5,9 @@ module.exports = {
     description: 'creates dropdown roles',
     timeout: 6000,
     usage: 'answer the messages',
-    aliases: ['dropdown-roles'],
+    aliases: ['dropdown-roles'],    
+	userPerms: ['MANAGE_GUILD'],
+    clientPerms: [''],
     /** 
      * @param {Client} client 
      * @param {Message} message 
@@ -14,7 +16,6 @@ module.exports = {
     run: async(client, message, args) => {
 		try {
 
-			if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You do not have the permission \`MANAGE_SERVER\`');
 			const dpmanager = new Nuggies.dropdownroles();
 		message.channel.send('Send messages in `roleID label emoji` syntax! Once finished say `done`.');
 	

@@ -6,11 +6,9 @@ module.exports = {
     description: 'Clears all the warns from the specified user.',
     timeout: 10000,
     usage: '<@user | user.id>',
-    run: async(client, message, args) => {
-        
-        if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You do not have the permission \`MANAGE_MESSAGES\`');
-        if(!message.guild.me.hasPermission('MANAGE_MESSAGES')) return message.reply('I do not have the permission \`MANAGE_MESSAGES\`')
-        
+    userPerms: ['MANAGE_MEMBERS'],
+    clientPerms: [''],
+    run: async(client, message, args) => {        
         let member = message.mentions.members.first()
 
         if (!member) {

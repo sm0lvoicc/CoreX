@@ -61,6 +61,18 @@ client.on('message', async message =>{
             
             if (command) {
                 if (command.primeOnly == true && !premium) return message.reply("`[❌]` This command is premium only!")
+                //permission handler
+                if(!message.member.hasPermission(command.userPerms || [])) return message.lineReply(
+                  new MessageEmbed()
+                  .setColor('RED')
+                  .setDescription(`<:corexerror:860580531825147994> You do not have the permission \`${command.userPerms}\``)
+                )
+
+                if(!message.guild.me.hasPermission(command.clientPerms || [])) return message.lineReply(
+                  new MessageEmbed()
+                  .setColor('RED')
+                  .setDescription(`<:corexerror:860580531825147994> I do not have the permission \`${command.userPerms}\``)
+                )
                 //cooldown stuff
                 if(command.timeout) {
                     if(Timeout.has(`${command.name}${message.author.id}`)) return message.channel.send(`Woah chill out, you are on \`${ms(Timeout.get(`${command.name}${message.author.id}`) - Date.now(), {long : true})}\` cooldown.`)

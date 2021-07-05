@@ -7,8 +7,9 @@ module.exports = {
     primeOnly: true,
     aliases: ['custom-create'],
     usage: '<name> <response>',
+    userPerms: ['ADMINISTRATOR'],
+    clientPerms: ['ADMINISTRATOR'],
     run: async(client, message, args) => {
-        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have the permisson \`ADMINISTRATOR\`');
 
         const name = args[0]; const response = args.slice(1).join(" ");
 

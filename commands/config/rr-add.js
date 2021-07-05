@@ -7,6 +7,8 @@ module.exports = {
   timeout: 50000,
   aliases: ['addrr', 'reaction-role-add'],
   usage: '<#channel> <message.id> <@role || role.id> <emoji> ',
+  userPerms: ['ADMINISTRATOR'],
+  clientPerms: ['MANAGE_ROLES'],
   run: async (client, message, args) => {
     if (!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send(`You do not have the permission \`MANAGE_SERVER\``)
     

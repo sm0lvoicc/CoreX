@@ -6,6 +6,8 @@ module.exports = {
     description: 'Shows banned members',
     timeout: 9000,
     usage: '',
+    userPerms: ['BAN_MEMBERS'],
+    clientPerms: [''],
     /**
      * 
      * @param {Client} client 
@@ -13,8 +15,6 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if(!message.member.hasPermission('BAN_MEMBERS')) return message.reply('You do not have the permission \`BAN_MEMBERS\`');
-
         const fetchbans = message.guild.fetchBans();
         const bannedMembers = await(await (fetchbans)).map((member) => `\`${member.user.tag} (${member.user.id})\``).join('\n\n')
 

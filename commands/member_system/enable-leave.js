@@ -7,16 +7,14 @@ module.exports = {
     timeout: 6000,
     usage: '<#channel> <message>',
     aliases: ['enable-leave-message'],
+    userPerms: ['MANAGE_GUILD'],
+    clientPerms: ['SEND_MESSAGES'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-
-        if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You do not have the permission \`MANAGE_SERVER\`')
-        if(!message.guild.me.hasPermission('MANAGE_GUILD')) return message.reply('I do not have the permission \`MANAGE_SERVER\`')
-        
         const channel = await message.mentions.channels.first();
         if(!channel) return message.channel.send('Please mention a channel to set as the leave channel.')
 

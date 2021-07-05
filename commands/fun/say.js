@@ -3,6 +3,8 @@ module.exports = {
     description: 'Bot says what you typed.',
     usage: '<text>',
     timeout: 1000 * 3,
+    userPerms: [''],
+    clientPerms: [''],
     run: async(client, message, args) => {
         const sayMessage = args.join(" ");
 

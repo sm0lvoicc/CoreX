@@ -7,6 +7,8 @@ module.exports = {
     aliases: [''],
     timeout: '10000',
     usage: '<text>',
+    userPerms: [''],
+    clientPerms: ['SEND_MESSAGES'],
     run: async(client, message, args) => {
 
         const suggest = args.join(" ")

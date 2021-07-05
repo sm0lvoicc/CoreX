@@ -7,14 +7,14 @@ module.exports = {
     timeout: 5000,
     usage: 'enable/disable',
     aliases: ['anti-raid'],
+    userPerms: ['ADMINISTRATOR'],
+    clientPerms: ['KICK_MEMBERS'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have the permission \`ADMINISTRATOR\`')
-        if(!message.guild.me.hasPermission('KICK_MEMBERS')) return message.reply('I do not have the permission \`KICK_MEMBERS\`')
         options = [
             'enable',
             'disable'

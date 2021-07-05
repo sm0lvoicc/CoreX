@@ -5,6 +5,8 @@ module.exports = {
     timeout: 1000, 
     description: 'Announces something in specified channel',
     usage: '<channel> <message> ',
+    userPerms: ['MANAGE_MESSAGES'],
+    clientPerms: ['SEND_MESSAGES'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
@@ -12,8 +14,6 @@ module.exports = {
      */
     run: async(client, message, args) => {
         try {
-        if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You do not have permission to use this command');
-
         let mention;
 
         if(!args.length) return message.channel.send('> Usage: announce <#channel> <message> <+ping ?>');

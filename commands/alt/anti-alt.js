@@ -7,16 +7,15 @@ module.exports = {
     timeout: 3000,
     usage: '<set> <days> <avatar: true or false> || <disable>',
     aliases: [''],
+    userPerms: ['ADMINISTRATOR'],
+    clientPerms: ['KICK_MEMBERS'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have the permission \`ADMINSTRATOR\`')
-        if(!message.guild.me.hasPermission('KICK_MEMBERS')) return message.reply('I do not have the permission \`KICK_MEMBERS\`')
     
-         
         options = [
             'set',
             'disable'

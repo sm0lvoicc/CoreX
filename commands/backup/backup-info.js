@@ -7,13 +7,14 @@ module.exports = {
     timeout: 5000,
     usage: '<ID>',
     aliases: ['b-info'],
+    userPerms: ['ADMINISTRATOR'],
+    clientPerms: ['ADMINISTRATOR'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have the permission \`ADMINISTRATOR\`')
 
         let backupID = args[0];
         if(!backupID){

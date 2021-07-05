@@ -7,9 +7,9 @@ module.exports = {
   timeout: '10000',
   usage: '<enable/disable>',
   primeOnly: true,
+  userPerms: ['MANAGE_GUILD'],
+  clientPerms: ['SEND_MESSAGES'],
   run: async(client, message, args) => {
-    if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send(`You do not have the permission \`MANAGE_SERVER\``)
-    if(!message.channel.permissionsFor(message.guild.me).has(["SEND_MESSAGES"])) return message.member.send(`I do not have the permission \`MANAGE_SERVER\``)
       
     options = [
       'enable',

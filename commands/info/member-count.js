@@ -6,6 +6,8 @@ module.exports = {
     timeout: 1000,
     usage: '',
     aliases: ['member-c'],
+    userPerms: [''],
+    clientPerms: [''],
     /** 
      * @param {Client} client 
      * @param {Message} message 

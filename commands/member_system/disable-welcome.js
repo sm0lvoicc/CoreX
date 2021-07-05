@@ -7,14 +7,14 @@ module.exports = {
     timeout: 6000,
     usage: '',
     aliases: [''],
+    userPerms: ['MANAGE_GUILD'],
+    clientPerms: ['MANAGE_GUILD'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You do not have the permission \`MANAGE_GUILD\`')
-
         schema.findOne({ Guild: message.guild.id}, async(err, data) => {
             if(!data) return message.channel.send('<:corexerror:860580531825147994> The welcome channel is already disabled')
             data.delete()

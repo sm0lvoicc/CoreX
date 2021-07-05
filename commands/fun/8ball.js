@@ -4,6 +4,8 @@ module.exports = {
     name: '8ball',
     description: 'Gives an answer to a provided question.',
     timeout: 4000,
+    userPerms: [''],
+    clientPerms: [''],
     run: async(client, message, args) => {
         if(!args[1]) return message.channel.send("Plesae enter a full question with 2 or more words!");
         let replies = [

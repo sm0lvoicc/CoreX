@@ -8,6 +8,8 @@ module.exports = {
     timeout: 3000,
     usage: '<enable> <text> || <disable>',
     aliases: ['dm-join'],
+    userPerms: ['MANAGE_GUILD'],
+    clientPerms: [''],
     /** 
      * @param {Client} client 
      * @param {Message} message 

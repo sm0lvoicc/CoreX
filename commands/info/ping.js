@@ -6,6 +6,8 @@ module.exports = {
   timeout: 1000,
   description: "Shows bot's ping.",
   usage: 'ping',
+  userPerms: [''],
+  clientPerms: [''],
   /**
    * 
    * @param {Client} client 

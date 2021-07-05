@@ -6,6 +6,8 @@ module.exports = {
     aliases: ['role'],
     timeout: 1000 * 5,
     description: "Adds a role to a user",
+    userPerms: ['MANAGE_ROLES'],
+    clientPerms: ['MANAGE_ROLES'],
     /**
      * 
      * @param {Client} client 
@@ -14,11 +16,7 @@ module.exports = {
      * @returns 
      */
     run: async(client, message, args) => {
-        try {
-
-        if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply('You do not have the permission \`MANAGE_ROLES\`');
-        if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES')) return message.reply('I do not have the permission \`MANAGE_ROLES\`');
-        
+        try {        
         let member = message.mentions.members.first()
         if(!member) {
             member = await message.guild.members.cache.get(args[0])

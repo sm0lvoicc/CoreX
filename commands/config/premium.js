@@ -9,6 +9,8 @@ module.exports = {
     usage: "<code>",
     description: "Activate premium on the server",
     timeout: 8000,
+    userPerms: ['MANAGE_GUILD'],
+    clientPerms: [''],
     run: async(client, message, args) => {
       let key = args[0];
       if (!key) return message.channel.send(createEmbed("fail", "No key given"));

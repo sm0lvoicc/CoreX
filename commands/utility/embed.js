@@ -6,14 +6,14 @@ module.exports = {
     timeout: 6000,
     usage: 'answer the messages',
     aliases: ['embed-gen'],
+    userPerms: ['MANAGE_MESSAGES'],
+    clientPerms: [''],
     /** 
      * @param {Client} client 
      * @param {Message} message 
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You do not have the permission \`MANAGE_MESSAGES\`')
-
         try {
 
             const filter = msg => msg.author.id == message.author.id;

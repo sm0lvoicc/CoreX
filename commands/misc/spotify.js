@@ -35,7 +35,7 @@ module.exports = {
       const card = new MessageEmbed()
           .setTitle(name)
           .setDescription(`**Album: ${album}\nAuthor: ${artist}\nStart: ${status.timestamps.start}\nEnd: ${status.timestamps.end}**`)
-          .setColor("RANDOM")
+          .setColor("BLURPLE")
           .setThumbnail(image)
       await message.channel.send(card)
     }

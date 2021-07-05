@@ -7,6 +7,8 @@ module.exports = {
     timeout: 20000,
     aliases: ['mindchange'],
     usage: '<text>',
+    userPerms: [''],
+    clientPerms: [''],
     /**
      * 
      * @param {Client} client 

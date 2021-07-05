@@ -5,6 +5,8 @@ module.exports = {
     timeout: 3000,
     description: 'Changes the nickname of a user.',
     usage: '<@user>',
+    userPerms: ['MANAGE_NICKNAMES'],
+    clientPerms: ['MANAGE_NICKNAMES'],
     /**
      * 
      * @param {Client} client 
@@ -12,11 +14,7 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-      try {
-
-        if(!message.member.hasPermission('MANAGE_NICKNAMES')) return message.reply('You do not have the permission \`MANAGE_NICKNAMES\`')
-        if(!message.guild.me.hasPermission('MANAGE_NICKNAMES')) return message.reply('I do not have the permission \`MANAGE_NICKNAMES\`')
-        
+      try {        
         let member = message.mentions.members.first()
 
         if (!member) {

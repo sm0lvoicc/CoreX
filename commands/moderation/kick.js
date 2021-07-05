@@ -5,11 +5,10 @@ module.exports = {
     description: 'Kicks specified member from the server',
     usage: '<@user | user-id> [reason]',
     timeout: 8000,
+    userPerms: ['KICK_MEMBERS'],
+    clientPerms: ['KICK_MEMBERS'],
     run: async(client, message, args) => {
-        try {
-            if(!message.member.hasPermission('KICK_MEMBERS')) return message.reply('You do not have the permission \`KICK_MEMBERS\`')
-            if(!message.guild.me.hasPermission('KICK_MEMBERS')) return message.reply('I do not have the permission \`KICK_MEMBERS\` ;-;')
-            
+        try {            
             let member = message.mentions.members.first()
     
             if (!member) {

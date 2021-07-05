@@ -7,13 +7,14 @@ module.exports = {
     timeout: 7000,
     usage: '<No. of snipe/5>',
     aliases: [''],
+    userPerms: ['MANAGE_MESSAGES'],
+    clientPerms: [''],
     /** 
      * @param {Client} client 
      * @param {Message} message 
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You do not have the permission \`MANAGE_MESSAGES\`')
         
         const snipes = client.snipes.get(message.channel.id)
         if(!snipes) return message.channel.send('There are no messages deleted ;-;')

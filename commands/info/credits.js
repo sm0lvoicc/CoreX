@@ -5,6 +5,8 @@ module.exports = {
     description: 'Shows all the amazing people that have helped make this bot.',
     timeout: 1000,
     aliases: ['creds'],
+    userPerms: [''],
+    clientPerms: [''],
     run: async(client, message, args) => {
         const embedCredits = new MessageEmbed()
         .setColor('BLURPLE')

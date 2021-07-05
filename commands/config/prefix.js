@@ -5,13 +5,12 @@ module.exports = {
     description: 'Changes the bot prefix.',
     timeout: 7000,
     usage: '<prefix>',
+    userPerms: [''],
+    clientPerms: ['MANAGE_GUILD'],
     /**
      * @param {Message} message
      */
-    run : async(client, message, args) => {
-        if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('You do not have the permission \`MANAGE_SERVER\`')
-        
-        
+    run : async(client, message, args) => {        
         const res = await args.join(" ")
         if(!res) return message.channel.send('Please specify a prefix to change to.')
         prefixSchema.findOne({ Guild : message.guild.id }, async(err, data) => {

@@ -6,6 +6,8 @@ module.exports = {
     timeout: 4000,
     usage: '<@user | user.id>',
     aliases: [''],
+    userPerms: ['MANAGE_NICKNAMES'],
+    clientPerms: ['MANAGE_NICKNAMES'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
@@ -13,10 +15,6 @@ module.exports = {
      */
     run: async(client, message, args) => {
         try {
-
-            if(!message.member.hasPermission('MANAGE_NICKNAMES')) return message.reply('You do not have the permission \`MANAGE_NICKNAMES\`')
-        if(!message.guild.me.hasPermission("MANAGE_NICKNAMES")) return message.reply(`I do not have the permission \`MANAGE_NICKNAMES\``)
-
         let user = message.mentions.members.first();
         if(!user) {
             user = message.guild.members.cache.get(args[0])

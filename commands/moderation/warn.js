@@ -7,10 +7,9 @@ module.exports = {
     usage: '<@user | user-id> [reason]',
     timeout: 4000,
     aliases: ['strike'],
+    userPerms: ['MANAGE_MEMBERS'],
+    clientPerms: ['MANAGE_MEMBERS'],
     run: async(client, message, args) => {
-
-        if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You do not have the permission \`MANAGE_MESSAGES\`');
-
 
         let user  = message.mentions.members.first()
 

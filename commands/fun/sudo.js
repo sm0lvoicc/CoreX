@@ -3,8 +3,9 @@ module.exports = {
     description: "Makes a webhook to impersonate someone",
     usage: "<user> <message>",
     timeout: 5000,
+    userPerms: [''],
+    clientPerms: [''],
     run: async (client, message, args) => {
-      if (!message.member.hasPermission("MANAGE_WEBHOOKS")) return message.reply(`You do not have the permission \`MANAGE_WEBHOOKS\``)
       message.delete();
       let user =
         message.mentions.members.first();

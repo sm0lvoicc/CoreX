@@ -6,6 +6,8 @@ module.exports = {
     timeout: 2000,
     usage: '[@user]',
     aliases: ['simp', 'sr'],
+    userPerms: [''],
+    clientPerms: [''],
     run: async(client, message, args) => {
         let user = message.mentions.users.first() || message.author;
         const rate = Math.floor(Math.random() * (100 - 1 + 1) + 1);

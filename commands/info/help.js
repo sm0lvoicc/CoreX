@@ -14,6 +14,8 @@ module.exports = {
     aliases: ['commands'],
     description: "Shows all available bot commands.",
     timeout: 1000,
+    userPerms: [''],
+    clientPerms: [''],
     /**
      * 
      * @param {Client} client 

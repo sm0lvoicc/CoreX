@@ -7,9 +7,10 @@ module.exports = {
     description: 'Set/Check Mute Role of a server',
     aliases: ['mrole'],
     timeout: '5000',
+    userPerms: ['MANAGE_GUILD'],
+    clientPerms: ['MANAGE_ROLES'],
     run: async(client, message, args) => {
         try {
-        if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply(`You do not have the permission \`MANAGE_SERVER\``)
 
         const role = await message.mentions.roles.first() || message.guild.roles.cache.get(args[0])
 

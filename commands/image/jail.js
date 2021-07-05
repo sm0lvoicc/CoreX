@@ -6,6 +6,8 @@ module.exports = {
     timeout: 20000,
     description: 'Avatar is jailed.',
     usage: '[@user]',
+    userPerms: [''],
+    clientPerms: [''],
     /**
      * 
      * @param {Client} client 

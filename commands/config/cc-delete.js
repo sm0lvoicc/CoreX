@@ -7,8 +7,9 @@ module.exports = {
     primeOnly: true,
     aliases: ['custom-delete'],
     usage: '<name>',
+    userPerms: ['ADMINISTRATOR'],
+    clientPerms: ['ADMINISTRATOR'],
     run: async(client, message, args) => {
-        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have the permisson \`ADMINISTRATOR\`');
 
         const name = args[0];
 

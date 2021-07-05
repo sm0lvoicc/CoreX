@@ -7,23 +7,21 @@ module.exports = {
     timeout: 10000,
     usage: '<add/remove/display> <bad word> || <action> <Action for saying a word>',
     aliases: ['anti-curse'],
+    userPerms: ['ADMINISTRATOR'],
+    clientPerms: ['MANAGE_GUILD'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have the permission \`ADMINISTRATOR\`')
-        if(!message.guild.me.hasPermission('MANAGE_GUILD')) return message.reply('I do not have the permission \`MANAGE_SERVER\`')
 
-      
         options = [
             'add',
             'remove',
             'display',
             'disable',
             'action',
-            'role'
         ]
 
         if (!args.length) return message.channel.send("Please enter either **add**, **remove** or **display**")

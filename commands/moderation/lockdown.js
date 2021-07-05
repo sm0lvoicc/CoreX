@@ -6,17 +6,15 @@ module.exports = {
     timeout: 20000,
     usage: '<on/off>',
     aliases: [''],
+    userPerms: ['ADMINISTRATOR'],
+    clientPerms: ['MANAGE_CHANNELS'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-         try {
-
-            if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have the permission \`ADMINISTRATOR\`')
-            if(!message.guild.me.hasPermission('MANAGE_CHANNELS')) return message.reply('I do not have the permission \`MANAGE_CHANNELS\`')
-    
+         try {    
             if(!args[0]) return message.channel.send(`You need to provide query. \`on\` to enable lockdown, \`off\` to disable lockdown`)
             
             if(!(['on','off']).includes(args[0])) return message.channel.send(`You need to provide a correct query. \`on\` to enable lockdown, \`off\` to disable lockdown`)

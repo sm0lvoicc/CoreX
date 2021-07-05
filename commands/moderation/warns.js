@@ -7,6 +7,8 @@ module.exports = {
     timeout: 7000,
     usage: '<@user | user.id>',
     aliases: ['warnings', 'strikes'],
+    userPerms: ['MANAGE_MEMBERS'],
+    clientPerms: ['MANAGE_MEMBERS'],
      run: async(client, message, args) => {
 
         if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You do not have the permission \`MANAGE_MESSAGES\`');
