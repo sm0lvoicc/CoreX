@@ -38,6 +38,7 @@ client.on('message', async message =>{
         .addField('My usage', `My prefix in this server is \`${p}\` and you can start by typing \`${p}help\` to see all my commands`)
         .addField('My Invites', `[Support](${invite}) | [Invite Me](https://dsc.gg/corex) |  [Vote for me](https://top.gg/bot/819643325177921587/vote)`)
         .setFooter('Thanks 💖', client.user.displayAvatarURL({ dynamic: true}))
+        if (!message.channel.permissionsFor(client.user).has("SEND_MESSAGES")) return;
         if(message.content === `<@!${client.user.id}>`) return message.channel.send(embedPinged)
     }
     if (!message.content.startsWith(p)) return;
