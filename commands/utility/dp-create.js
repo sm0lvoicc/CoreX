@@ -12,7 +12,7 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if(!message.member.hasPermission('MANAGE_SERVER')) return message.reply('You do not have the permission \`MANAGE_SERVER\`');
+        if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You do not have the permission \`MANAGE_SERVER\`');
         const dpmanager = new Nuggies.dropdownroles();
 	message.channel.send('Send messages in `roleID label emoji` syntax! Once finished say `done`.');
 
