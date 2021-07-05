@@ -13,6 +13,7 @@ const fs = require('fs')
 const client = new Client({
     disableMentions: 'everyone'
 })
+require('discord-buttons')(client);
 module.exports = client;
 
 require('events').EventEmitter.defaultMaxListeners = 100;
