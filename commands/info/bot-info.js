@@ -33,7 +33,7 @@ module.exports = {
         .setAuthor(client.user.tag, client.user.displayAvatarURL())
         .setTitle(`<:corexinfo:860565886111580172> Information`)
         .addField(`<:corexbot:860569029029658684> Name | ID`, `\`\`\`${client.user.tag} | ${client.user.id}\`\`\``, true)
-        .addField(`<:corexglobe:860568508566994964> Used By`, `\`\`\`${client.guilds.cache.size} Servers\`\`\``, true)
+        .addField(`<:corexglobe:861492964617879583> Used By`, `\`\`\`${client.guilds.cache.size} Servers\`\`\``, true)
         .addField(`<:corexmembers:860568826046840862> User Count`, `\`\`\`${usersCount} Users\`\`\``, true)
         .addField(`<:corexchat:860569658657865728> Channel Count`, `\`\`\`${client.channels.cache.size} Channels\`\`\``, true)
         .addField(`<:corexjs:860583073157480498> Made With`, `\`\`\`Discord.js & Node.js\`\`\``, true)
