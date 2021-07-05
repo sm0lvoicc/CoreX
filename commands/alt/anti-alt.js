@@ -27,7 +27,7 @@ module.exports = {
 
         if(opt == 'set') {
             const days = args[1]
-            if(!days || isNan(days) || days < 0) return message.channel.send('Please specify a minimum account age')
+            if(!days || isNaN(days) || days < 0) return message.channel.send('Please specify a minimum account age')
             const avatar = args[2]
             if(!['true', 'false'].includes(avatar)) return message.channel.send('Please specify either **set** or **disable**')
 
