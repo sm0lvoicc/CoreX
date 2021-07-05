@@ -10,7 +10,7 @@ module.exports = {
     run: async(client, message, args) => {
 
         const suggest = args.join(" ")
-        if(!suggest) return message.reply(`Please add some text to suggest`)
+        if(!suggest) return message.channel.send(`Please add some text to suggest`)
 
         schema.findOne({ Guild: message.guild.id }, async(err, data) => {
             if(err) throw err;
