@@ -21,15 +21,15 @@ module.exports = {
             'disable'
         ]
   
-        if (!args.length) return message.channel.send("Please enter either **true** or **false**")
+        if (!args.length) return message.channel.send("Please enter either **set** or **disable**")
         const opt = args[0].toLowerCase();
-        if (!opt) return message.channel.send("Please enter either **true** or **false**")
+        if (!opt) return message.channel.send("Please enter either **set** or **disable**")
 
         if(opt == 'set') {
             const days = args[1]
             if(!days || isNan(days) || days < 0) return message.channel.send('Please specify a minimum account age')
             const avatar = args[2]
-            if(!['true', 'false'].includes(avatar)) return message.channel.send('Please specify either **true** or **false**')
+            if(!['true', 'false'].includes(avatar)) return message.channel.send('Please specify either **set** or **disable**')
 
             await schema.findOne({ Guild: message.guild.id}, async(err, data) => {
                 if(!data) {
