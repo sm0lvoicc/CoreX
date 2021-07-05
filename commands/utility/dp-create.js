@@ -1,7 +1,7 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const Nuggies = require('nuggies');
 module.exports = {
-    name: 'dr-create',
+    name: 'dp-create',
     description: 'creates dropdown roles',
     timeout: 6000,
     usage: 'answer the messages',
