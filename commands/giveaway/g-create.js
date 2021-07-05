@@ -16,8 +16,9 @@ module.exports = {
      */
     run: async(client, message, args) => {
         try {
+
+        } catch(e){
             if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You do not have the permission \`MANAGE_SERVER\`')
-            
             const filter = m => m.author.id === message.author.id;
             const collector = message.channel.createMessageCollector(filter, { max: 7, time: 60 * 1000 });
             let step = 0;
@@ -58,8 +59,8 @@ module.exports = {
             else if (step == 5) {
                 if (!['yes', 'no'].includes(msg.content.toLowerCase())) return collector.stop('error');
                 giveaway.requirements = { enabled: msg.content == 'yes' ? true : false };
-                return message.channel.send(`Is this correct?\n\`\`\`Prize: ${giveaway.prize}\nWinner(s): ${giveaway.winners}\nTime: ${ms(giveaway.time)}\nhost: ${message.guild.members.cache.get(giveaway.host).user.username}\nRequirements: ${giveaway.requirements.enabled ? 'Yes' : 'No'}\n\`\`\`Reply with \`yes\` or \`no\`!`);
-            }
+                return message.channel.send(`Is this correct?\n\`\`\`Prize: ${giveaway.prize}\nWinner(s): ${giveaway.winners}\nTime: ${ms(giveaway.time)}\nhost: ${message.author}\nRequirements: ${giveaway.requirements.enabled ? 'Yes' : 'No'}\n\`\`\`Reply with \`yes\` or \`no\`!`);
+            } 
             else if (step == 6) {
                 if (!['yes', 'no'].includes(msg.content)) return collector.stop('error');
                 if (msg.content == 'yes') return collector.stop('done');
@@ -117,8 +118,6 @@ module.exports = {
                 await message.channel.send('Created a giveaway!').then(m => setTimeout(() => m.delete(), 2000));
             }
         });
-            
-        } catch(e){
             message.channel.send(`There has been an error, **${e}**`)
         }
     }
