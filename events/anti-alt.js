@@ -8,6 +8,7 @@ client.on('guildMemberAdd', async(member) => {
         if(!data) return;
         let arr = data.Allowed_Alts;
         if(arr.includes(member.id)) return;
+        if(data.Days == '0') return;
         if(data.Avatar == true) {
           if(member.user.avatar == null) {
           await member.send(new MessageEmbed()
@@ -15,14 +16,11 @@ client.on('guildMemberAdd', async(member) => {
             .setDescription(`You were kicked from **${member.guild.name}** | **This account is suspected of being an alt**`)
             .setColor("RED")
             .setTimestamp()
-          ).catch(err => {
-            member.kick('This account is suspected of being an alt')
-          })
+          )
             await member.kick('This account is suspected of being an alt')
           }
       }
 
-      if(data.Days == '0') return;
       let x = Date.now() - member.user.createdAt;
       let created = Math.floor(x / 86400000);
         let AltAge = data.Days
@@ -33,9 +31,7 @@ client.on('guildMemberAdd', async(member) => {
           .setDescription(`You were kicked from **${member.guild.name}** | **The Age Of This Account Is Below Age Requirements**`)
           .setColor("RED")
           .setTimestamp()
-        ).catch(err => {
-          member.kick(`The Age Of This Account Is Below Age Requirements`)
-        })
+        )
 	      await member.kick(`The Age Of This Account Is Below Age Requirements`)
         }
         
