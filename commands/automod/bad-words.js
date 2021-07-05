@@ -120,9 +120,9 @@ module.exports = {
         }
         if(opt == 'disable') {
             schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-                if(!data) return message.reply('<:corexerror:860580531825147994> The anti-curse module is already disabled')
+                if(!data) return message.channel.send('<:corexerror:860580531825147994> The anti-curse module is already disabled')
                 data.delete() 
-                message.reply('<:corexyes:860561725916053514> The anti-curse module has been disabled')
+                message.channel.send('<:corexyes:860561725916053514> The anti-curse module has been disabled')
             })
         }
 
