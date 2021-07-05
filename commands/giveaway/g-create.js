@@ -53,7 +53,7 @@ module.exports = {
                 if (!ms(time)) return collector.stop('error');
                 giveaway.time = time
                 if (ms(giveaway.time) > ms('14d')) return collector.stop('HIGH_TIME');
-                message.channel.send(`The time is now set to ${time}! Who is hosting the giveaway?`);
+                message.channel.send(`The time is now set to ${time}! do you want any requirements for the giveaway?`);
             }
             else if (step == 5) {
                 if (!['yes', 'no'].includes(msg.content.toLowerCase())) return collector.stop('error');
