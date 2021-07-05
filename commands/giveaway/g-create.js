@@ -25,8 +25,8 @@ module.exports = {
             message.channel.send('What is the prize?');
             collector.on('collect', async (msg) => {
             if (!msg.content) return collector.stop('error');
-    
-            step++;
+                
+            step++
             if (step == 1) {
                 const prize = msg.content;
                 message.channel.send(`The prize is **${prize}**! Which channel do you want to host in?`, { allowedMentions: { roles: [], users: [], parse: [] } });
@@ -53,14 +53,20 @@ module.exports = {
                 if (!ms(time)) return collector.stop('error');
                 giveaway.time = time
                 if (ms(giveaway.time) > ms('14d')) return collector.stop('HIGH_TIME');
-                message.channel.send(`The time is now set to ${time}! do you want any requirements for the giveaway?`);
+                message.channel.send(`The time is now set to ${time}! Who is hosting the giveaway?`);
             }
             else if (step == 5) {
+                const host = msg.mentions.users.first() || msg.guild.members.cache.get(msg.content) || message.member;
+    
+                giveaway.host = host.id;
+                message.channel.send(`The host is ${host}! Now do you want any requirements for the giveaway?`);
+            }
+            else if (step == 6) {
                 if (!['yes', 'no'].includes(msg.content.toLowerCase())) return collector.stop('error');
                 giveaway.requirements = { enabled: msg.content == 'yes' ? true : false };
-                return message.channel.send(`Is this correct?\n\`\`\`Prize: ${giveaway.prize}\nWinner(s): ${giveaway.winners}\nTime: ${ms(giveaway.time)}\nhost: ${message.author}\nRequirements: ${giveaway.requirements.enabled ? 'Yes' : 'No'}\n\`\`\`Reply with \`yes\` or \`no\`!`);
-            } 
-            else if (step == 6) {
+                return message.channel.send(`Is this correct?\n\`\`\`Prize: ${giveaway.prize}\nWinner(s): ${giveaway.winners}\nTime: ${ms(giveaway.time)}\nhost: ${message.guild.members.cache.get(giveaway.host).user.username}\nRequirements: ${giveaway.requirements.enabled ? 'Yes' : 'No'}\n\`\`\`Reply with \`yes\` or \`no\`!`);
+            }
+            else if (step == 7) {
                 if (!['yes', 'no'].includes(msg.content)) return collector.stop('error');
                 if (msg.content == 'yes') return collector.stop('done');
                 if (msg.content == 'no') return collector.stop('cancel');
