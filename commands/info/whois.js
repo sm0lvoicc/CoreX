@@ -13,16 +13,16 @@ module.exports = {
         let status;
         switch (user.presence.status) {
             case "online":
-                status = "<:corexonline:860558476605259786> Online";
+                status = "<:corexonline:861737336579293215> Online";
                 break;
             case "dnd":
-                status = "<:corexdnd:860559556856905738> DND";
+                status = "<:corexdnd:861737403151286322> DND";
                 break;
             case "idle":
-                status = "<:corexidle:860559801574490162> Idle";
+                status = "<:corexidle:861737479992508447> Idle";
                 break;
             case "offline":
-                status = "<:corexoffline:860559556467753011> Offline";
+                status = "<:corexoffline:861737516989022218> Offline";
                 break;
         }
 
