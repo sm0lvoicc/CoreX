@@ -29,7 +29,7 @@ module.exports = {
     
         const arguments = args.slice(1).join(" ");
     
-        if (!arguments) return message.reply("Please specify a nickname!");
+        if (!arguments) return message.channel.send("Please specify a nickname!");
 
         if (message.member.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than you.');
         if (message.guild.me.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than me.');

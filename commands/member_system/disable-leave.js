@@ -16,9 +16,9 @@ module.exports = {
         if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You do not have the permission \`MANAGE_GUILD\`')
 
         schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-            if(!data) return message.reply('<:corexerror:860580531825147994> The leave channel is already disabled')
+            if(!data) return message.channel.send('<:corexerror:860580531825147994> The leave channel is already disabled')
             data.delete()
-            message.reply('<:corexyes:860561725916053514> The leave channel has been disabled')
+            message.channel.send('<:corexyes:860561725916053514> The leave channel has been disabled')
         })
     }
 }

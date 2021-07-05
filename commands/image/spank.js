@@ -14,8 +14,8 @@ module.exports = {
      */
     run: async(client, message, args) => {
         const user = message.mentions.users.first()
-        if(!user) return message.reply('Breh, why you tryna spank yourself???')
-        if(user === message.author) return message.reply('Breh, why you tryna spank yourself???')
+        if(!user) return message.channel.send('Breh, why you tryna spank yourself???')
+        if(user === message.author) return message.channel.send('Breh, why you tryna spank yourself???')
 
         const avatar = user.displayAvatarURL({ format: "png" });
         const avatar2 = message.author.displayAvatarURL({ format: "png" })

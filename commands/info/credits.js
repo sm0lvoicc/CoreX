@@ -18,7 +18,7 @@ module.exports = {
                 value: 'Core Developer of CoreX AKA the best person ever'
             }, 
             {
-                name: 'Tagliatelle#2576',
+                name: 'Tagliatelle#8945',
                 value: 'Core Developer of CoreX, got the idea of making CoreX, also join his [Server](https://discord.gg/cKUrkEtMkA) '
             },
             {

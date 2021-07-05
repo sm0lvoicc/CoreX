@@ -20,7 +20,7 @@ module.exports = {
     if (!role) return message.channel.send(`You must provide role to add`)
     if (!emoji) return message.channel.send(`You must provide emoji`)
 
-    if(role.position >= message.guild.me.roles.highest.position) return message.reply('<:corexerror:860580531825147994> I cannot add a role that is higher/equal to my role')
+    if(role.position >= message.guild.me.roles.highest.position) return message.channel.send('<:corexerror:860580531825147994> I cannot add a role that is higher/equal to my role')
 
     
     function isCustomEmoji(emoji) {

@@ -22,17 +22,17 @@ module.exports = {
             'displays'
         ]
 
-        if (!args.length) return message.reply("Please enter either **add**, **remove** or **display**")
+        if (!args.length) return message.channel.send("Please enter either **add**, **remove** or **display**")
         const opt = args[0].toLowerCase();
-        if (!opt) return message.reply("Please enter either **add**, **remove** or **display**")
+        if (!opt) return message.channel.send("Please enter either **add**, **remove** or **display**")
 
 
-        if (!options.includes(opt)) return message.reply("Please enter either **add**, **remove** or **display**")
+        if (!options.includes(opt)) return message.channel.send("Please enter either **add**, **remove** or **display**")
 
         if(opt == 'add') {
             const channel = message.mentions.channels.first()
 
-            if(!channel) return message.reply('Please mention a channel to whitelist')
+            if(!channel) return message.channel.send('Please mention a channel to whitelist')
 
             schema.findOne({ Guild: message.guild.id}, async(err, data) => {
                 if(!data) {
@@ -43,7 +43,7 @@ module.exports = {
                     newData.save()
                     message.channel.send(`<:corexyes:860561725916053514> Whitelisted Anti-Spam in ${channel}`)
                 } else {
-                    if(data.Anti_spam.includes(channel.id)) return message.reply('<:corexerror:860580531825147994> This channel is already whitelisted')
+                    if(data.Anti_spam.includes(channel.id)) return message.channel.send('<:corexerror:860580531825147994> This channel is already whitelisted')
                     data.Anti_spam.push(channel.id)
                     data.save()
                     message.channel.send(`<:corexyes:860561725916053514> Whitelisted Anti-Spam in ${channel}`)
@@ -55,8 +55,8 @@ module.exports = {
             const channel = message.mentions.channels.first()
 
             schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-                if(!data) return message.reply('<:corexerror:860580531825147994> There are no channels whitelisted')
-                if(!data.Anti_spam.includes(channel.id)) return message.reply(`<:corexerror:860580531825147994> ${channel} is not whitelisted`)
+                if(!data) return message.channel.send('<:corexerror:860580531825147994> There are no channels whitelisted')
+                if(!data.Anti_spam.includes(channel.id)) return message.channel.send(`<:corexerror:860580531825147994> ${channel} is not whitelisted`)
                 const filtered = data.Anti_spam.filter(target => target !== channel.id);
 
                 await schema.findOneAndUpdate({ Guild: message.guild.id, Anti_spam: filtered})

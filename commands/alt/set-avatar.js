@@ -22,9 +22,9 @@ module.exports = {
             'false'
         ]
   
-        if (!args.length) return message.reply("Please enter either **true** or **false**")
+        if (!args.length) return message.channel.send("Please enter either **true** or **false**")
         const opt = args[0].toLowerCase();
-        if (!opt) return message.reply("Please enter either **true** or **false**")
+        if (!opt) return message.channel.send("Please enter either **true** or **false**")
 
         if(opt == 'true') {
             await schema.findOne({ Guild: message.guild.id}, async(err, data) => {
@@ -34,12 +34,20 @@ module.exports = {
                         Days: 7,
                         Avatar: true
                     })
-                    message.channel.send('<:corexyes:860561725916053514> Enabled kick default avatars')
+                    const embed = new MessageEmbed()
+                    .setColor('GREEN')
+                    .setDescription('<:corexyes:860561725916053514> Enabled kick default avatars')
+                    .setTimestamp()
+                    message.channel.send(embed)
                 } else {
                     data.updateOne({
                         Avatar: true
                     })
-                    message.channel.send('<:corexyes:860561725916053514> Enabled kick default avatars')
+                    const embed2 = new MessageEmbed()
+                    .setColor('GREEN')
+                    .setDescription('<:corexyes:860561725916053514> Enabled kick default avatars')
+                    .setTimestamp()
+                    message.channel.send(embed2)
 
                 }
             })

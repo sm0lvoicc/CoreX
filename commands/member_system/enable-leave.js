@@ -18,10 +18,10 @@ module.exports = {
         if(!message.guild.me.hasPermission('MANAGE_GUILD')) return message.reply('I do not have the permission \`MANAGE_SERVER\`')
         
         const channel = await message.mentions.channels.first();
-        if(!channel) return message.reply('Please mention a channel to set as the leave channel.')
+        if(!channel) return message.channel.send('Please mention a channel to set as the leave channel.')
 
         const text = args.slice(1).join(" ")
-        if(!text) channel.send(new MesssageEmbed()
+        if(!text) message.channel.send(new MesssageEmbed()
         .setTitle('<:corexsearch:860609884924149801> Available Tags')
         .setFooter(`More Soon`)
         .setColor("RANDOM")

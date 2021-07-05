@@ -22,31 +22,31 @@ module.exports = {
             'disable'
         ]
 
-        if (!args.length) return message.reply("Please enter either **enable** or **disable**")
+        if (!args.length) return message.channel.send("Please enter either **enable** or **disable**")
         const opt = args[0].toLowerCase();
-        if (!opt) return message.reply('Please enter either **enable** or **disable**')
+        if (!opt) return message.channel.send('Please enter either **enable** or **disable**')
 
 
-        if (!options.includes(opt)) return message.reply('Please enter either **enable** or **disable**')
+        if (!options.includes(opt)) return message.channel.send('Please enter either **enable** or **disable**')
 
         if(opt === 'enable') {
             const action = args[1]
             const messages = parseInt(args[2])
-            if(isNaN(messages)) return message.reply('Please enter an integer')
+            if(isNaN(messages)) return message.channel.send('Please enter an integer')
 
-            if(!action) return message.reply(new MessageEmbed()
+            if(!action) return message.channel.send(new MessageEmbed()
             .setColor('RED')
             .setTitle('<:corexwarn:860597628882780200> Please specify an Action.')
             .setDescription('**Kick**, **Ban**, **Warn**, **Mute**')
             )
 
-            if(!(["warn","mute","kick","ban"]).includes(action.toLowerCase())) return message.reply(new MessageEmbed()
+            if(!(["warn","mute","kick","ban"]).includes(action.toLowerCase())) return message.channel.send(new MessageEmbed()
             .setColor('RED')
             .setTitle('<:corexwarn:860597628882780200> Please specify a correct action')
             .setDescription('**Kick**, **Ban**, **Warn**, **Mute**')
             )
 
-            if(messages <= 2) return message.reply('Messages cannot be less than or equal to 2 messages')
+            if(messages <= 2) return message.channel.send('Messages cannot be less than or equal to 2 messages')
             await schema.findOne({ Guild: message.guild.id}, async(err, data) => {
                 if(data) data.delete()
                 new schema({
@@ -64,9 +64,9 @@ module.exports = {
 
         if(opt === 'disable') {
             schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-                if(!data) return message.reply('<:corexerror:860580531825147994> The anti-spam module is already disabled')
+                if(!data) return message.channel.send('<:corexerror:860580531825147994> The anti-spam module is already disabled')
                 data.delete() 
-                message.reply('<:corexyes:860561725916053514> The anti-spam module has been disabled')
+                message.channel.send('<:corexyes:860561725916053514> The anti-spam module has been disabled')
             })
         }
     }

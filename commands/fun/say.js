@@ -6,7 +6,7 @@ module.exports = {
     run: async(client, message, args) => {
         const sayMessage = args.join(" ");
 
-        if(!sayMessage) return message.reply('Please specify something to say')
+        if(!sayMessage) return message.channel.send('Please specify something to say')
         message.delete().catch(O_o=>{}); 
         message.channel.send(`${sayMessage}\n\nBy: **${message.author.tag}**`);
     }

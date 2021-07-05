@@ -5,7 +5,6 @@ module.exports = {
         let msgArgs = args.join(' ')
 
 		if (!args[0]) {
-			message.react('❌')
 			return message.channel.send(
 				'Please tell me what you would like the poll to ask!'
 			)

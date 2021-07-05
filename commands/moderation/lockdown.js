@@ -17,9 +17,9 @@ module.exports = {
             if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have the permission \`ADMINISTRATOR\`')
             if(!message.guild.me.hasPermission('MANAGE_CHANNELS')) return message.reply('I do not have the permission \`MANAGE_CHANNELS\`')
     
-            if(!args[0]) return message.reply(`You need to provide query. \`on\` to enable lockdown, \`off\` to disable lockdown`)
+            if(!args[0]) return message.channel.send(`You need to provide query. \`on\` to enable lockdown, \`off\` to disable lockdown`)
             
-            if(!(['on','off']).includes(args[0])) return message.reply(`You need to provide a correct query. \`on\` to enable lockdown, \`off\` to disable lockdown`)
+            if(!(['on','off']).includes(args[0])) return message.channel.send(`You need to provide a correct query. \`on\` to enable lockdown, \`off\` to disable lockdown`)
             const roleD = message.guild.roles.cache.find(role => role.name == '@everyone')
             
             if(args[0] == 'on') {

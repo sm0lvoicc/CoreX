@@ -34,8 +34,10 @@ module.exports = {
         const rolePosition = role.position;
         const userRolePossition = message.member.roles.highest.position;
         
-        if (userRolePossition <= rolePosition) return message.reply('Your role is lower than the specified role.');
-        if (botRolePosition <= rolePosition) return message.reply('My highest role is lower than the specified role.');
+        if (userRolePossition < rolePosition) return message.reply('The target role has a higher position than you.');
+        if (botRolePosition < rolePosition) return message.reply('The target role has a higher position than me.');
+        if(userRolePossition < member.roles.highest.position) message.channel.send('The target has a higher position than you.')
+        if(botRolePosition < member.roles.highest.position) message.channel.send('The target has a higher position than me.')
         
         member.roles.add(role).catch(e => {
             return message.channel.send(`<:corexerror:860580531825147994> **Error:**\n${e}`);
@@ -44,7 +46,7 @@ module.exports = {
         const be = new MessageEmbed()
             .setColor('GREEN')
             .setTitle('Role Added!')
-            .setDescription(`<:corexyes:860561725916053514> **${message.author}**, I've added the **${rname}** role to **${message.mentions.users.first().username}**`);
+            .setDescription(`<:corexyes:860561725916053514> **${message.author}**, I've added the **${rname}** role to **${member.user.tag}**`);
         message.channel.send(be);
         } catch(e) {
             message.channel.send(`There has been an error, **${e}**`)

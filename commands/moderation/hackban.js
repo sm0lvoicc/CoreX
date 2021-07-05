@@ -19,11 +19,11 @@ module.exports = {
         let userID = args[0]
         let reason = args.slice(1).join(' ') || 'No reason specified.'
 
-        if(!userID) return message.reply('Please specify a user ID to ban.')
-        if(isNaN(userID)) return message.reply('The user ID must be a number.')
+        if(!userID) return message.channel.send('Please specify a user ID to ban.')
+        if(isNaN(userID)) return message.channel.send('The user ID must be a number.')
 
-        if(userID === message.author.id) return message.reply('You cannot ban yourself ;-;')
-        if(userID == client.user.id) return message.reply('This is not cool, you cannot ban me with my own command.')
+        if(userID === message.author.id) return message.channel.send('You cannot ban yourself ;-;')
+        if(userID == client.user.id) return message.channel.send('This is not cool, you cannot ban me with my own command.')
 
         client.users.fetch(userID).then(async(user) => {
             await message.guild.members.ban(user.id, {reason: reason})
@@ -40,7 +40,7 @@ module.exports = {
             }, message)
             
         }).catch(err => {
-            return message.reply(`There has been an error, **${err}**`)
+            return message.channel.send(`There has been an error, **${err}**`)
         }) 
         
         

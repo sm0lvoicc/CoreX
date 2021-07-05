@@ -14,23 +14,23 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if (!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send(`You do not have the permission \`MANAGE_SERVER\``)
+        if (!message.member.hasPermission("MANAGE_GUILD")) return message.reply(`You do not have the permission \`MANAGE_SERVER\``)
 
         options = [
             'true',
             'false'
         ]
 
-        if (!args.length) return message.reply("Please enter either **true** or **false**")
+        if (!args.length) return message.channel.send("Please enter either **true** or **false**")
         const opt = args[0].toLowerCase();
-        if (!opt) return message.reply('Please enter either **true** or **false**')
+        if (!opt) return message.channel.send('Please enter either **true** or **false**')
 
 
-        if (!options.includes(opt)) return message.reply('Please enter either **true** or **false**')
+        if (!options.includes(opt)) return message.channel.send('Please enter either **true** or **false**')
 
         if(opt == 'false') {
             await schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-                if(data.DM == false) return message.reply('<:corexerror:860580531825147994> Reaction DMs is already turned off')
+                if(data.DM == false) return message.channel.send('<:corexerror:860580531825147994> Reaction DMs is already turned off')
                 data.DM = false 
                 message.channel.send('<:corexyes:860561725916053514> Reaction DMs have been disabled')
             })
@@ -38,7 +38,7 @@ module.exports = {
 
         if(opt == 'true') {
             await schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-                if(data.DM == true) return message.reply('<:corexerror:860580531825147994> Reaction DMs is already turned on')
+                if(data.DM == true) return message.channel.send('<:corexerror:860580531825147994> Reaction DMs is already turned on')
                 data.DM = true 
                 message.channel.send('<:corexyes:860561725916053514> Reaction DMs have been enabled')
             })

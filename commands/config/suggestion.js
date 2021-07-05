@@ -20,16 +20,16 @@ module.exports = {
             'disable'
         ]
 
-        if (!args.length) return message.reply("Please enter either **set** or **disable**")
+        if (!args.length) return message.channel.send("Please enter either **set** or **disable**")
         const opt = args[0].toLowerCase();
-        if (!opt) return message.reply('Please enter either **set** or **disable**')
+        if (!opt) return message.channel.send('Please enter either **set** or **disable**')
 
 
-        if (!options.includes(opt)) return message.reply('Please enter either **set** or **disable**')
+        if (!options.includes(opt)) return message.channel.send('Please enter either **set** or **disable**')
 
         if(opt === 'set') {
             const channel = await message.mentions.channels.first()
-            if(!channel) return message.reply('Please mention a channel to set as the Suggestion channel')
+            if(!channel) return message.channel.send('Please mention a channel to set as the Suggestion channel')
 
             schema.findOne({ Guild: message.guild.id }, async(err, data) => {
                 if(!data) {
@@ -38,7 +38,7 @@ module.exports = {
                         Channel: channel.id
                     })
                     newData.save()
-                    message.reply(`<:corexyes:860561725916053514> Suggestion channel is set to => ${channel}`)
+                    message.channel.send(`<:corexyes:860561725916053514> Suggestion channel is set to => ${channel}`)
                 } else{
                     if(data) {
                         new schema({
@@ -46,7 +46,7 @@ module.exports = {
                             Channel: channel.id
                         })
                         data.save()
-                        message.reply(`<:corexyes:860561725916053514> Suggestion channel is updated to => ${channel}`)
+                        message.channel.send(`<:corexyes:860561725916053514> Suggestion channel is updated to => ${channel}`)
                 }
             }
         })
@@ -54,9 +54,9 @@ module.exports = {
 
     if(opt === 'disable') {
         schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-            if(!data) message.reply('<:corexerror:860580531825147994> The Channel-logs is already disabled')
+            if(!data) message.channel.send('<:corexerror:860580531825147994> The Channel-logs is already disabled')
             data.delete()
-            message.reply('<:corexyes:860561725916053514> Channel logging has been disabled')
+            message.channel.send('<:corexyes:860561725916053514> Channel logging has been disabled')
         })
     }
 

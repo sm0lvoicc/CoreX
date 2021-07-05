@@ -23,13 +23,13 @@ module.exports = {
         if(!member) {
             member = message.guild.members.cache.get(args[0])
         }
-        if(!member) return message.reply('Please mention a user to tempmute')
+        if(!member) return message.channel.send('Please mention a user to tempmute')
 
         const time = args[1]
         const muteReason = args.slice(2).join(" ") || "No muteReason specified"
         
-        if(member.user.id === message.author.id) return message.reply(`You cannot mute yourself`);
-        if(!time) return  message.reply(`Please set a time to mute the user for.`)
+        if(member.user.id === message.author.id) return message.channel.send(`You cannot mute yourself`);
+        if(!time) return  message.channel.send(`Please set a time to mute the user for.`)
 
         schema.findOne({ Guild: message.guild.id }, async(err, data) => {
             if(!data) {
@@ -50,7 +50,7 @@ module.exports = {
         if (message.member.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than you.');
         if (message.guild.me.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than me.');
       
-        if(MuteRole.position >= message.guild.me.roles.highest.position) return message.reply(`The mute role is higher/equal to my role.`)
+        if(MuteRole.position >= message.guild.me.roles.highest.position) return message.channel.send(`The mute role is higher/equal to my role.`)
      await member.roles.add(MuteRole.id)
 
       message.channel.send(new MessageEmbed()

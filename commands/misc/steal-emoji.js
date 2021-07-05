@@ -17,7 +17,7 @@ module.exports = {
 
         if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have the permission \`ADMINISTRATOR\`');
 
-        if(!args.length) return message.reply('Please specify some emojis.');
+        if(!args.length) return message.channel.send('Please specify some emojis.');
 
         for(const rawEmoji of args) {
             const parsedEmoji = Util.parseEmoji(rawEmoji);

@@ -9,7 +9,7 @@ module.exports = {
   usage: '[add/remove/display]',
   primeOnly: true,
   run: async(client, message, args) => {
-    if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send(`You do not have the permission \`MANAGE_SERVERs\``)
+    if(!message.member.hasPermission("MANAGE_GUILD")) return message.reply(`You do not have the permission \`MANAGE_SERVERs\``)
     
     const query = args[0]
 
@@ -32,7 +32,10 @@ module.exports = {
           if(data.Member.includes(word.id)) return message.channel.send(`${word.user.tag} is already in the Anti-ping system`)
           data.Member.push(word.id)
           data.save()
-          message.channel.send(`<:corexyes:860561725916053514> **${word.user.tag}** has been added to Anti-Ping system`)
+          const embed = new MessageEmbed()
+            .setColor('GREEN')
+            .setDescription(`<:corexyes:860561725916053514> **${word.user.tag}** has been added to the Anti-Ping system`)
+            message.channel.send(embed)
         
         } else if(!data) {
           
@@ -41,7 +44,10 @@ module.exports = {
             Member: word.id
           }).save()
 
-          message.channel.send(`<:corexyes:860561725916053514> **${word.user.tag}** has been added to Anti-Ping system`)
+          const embed2 = new MessageEmbed()
+          .setColor('GREEN')
+          .setDescription(`<:corexyes:860561725916053514> **${word.user.tag}** has been added to the Anti-Ping system`)
+          message.channel.send(embed2)
         }
       })
     } else if(query.toLowerCase() == 'remove') {
@@ -57,7 +63,10 @@ module.exports = {
           Guild: message.guild.id,
           Member: filtered
         })
-        message.channel.send(`<:corexyes:860561725916053514> ${word.user.tag} has been removed from the Anti-Ping system`);
+        const embed = new MessageEmbed()
+        .setColor('GREEN')
+        .setDescription(`<:corexyes:860561725916053514> **${word.user.tag}** has been removed from the Anti-Ping system`)
+        message.channel.send(embed)
       })
     } else if(query.toLowerCase() == 'display') {
       schema.findOne(guild, async(err, data) => {

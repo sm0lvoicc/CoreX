@@ -26,51 +26,51 @@ module.exports = {
             'role'
         ]
 
-        if (!args.length) return message.reply("Please enter either **add**, **remove** or **display**")
+        if (!args.length) return message.channel.send("Please enter either **add**, **remove** or **display**")
         const opt = args[0].toLowerCase();
-        if (!opt) return message.reply('Please enter either **add**, **remove** or **display**')
+        if (!opt) return message.channel.send('Please enter either **add**, **remove** or **display**')
 
 
-        if (!options.includes(opt)) return message.reply('Please enter either **add**, **remove** or **display**')
+        if (!options.includes(opt)) return message.channel.send('Please enter either **add**, **remove** or **display**')
 
         if(opt == 'add') {
             const word = args[1]
             
-            if(!word) return message.reply('<:corexwarn:860597628882780200> Please enter a word to add to the blacklist')
-            if((['@everyone', '@here']).includes(word.toLowerCase())) return message.reply('You cannot add a ping to the blacklist')
+            if(!word) return message.channel.send('<:corexwarn:860597628882780200> Please enter a word to add to the blacklist')
+            if((['@everyone', '@here']).includes(word.toLowerCase())) return message.channel.send('You cannot add a ping to the blacklist')
 
             schema.findOne({ Guild: message.guild.id}, async(err, data) => {
                 if(err) throw err
                 if(data) {
-                    if(data.Words.includes(word)) return message.reply('<:corexerror:860580531825147994> This word is already added to the blacklist')
+                    if(data.Words.includes(word)) return message.channel.send('<:corexerror:860580531825147994> This word is already added to the blacklist')
                     data.Words.push(word)
                     data.save()
-                    message.reply(`<:corexyes:860561725916053514> Added \`${word}\` to the blacklist`)
+                    message.channel.send(`<:corexyes:860561725916053514> Added \`${word}\` to the blacklist`)
                 } else {
                     new schema({
                         Guild: message.guild.id,
                         Words: word,
                     }).save()
-                    message.reply(`<:corexyes:860561725916053514> Added \`${word}\` to the blacklist`)
+                    message.channel.send(`<:corexyes:860561725916053514> Added \`${word}\` to the blacklist`)
                 }
             })
         }
 
         if(opt == 'remove') {
             const word2 = args.slice(1).join(' ')
-            if(!word2) return message.reply('<:corexwarn:860597628882780200> Please enter a word to remove from the blacklist')
+            if(!word2) return message.channel.send('<:corexwarn:860597628882780200> Please enter a word to remove from the blacklist')
 
             schema.findOne({ Guild: message.guild.id}, async(err, data) => {
                 if(err) throw err;
-                if(!data) return message.reply('<:corexerror:860580531825147994> There are no blacklisted words')
-                if(!data.Words.includes(word)) return message.reply(`<:corexerror:860580531825147994> \`${word}\` is not a blacklisted word`)
+                if(!data) return message.channel.send('<:corexerror:860580531825147994> There are no blacklisted words')
+                if(!data.Words.includes(word)) return message.channel.send(`<:corexerror:860580531825147994> \`${word}\` is not a blacklisted word`)
                 const filtered = data.Words.filter(target => target !== word);
                 
                 await schema.findOneAndUpdate({ Guild: message.guild.id}, {
                     Guild: message.guild.id,
                     Words: filtered
                 })
-                message.reply(`<:corexyes:860561725916053514> Removed \`${word}\` from the blacklist`)
+                message.channel.send(`<:corexyes:860561725916053514> Removed \`${word}\` from the blacklist`)
 
             })
         }

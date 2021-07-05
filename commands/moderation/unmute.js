@@ -24,18 +24,18 @@ module.exports = {
                 if(!member) {
                     member = message.guild.members.cache.get(args[0])
                 }
-                if(!member) return message.reply('Please mention a member to unmute')
+                if(!member) return message.channel.send('Please mention a member to unmute')
     
                 const reason = args.slice(1).join(" ") || "No reason specified"
          
                 if(member.user.id === message.author.id) return message.channel.send(`You cannot unmute yourself`);
             schema.findOne({ Guild: message.guild.id }, async(err, data) => {
                 if(!data) {
-                    message.channel.send(message.channel.send(`The muted role was deleted set it again using ${prefix}set-muterole <@role>`))
+                    message.channel.send(message.channel.send(`<:corexerror:860580531825147994> The muted role was deleted set it again using ${prefix}set-muterole <@role>`))
                 } else {
                     const roleD = message.guild.roles.cache.find(role => role.id === data.Role)
                     if(!roleD) {
-                        message.channel.send(message.channel.send(`The muted role was deleted set it again using ${prefix}set-muterole <@role>`))
+                        message.channel.send(message.channel.send(`<:corexerror:860580531825147994> The muted role was deleted set it again using ${prefix}set-muterole <@role>`))
                         return data.delete()
                     }
                     if(!member.roles.cache.get(roleD.id)) return message.channel.send(new MessageEmbed()
@@ -46,8 +46,8 @@ module.exports = {
                     message.author.displayAvatarURL({ dynamic: true })
                 )
             )
-            if (message.member.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than you.');
-            if (message.guild.me.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than me.');
+            if (message.member.roles.highest.position < member.roles.highest.permission) return message.channel.send('The target has a higher position than you.');
+            if (message.guild.me.roles.highest.position < member.roles.highest.permission) return message.channel.send('The target has a higher position than me.');
             
             if(roleD.deleteable) return message.channel.send(new MessageEmbed()
             .setDescription(`<:corexerror:860580531825147994> **I can't remove the muted role manually**`)

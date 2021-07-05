@@ -16,12 +16,12 @@ module.exports = {
       'disable'
     ]
 
-    if (!args.length) return message.reply("Please enter either **enable** or **disable**")
+    if (!args.length) return message.channel.send("Please enter either **enable** or **disable**")
     const opt = args[0].toLowerCase();
-    if (!opt) return message.reply('Please enter either **enable** or **disable**')
+    if (!opt) return message.channel.send('Please enter either **enable** or **disable**')
 
 
-    if (!options.includes(opt)) return message.reply('Please enter either **enable** or **disable**')
+    if (!options.includes(opt)) return message.channel.send('Please enter either **enable** or **disable**')
 
    if(opt == 'enable') {
     Schema.findOne({ Guild: message.guild.id }, async(err, data) => {
@@ -35,9 +35,9 @@ module.exports = {
 
    if(opt == 'disable'){
     Schema.findOne({ Guild: message.guild.id }, async(err, data) => {
-      if(!data) return message.reply(`<:corexerror:860580531825147994> **Anti Ghost Ping** Module is disabled already`)
+      if(!data) return message.channel.send(`<:corexerror:860580531825147994> **Anti Ghost Ping** Module is disabled already`)
       data.delete()
-      message.reply(`<:corexyes:860561725916053514> **Anti Ghost Ping** Module has been disabled.`)
+      message.channel.send(`<:corexyes:860561725916053514> **Anti Ghost Ping** Module has been disabled.`)
     })
    }
 

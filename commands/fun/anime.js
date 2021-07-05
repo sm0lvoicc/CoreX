@@ -10,7 +10,7 @@ module.exports = {
     //command
     const search = `${args}`;
     if (!search)
-      return message.reply('Please add a search query!');
+      return message.channel.send('Please add a search query!');
 
     malScraper.getInfoFromName(search)
       .then((data) => {

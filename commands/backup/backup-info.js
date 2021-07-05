@@ -17,7 +17,7 @@ module.exports = {
 
         let backupID = args[0];
         if(!backupID){
-            return message.reply("You must specify a valid backup ID!");
+            return message.channel.send("You must specify a valid backup ID!");
         }
 
         backup.fetch(backupID).then((backupInfos) => {
@@ -34,7 +34,7 @@ module.exports = {
                 .setColor("RANDOM");
             message.channel.send(embed);
         }).catch((err) => {
-            return message.reply("<:corexerror:860580531825147994> No backup found for `"+backupID+"`!");
+            return message.channel.send("<:corexerror:860580531825147994> No backup found for `"+backupID+"`!");
         });
     }
 }

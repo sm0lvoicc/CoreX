@@ -30,7 +30,7 @@ module.exports = {
             .setThumbnail(user.user.displayAvatarURL({dynamic : true}))
             .addFields(
                 {
-                    name: "<:corexyes:860561725916053514> Name: ",
+                    name: "<:corexmention:860565536835502110> Name: ",
                     value: user.user.username,
                     inline: true
                 },
@@ -64,7 +64,7 @@ module.exports = {
                     inline: true
                 },
                 {
-                    name: '<:corexmention:860565536835502110> User Roles: ',
+                    name: '<:corexrole:861343406365343875> User Roles: ',
                     value: user.roles.cache.map(role => role.toString()).join(" ,"),
                     inline: true
                 }

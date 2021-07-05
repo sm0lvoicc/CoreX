@@ -17,14 +17,14 @@ module.exports = {
 
         
         await client.users.fetch(args[0]).then(u => {
-            if(!args[0]) return message.reply('Please provide a user ID to add to the Alt whitelist')
-            if(isNaN(args[0])) return message.reply('The user ID must be a number')
+            if(!args[0]) return message.channel.send('Please provide a user ID to add to the Alt whitelist')
+            if(isNaN(args[0])) return message.channel.send('The user ID must be a number')
 
             schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-                if(!data) return message.reply('<:corexerror:860580531825147994> The Anti-Alt module is disabled')
+                if(!data) return message.channel.send('<:corexerror:860580531825147994> The Anti-Alt module is disabled')
 
                 let allowedAlts = data.Allowed_Alts
-                if(allowedAlts.length === 10) return message.reply('The maximum amount of allowed alts is 10')
+                if(allowedAlts.length === 10) return message.channel.send('The maximum amount of allowed alts is 10')
 
                 allowedAlts.push(u.id)
 
@@ -32,7 +32,12 @@ module.exports = {
                     Allowed_Alts: allowedAlts
                 })
 
-                message.reply(`<:corexyes:860561725916053514> White-listed <@${args[0]}>`)
+                const embed = new MessageEmbed()
+                .setColor('GREEN')
+                .setDescription(`<:corexyes:860561725916053514> White-listed <@${args[0]}>`)
+                .setTimestamp()
+
+                message.channel.send(embed)
                 
             })
         })

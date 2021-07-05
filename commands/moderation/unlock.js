@@ -20,7 +20,7 @@ module.exports = {
        if(!channel) {
            channel = message.channel
        }
-       if(!channel) return message.reply('Mention a channel to unlock')
+       if(!channel) return message.channel.send('Mention a channel to unlock')
         const everyone = message.guild.roles.cache.find(role => role.name == '@everyone')
         if(channel.permissionsFor(everyone).has(["SEND_MESSAGES"])) return message.channel.send('This channel is already unlocked.')
         await channel.createOverwrite(client.user, {

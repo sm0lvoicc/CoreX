@@ -17,7 +17,7 @@ module.exports = {
         if(!message.guild.me.hasPermission('KICK_MEMBERS')) return message.reply('I do not have the permission \`KICK_MEMBERS\`')
     
         const days = args[0]
-        if(!days) return message.reply('Please set the account age needed to join the server.')
+        if(!days) return message.channel.send('Please set the account age needed to join the server.')
         if(isNaN(days)) return message.channel.send(`Days must be a number`)
 
         await schema.findOne({ Guild: message.guild.id}, async(err, data) => {
@@ -26,12 +26,18 @@ module.exports = {
                     Guild: message.guild.id,
                     Days: days
                 }).save()
-                message.channel.send(`<:corexyes:860561725916053514> Set minimum account age to \`${days}\` days`)
+                const embed = new MessageEmbed()
+                .setColor('GREEN')
+                .setDescription(`<:corexyes:860561725916053514> Set minimum account age to \`${days}\` days`)
+                message.channel.send(embed)
             } else {
                 data.updateOne({
                     Days: days
                 })
-                message.channel.send(`<:corexyes:860561725916053514> Set minimum account age to \`${days}\` days`)
+                const embed2 = new MessageEmbed()
+                .setColor('GREEN')
+                .setDescription(`<:corexyes:860561725916053514> Set minimum account age to \`${days}\` days`)
+                message.channel.send(embed2)
             }
         })
     }

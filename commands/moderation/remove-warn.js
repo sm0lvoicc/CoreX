@@ -17,7 +17,7 @@ module.exports = {
         }
 
         if (!member) {
-           message.reply('Please mention a member to remove a warn from')
+           message.channel.send('Please mention a member to remove a warn from')
         }
                 
 

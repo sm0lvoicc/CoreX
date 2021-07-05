@@ -20,16 +20,16 @@ module.exports = {
             'disable'
         ]
 
-        if (!args.length) return message.reply("Please enter either **set** or **disable**")
+        if (!args.length) return message.channel.send("Please enter either **set** or **disable**")
         const opt = args[0].toLowerCase();
-        if (!opt) return message.reply('Please enter either **set** or **disable**')
+        if (!opt) return message.channel.send('Please enter either **set** or **disable**')
 
 
-        if (!options.includes(opt)) return message.reply('Please enter either **set** or **disable**')
+        if (!options.includes(opt)) return message.channel.send('Please enter either **set** or **disable**')
 
         if(opt === 'set') {
             const channel = await message.mentions.channels.first()
-            if(!channel) return message.reply('Please mention a channel to set as the alt logs')
+            if(!channel) return message.channel.send('Please mention a channel to set as the alt logs')
 
             schema.findOne({ Guild: message.guild.id }, async(err, data) => {
                 if(!data) {
@@ -40,21 +40,34 @@ module.exports = {
                         Channel: channel.id
                     })
                     newData.save()
-                    message.reply(`<:corexyes:860561725916053514> Alt-logs is set to => ${channel}`)
+                    const embed = new MessageEmbed()
+                    .setColor('GREEN')
+                    .setDescription(`<:corexyes:860561725916053514> Alt-logs is set to  ${channel}`)
+                    .setTimestamp()
+                    message.reply(embed)
                 } else{
                     data.updateOne({
                         Channel: channel.id
                     })
-                message.reply(`<:corexyes:860561725916053514> Alt-logs is set to => ${channel}`)
+
+                    const embed2 = new MessageEmbed()
+                    .setColor('GREEN')
+                    .setDescription(`<:corexyes:860561725916053514> Alt-logs is set to  ${channel}`)
+                    .setTimestamp()
+                    message.reply(embed2)
             }
         })
     }
 
     if(opt === 'disable') {
         schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-            if(!data) message.reply('<:corexerror:860580531825147994> The Alt-logs is already disabled')
+            if(!data) message.channel.send('<:corexerror:860580531825147994> The Alt-logs is already disabled')
             data.deleteOne(Channel)
-            message.reply('<:corexyes:860561725916053514> Alt logging has been disabled')
+            const embed = new MessageEmbed()
+            .setColor('GREEN')
+            .setDescription('<:corexyes:860561725916053514> Alt logging has been disabled')
+            .setTimestamp()
+            message.channel.send(embed)
         })
     }
 

@@ -18,7 +18,7 @@ module.exports = {
         }
 
         if (!member) {
-           message.reply('Please mention a member to see there warns')
+           message.channel.send('Please mention a member to see there warns')
         }
         
         

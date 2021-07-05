@@ -19,7 +19,7 @@ module.exports = {
 		}
 		let data = await Schema.findOne({ User: member.id });
 		if (!data) {
-			return message.reply(
+			return message.channel.send(
 				new MessageEmbed()
 				.setColor('RED')
 				.setDescription(`<:corexerror:860580531825147994> ${member.toString()} doesn't have a bio`)

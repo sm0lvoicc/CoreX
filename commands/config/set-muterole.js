@@ -9,7 +9,7 @@ module.exports = {
     timeout: '5000',
     run: async(client, message, args) => {
         try {
-        if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send(`You do not have the permission \`MANAGE_SERVER\``)
+        if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply(`You do not have the permission \`MANAGE_SERVER\``)
 
         const role = await message.mentions.roles.first() || message.guild.roles.cache.get(args[0])
 

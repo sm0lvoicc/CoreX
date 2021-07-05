@@ -17,7 +17,7 @@ module.exports = {
       if(!message.guild.me.hasPermission('MANAGE_GUILD')) return message.reply('I do not have the permission \`MANAGE_SERVER\`')
       
       const channel = await message.mentions.channels.first();
-      if(!channel) return message.reply('Please mention a channel to set as the welcome channel.')
+      if(!channel) return message.channel.send('Please mention a channel to set as the welcome channel.')
 
       const text = args.slice(1).join(" ")
       const noText = new MessageEmbed()

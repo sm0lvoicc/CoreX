@@ -17,7 +17,7 @@ module.exports = {
         if(!message.guild.me.hasPermission('ADMINISTRATOR')) return message.reply('I do not have the permission \`ADMINISTRATOR\`')
 
         const id = args[0]
-        if(!id) return message.reply(`You must provide a Backup ID to load**`)
+        if(!id) return message.channel.send(`You must provide a Backup ID to load**`)
         const msg = await message.channel.send(`<a:corexloading:860601769675456513> **Loading Backup...**`)
         try {
         backup.load(id, message.guild)

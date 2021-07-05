@@ -19,9 +19,9 @@ module.exports = {
         if(!args.length) return message.channel.send('> Usage: announce <#channel> <message> <+ping ?>');
 
         const channel = message.mentions.channels.first();
-        if(!channel) return message.reply('Please specify a channel!');
+        if(!channel) return message.channel.send('Please specify a channel!');
 
-        if(!args[1]) return message.reply('Please specify a message to announce');
+        if(!args[1]) return message.channel.send('Please specify a message to announce');
 
 
         channel.send(

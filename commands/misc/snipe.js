@@ -16,7 +16,7 @@ module.exports = {
         if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You do not have the permission \`MANAGE_MESSAGES\`')
         
         const snipes = client.snipes.get(message.channel.id)
-        if(!snipes) return message.reply('There are no messages deleted ;-;')
+        if(!snipes) return message.channel.send('There are no messages deleted ;-;')
 
         const snipe = +args[0] - 1 || 0
         const target = snipes[snipe]

@@ -19,7 +19,7 @@ module.exports = {
         if(!user) {
             user = message.guild.members.cache.get(args[0])
         }
-        if(!user) return message.reply('Please mention a user to set there note')
+        if(!user) return message.channel.send('Please mention a user to set there note')
         
         const note = args.slice(1).join(' ')
         if(!note) return message.channel.send('Please specify a note to add to that user')

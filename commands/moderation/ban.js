@@ -29,8 +29,8 @@ module.exports = {
            message.channel.send('Please mention a member to ban.')
         }
         
-        if (message.member.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than you.');
-        if (message.guild.me.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than me.');
+        if (message.member.roles.highest.position < member.roles.highest.permission) return message.channel.send('The target has a higher position than you.');
+        if (message.guild.me.roles.highest.position < member.roles.highest.permission) return message.channel.send('The target has a higher position than me.');
 
 
 

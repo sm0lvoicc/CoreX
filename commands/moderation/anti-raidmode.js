@@ -20,12 +20,12 @@ module.exports = {
             'disable'
         ]
 
-        if (!args.length) return message.reply("Please enter either **enable** or **disable**")
+        if (!args.length) return message.channel.send("Please enter either **enable** or **disable**")
         const opt = args[0].toLowerCase();
         if (!opt) return message.reply('Please enter either **enable** or **disable**')
 
 
-        if (!options.includes(opt)) return message.reply('Please enter either **enable** or **disable**')
+        if (!options.includes(opt)) return message.channel.send('Please enter either **enable** or **disable**')
 
         if(opt === 'enable') {
                 schema.findOne({ Guild: message.guild.id }, async(err, data) => {

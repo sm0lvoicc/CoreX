@@ -16,7 +16,7 @@ module.exports = {
         if(!user) {
           user = message.author
         }
-        if(!user) return message.reply('Please mention a user.')
+        if(!user) return message.channel.send('Please mention a user.')
       
       let status;
       if (user.presence.activities.length === 1) status = user.presence.activities[0];

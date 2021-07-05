@@ -21,7 +21,7 @@ module.exports = {
         if(!user) {
             user = message.guild.members.cache.get(args[0])
         }
-        if(!user) return message.reply('Please mention a user to moderate them')
+        if(!user) return message.channel.send('Please mention a user to moderate them')
 
         if (message.member.roles.highest.position <= user.roles.highest.permission) return message.channel.send('The target has a higher position than you.');
         if (message.guild.me.roles.highest.position <= user.roles.highest.permission) return message.channel.send('The target has a higher position than me.');
@@ -46,7 +46,7 @@ module.exports = {
             await user.setNickname(nickname)
             message.channel.send(new MessageEmbed().setDescription(`<:corexyes:860561725916053514> Moderated Nickname for **${user.user.tag}** to \`${nickname}\``).setColor("GREEN"))
           } catch(err) {
-            message.reply('An error occured while trying to moderate the nickname of that user.')
+            message.channel.send('An error occured while trying to moderate the nickname of that user.')
             console.log(err)
           }
 

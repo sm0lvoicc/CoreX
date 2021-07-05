@@ -11,9 +11,9 @@ module.exports = {
         if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply("You do not have the permission \`MANAGE_ROLES\`")
         
         const role = await message.mentions.roles.first() || message.guild.roles.cache.get(args[0])
-        if(!role) return message.reply(`Please mention a role to set as the autorole`)
+        if(!role) return message.channel.send(`Please mention a role to set as the autorole`)
         
-        if(role.position >= message.guild.me.roles.highest.position) return message.reply('I cannot add a role that is higher/equal to my role')
+        if(role.position >= message.guild.me.roles.highest.position) return message.channel.send('I cannot add a role that is higher/equal to my role')
         
         schema.findOne({ Guild: message.guild.id }, async(err, data) => {
             if(err) throw err

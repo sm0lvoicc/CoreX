@@ -24,7 +24,7 @@ module.exports = {
             if(!member) {
                 member = message.guild.members.cache.get(args[0])
             }
-            if(!member) return message.reply('Please mention a member to mute.')
+            if(!member) return message.channel.send('Please mention a member to mute.')
 
             const muteReason = args.slice(1).join(" ") || "No reason specified."
 

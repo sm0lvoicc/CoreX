@@ -12,7 +12,7 @@ module.exports = {
 	 * @param {String[]} args
 	 */
 	run: async (client, message, args) => {
-		if(args < 1) return message.reply('Please add text to your bio')
+		if(args < 1) return message.channel.send('Please add text to your bio')
 		Schema.findOne({ User: message.author.id }, async (err, data) => {
 			if (data) data.delete();
 			new Schema({

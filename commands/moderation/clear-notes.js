@@ -19,7 +19,7 @@ module.exports = {
         if(!user) {
             user = message.guild.members.cache.get(args[0])
         }
-        if(!user) return message.reply('Please specify a user.')
+        if(!user) return message.channel.send('Please specify a user.')
 
         if(user.user.id === message.author.id) return message.channel.send('<:corexerror:860580531825147994> You cannot clear your own notes.')
 

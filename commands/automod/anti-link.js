@@ -21,12 +21,12 @@ module.exports = {
             'disable'
         ]
 
-        if (!args.length) return message.reply("Please enter either **enable** or **disable**")
+        if (!args.length) return message.channel.send("Please enter either **enable** or **disable**")
         const opt = args[0].toLowerCase()
-        if (!opt) return message.reply('Please enter either **enable** or **disable**')
+        if (!opt) return message.channel.send('Please enter either **enable** or **disable**')
 
 
-        if (!options.includes(opt)) return message.reply('Please enter either **enable** or **disable**')
+        if (!options.includes(opt)) return message.channel.send('Please enter either **enable** or **disable**')
 
         if(opt == 'enable') {
             const action = args[1]
@@ -36,7 +36,7 @@ module.exports = {
             .setDescription('**Kick**, **Ban**, **Delete**, **Warn**, **Mute**')
             )
 
-            if(!(["warn","mute", "delete" ,"kick","ban"]).includes(action.toLowerCase())) return message.reply(new MessageEmbed()
+            if(!(["warn","mute", "delete" ,"kick","ban"]).includes(action.toLowerCase())) return message.channel.send(new MessageEmbed()
             .setColor('RED')
             .setTitle('<:corexwarn:860597628882780200> Please specify a correct action')
             .setDescription('**Kick**, **Ban**, **Delete**, **Warn**, **Mute**')

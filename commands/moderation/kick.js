@@ -20,10 +20,10 @@ module.exports = {
                message.channel.send('Please mention a member to kick')
             }
     
-            if(member === message.guild.me) return message.reply('Are you seriously tryna kick me with my own command? You should be ashamed of yourself');
+            if(member === message.guild.me) return message.channel.send('Are you seriously tryna kick me with my own command? You should be ashamed of yourself');
     
-            if (message.member.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than you.');
-            if (message.guild.me.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than me.');
+            if (message.member.roles.highest.position < member.roles.highest.permission) return message.channel.send('The target has a higher position than you.');
+            if (message.guild.me.roles.highest.position < member.roles.highest.permission) return message.channel.send('The target has a higher position than me.');
     
     
             let kickReason = args.slice(1).join(' ');

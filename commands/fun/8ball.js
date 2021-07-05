@@ -5,7 +5,7 @@ module.exports = {
     description: 'Gives an answer to a provided question.',
     timeout: 4000,
     run: async(client, message, args) => {
-        if(!args[1]) return message.reply("Plesae enter a full question with 2 or more words!");
+        if(!args[1]) return message.channel.send("Plesae enter a full question with 2 or more words!");
         let replies = [
             "Yes", 
             "No", 

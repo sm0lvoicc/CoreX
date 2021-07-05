@@ -20,16 +20,16 @@ module.exports = {
             'disable'
         ]
 
-        if (!args.length) return message.reply("Please enter either **set** or **disable**")
+        if (!args.length) return message.channel.send("Please enter either **set** or **disable**")
         const opt = args[0].toLowerCase();
-        if (!opt) return message.reply('Please enter either **set** or **disable**')
+        if (!opt) return message.channel.send('Please enter either **set** or **disable**')
 
 
-        if (!options.includes(opt)) return message.reply('Please enter either **set** or **disable**')
+        if (!options.includes(opt)) return message.channel.send('Please enter either **set** or **disable**')
 
         if(opt === 'set') {
             const channel = await message.mentions.channels.first()
-            if(!channel) return message.reply('Please mention a channel to set as the member logs')
+            if(!channel) return message.channel.send('Please mention a channel to set as the member logs')
 
             schema.findOne({ Guild: message.guild.id }, async(err, data) => {
                 if(!data) {
@@ -38,7 +38,10 @@ module.exports = {
                         Channel: channel.id
                     })
                     newData.save()
-                    message.channel.send(`<:corexyes:860561725916053514> Member-logs is set to => ${channel}`)
+                    const embed = new MessageEmbed()
+                    .setColor('GREEN')
+                    .setDescription(`<:corexyes:860561725916053514> Member-logs is set to ${channel}`)
+                    message.channel.send(embed)
                 } else{
                     if(data) {
                         data.delete()
@@ -47,7 +50,10 @@ module.exports = {
                             Channel: channel.id
                         })
                         data.save()
-                        message.channel.send(`<:corexyes:860561725916053514> Member-logs is updated to => ${channel}`)
+                        const embed2 = new MessageEmbed()
+                        .setColor('GREEN')
+                        .setDescription(`<:corexyes:860561725916053514> Member-logs is set to ${channel}`)
+                        message.channel.send(embed2)
                 }
             }
         })
@@ -55,7 +61,7 @@ module.exports = {
 
     if(opt === 'disable') {
         schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-            if(!data) message.reply('<:corexerror:860580531825147994> The Member-logs is already disabled')
+            if(!data) message.channel.send('<:corexerror:860580531825147994> The Member-logs is already disabled')
             data.delete()
             message.channel.send('<:corexyes:860561725916053514> Member logging has been disabled')
         })

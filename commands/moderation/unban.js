@@ -24,7 +24,7 @@ module.exports = {
                 unBanReason = 'No reason specified'
             }
     
-            if(!userUnban) message.reply('Please specify a user id, to unban');
+            if(!userUnban) message.channel.send('Please specify a user id, to unban');
     
             const bannedMembers = await message.guild.fetchBans();
     

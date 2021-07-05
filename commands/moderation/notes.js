@@ -19,7 +19,7 @@ module.exports = {
         if(!user) {
             user = message.guild.members.cache.get(args[0])
         }
-        if(!user) return message.reply('Please specify a user.')
+        if(!user) return message.channel.send('Please specify a user.')
 
         db.findOne({ guildid: message.guild.id, user: user.user.id}, async(err, data) => {
             if(err) throw err;

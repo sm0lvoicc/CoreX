@@ -8,7 +8,7 @@ module.exports = {
   aliases: ['removerr', 'reaction-role-add'],
   usage: '<#channel> <message.id> <@role || role.id> <emoji>',
   run: async (client, message, args) => {
-    if (!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send(`You do not have the permission \`MANAGE_SERVER\``)
+    if (!message.member.hasPermission("MANAGE_GUILD")) return message.reply(`You do not have the permission \`MANAGE_SERVER\``)
     
     const channel = await message.mentions.channels.first() || message.guild.channels.cache.get(args[0])
     const msg1 = args[1]

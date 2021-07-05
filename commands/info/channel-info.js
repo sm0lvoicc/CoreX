@@ -19,8 +19,6 @@ module.exports = {
     run: async(client, message, args) => {
         let channel = message.mentions.channels.first() || message.channel;
 
-        if(!channel) return message.reply('Please provide a channel from this server!');
-
         const totalUsers = channel.members.size;
         const NFSW = {
             true: 'Yes',
