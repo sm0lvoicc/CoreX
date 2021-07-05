@@ -67,7 +67,7 @@ module.exports = {
 
         if(opt == 'display') {
             schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-                if(!data) return message.reply('<:corexerror:860580531825147994> There are no channels whitelisted')
+                if(!data) return message.channel.send('<:corexerror:860580531825147994> There are no channels whitelisted')
                 message.channel.send(
                     new MessageEmbed()
                     .setTitle(`<:corexinfo:860565886111580172> Whitelisted Channels`)
