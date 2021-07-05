@@ -16,28 +16,29 @@ module.exports = {
         if(!user) {
           user = message.author
         }
-        if(!user) return message.channel.send('Please mention a user.')
       
-      let status;
-      if (user.presence.activities.length === 1) status = user.presence.activities[0];
-      else if (user.presence.activities.length > 1) status = user.presence.activities[1];
-      
-      if (user.presence.activities.length === 0 || status.name !== "Spotify" && status.type !== "LISTENING") {
-        return message.channel.send("This user is not listening music");
-      }
-      
-      if (status !== null && status.type === "LISTENING" && status.name === "Spotify" && status.assets !== null) {
-        let image = `https://i.scdn.co/image/${status.assets.largeImage.slice(8)}`,
-            name = status.details,
-            artist = status.state,
-            album = status.assets.largeText;
-      
-      const card = new MessageEmbed()
-          .setTitle(name)
-          .setDescription(`**Album: ${album}\nAuthor: ${artist}\nStart: ${status.timestamps.start}\nEnd: ${status.timestamps.end}**`)
-          .setColor("BLURPLE")
-          .setThumbnail(image)
-      await message.channel.send(card)
-    }
+        user.presence.activities.forEach((activity) => {
+          if (activity.type === 'LISTENING' && activity.name === 'Spotify' && activity.assets !== null) {
+        
+                   let trackIMG = `https://i.scdn.co/image/${activity.assets.largeImage.slice(8)}`;
+                   let trackURL = `https://open.spotify.com/track/${activity.syncID}`;
+   
+                   let trackName = activity.details;
+                   let trackAuthor = activity.state;
+                   let trackAlbum = activity.assets.largeText;
+   
+                   trackAuthor = trackAuthor.replace(/;/g, ",")
+   
+                   const embed = new MessageEmbed()
+                     .setAuthor('Spotify Track Info', 'https://cdn.discordapp.com/emojis/408668371039682560.png')
+                     .setColor("BLURPLE")
+                     .setThumbnail(trackIMG)
+                     .addField('Song Name', `\`\`\`json\n"${trackName}"\n\`\`\``, true)
+                     .addField('Album', `\`\`\`json\n"${trackAlbum}"\n\`\`\``, true)
+                     .addField('Author', `\`\`\`json\n"${trackAuthor}"\n\`\`\``, true)
+                     .addField('Listen to Track', `${`\`\`\`json\n"${trackURL}"\n\`\`\``}`, false)
+                     .setFooter(user.displayName, user.user.displayAvatarURL({ dynamic: true }))
+                  message.channel.send(embed);
+               }})
 }
 }
