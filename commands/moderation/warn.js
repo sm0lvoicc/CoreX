@@ -7,8 +7,8 @@ module.exports = {
     usage: '<@user | user-id> [reason]',
     timeout: 4000,
     aliases: ['strike'],
-    userPerms: ['MANAGE_MEMBERS'],
-    clientPerms: ['MANAGE_MEMBERS'],
+    userPerms: ['MANAGE_GUILD'],
+    clientPerms: ['MANAGE_GUILD'],
     run: async(client, message, args) => {
 
         let user  = message.mentions.members.first()

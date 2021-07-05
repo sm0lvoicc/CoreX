@@ -6,8 +6,8 @@ module.exports = {
     description: 'Removes specified warn from the user.',
     timeout: 5000,
     usage: '<@user | user.id>',
-    userPerms: ['MANAGE_MEMBERS'],
-    clientPerms: ['MANAGE_MEMBERS'],
+    userPerms: ['MANAGE_GUILD'],
+    clientPerms: ['MANAGE_GUILD'],
     run: async(client, message, args) => {        
         let member = message.mentions.members.first()
 

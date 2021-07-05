@@ -8,8 +8,8 @@ module.exports = {
   aliases: ['anti-ping-set'],
   usage: '[add/remove/display]',
   primeOnly: true,
-  userPerms: ['MANAGE_MEMBERS'],
-  clientPerms: ['MANAGE_MEMBERS'],
+  userPerms: ['MANAGE_GUILD'],
+  clientPerms: ['MANAGE_GUILD'],
   run: async(client, message, args) => {    
     const query = args[0]
 

@@ -7,7 +7,7 @@ module.exports = {
     timeout: 8000,
     usage: '<@user | user.id>',
     aliases: [''],
-    userPerms: ['MANAGE_MEMBERS'],
+    userPerms: ['MANAGE_GUILD'],
     clientPerms: [''],
     /** 
      * @param {Client} client 
