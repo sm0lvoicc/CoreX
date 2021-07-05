@@ -47,7 +47,6 @@ module.exports = {
                 backup: '📇',
                 automod: '⚡',
                 alt: '<:corexglobe:861492964617879583>',
-                giveaway: '<:corexgift:861493588562673675>'
             }
 
             readdirSync("./commands/").forEach((dir) => {
