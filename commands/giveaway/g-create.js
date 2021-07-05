@@ -16,9 +16,8 @@ module.exports = {
      */
     run: async(client, message, args) => {
         try {
-
-        } catch(e){
             if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You do not have the permission \`MANAGE_SERVER\`')
+            
             const filter = m => m.author.id === message.author.id;
             const collector = message.channel.createMessageCollector(filter, { max: 7, time: 60 * 1000 });
             let step = 0;
@@ -118,6 +117,8 @@ module.exports = {
                 await message.channel.send('Created a giveaway!').then(m => setTimeout(() => m.delete(), 2000));
             }
         });
+
+        } catch(e){
             message.channel.send(`There has been an error, **${e}**`)
         }
     }
