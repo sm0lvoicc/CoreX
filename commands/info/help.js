@@ -46,7 +46,8 @@ module.exports = {
                 member_system: '<:corexmembers:860568826046840862>',
                 backup: '📇',
                 automod: '⚡',
-                alt: '<:corexglobe:860568508566994964>'
+                alt: '<:corexglobe:861492964617879583>',
+                giveaway: '<:corexgift:861493588562673675>'
             }
 
             readdirSync("./commands/").forEach((dir) => {
