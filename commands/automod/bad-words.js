@@ -62,13 +62,13 @@ module.exports = {
                 if(err) throw err;
                 if(!data) return message.channel.send('<:corexerror:860580531825147994> There are no blacklisted words')
                 if(!data.Words.includes(word)) return message.channel.send(`<:corexerror:860580531825147994> \`${word}\` is not a blacklisted word`)
-                const filtered = data.Words.filter(target => target !== word);
+                const filtered = data.Words.filter(target => target !== word2);
                 
                 await schema.findOneAndUpdate({ Guild: message.guild.id}, {
                     Guild: message.guild.id,
                     Words: filtered
                 })
-                message.channel.send(`<:corexyes:860561725916053514> Removed \`${word}\` from the blacklist`)
+                message.channel.send(`<:corexyes:860561725916053514> Removed \`${word2}\` from the blacklist`)
 
             })
         }
