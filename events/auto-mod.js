@@ -1185,9 +1185,8 @@ client.on('message', message => {
                 message.channel.send(`**${message.member.user.tag}** has been kicked for: \`${reason}\``).then(msg => msg.delete({ timeout: 6000}))
                 
             }else if(data.Action == 'delete') {
-                message.channel.send(`**${message.member.user.tag} no bad words are allowed`).then(msg => msg.delete({ timeout: 6000}))
                 message.delete()
-                message.channel.send(`${message.member} No Bad words allowed`).then(msg => msg.delete({ timeout: 6000}))              
+                message.channel.send(`**${message.member.user.tag} no bad words are allowed`).then(msg => msg.delete({ timeout: 6000}))
             }else if(data.Action == 'mute') {
                 message.delete()
                 muteSchema.findOne({ Guild: message.guild.id}, async(err, data2) => {
