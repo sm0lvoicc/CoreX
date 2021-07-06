@@ -6,7 +6,6 @@ module.exports = {
     description: 'Get instructions on how to obtain premium.',
     timeout: 1000,
     usage: '',
-    aliases: [''],
     userPerms: [''],
     clientPerms: [''],
     /** 

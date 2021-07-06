@@ -4,7 +4,6 @@ module.exports = {
     name: "invitelist",
     timeout: 1000,
     description: "Sends the top 10 inviters in the server",
-    aliases: [''],
     userPerms: ['MANAGE_GUILD'],
     clientPerms: [''],
     run: async(client, message) => {

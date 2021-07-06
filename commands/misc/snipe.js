@@ -6,7 +6,6 @@ module.exports = {
     description: 'Snipes a deleted message.',
     timeout: 7000,
     usage: '<No. of snipe/5>',
-    aliases: [''],
     userPerms: ['MANAGE_MESSAGES'],
     clientPerms: [''],
     /** 

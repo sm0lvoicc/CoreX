@@ -6,7 +6,6 @@ module.exports = {
     description: 'Enable/Disable Anti-link',
     timeout: 10000,
     usage: '<enable/disable> <Action>',
-    aliases: [''],
     userPerms: ['ADMINISTRATOR'],
     clientPerms: ['MANAGE_GUILD'],
     /** 

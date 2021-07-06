@@ -6,7 +6,6 @@ module.exports = {
     description: 'Mutes mentioned member',
     timeout: 6000,
     usage: '<@member || member.id> [reason]',
-    aliases: [''],
     userPerms: ['MANAGE_ROLES'],
     clientPerms: ['MANAGE_ROLES'],
     /** 

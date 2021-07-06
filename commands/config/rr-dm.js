@@ -6,7 +6,6 @@ module.exports = {
     description: 'Toggle DM reaction roles',
     timeout: 1000,
     usage: '<true/false>',
-    aliases: [''],
     primeOnly: true,
     userPerms: ['ADMINISTRATOR'],
     clientPerms: [''],

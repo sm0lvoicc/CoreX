@@ -6,7 +6,6 @@ module.exports = {
     description: 'Clears notes of a specified user.',
     timeout: 8000,
     usage: '<@user | user.id>',
-    aliases: [''],
     userPerms: ['MANAGE_GUILD'],
     clientPerms: [''],
     /** 

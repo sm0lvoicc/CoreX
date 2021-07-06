@@ -5,7 +5,6 @@ module.exports = {
     description: 'Locks down all the channels in your server.',
     timeout: 20000,
     usage: '<on/off>',
-    aliases: [''],
     userPerms: ['ADMINISTRATOR'],
     clientPerms: ['MANAGE_CHANNELS'],
     /** 

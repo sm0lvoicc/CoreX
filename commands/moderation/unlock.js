@@ -5,7 +5,6 @@ module.exports = {
     description: 'Unlocks a locked channel.',
     timeout: 5000,
     usage: '<#channel>',
-    aliases: [''],
     userPerms: ['ADMINISTRATOR'],
     clientPerms: ['MANAGE_CHANNELS'],
     /** 

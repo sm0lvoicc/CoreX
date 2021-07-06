@@ -4,7 +4,6 @@ const { MessageEmbed } = require('discord.js')
 module.exports = {
     name: 'suggest',
     description: 'Suggests something for the server',
-    aliases: [''],
     timeout: '10000',
     usage: '<text>',
     userPerms: [''],

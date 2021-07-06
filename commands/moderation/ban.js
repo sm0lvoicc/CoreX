@@ -5,7 +5,6 @@ module.exports = {
     description: 'Bans a specified member.',
     timeout: 10000,
     usage: '<@user | user.id> [reason]',
-    aliases: [''],
     userPerms: ['BAN_MEMBERS'],
     clientPerms: ['BAN_MEMBERS'],
     /** 

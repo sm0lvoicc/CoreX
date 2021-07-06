@@ -5,7 +5,6 @@ module.exports = {
     description: 'Shows the privacy policy',
     timeout: 1000,
     usage: '',
-    aliases: [''],
     userPerms: [''],
     clientPerms: [''],
     /** 

@@ -6,7 +6,6 @@ module.exports = {
     description: 'Sets/disables server logging.',
     timeout: 5000,
     usage: '<set/disable>',
-    aliases: [''], 
     userPerms: ['MANAGE_GUILD'],
     clientPerms: [''],
     /** 

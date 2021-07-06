@@ -6,7 +6,6 @@ module.exports = {
     description: 'Enables anti-spam in your server.',
     timeout: 10000,
     usage: '<enable/disable> <Action> <Messages>',
-    aliases: [''],
     userPerms: ['ADMINISTRATOR'],
     clientPerms: ['MANAGE_GUILD'],
     /** 

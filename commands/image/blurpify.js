@@ -6,7 +6,6 @@ module.exports = {
     description: 'Blurpify an avatar',
     timeout: 5000,
     usage: '[@user]',
-    aliases: [''],
     userPerms: [''],
     clientPerms: [''],
     /** 

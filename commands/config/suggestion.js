@@ -6,7 +6,6 @@ module.exports = {
     description: 'Sets/disables suggestion channel.',
     timeout: 5000,
     usage: '<set/disable>',
-    aliases: [''],
     userPerms: ['MANAGE_GUILD'],
     clientPerms: [''],
     /** 

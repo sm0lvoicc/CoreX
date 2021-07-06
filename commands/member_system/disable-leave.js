@@ -6,7 +6,6 @@ module.exports = {
     description: 'Disables the leave channel.',
     timeout: 6000,
     usage: '',
-    aliases: [''],
     userPerms: ['MANAGE_GUILD'],
     clientPerms: ['MANAGE_GUILD'],
     /** 
