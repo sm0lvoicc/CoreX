@@ -30,6 +30,10 @@ module.exports = {
             {
                 name: 'Tom.#6157',
                 value: 'He has helped grow CoreX and make it a better bot, also join his [Server](https://discord.gg/cCp7yGzvBG)'
+            },
+            {
+                name: 'Danu#4422',
+                value: "Graphics Designer for CoreX and an amazing person :), why don't you join his [Server](https://discord.gg/EgT7tTR6kx)"
             }
         )
         .setFooter('We love you 💖')
