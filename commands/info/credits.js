@@ -27,6 +27,10 @@ module.exports = {
                 name: 'Ultima#8878',
                 value: 'A team member in CoreX, he has helped fix bugs and make CoreX better, also you can join his [Server](https://discord.gg/8qPDvefgHz)'
             },
+            {
+                name: 'Tom.#6157',
+                value: 'He has helped grow CoreX and make it a better bot, also join his [Server](https://discord.gg/cCp7yGzvBG)'
+            }
         )
         .setFooter('We love you 💖')
         .setTimestamp()
