@@ -61,7 +61,7 @@ module.exports = {
             schema.findOne({ Guild: message.guild.id}, async(err, data) => {
                 if(err) throw err;
                 if(!data) return message.channel.send('<:corexerror:860580531825147994> There are no blacklisted words')
-                if(!data.Words.includes(word)) return message.channel.send(`<:corexerror:860580531825147994> \`${word}\` is not a blacklisted word`)
+                if(!data.Words.includes(word2)) return message.channel.send(`<:corexerror:860580531825147994> \`${word}\` is not a blacklisted word`)
                 const filtered = data.Words.filter(target => target !== word2);
                 
                 await schema.findOneAndUpdate({ Guild: message.guild.id}, {
