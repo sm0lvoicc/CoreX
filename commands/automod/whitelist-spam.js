@@ -7,6 +7,8 @@ module.exports = {
     timeout: 3000,
     usage: '<add/remove/dislay <#channel>',
     aliases: ['wl-spam'],
+    userPerms: ['ADMINISTRATOR'],
+    clientPerms: ['MANAGE_GUILD'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
