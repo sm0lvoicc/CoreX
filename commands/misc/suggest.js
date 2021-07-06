@@ -6,7 +6,7 @@ module.exports = {
     description: 'Suggests something for the server',
     timeout: '10000',
     usage: '<text>',
-    userPerms: [''],
+    userPerms: ['SEND_MESSAGES'],
     clientPerms: ['SEND_MESSAGES'],
     run: async(client, message, args) => {
 
