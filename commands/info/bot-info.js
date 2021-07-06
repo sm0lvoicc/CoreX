@@ -10,8 +10,8 @@ module.exports = {
     description: 'Gives the information of the bot',
     usage: '',
     timeout: 1000,
-    userPerms: [''],
-    clientPerms: [''],
+    userPerms: ['SEND_MESSAGES'],
+    clientPerms: ['SEND_MESSAGES'],
     run: async (client, message, args) => {
 
         let usersCount = 0;

@@ -6,8 +6,8 @@ module.exports = {
     description: 'Are you gay?',
     usage : '[@user]',
     aliases: ['gay', 'gae'],
-    userPerms: [''],
-    clientPerms: [''],
+    userPerms: ['SEND_MESSAGES'],
+    clientPerms: ['SEND_MESSAGES'],
     /**
      * 
      * @param {Client} client 

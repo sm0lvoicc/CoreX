@@ -5,8 +5,8 @@ module.exports = {
     name: "uptime",
     description: 'Shows the uptime of the bot.',
     timeout: 1000,
-    userPerms: [''],
-    clientPerms: [''],    
+    userPerms: ['SEND_MESSAGES'],
+    clientPerms: ['SEND_MESSAGES'],    
     run: async(Client, message, args) => {
             let days = Math.floor(Client.uptime / 86400000);
     let hours = Math.floor(Client.uptime / 3600000) % 24;

@@ -6,8 +6,8 @@ module.exports = {
     description: 'Translates any text to English.',
     usage: '<lang> <text>',
     timeout: 1000,
-    userPerms: [''],
-    clientPerms: [''],
+    userPerms: ['SEND_MESSAGES'],
+    clientPerms: ['SEND_MESSAGES'],
     /**
      * 
      * @param {Client} client 

@@ -8,8 +8,8 @@ module.exports = {
     primeOnly: true,
     aliases: ['custom-list'],
     usage: '',
-    userPerms: [''],
-    clientPerms: [''],
+    userPerms: ['SEND_MESSAGES'],
+    clientPerms: ['SEND_MESSAGES'],
     run: async(client, message, args) => {
         const data  = await schema.find({ Guild: message.guild.id });
         if(!!data === false) return message.channel.send('<:corexerror:860580531825147994> There are no custom commands!');

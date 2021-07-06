@@ -5,8 +5,8 @@ module.exports = {
     description: 'Shows info about a user.',
     timeout: 1000,
     aliases: ['user-info'],
-    userPerms: [''],
-    clientPerms: [''],
+    userPerms: ['SEND_MESSAGES'],
+    clientPerms: ['SEND_MESSAGES'],
     run: async (client, message, args) => {
         let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
 

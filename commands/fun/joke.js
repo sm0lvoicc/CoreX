@@ -5,8 +5,8 @@ module.exports = {
     name: 'joke',
     timeout: 1000 * 5,
     description: 'Sends you a random joke.',
-    userPerms: [''],
-    clientPerms: [''],
+    userPerms: ['SEND_MESSAGES'],
+    clientPerms: ['SEND_MESSAGES'],
     run: async(client, message, args) => {
         
         giveMeAJoke.getRandomDadJoke(function(joke){

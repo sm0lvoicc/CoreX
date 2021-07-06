@@ -6,8 +6,8 @@ module.exports = {
     description: 'Sends you support.',
     aliases: ['support-server'],
     timeout: 1000,
-    userPerms: [''],
-    clientPerms: [''],
+    userPerms: ['SEND_MESSAGES'],
+    clientPerms: ['SEND_MESSAGES'],
     run: async(client, message, args) => {
         const supportEmbed = new MessageEmbed()
         .setColor('BLUE')

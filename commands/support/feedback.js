@@ -5,8 +5,8 @@ module.exports = {
     description: 'Sends bug report to the developers.',
     usage: '<text>',
     timeout: 1000,
-    userPerms: [''],
-    clientPerms: [''],
+    userPerms: ['SEND_MESSAGES'],
+    clientPerms: ['SEND_MESSAGES'],
     run: async(client, message, args) => {
 
         const embed = new MessageEmbed()

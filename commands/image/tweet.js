@@ -8,8 +8,8 @@ module.exports = {
     description: 'Sends a tweet comment with the provided text',
     usage: '<text>',
     aliases: ['biden'],
-    userPerms: [''],
-    clientPerms: [''],
+    userPerms: ['SEND_MESSAGES'],
+    clientPerms: ['SEND_MESSAGES'],
     /** 
      * @param {Client} client 
      * @param {Message} message 

@@ -6,8 +6,8 @@ module.exports = {
     usage: '[@user]',
     description: 'Da PeePee machine does not lie',
     aliases: ['peepee', 'penis'],
-    userPerms: [''],
-    clientPerms: [''],
+    userPerms: ['SEND_MESSAGES'],
+    clientPerms: ['SEND_MESSAGES'],
     run: async(client, message, args) => {
         const { Client, Message, MessageEmbed } = require('discord.js')
 

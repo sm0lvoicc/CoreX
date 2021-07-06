@@ -6,8 +6,8 @@ module.exports = {
     usage: '<time> <reason>',
     aliases: ['remindme', 'remind'],
     description: 'Sends a reminder after a given period of time.',
-    userPerms: [''],
-    clientPerms: [''],
+    userPerms: ['SEND_MESSAGES'],
+    clientPerms: ['SEND_MESSAGES'],
     /** 
      * @param {Client} client 
      * @param {Message} message 

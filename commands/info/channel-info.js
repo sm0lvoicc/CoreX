@@ -16,8 +16,8 @@ module.exports = {
     usage: '[#channel]',
     aliases: ['channelinfo', 'chinfo'],
     timeout: 1000,
-    userPerms: [''],
-    clientPerms: [''],
+    userPerms: ['SEND_MESSAGES'],
+    clientPerms: ['SEND_MESSAGES'],
     run: async(client, message, args) => {
         let channel = message.mentions.channels.first() || message.channel;
 

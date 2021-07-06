@@ -6,8 +6,8 @@ module.exports = {
     description: 'Blurpify an avatar',
     timeout: 5000,
     usage: '[@user]',
-    userPerms: [''],
-    clientPerms: [''],
+    userPerms: ['SEND_MESSAGES'],
+    clientPerms: ['SEND_MESSAGES'],
     /** 
      * @param {Client} client 
      * @param {Message} message 

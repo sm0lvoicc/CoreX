@@ -5,8 +5,8 @@ module.exports = {
     description: 'Shows the privacy policy',
     timeout: 1000,
     usage: '',
-    userPerms: [''],
-    clientPerms: [''],
+    userPerms: ['SEND_MESSAGES'],
+    clientPerms: ['SEND_MESSAGES'],
     /** 
      * @param {Client} client 
      * @param {Message} message 

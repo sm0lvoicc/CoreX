@@ -5,8 +5,8 @@ module.exports = {
     name: 'server-info',
     description: "sends server info",
     timeout: 1000,
-    userPerms: [''],
-    clientPerms: [''],
+    userPerms: ['SEND_MESSAGES'],
+    clientPerms: ['SEND_MESSAGES'],
     /**
      * @param {Client} client
      * @param {Message} message
