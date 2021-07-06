@@ -4,7 +4,7 @@ module.exports = {
     usage: "<user> <message>",
     timeout: 5000,
     userPerms: [''],
-    clientPerms: [''],
+    clientPerms: ['MANAGE_WEBHOOKS'],
     run: async (client, message, args) => {
       message.delete();
       let user =

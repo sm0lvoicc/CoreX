@@ -6,7 +6,6 @@ module.exports = {
     description: 'set/disable anti-alt',
     timeout: 3000,
     usage: '<set> <days> <avatar: true or false> || <disable>',
-    aliases: [''],
     userPerms: ['ADMINISTRATOR'],
     clientPerms: ['KICK_MEMBERS'],
     /** 
