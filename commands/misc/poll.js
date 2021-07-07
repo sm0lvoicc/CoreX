@@ -16,7 +16,7 @@ module.exports = {
 		}
 
 		message.channel
-			.send(`${emoji.inbox} A poll has been started by **${member.user.tag}**\n\`\`\`${msgArgs}\`\`\``)
+			.send(`${emoji.inbox} A poll has been started by **${message.member.user.tag}**\n\`\`\`${msgArgs}\`\`\``)
 			.then((messageReaction) => {
 				messageReaction.react(emoji.success), messageReaction.react(emoji.error)
 			})
