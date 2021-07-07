@@ -39,7 +39,7 @@ module.exports = {
             const emo = {
                 info: emoji.info,
                 utility: emoji.pen,
-                fun: emoji.search,
+                fun: emoji.console,
                 moderation: emoji.ban,
                 misc: emoji.globe,
                 support: emoji.question,
@@ -47,7 +47,7 @@ module.exports = {
                 config: emoji.settings,
                 logging: emoji.inbox,
                 member_system: emoji.member,
-                backup: emoji.slash,
+                backup: emoji.cloud,
                 automod: emoji.spark,
                 alt: emoji.kick,
             }
