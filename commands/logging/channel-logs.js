@@ -46,7 +46,7 @@ module.exports = {
                 } else{
                     if(data) {
                         data.delete()
-                        new schema({
+                        data = new schema({
                             Guild: message.guild.id,
                             Channel: channel.id
                         })
