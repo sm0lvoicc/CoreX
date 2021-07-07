@@ -1,6 +1,8 @@
 const client = require('../index')
 const { prefix } = require('../config.json')
-
+const emoji = require(`.././emoji.json`)
+const moment = require('moment');
+const Discord = require(`discord.js`)
 client.on('ready', async() => {
     const ArrayStatus = [
         `${client.guilds.cache.size} amazing servers`,
@@ -27,6 +29,17 @@ client.on('ready', async() => {
     usersCount += (await guild[1].members.fetch()).size
     }
     await console.log(`${client.user.tag} is now connected to Discord, Cached ${usersCount} Users`);
+
+
+
+    const channel = client.channels.cache.get(`862315521168506920`)
+    const time = moment().format("dddd, MMMM Do YYYY, h:mm:ss a"); 
+    const text = `${emoji.active} **${client.user.tag}** is now online \n \n ${emoji.success} **${time}** \n \n ${emoji.member} **Cached ${usersCount} Users**`
+
+    const embed = new Discord.MessageEmbed()
+    .setDescription(text)
+    .setColor(`GREEN`)
+    channel.send(embed)
 
 
 })
