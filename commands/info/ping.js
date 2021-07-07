@@ -17,9 +17,11 @@ module.exports = {
    */
   run: async (client, message, args) => {
     var ping = Math.round(client.ws.ping)
+    var apiPing = Date.now() - message.createdTimestamp;
+
         const embedPing = new MessageEmbed() 
         .setColor('RANDOM')
-        .setDescription(`${emoji.loading} Latency: **${ping}**ms \nAPI Latency: **${Math.round(client.ws.ping)}**ms`);
+        .setDescription(`${emoji.loading} Latency: **${ping}**ms \nAPI Latency: **${apiping}**ms`);
 
         message.channel.send(embedPing);
     }
