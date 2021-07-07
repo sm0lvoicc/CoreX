@@ -12,11 +12,7 @@ client.on('ready', () => {
         if(err) throw err;
         const channel = client.channels.cache.get(data.Channel)
         if(!channel || channel.available) return;
-    })
-
-
  setInterval(async() => {
-	if (!channel) return console.log('No meme channel was found');
         const Reds = [
             "memes",
             "meme",
@@ -45,4 +41,7 @@ client.on('ready', () => {
       await channel.send(Embed).catch(console.error)
 
     }, 900000) //sends every 15 mins
+    })
+
+
 })
