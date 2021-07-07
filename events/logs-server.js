@@ -33,7 +33,7 @@ client.on('guildUpdate', async(oldGuild, newGuild) => {
             .setAuthor('SERVER UPDATE - DESCRIPTION', client.user.displayAvatarURL())
             .addField('Old Server description', `\`\`\`${oldGuild.description}\`\`\``)
             .addField('New Server description', `\`\`\`${newGuild.description}\`\`\``)
-            .setFooter(`Server ID: ${newGuid.id}`)
+            .setFooter(`Server ID: ${newGuild.id}`)
 
             channel.send(descChange)
 
