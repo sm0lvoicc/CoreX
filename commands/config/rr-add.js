@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js')
 const schema = require('../../models/reaction-roles')
-const emoji = require('../../emoji.json')
+const emojis = require('../../emoji.json')
 
 module.exports = {
   name: 'rr-add',
@@ -23,19 +23,19 @@ module.exports = {
     if (!role) return message.channel.send(`You must provide role to add`)
     if (!emoji) return message.channel.send(`You must provide emoji`)
 
-    if(role.position >= message.guild.me.roles.highest.position) return message.channel.send(`${emoji.error} I cannot add a role that is higher/equal to my role`)
+    if(role.position >= message.guild.me.roles.highest.position) return message.channel.send(`${emojis.error} I cannot add a role that is higher/equal to my role`)
 
     
     function isCustomEmoji(emoji) {
       return emoji.split(":").length == 1 ? false : true
     }
     
-    if (isCustomEmoji(emoji)) return message.channel.send(`${emoji.error} I currently do not support custom emojis.`)
+    if (isCustomEmoji(emoji)) return message.channel.send(`${emojis.error} I currently do not support custom emojis.`)
     
     try {
     let msg = await channel.messages.fetch(msg1)
     }catch(err) {
-      return message.channel.send(`${emoji.error} I can't find the Message ID \`${msg1}\` in ${channel}`)
+      return message.channel.send(`${emojis.error} I can't find the Message ID \`${msg1}\` in ${channel}`)
     }
    
     let msg = await channel.messages.fetch(msg1)
@@ -46,12 +46,12 @@ module.exports = {
       Message: msg.id,
       Emoji: emoji
     }, async (err, data) => {
-      if (data) return message.channel.send(`${emoji.error} This Reaction Roles already existes`);
+      if (data) return message.channel.send(`${emojis.error} This Reaction Roles already existes`);
       
       try {
       await msg.react(emoji)
       }catch(err) {
-        return message.channel.send(`${emoji.error} Please provide valid emoji`)
+        return message.channel.send(`${emojis.error} Please provide valid emoji`)
       }
 
       new schema({
@@ -63,14 +63,14 @@ module.exports = {
       }).save()
 
       message.channel.send(new MessageEmbed()
-      .setTitle(`${emoji.success} Reaction Roles Added`)
-      .addField(`${emoji.mention} Role`, role, true)
-      .addField(`${emoji.channel} Channel`, channel , true)
-      .addField(`${emoji.message} Message`, msg.id , true)
-      .addField(`${emoji.inbox} Emoji`, emoji, true)
+      .setTitle(`${emojis.success} Reaction Roles Added`)
+      .addField(`${emojis.mention} Role`, role, true)
+      .addField(`${emojis.channel} Channel`, channel , true)
+      .addField(`${emojis.message} Message`, msg.id , true)
+      .addField(`${emojis.inbox} Emoji`, emoji, true)
       .setColor("BLURPLE")
       .setTimestamp()
-      .addField(`${emoji.link} Link`, `[Jump](https://discord.com/channels/${message.guild.id}/${channel.id}/${msg.id})`))
+      .addField(`${emojis.link} Link`, `[Jump](https://discord.com/channels/${message.guild.id}/${channel.id}/${msg.id})`))
     })
   }
 }
