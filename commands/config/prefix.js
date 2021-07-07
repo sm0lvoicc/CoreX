@@ -6,7 +6,7 @@ module.exports = {
     description: 'Changes the bot prefix.',
     timeout: 7000,
     usage: '<prefix>',
-    userPerms: [''],
+    userPerms: ['MANAGE_GUILD'],
     clientPerms: ['MANAGE_GUILD'],
     /**
      * @param {Message} message

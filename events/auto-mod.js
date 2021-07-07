@@ -1036,9 +1036,8 @@ client.on('message', message => {
                 message.channel.send(`**${message.member.user.tag}** has been kicked for: \`${reason}\``).then(msg => msg.delete({ timeout: 6000}))
                 
             }else if(data.Action == 'delete') {
-                message.channel.send(`**${message.member.user.tag} no bad words are allowed`).then(msg => msg.delete({ timeout: 6000}))
                 message.delete()
-                message.channel.send(`${message.member} No Bad words allowed`).then(msg => msg.delete({ timeout: 6000}))              
+                message.channel.send(`${message.member} no bad words are allowed`).then(msg => msg.delete({ timeout: 6000}))
             }else if(data.Action == 'mute') {
                 message.delete()
                 muteSchema.findOne({ Guild: message.guild.id}, async(err, data2) => {
@@ -1106,7 +1105,7 @@ client.on('message', message => {
                     }
                     dataWarn.save()
 
-                    message.channel.send(`**${message.member}** has been warned for: \`${reason}\`, ID: \`${random}\``).then(msg => msg.delete({ timeout: 6000}))
+                    message.channel.send(`${message.member} has been warned for: \`${reason}\`, ID: \`${random}\``).then(msg => msg.delete({ timeout: 6000}))
                     const dmWordWarn = new MessageEmbed()
                     .setTitle("Warned!")
                     .setDescription(`You have been Warned in **${message.guild}**!`)
@@ -1186,7 +1185,7 @@ client.on('message', message => {
                 
             }else if(data.Action == 'delete') {
                 message.delete()
-                message.channel.send(`**${message.member.user.tag} no bad words are allowed`).then(msg => msg.delete({ timeout: 6000}))
+                message.channel.send(`${message.member} no bad words are allowed`).then(msg => msg.delete({ timeout: 6000}))
             }else if(data.Action == 'mute') {
                 message.delete()
                 muteSchema.findOne({ Guild: message.guild.id}, async(err, data2) => {

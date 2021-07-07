@@ -8,7 +8,7 @@ module.exports = {
     timeout: 5000,
     usage: '<set/disable>',
     userPerms: ['MANAGE_GUILD'],
-    clientPerms: [''],
+    clientPerms: ['SEND_MESSAGES'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
