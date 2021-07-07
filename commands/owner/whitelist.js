@@ -1,5 +1,6 @@
 const blacklist = require('../../models/blacklist')
 const { Message } = require('discord.js')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name : 'whitelist',
@@ -21,9 +22,9 @@ module.exports = {
                 if(data) {
                    await blacklist.findOneAndDelete({ id : user.id })
                     .catch(err => console.log(err))
-                    message.channel.send(`<:corexyes:860561725916053514> **${user.tag}** has been removed from blacklist.`)
+                    message.channel.send(`${emoji.success} **${user.tag}** has been removed from blacklist.`)
                 } else {
-                   message.channel.send(`<:corexerror:860580531825147994> **${user.tag}** is not blacklisted.`)
+                   message.channel.send(`${emoji.error} **${user.tag}** is not blacklisted.`)
                 }
                
             })

@@ -36,6 +36,7 @@ module.exports = {
 				}
 			})
 			message.channel.send(new MessageEmbed()
+			.setColor('BLURPLE')
 			.setDescription(`${emoji.success} Reloaded all the commands`)
 			)
 		})
