@@ -3,12 +3,12 @@ module.exports = {
     timeout: 1000,
     hidden: true,
     run: async(bot, message, args) => {
-        let array = ['538668078012039168', '451202806653648936']
-  
-        if(!array.includes(message.author.id.toString())) {
-          return;
-        }
-
+        if (
+            !require("../../config.json").owners.includes(
+              message.author.id
+            )
+          )
+            return;
     if (!args[0]) return message.channel.send("Enter Guild Name or Guild ID of where you want Invite Link.")
 
     if(args[0]){

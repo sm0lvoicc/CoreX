@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'cat-fact',
@@ -19,6 +20,6 @@ module.exports = {
       .then((res) => res.json())
       .then(({ fact }) => fact);
 
-        return message.channel.send(`<:corexsearch:860609884924149801> **Catfact:** *${fact}*`);
+        return message.channel.send(`${emoji.search} **Catfact:** *${fact}*`);
     }
 }

@@ -1,4 +1,5 @@
 const { Client, Message, MessageEmbed } = require('discord.js')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'kick',
@@ -21,8 +22,8 @@ module.exports = {
     
             if(member === message.guild.me) return message.channel.send('Are you seriously tryna kick me with my own command? You should be ashamed of yourself');
     
-            if (message.member.roles.highest.position < member.roles.highest.permission) return message.channel.send('The target has a higher position than you.');
-            if (message.guild.me.roles.highest.position < member.roles.highest.permission) return message.channel.send('The target has a higher position than me.');
+            if (message.member.roles.highest.position < member.roles.highest.permission) return message.channel.send(`${emoji.error} The target has a higher position than you.`);
+            if (message.guild.me.roles.highest.position < member.roles.highest.permission) return message.channel.send(`${emoji.error} The target has a higher position than me.`);
     
     
             let kickReason = args.slice(1).join(' ');
@@ -48,7 +49,7 @@ module.exports = {
     
             message.channel.send(new MessageEmbed()
             .setColor('RED')
-            .setDescription(`<:corexyes:860561725916053514> ${member} was kicked by ${message.author} for: \`${kickReason}\``)
+            .setDescription(`${emoji.success} ${member} was kicked by ${message.author} for: \`${kickReason}\``)
             )
     
             client.modlogs ({

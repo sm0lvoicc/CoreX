@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const schema = require('../../models/suggestions')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'suggestion',
@@ -38,7 +39,8 @@ module.exports = {
                         Channel: channel.id
                     })
                     newData.save()
-                    message.channel.send(`<:corexyes:860561725916053514> Suggestion channel is set to => ${channel}`)
+                    message.channel.send(new MessageEmbed()
+                    .setDescription(`${emoji.success} Suggestion channel is set to ${channel}`))
                 } else{
                     if(data) {
                         new schema({
@@ -46,7 +48,8 @@ module.exports = {
                             Channel: channel.id
                         })
                         data.save()
-                        message.channel.send(`<:corexyes:860561725916053514> Suggestion channel is updated to => ${channel}`)
+                        message.channel.send(new MessageEmbed()
+                        .setDescription(`${emoji.success} Suggestion channel has been updated to ${channel}`))
                 }
             }
         })
@@ -54,9 +57,9 @@ module.exports = {
 
     if(opt === 'disable') {
         schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-            if(!data) message.channel.send('<:corexerror:860580531825147994> The Channel-logs is already disabled')
+            if(!data) message.channel.send(`${emoji.error} Suggestion Module is already disabled`)
             data.delete()
-            message.channel.send('<:corexyes:860561725916053514> Channel logging has been disabled')
+            message.channel.send(`${emoji.success} The Suggestion Module has been disabled`)
         })
     }
 

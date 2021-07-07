@@ -1,5 +1,6 @@
   
 const { MessageEmbed } = require('discord.js')
+const emoji = require(`../../emoji.json`)
 
 module.exports = {
   name: 'create-invite',
@@ -18,7 +19,7 @@ module.exports = {
         reason: `Created by: ${message.author.tag}`,
       })
       await message.channel.send(new MessageEmbed()
-        .setTitle(`<:corexinvite:860570964311932979> Created Invite`)
+        .setTitle(`${emoji.invite} Created Invite`)
         .setDescription(`Invite: https://discord.gg/${invite.code}\n\nTemporary: \`false\`\nExpires: \`No Expiry\`\nMaximum Users: \`100 users\``)
         .setColor("BLUE")
       )

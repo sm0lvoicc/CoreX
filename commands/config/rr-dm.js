@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const schema = require('../../models/reaction-roles')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'rr-dm',
@@ -29,17 +30,17 @@ module.exports = {
 
         if(opt == 'false') {
             await schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-                if(data.DM == false) return message.channel.send('<:corexerror:860580531825147994> Reaction DMs is already turned off')
+                if(data.DM == false) return message.channel.send(`${emoji.error} Reaction DMs is already turned off`)
                 data.DM = false 
-                message.channel.send('<:corexyes:860561725916053514> Reaction DMs have been disabled')
+                message.channel.send(`${emoji.success} Reaction DMs have been disabled`)
             })
         }
 
         if(opt == 'true') {
             await schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-                if(data.DM == true) return message.channel.send('<:corexerror:860580531825147994> Reaction DMs is already turned on')
+                if(data.DM == true) return message.channel.send(`${emoji.error} Reaction DMs is already turned on`)
                 data.DM = true 
-                message.channel.send('<:corexyes:860561725916053514> Reaction DMs have been enabled')
+                message.channel.send(`${emoji.success} Reaction DMs have been enabled`)
             })
         }
     }

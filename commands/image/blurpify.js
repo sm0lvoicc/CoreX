@@ -21,7 +21,7 @@ module.exports = {
         }
 
         const url = await fetch(
-            `https://nekobot.xyz/api/imagegen?type=blurpify&image=${user.displayAvatarURL({ size: 512 })}`
+            `https://nekobot.xyz/api/imagegen?type=blurpify&image=${user.user.displayAvatarURL({ size: 512 })}`
           ).then((res) => res.json());
 
         message.channel.send(new MessageEmbed().setColor('BLURPLE').setImage(url.message));

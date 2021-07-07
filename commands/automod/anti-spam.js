@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed, MessageFlags } = require('discord.js');
 const schema = require('../../models/anti-spam')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'anti-spam',
@@ -33,14 +34,13 @@ module.exports = {
 
             if(!action) return message.channel.send(new MessageEmbed()
             .setColor('RED')
-            .setTitle('<:corexwarn:860597628882780200> Please specify an Action.')
-            .setDescription('**Kick**, **Ban**, **Warn**, **Mute**')
-            )
+            .setTitle(`${emoji.error} Please specify an Action.`)
+            .setDescription('**Kick**, **Ban**, **Delete**, **Warn**, **Mute**'))
 
             if(!(["warn","mute","kick","ban"]).includes(action.toLowerCase())) return message.channel.send(new MessageEmbed()
             .setColor('RED')
-            .setTitle('<:corexwarn:860597628882780200> Please specify a correct action')
-            .setDescription('**Kick**, **Ban**, **Warn**, **Mute**')
+            .setTitle(`${emoji.error} Please specify a correct Action.`)
+            .setDescription('**Kick**, **Ban**, **Delete**, **Warn**, **Mute**')
             )
 
             if(messages <= 2) return message.channel.send('Messages cannot be less than or equal to 2 messages')
@@ -55,15 +55,15 @@ module.exports = {
 
             message.channel.send(new MessageEmbed()
             .setColor('GREEN')
-            .setDescription(`<:corexwarn:860597628882780200> Anti-Spam has been set to **${messages}** messages and with an Action: **${action}**`)
+            .setDescription(`${emoji.error} Anti-Spam has been set to **${messages}** messages and with an Action: **${action}**`)
             )
         }
 
         if(opt === 'disable') {
             schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-                if(!data) return message.channel.send('<:corexerror:860580531825147994> The anti-spam module is already disabled')
+                if(!data) return message.channel.send(`${emoji.error} Anti-Spam module is already disabled`)
                 data.delete() 
-                message.channel.send('<:corexyes:860561725916053514> The anti-spam module has been disabled')
+                message.channel.send(`${emoji.success} Anti-Spam module has been disabled`)
             })
         }
     }

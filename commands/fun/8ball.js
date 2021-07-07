@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: '8ball',
@@ -7,7 +8,7 @@ module.exports = {
     userPerms: ['SEND_MESSAGES'],
     clientPerms: ['SEND_MESSAGES'],
     run: async(client, message, args) => {
-        if(!args[1]) return message.channel.send("Plesae enter a full question with 2 or more words!");
+        if(!args[1]) return message.channel.send(`${emoji.error} Please enter a full question with 2 or more words!`);
         let replies = [
             "Yes", 
             "No", 

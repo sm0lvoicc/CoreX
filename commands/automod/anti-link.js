@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const schema = require('../../models/anti-link')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'anti-link',
@@ -30,13 +31,13 @@ module.exports = {
             const action = args[1]
             if(!action) return message.reply(new MessageEmbed()
             .setColor('RED')
-            .setTitle('<:corexwarn:860597628882780200> Please specify an Action.')
+            .setTitle(`${emoji.error} Please specify an Action.`)
             .setDescription('**Kick**, **Ban**, **Delete**, **Warn**, **Mute**')
             )
 
             if(!(["warn","mute", "delete" ,"kick","ban"]).includes(action.toLowerCase())) return message.channel.send(new MessageEmbed()
             .setColor('RED')
-            .setTitle('<:corexwarn:860597628882780200> Please specify a correct action')
+            .setTitle(`${emoji.error} Please specify a correct Action.`)
             .setDescription('**Kick**, **Ban**, **Delete**, **Warn**, **Mute**')
             )
 
@@ -49,14 +50,14 @@ module.exports = {
                 newData.save()
                 message.channel.send(new MessageEmbed()
                 .setColor('GREEN')
-                .setDescription(`<:corexyes:860561725916053514> Anti-link has been set with Action: **${action}**`))
+                .setDescription(`${emoji.success} Anti-link has been set with Action: **${action}**`))
             })
         }
         if(opt == 'disable') {
             schema.findOne({Guild: message.guild.id}, async(err, data) => {
-                if(!data) return message.reply('<:corexerror:860580531825147994> Anti-link is already disabled')
+                if(!data) return message.channel.send(`${emoji.successs} Anti-link is already disabled`)
                 data.delete()
-                message.reply('<:corexyes:860561725916053514> Anti-Link has been disabled')
+                message.channel.send(`${emoji.success} Anti-Link has been disabled`)
             })
         }
     }

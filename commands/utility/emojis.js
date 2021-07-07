@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+const emoji = require(`../../emoji.json`)
 
 module.exports = {
     name: "emojis",
@@ -28,7 +29,7 @@ module.exports = {
       }
     });
     let Embed = new MessageEmbed()
-      .setTitle(`<:corexinbox:860563596818513920> Emojis in ${message.guild.name} | Emojis [${OverallEmojis}] `)
+      .setTitle(`${emoji.inbox} Emojis in ${message.guild.name} | Emojis [${OverallEmojis}] `)
       .setDescription(
         `**Animated [${Animated}]**:\n${EmojisAnimated}\n\n**Standard [${EmojiCount}]**:\n${Emojis}`
       )

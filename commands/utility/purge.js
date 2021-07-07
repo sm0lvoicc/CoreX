@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+const emoji = require("../../emoji.json")
 
 module.exports = {
     name: 'purge', 
@@ -16,7 +17,7 @@ module.exports = {
             .catch(err => console.log(err))
         message.channel.send(new MessageEmbed()
         .setColor('RANDOM')
-        .setDescription(`<:corexyes:860561725916053514> Deleted \`${amount}\` message(s)`)
+        .setDescription(`${emoji.success} Deleted \`${amount}\` message(s)`)
         .setTimestamp()
         ).then(msg => msg.delete({ timeout: 5000 }))
 

@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-
+const emoji = require(`../../emoji.json`)
 module.exports = {
     name: 'nuke',
     description: 'Nukes a channnel and clones it.',
@@ -14,7 +14,7 @@ module.exports = {
             message.channel.clone({ position: message.channel.rawPosition }).then((ch) => {
               ch.send(new Discord.MessageEmbed()
               .setColor('BLUE')
-              .setDescription(`<:corexyes:860561725916053514> Channel nuked by ${message.author}`)
+              .setDescription(`${emoji.success} Channel nuked by ${message.author}`)
               .setImage('https://i.pinimg.com/originals/06/c3/92/06c392b847166a9a671bfcd590d8fff7.gif')
               .setTimestamp()
               )
@@ -24,7 +24,7 @@ module.exports = {
             message.channel.clone({ parent: message.channel.parentID, position: message.channel.rawPosition }).then((ch) => {
               ch.send(new Discord.MessageEmbed()
               .setColor('BLUE')
-              .setDescription(`<:corexyes:860561725916053514> Channel nuked by ${message.author}`)
+              .setDescription(`${emoji.success} Channel nuked by ${message.author}`)
               .setImage('https://i.pinimg.com/originals/06/c3/92/06c392b847166a9a671bfcd590d8fff7.gif')
               .setTimestamp()
               )

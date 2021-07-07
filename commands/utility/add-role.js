@@ -1,4 +1,5 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
+const emoji = require(`../../emoji.json`)
 
 module.exports = {
     name: "add-role",
@@ -26,7 +27,7 @@ module.exports = {
         
         const rname = message.content.split(' ').splice(2).join(' ');
         const role = message.guild.roles.cache.find(val => val.name === rname);
-        if (!role) return message.channel.send(`<:corexerror:860580531825147994> ${rname} isn't a role on this server!`);
+        if (!role) return message.channel.send(`${emoji.error} ${rname} isn't a role on this server!`);
         
         const botRolePosition = message.guild.member(client.user).roles.highest.position;
         const rolePosition = role.position;
@@ -38,13 +39,13 @@ module.exports = {
         if(botRolePosition < member.roles.highest.position) message.channel.send('The target has a higher position than me.')
         
         member.roles.add(role).catch(e => {
-            return message.channel.send(`<:corexerror:860580531825147994> **Error:**\n${e}`);
+            return message.channel.send(`${emoji.error} **Error:**\n${e}`);
         });
         
         const be = new MessageEmbed()
             .setColor('GREEN')
             .setTitle('Role Added!')
-            .setDescription(`<:corexyes:860561725916053514> **${message.author}**, I've added the **${rname}** role to **${member.user.tag}**`);
+            .setDescription(`${emoji.success} **${message.author}**, I've added the **${rname}** role to **${member.user.tag}**`);
         message.channel.send(be);
         } catch(e) {
             message.channel.send(`There has been an error, **${e}**`)

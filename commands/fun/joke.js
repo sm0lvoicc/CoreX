@@ -11,7 +11,7 @@ module.exports = {
         
         giveMeAJoke.getRandomDadJoke(function(joke){
             message.channel.send(new MessageEmbed()
-            .setColor('RANDOM')
+            .setColor('BLURPLE')
             .setDescription(joke)
             )
         })

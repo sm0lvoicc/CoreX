@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const db = require('../../models/notes')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'note',
@@ -63,6 +64,6 @@ module.exports = {
             data.save()
         });
 
-        message.channel.send(new MessageEmbed().setColor('GREEN').setDescription(`<:corexyes:860561725916053514> Added a note to **${user.user.username}**`).setTimestamp())
+        message.channel.send(new MessageEmbed().setColor('GREEN').setDescription(`${emoji.success} Added a note to **${user.user.username}**`).setTimestamp())
     }
 }

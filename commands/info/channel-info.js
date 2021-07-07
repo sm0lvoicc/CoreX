@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const moment = require('moment')
+const emoji = require('../../emoji.json')
 
 const types = {
     dm: 'DM',
@@ -28,13 +29,13 @@ module.exports = {
         }
 
         const embed = new MessageEmbed()
-        .setTitle('<:corexinfo:860565886111580172> Channel Info!!')
-        .addField('<:corexchat:860569658657865728> Name', channel, true)
-        .addField('<:corexchannel:860560876792840202> ID', `\`${channel.id}\``, true)
-        .addField('<:corexfilter:860582132702904320> Type', types[channel.type], true)
-        .addField('<:corexmembers:860568826046840862> Total Users', `\`${totalUsers}\``, true)
-        .addField('<:corexinbox:860563596818513920> Creation Date', `\`${moment(channel.createdAt).format('DD/MMM/YYYY')}\``, true)
-        .addField('<:corexnsfw:860582526556045332> NSFW ', `\`${NFSW[channel.nsfw]}\``, true)
+        .setTitle(`${emoji.info} Channel Info!!`)
+        .addField(`${emoji.channel} Name`, channel, true)
+        .addField(`${emoji.id} ID`, `\`${channel.id}\``, true)
+        .addField(`${emoji.question} Type`, types[channel.type], true)
+        .addField(`${emoji.member} Total Users`, `\`${totalUsers}\``, true)
+        .addField(`${emoji.inbox} Creation Date`, `\`${moment(channel.createdAt).format('DD/MMM/YYYY')}\``, true)
+        .addField(`${emoji.nsfw} NSFW `, `\`${NFSW[channel.nsfw]}\``, true)
         .setColor(message.guild.me.displayHexColor)
         .setTimestamp()
 

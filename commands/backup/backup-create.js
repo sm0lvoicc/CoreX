@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const backup = require('discord-backup')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'backup-create',
@@ -15,7 +16,7 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        const msg = await message.channel.send(`<a:corexloading:860601769675456513> **Creating Backup...**`)
+        const msg = await message.channel.send(`${emoji.loading} **Creating Backup...**`)
         try {
         backup
             .create(message.guild, {
@@ -25,8 +26,8 @@ module.exports = {
             }).then(b => {
                 msg.delete()
                 message.channel.send(new MessageEmbed()
-                .setDescription(`<:corexyes:860561725916053514> Backup Created: \`${b.id}\`. Make sure to remember this code`)
-                .setColor("GREEN"))
+                .setDescription(`${emoji.success} Backup Created: \`${b.id}\`. Make sure to remember this code`)
+                .setColor("BLURPLE"))
             })
         }catch(err) {
         msg.delete()

@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const backup = require('discord-backup')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'backup-info',
@@ -27,15 +28,15 @@ module.exports = {
             const formatedDate = `${yyyy}/${(mm[1]?mm:"0"+mm[0])}/${(dd[1]?dd:"0"+dd[0])}`;
             
             let embed = new MessageEmbed()
-                .setAuthor("<:corexinfo:860565886111580172> Backup Informations")
-                .addField("<:corexchannel:860560876792840202> Backup ID", backupInfos.id, false)
-                .addField("<:corexinbox:860563596818513920> Server ID", backupInfos.data.guildID, false)
-                .addField("<:corexsupport:860567555114270740> Size", `${backupInfos.size} kb`, false)
-                .addField("<:corexjoin:860563858301517864> Created at", formatedDate, false)
-                .setColor("RANDOM");
+                .setAuthor(`${emoji.info} Backup Informations`)
+                .addField(`${emoji.id} Backup ID`, backupInfos.id, false)
+                .addField(`${emoji.inbox} Server ID`, backupInfos.data.guildID, false)
+                .addField(`${emoji.question} Size`, `${backupInfos.size} kb`, false)
+                .addField(`${emoji.globe} Created at`, formatedDate, false)
+                .setColor("BLURPLE");
             message.channel.send(embed);
         }).catch((err) => {
-            return message.channel.send("<:corexerror:860580531825147994> No backup found for `"+backupID+"`!");
+            return message.channel.send(`${emoji.error} No backup found for \`${backupID}\``);
         });
     }
 }

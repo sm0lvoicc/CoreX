@@ -1,5 +1,6 @@
 const schema = require('../../models/suggestions')
 const { MessageEmbed } = require('discord.js')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'suggest',
@@ -24,7 +25,7 @@ module.exports = {
                     return message.channel.send('There is no suggestion channel.')
                 }
                 if(channel) {
-                    if(suggest.length > 256) return message.channel.send(`Suggestion Text must be 256 or fewer in length`)
+                    if(suggest.length > 256) return message.lineReply(`${emoji.error} Suggestion Text must be 256 or fewer in length`)
                     const suggestEmbed = new MessageEmbed()
                     .setDescription(suggest)
                     .setFooter(`A Suggestion Requested By: ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
@@ -42,7 +43,7 @@ module.exports = {
                           
 
                     message.channel.send(new MessageEmbed()
-                    .setDescription('<:corexyes:860561725916053514> Your Suggestion has been sent')
+                    .setDescription(`${emoji.success} Your Suggestion has been sent`)
                     )
                 }
             }

@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: "invitelist",
@@ -20,7 +21,7 @@ module.exports = {
         }))
 
         let replyText = new MessageEmbed()
-            .setTitle(`<:corexinvite:860570964311932979> Invitation Cards ${message.guild.name}`)
+            .setTitle(`${emoji.inbox} Invitation Cards ${message.guild.name}`)
             .setDescription(` \n`)
             .setColor("BLURPLE")
         const sortedInvites = Object.keys(inviteCounter).sort((a, b) => inviteCounter[b] - inviteCounter[a])
@@ -33,7 +34,7 @@ module.exports = {
             const count = inviteCounter[invite]
             replyText.description += `\n${invite} has invited ${count} member(s).`
         }
-        message.reply(replyText)
+    message.channel.send(replyText)
     })
     }
 }

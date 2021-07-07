@@ -1,5 +1,6 @@
 const prefixSchema = require('../../models/prefix')
 const { Message, MessageEmbed } = require('discord.js')
+const emoji = require('../../emoji.json')
 module.exports = {
     name : 'prefix',
     description: 'Changes the bot prefix.',
@@ -23,8 +24,8 @@ module.exports = {
                 })
                 data.save()
                 message.channel.send(new MessageEmbed()
-                .setColor('GREEN')
-                .setDescription(`<:corexyes:860561725916053514> Server prefix has been updated to \`${res}\``)
+                .setColor('BLURPLE')
+                .setDescription(`${emoji.success} Server prefix has been updated to \`${res}\``)
                 .setTimestamp()
                 )
             } else {
@@ -34,8 +35,8 @@ module.exports = {
                 })
                 data.save()
                 message.channel.send(new MessageEmbed()
-                .setColor('GREEN')
-                .setDescription(`<:corexyes:860561725916053514> Custom prefix in this server is now set to \`${res}\``)
+                .setColor('BLURPLE')
+                .setDescription(`${emoji.success} Custom prefix in this server is now set to \`${res}\``)
                 .setTimestamp()
                 )
             }

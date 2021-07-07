@@ -1,6 +1,7 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const ms = require('ms')
 const schema = require('../../models/mutes')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'tempmute',
@@ -18,8 +19,6 @@ module.exports = {
     run: async(client, message, args) => {
         try {
             const prefix = await client.prefix(message)
-        if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply(`You do not have the permission \`MANAGE_ROLES\``)
-        if(!message.guild.me.hasPermission('MANAGE_ROLES')) return  message.reply(`I do not have the permission \`MANAGE_ROLES\``)
 
         let member = message.mentions.members.first() 
         if(!member) {
@@ -28,20 +27,20 @@ module.exports = {
         if(!member) return message.channel.send('Please mention a user to tempmute')
 
         const time = args[1]
-        const muteReason = args.slice(2).join(" ") || "No muteReason specified"
+        const muteReason = args.slice(2).join(" ") || "No reason specified"
         
         if(member.user.id === message.author.id) return message.channel.send(`You cannot mute yourself`);
         if(!time) return  message.channel.send(`Please set a time to mute the user for.`)
 
         schema.findOne({ Guild: message.guild.id }, async(err, data) => {
             if(!data) {
-                message.channel.send(`<:corexerror:860580531825147994> No Muted role found! Please set the mute role using ${prefix}set-muterole <@role>`)
+                message.channel.send(`${emoji.error} No Muted role found! Please set the mute role using ${prefix}set-muterole <@role>`)
             } else {
                 const MuteRole = message.guild.roles.cache.find(role => role.id === data.Role)
-                if(!MuteRole) return message.channel.send(`The Muted Role for this server was deleted. Please set the mute role using ${prefix}set-muterole <@role>`)
+                if(!MuteRole) return message.channel.send(`${emoji.error} The Muted Role for this server was deleted. Please set the mute role using ${prefix}set-muterole <@role>`)
                 
                 if(member.roles.cache.get(MuteRole.id)) return message.channel.send(new MessageEmbed()
-          .setDescription(`<:corexerror:860580531825147994> **${member.user.username} was muted already. So I cannot mute them again**`)
+          .setDescription(`${emoji.error} **${member.user.username} was muted already. So I cannot mute them again**`)
           .setColor("RED")
           .setFooter(
               `Requested by ${message.author.tag}`,
@@ -49,15 +48,15 @@ module.exports = {
             )
       )
       
-        if (message.member.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than you.');
-        if (message.guild.me.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than me.');
+        if (message.member.roles.highest.position <= member.roles.highest.permission) return message.channel.send(`${emoji.error} The target has a higher position than you.`);
+        if (message.guild.me.roles.highest.position <= member.roles.highest.permission) return message.channel.send(`${emoji.error} The target has a higher position than me.`);
       
-        if(MuteRole.position >= message.guild.me.roles.highest.position) return message.channel.send(`The mute role is higher/equal to my role.`)
+        if(MuteRole.position >= message.guild.me.roles.highest.position) return message.channel.send(`${emoji.error} The mute role is higher/equal to my role.`)
      await member.roles.add(MuteRole.id)
 
       message.channel.send(new MessageEmbed()
       .setColor('GREEN')
-      .setDescription(`<:corexyes:860561725916053514> ${member} has been tempmuted for: ${time} because: \`${muteReason}\``)
+      .setDescription(`${emoji.success} ${member} has been tempmuted for: ${time} because: \`${muteReason}\``)
       .setTimestamp()
       )
       .catch(err => console.log(err))

@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const schema = require('../../models/alt')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'disallow-alt',
@@ -16,12 +17,12 @@ module.exports = {
      */
     run: async(client, message, args) => {
         await schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-            if(!data) return message.channel.send('<:corexerror:860580531825147994> The alt Module is disabled')
+            if(!data) return message.channel.send(`${emoji.error} The alt Module is already disabled`)
             
             if(!args[0]) return message.channel.send('Please specify a user ID to remove from the whitelist')
             if(isNaN(args[0])) return message.channel.send('The user ID must be a number')
         
-            if(!data.Allowed_Alts.includes(args[0])) return message.channel.send('<:corexerror:860580531825147994> This user has not been whitelisted')
+            if(!data.Allowed_Alts.includes(args[0])) return message.channel.send(`${emoji.error} This user has not been whitelisted`)
             let arr = db.allowedAlts
             let newArr = removeA(arr, args[0])
 
@@ -30,7 +31,7 @@ module.exports = {
             })
             const embed = new MessageEmbed()
             .setColor('GREEN')
-            .setDescription(`<:corexyes:860561725916053514> Succesfully removed <@${args[0]}> from the whitelist`)
+            .setDescription(`${emoji.success} Succesfully removed <@${args[0]}> from the whitelist`)
             .setTimestamp()
 
             message.channel.send(embed)

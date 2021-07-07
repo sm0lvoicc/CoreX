@@ -1,4 +1,5 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'fetch-bans',
@@ -22,7 +23,7 @@ module.exports = {
 
         if (bannedMembers.length > 2000) {
             return message.channel.send(
-              `I'm sorry but, my limit is 2000 characters only!`
+              `${emoji.error} I'm sorry but, my limit is 2000 characters only!`
             );
         }
         message.channel.send(bannedMembers)

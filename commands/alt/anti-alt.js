@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const schema = require('../../models/alt')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'anti-alt',
@@ -41,7 +42,7 @@ module.exports = {
                        newData.save()
                        message.channel.send(
                         new MessageEmbed()
-                        .setTitle('<:corexinfo:860565886111580172> Anti-Alt Settings')
+                        .setTitle(`${emoji.info} Anti-Alt Settings`)
                         .setDescription(`Days: \`${days}\`\nAvatar: \`${avatar}\``)
                     )
                    }
@@ -55,7 +56,7 @@ module.exports = {
                     newData.save()
                     message.channel.send(
                         new MessageEmbed()
-                        .setTitle('<:corexinfo:860565886111580172> Anti-Alt Settings')
+                        .setTitle(`${emoji.info} Anti-Alt Settings`)
                         .setDescription(`Days: \`${days}\`\nAvatar: \`${avatar}\``)
                     )
                 }
@@ -70,7 +71,7 @@ module.exports = {
                         newData.save()
                         message.channel.send(
                          new MessageEmbed()
-                         .setTitle('<:corexinfo:860565886111580172> Anti-Alt Settings')
+                         .setTitle(`${emoji.info} Anti-Alt Settings`)
                          .setDescription(`Days: \`${days}\`\nAvatar: \`${avatar}\``)
                      )
                     }
@@ -84,7 +85,7 @@ module.exports = {
                      newData.save()
                      message.channel.send(
                          new MessageEmbed()
-                         .setTitle('<:corexinfo:860565886111580172> Anti-Alt Settings')
+                         .setTitle(`${emoji.info} Anti-Alt Settings`)
                          .setDescription(`Days: \`${days}\`\nAvatar: \`${avatar}\``)
                      )
                  }
@@ -94,9 +95,9 @@ module.exports = {
 
         if(opt == 'disable'){
             await schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-                if(!data) return message.channel.send('<:corexerror:860580531825147994> Anti-Alt is already disabled')
+                if(!data) return message.channel.send(`${emoji.error} Anti-Alt is already disabled`)
                 data.delete()
-                message.channel.send(`<:corexyes:860561725916053514> Anti-Alt is disabled`)
+                message.channel.send(`${emoji.success} Anti-Alt is disabled`)
             })
         }
     }

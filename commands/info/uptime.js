@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const Client = new Discord.Client();
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: "uptime",
@@ -14,7 +15,7 @@ module.exports = {
     let seconds = Math.floor(Client.uptime / 1000) % 60;
 
     let uptimeE = new Discord.MessageEmbed()
-    .setTitle("<:corexrocket:860566875174731776> Uptime")
+    .setTitle(`${emoji.online} Uptime`)
     .setColor("BLURPLE")
     .setDescription(`\nDay(S) Online: \`${days}\`\n\nHour(S) Online: \`${hours}\`\n\nMinute(S) Online: \`${minutes}\`\n\nSecond(S) Online: \`${seconds}\``)
      .setFooter(`Requested By : ${message.author.username}`, message.author.displayAvatarURL({

@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const schema = require('../../models/alt')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'allow-alt',
@@ -20,10 +21,10 @@ module.exports = {
             if(isNaN(args[0])) return message.channel.send('The user ID must be a number')
 
             schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-                if(!data) return message.channel.send('<:corexerror:860580531825147994> The Anti-Alt module is disabled')
+                if(!data) return message.channel.send(`${emoji.error} The Anti-Alt module is disabled`)
 
                 let allowedAlts = data.Allowed_Alts
-                if(allowedAlts.length === 10) return message.channel.send('The maximum amount of allowed alts is 10')
+                if(allowedAlts.length === 10) return message.channel.send(`${emoji.error} The maximum amount of allowed alts is 10`)
 
                 allowedAlts.push(u.id)
 
@@ -33,7 +34,7 @@ module.exports = {
 
                 const embed = new MessageEmbed()
                 .setColor('GREEN')
-                .setDescription(`<:corexyes:860561725916053514> White-listed <@${args[0]}>`)
+                .setDescription(`${emoji.success} White-listed <@${args[0]}>`)
                 .setTimestamp()
 
                 message.channel.send(embed)

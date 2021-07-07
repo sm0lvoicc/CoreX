@@ -1,7 +1,7 @@
 const client = require('../index')
 const { prefix } = require('../config.json')
 
-client.on('ready', () => {
+client.on('ready', async() => {
     const ArrayStatus = [
         `${client.guilds.cache.size} amazing servers`,
         `${client.channels.cache.size} channels`,
@@ -12,7 +12,7 @@ client.on('ready', () => {
         '🤖Join the support server!',
         'use ?help',
         'dsc.gg/corex',
-        'github repo'
+        'with github repo'
     ];
 
     let index = 0;
@@ -22,8 +22,11 @@ client.on('ready', () => {
         client.user.setActivity(status);
         index++;
     }, 15000)
-    console.log('Bot online')
-    console.log(`${client.user.tag} is ready for takeoff`)
+    let usersCount = 0;
+    for (const guild of client.guilds.cache) {
+    usersCount += (await guild[1].members.fetch()).size
+    }
+    await console.log(`${client.user.tag} is now connected to Discord, Cached ${usersCount} Users`);
 
 
 })

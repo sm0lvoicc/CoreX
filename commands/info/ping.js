@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js");
+const emoji = require('../../emoji.json')
 
 module.exports = {
   name: "ping",
@@ -18,7 +19,7 @@ module.exports = {
     var ping = Date.now() - message.createdTimestamp;
         const embedPing = new MessageEmbed() 
         .setColor('RANDOM')
-        .setDescription(`<:corexrocket:860566875174731776> Latency: **${ping}**ms \nAPI Latency: **${Math.round(client.ws.ping)}**ms`);
+        .setDescription(`${emoji.loading} Latency: **${ping}**ms \nAPI Latency: **${Math.round(client.ws.ping)}**ms`);
 
         message.channel.send(embedPing);
     }

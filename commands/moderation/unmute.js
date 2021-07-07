@@ -1,6 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const schema = require('../../models/mutes')
-
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'unmute',
@@ -28,26 +28,26 @@ module.exports = {
                 if(member.user.id === message.author.id) return message.channel.send(`You cannot unmute yourself`);
             schema.findOne({ Guild: message.guild.id }, async(err, data) => {
                 if(!data) {
-                    message.channel.send(message.channel.send(`<:corexerror:860580531825147994> The muted role was deleted set it again using ${prefix}set-muterole <@role>`))
+                    message.channel.send(message.channel.send(`${emoji.error} The muted role was deleted set it again using ${prefix}set-muterole <@role>`))
                 } else {
                     const roleD = message.guild.roles.cache.find(role => role.id === data.Role)
                     if(!roleD) {
-                        message.channel.send(message.channel.send(`<:corexerror:860580531825147994> The muted role was deleted set it again using ${prefix}set-muterole <@role>`))
+                        message.channel.send(message.channel.send(`${emoji.error}The muted role was deleted set it again using ${prefix}set-muterole <@role>`))
                         return data.delete()
                     }
                     if(!member.roles.cache.get(roleD.id)) return message.channel.send(new MessageEmbed()
-                .setDescription(`<:corexerror:860580531825147994> ${member.user.username} was unmuted already. So I cannot unmute them again`)
+                .setDescription(`${emoji.error} ${member.user.username} was unmuted already. So I cannot unmute them again`)
                 .setColor("RED")
                 .setFooter(
                     `Requested by ${message.author.tag}`,
                     message.author.displayAvatarURL({ dynamic: true })
                 )
             )
-            if (message.member.roles.highest.position < member.roles.highest.permission) return message.channel.send('The target has a higher position than you.');
-            if (message.guild.me.roles.highest.position < member.roles.highest.permission) return message.channel.send('The target has a higher position than me.');
+            if (message.member.roles.highest.position < member.roles.highest.permission) return message.channel.send(`${emoji.error} The target has a higher position than you.`);
+            if (message.guild.me.roles.highest.position < member.roles.highest.permission) return message.channel.send(`${emoji.error} The target has a higher position than me.`);
             
             if(roleD.deleteable) return message.channel.send(new MessageEmbed()
-            .setDescription(`<:corexerror:860580531825147994> **I can't remove the muted role manually**`)
+            .setDescription(`${emoji.error} **I can't remove the muted role manually**`)
             .setColor("RED")
             .setFooter(
                 `Requested by ${message.author.tag}`,
@@ -55,7 +55,7 @@ module.exports = {
             )
             )
             await member.roles.remove(roleD.id)
-            message.channel.send(new MessageEmbed().setDescription(`<:corexyes:860561725916053514> **${member}** was unmuted by **${message.author.tag}** with reason \`${reason}\``).setColor("GREEN"))
+            message.channel.send(new MessageEmbed().setDescription(`${emoji.success} **${member}** was unmuted by **${message.author.tag}** with reason \`${reason}\``).setColor("GREEN"))
             .catch(err => {
             console.log(err)
             message.channel.send(`**An error occured while trying to unmute that user**`)

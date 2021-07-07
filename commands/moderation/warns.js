@@ -1,5 +1,6 @@
 const db = require('../../models/warns')
 const { Message, MessageEmbed } = require('discord.js')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name :'warns',
@@ -10,8 +11,6 @@ module.exports = {
     userPerms: ['MANAGE_GUILD'],
     clientPerms: ['MANAGE_GUILD'],
      run: async(client, message, args) => {
-
-        if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You do not have the permission \`MANAGE_MESSAGES\`');
 
         let member = message.mentions.members.first()
 
@@ -31,7 +30,7 @@ module.exports = {
             try {
               if(data.content.length) {
                 message.channel.send(new MessageEmbed()
-                    .setTitle(`${member.user.tag}'s warns`)
+                    .setTitle(`${emoji.settings} ${member.user.tag}'s warns`)
                     .setDescription(
                         data.content.map(
                             (w, i) => 
@@ -43,14 +42,14 @@ module.exports = {
             } else {
                 message.channel.send(new MessageEmbed()
                 .setColor('RANDOM')
-                .setDescription('<:corexerror:860580531825147994> This user has no warns!')
+                .setDescription(`${emoji.error} This user has no warns!`)
                 )
             } 
 
         } catch(err) {
                 message.channel.send(new MessageEmbed()
                 .setColor('RANDOM')
-                .setDescription('<:corexerror:860580531825147994> This user has no warns!')
+                .setDescription(`${emoji.error} This user has no warns!`)
                 )
         }
 

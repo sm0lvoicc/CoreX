@@ -26,5 +26,15 @@
     "offline": "<:corexoffline:862044534946791434> ",
     "dnd": "<:corexdnd:862029125266046996> ",
     "idle": "<:corexidle:862044374241509428>",
-    "active": "<:corexactive:862047443872251921>"
+    "active": "<:corexactive:862047443872251921>",
+    "loading": "<:corexloading:862075735748116511>",
+    "star": "<:corexstar:862104136544026636>",
+    "js": "<:corexjs:862117234028576808>",
+    "settings": "<:corexsettings:862117586703089664>",
+    "slash": "<:corexslash:862117829351440415>",
+    "nsfw": "<:corexnsfw:862121070319239188>",
+    "ban": "<:corexban:862059080301805628>",
+    "kick": "<:corexkick:862127282218467348>",
+    "spark": "<:corexspark:862127894410035210>",
+    "pen": "<:corexedit:862128221528522753>"
 }

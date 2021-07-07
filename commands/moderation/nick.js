@@ -1,4 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js')
+const emoji = require('../../emoji.json')
+
 
 module.exports = {
     name: 'nick',
@@ -29,19 +31,19 @@ module.exports = {
     
         if (!arguments) return message.channel.send("Please specify a nickname!");
 
-        if (message.member.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than you.');
-        if (message.guild.me.roles.highest.position <= member.roles.highest.permission) return message.channel.send('The target has a higher position than me.');
+        if (message.member.roles.highest.position <= member.roles.highest.permission) return message.channel.send(`${emoji.error} The target has a higher position than you.`);
+        if (message.guild.me.roles.highest.position <= member.roles.highest.permission) return message.channel.send(`${emoji.error} The target has a higher position than me.`);
     
         try {
           member.setNickname(arguments);
           const embed = new MessageEmbed()
           .setColor('GREEN')
-          .setDescription(`<:corexyes:860561725916053514> **${member.user.tag}** has been nicked to ${arguments} `)
+          .setDescription(`${emoji.success} **${member.user.tag}** has been nicked to ${arguments} `)
           .setTimestamp()
           message.channel.send(embed)
         } catch (err) {
           message.channel.send(
-            "<:corexerror:860580531825147994> I do not have permission to set " + member.toString() + " nickname!"
+            `${emoji.success} I do not have permission to set ` + member.toString() + " nickname!"
           );
         }
 

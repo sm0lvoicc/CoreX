@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+const emoji = require(`../../emoji.json`)
 
 module.exports = {
     name: 'slowmode',
@@ -17,7 +18,7 @@ module.exports = {
 
         var verify = new MessageEmbed()
         .setColor('RANDOM')
-        .setDescription(`<:corexyes:860561725916053514> Channel slowmode has been set to \`${args[0]}\` seconds.`)
+        .setDescription(`${emoji.success} Channel slowmode has been set to \`${args[0]}\` seconds.`)
         .setTimestamp()
         message.channel.send(verify);
 

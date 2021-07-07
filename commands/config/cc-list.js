@@ -12,10 +12,11 @@ module.exports = {
     clientPerms: ['SEND_MESSAGES'],
     run: async(client, message, args) => {
         const data  = await schema.find({ Guild: message.guild.id });
-        if(!!data === false) return message.channel.send('<:corexerror:860580531825147994> There are no custom commands!');
+        if(!!data === false) return message.channel.send(`${emoji.error} There are no custom commands!`);
         message.channel.send(
             new MessageEmbed()
-                .setColor('RANDOM')
+                .setTitle(`${emoji.info} Custom Commands`)
+                .setColor('BLURPLE')
                 .setDescription(
                     data.map((cmd, i) => 
                         `[${i + 1}]: ${cmd.Command}`

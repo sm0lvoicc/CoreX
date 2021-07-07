@@ -1,4 +1,5 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'member-count',
@@ -15,7 +16,7 @@ module.exports = {
      */
     run: async(client, message, args) => {
         const embed = new MessageEmbed()
-        .setDescription(`<:corexmembers:860568826046840862> Human Count: ${message.guild.members.cache.filter(u => !u.user.bot).size}\n\n<:corexbot:860569029029658684> Bots Count: ${message.guild.members.cache.filter(u => u.user.bot).size}\n\n<:corexglobe:861492964617879583> Total Members: ${message.guild.memberCount}\n\n`)
+        .setDescription(`${emoji.member} Human Count: ${message.guild.members.cache.filter(u => !u.user.bot).size}\n\n${emoji.slash} Bots Count: ${message.guild.members.cache.filter(u => u.user.bot).size}\n\n${emoji.globe} Total Members: ${message.guild.memberCount}\n\n`)
         .setColor("GREEN")
         .setThumbnail(message.guild.iconURL({ dynamic: true }))
     message.channel.send(embed)

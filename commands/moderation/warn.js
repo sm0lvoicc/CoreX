@@ -1,5 +1,6 @@
 const db = require('../../models/warns')
 const { Message, MessageEmbed } = require('discord.js')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'warn',
@@ -72,7 +73,7 @@ module.exports = {
 
         message.channel.send(new MessageEmbed()
         .setColor('GREEN')
-        .setDescription(`<:corexyes:860561725916053514> ${user} was warned by ${message.author} for: \`${warnReason}\``)
+        .setDescription(`${emoji.success} ${user} was warned by ${message.author} for: \`${warnReason}\``)
         .setFooter(`Warn ID: ${random}`)
         .setTimestamp()
         )

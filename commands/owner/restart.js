@@ -11,11 +11,12 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-      let array = ['538668078012039168', '451202806653648936']
-  
-      if(!array.includes(message.author.id.toString())) {
+      if (
+        !require("../../config.json").owners.includes(
+          message.author.id
+        )
+      )
         return;
-      }        
       
         const embed = new MessageEmbed()
           .setAuthor(message.author.tag, message.author.displayAvatarURL())

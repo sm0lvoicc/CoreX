@@ -23,7 +23,7 @@ module.exports= {
 
 			embed.setTitle(`${memeTitle}`);
 			embed.setURL(`${memeUrl}`);
-			embed.setColor('RANDOM');
+			embed.setColor('BLURPLE');
 			embed.setImage(memeImage);
 			embed.setFooter(`☝ ${memeUpvotes} 💬 ${memeNumComments}`);
 

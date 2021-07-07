@@ -8,6 +8,7 @@ const {
 } = require("fs");
 const invite = require("../../config.json").invite;
 let color = "#2f3136"
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: "help",
@@ -36,19 +37,19 @@ module.exports = {
             ];
 
             const emo = {
-                info: '<:corexinfo:860565886111580172>',
-                utility: '🔧',
-                fun: '🤣',
-                moderation: '<:corexmod:860581398532718602>',
-                misc: '🌌',
-                support: '<:corexsupport:860567555114270740>',
-                image: '📷',
-                config: '🔨',
-                logging: '<:corexinbox:860563596818513920>',
-                member_system: '<:corexmembers:860568826046840862>',
-                backup: '📇',
-                automod: '⚡',
-                alt: '<:corexglobe:861492964617879583>',
+                info: emoji.info,
+                utility: emoji.pen,
+                fun: emoji.search,
+                moderation: emoji.ban,
+                misc: emoji.globe,
+                support: emoji.question,
+                image: emoji.image,
+                config: emoji.settings,
+                logging: emoji.inbox,
+                member_system: emoji.member,
+                backup: emoji.slash,
+                automod: emoji.spark,
+                alt: emoji.kick,
             }
 
             readdirSync("./commands/").forEach((dir) => {

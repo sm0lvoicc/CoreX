@@ -1,4 +1,5 @@
 const Schema = require('../../models/ghostping')
+const emoji = require('../../emoji.json')
 
 module.exports = {
   name: 'ghostping',
@@ -25,19 +26,19 @@ module.exports = {
 
    if(opt == 'enable') {
     Schema.findOne({ Guild: message.guild.id }, async(err, data) => {
-      if(data) return message.channel.send(`<:corexerror:860580531825147994> **Anti Ghost Ping** Module is enabled already`)
+      if(data) return message.channel.send(`${emoji.error} Anti Ghost Ping Module is enabled already`)
       new Schema({
         Guild: message.guild.id
       }).save()
-      message.channel.send(`<:corexyes:860561725916053514> **Anti Ghost Ping** Module has been enabled.`)
+      message.channel.send(`${emoji.success} Anti Ghost Ping Module has been enabled.`)
     })
    }
 
    if(opt == 'disable'){
     Schema.findOne({ Guild: message.guild.id }, async(err, data) => {
-      if(!data) return message.channel.send(`<:corexerror:860580531825147994> **Anti Ghost Ping** Module is disabled already`)
+      if(!data) return message.channel.send(`${emoji.error} Anti Ghost Ping Module is disabled already`)
       data.delete()
-      message.channel.send(`<:corexyes:860561725916053514> **Anti Ghost Ping** Module has been disabled.`)
+      message.channel.send(`${emoji.success} Anti Ghost Ping Module has been disabled.`)
     })
    }
 

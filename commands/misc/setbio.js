@@ -1,13 +1,14 @@
 const { Client, Message, MessageEmbed } = require("discord.js");
 const Schema = require(`../../models/bio`);
+const emoji = require('../../emoji.json')
 
 module.exports = {
 	name: "setbio",
     timeout: 5000,
 	description: 'Sets/Updates your bio.',
 	usage: '<text>',
-	userPerms: [''],
-  	clientPerms: [''],
+	userPerms: ['SEND_MESSAGES'],
+  	clientPerms: ['SEND_MESSAGES'],
 	/**
 	 * @param {Client} client
 	 * @param {Message} message
@@ -23,7 +24,7 @@ module.exports = {
 			}).save();
 		})
 		message.channel.send( new MessageEmbed()
-		.setDescription(`<:corexyes:860561725916053514> Successfully Updated Your Bio`)
+		.setDescription(`${emoji.success} Successfully Updated Your Bio`)
 		)
 	}
 }

@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: "whois",
@@ -13,60 +14,60 @@ module.exports = {
         let status;
         switch (user.presence.status) {
             case "online":
-                status = "<:corexonline:861737336579293215> Online";
+                status = `${emoji.online} Online`;
                 break;
             case "dnd":
-                status = "<:corexdnd:861737403151286322> DND";
+                status = `${emoji.dnd} DND`;
                 break;
             case "idle":
-                status = "<:corexidle:861737479992508447> Idle";
+                status = `${emoji.idle} Idle`;
                 break;
             case "offline":
-                status = "<:corexoffline:861737516989022218> Offline";
+                status = `${emoji.offline} Offline`;
                 break;
         }
 
         const embed = new MessageEmbed()
-            .setTitle(`<:corexinfo:860565886111580172> ${user.user.username} infos`)
-            .setColor(`#f3f3f3`)
+            .setTitle(`${emoji.info} ${user.user.username} infos`)
+            .setColor(`BLURPLE`)
             .setThumbnail(user.user.displayAvatarURL({dynamic : true}))
             .addFields(
                 {
-                    name: "<:corexmention:860565536835502110> Name: ",
+                    name: `${emoji.mention} Name: `,
                     value: user.user.username,
                     inline: true
                 },
                 {
-                    name: "<:corexchannel:860560876792840202> Discriminator: ",
+                    name: `${emoji.channel} Discriminator: `,
                     value: `#${user.user.discriminator}`,
                     inline: true
                 },
                 {
-                    name: "<:corexactive:860562182928334939> Current Status: ",
+                    name: `${emoji.active} Current Status: `,
                     value: status,
                     inline: true
                 },
                 {
-                    name: "<:corexslash:860562666422534184> ID: ",
+                    name: `${emoji.id} ID: `,
                     value: user.user.id,
                 },
                 {
-                    name: "<:corexdesktop:860563196100214785> Activity: ",
+                    name: `${emoji.desktop} Activity: `,
                     value: user.presence.activities[0] ? user.presence.activities[0].name : `No game`,
                     inline: true
                 },
                 {
-                    name: '<:corexinbox:860563596818513920> Creation Date: ',
+                    name: `${emoji.inbox} Creation Date: `,
                     value: user.user.createdAt.toLocaleDateString("en-us"),
                     inline: true
                 },
                 {
-                    name: '<:corexjoin:860563858301517864> Joined Date: ',
+                    name: `${emoji.join} Joined Date: `,
                     value: user.joinedAt.toLocaleDateString("en-us"),
                     inline: true
                 },
                 {
-                    name: '<:corexrole:861343406365343875> User Roles: ',
+                    name: `${emoji.mention} User Roles: `,
                     value: user.roles.cache.map(role => role.toString()).join(" ,"),
                     inline: true
                 }

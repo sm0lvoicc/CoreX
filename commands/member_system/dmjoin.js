@@ -1,6 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const schema = require('../../models/dmjoin')
-
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'dmjoin',
@@ -9,14 +9,13 @@ module.exports = {
     usage: '<enable> <text> || <disable>',
     aliases: ['dm-join'],
     userPerms: ['MANAGE_GUILD'],
-    clientPerms: [''],
+    clientPerms: ['MANAGE_GUILD'],
     /** 
      * @param {Client} client 
      * @param {Message} message 
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You do not have the permission \`MANAGE_GUILD\`')
 
         options = [
             'enable',
@@ -34,7 +33,7 @@ module.exports = {
             const text = args.slice(1).join(" ")
 
             const noText = new MessageEmbed()
-          .setTitle(`<:corexsearch:860609884924149801> Available tags`)
+          .setTitle(`${emoji.settings} Available tags`)
           .setDescription(` **{user}** : <@New-Member> \n **{server}** : Server Name \n **{user.tag}** : New-Member-Tag \n **{user.id}** : New-Member-ID \n **{membercount}** : Total Members`)
           .setFooter(`More Soon`)
           .setColor("RANDOM")
@@ -54,9 +53,9 @@ module.exports = {
             
         } if (opt == 'disable') {
             schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-                if(!data) return message.channel.send('<:corexerror:860580531825147994> DM join is already disabled.')
+                if(!data) return message.channel.send(`${emoji.error} DM join is already disabled.`)
                 data.delete()
-                message.channel.send('<:corexyes:860561725916053514> DM join has been disabled.')
+                message.channel.send(`${emoji.success}  DM join has been disabled.`)
             })
         }
     }

@@ -14,7 +14,7 @@ module.exports = {
 
         if(user == message.author) {
             const simpEmbedUser = new MessageEmbed()
-            .setColor('RANDOM')
+            .setColor('#FFC0CB')
             .setTitle('Your simprate')
             .setDescription(`You are **${rate}**% simp :heart_eyes:`)
             .setFooter(`${message.author.tag}`,
@@ -23,7 +23,7 @@ module.exports = {
             message.channel.send(simpEmbedUser)
         } else {
             const simpEmbed2 = new MessageEmbed()
-            .setColor('RANDOM')
+            .setColor('#FFC0CB')
             .setTitle(`${user.username}'s simprate`)
             .setDescription(`${user} is **${rate}**% simp :heart_eyes:`)
             .setFooter(`${user.tag}`,

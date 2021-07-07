@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js')
 const schema = require('../../models/reaction-roles')
+const emoji = require('../../emoji.json')
 
 module.exports = {
   name: 'rr-remove',
@@ -30,7 +31,7 @@ module.exports = {
     try {
     let msg = await channel.messages.fetch(msg1)
     }catch(err) {
-      return message.channel.send(`<:corexerror:860580531825147994> I can't find Message ID \`${msg1}\` in ${channel}`)
+      return message.channel.send(`${emoji.error} I can't find Message ID \`${msg1}\` in ${channel}`)
     }
     
     let msg = await channel.messages.fetch(msg1)
@@ -43,14 +44,14 @@ module.exports = {
       if (!data) return message.channel.send(`This Reaction Roles does not exist`);
       await data.delete()
       message.channel.send(new MessageEmbed()
-      .setTitle(`<:corexyes:860561725916053514> Reaction Roles Removed`)
-      .addField(`<:corexmention:860565536835502110> Role`, role, true)
-      .addField(`<:corexchannel:860560876792840202> Channel`, channel , true)
-      .addField(`<:corexchat:860569658657865728> Message`, msg.id , true)
-      .addField(`<:corexinbox:860563596818513920> Emoji`, emoji, true)
+      .setTitle(`${emoji.success} Reaction Roles Removed`)
+      .addField(`${emoji.mention} Role`, role, true)
+      .addField(`${emoji.channel} Channel`, channel , true)
+      .addField(`${emoji.message} Message`, msg.id , true)
+      .addField(`${emoji.inbox} Emoji`, emoji, true)
       .setColor("RED")
       .setTimestamp()
-      .addField(`<:corexlink:860584013189742612> Link`, `[Jump](https://discord.com/channels/${message.guild.id}/${channel.id}/${msg.id})`))
+      .addField(`${emoj.link} Link`, `[Jump](https://discord.com/channels/${message.guild.id}/${channel.id}/${msg.id})`))
     })
   }
 }

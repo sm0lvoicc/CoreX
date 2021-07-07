@@ -1,5 +1,6 @@
 const db = require('../../models/warns');
 const { Message, MessageEmbed } = require('discord.js');
+const emoji = require(`../../emoji.json`)
 
 module.exports = {
     name: 'clear-warns',
@@ -16,7 +17,7 @@ module.exports = {
         }
 
         if (!member) {
-           message.reply('Please mention a member')
+       message.channel.send('Please mention a member')
         }
         
                 
@@ -26,14 +27,14 @@ module.exports = {
             if(data) {
                 data.delete();
                 message.channel.send(new MessageEmbed()
-                .setDescription(`<:corexyes:860561725916053514> Cleared all the warns of **${member.user.username}**`)
+                .setDescription(`${emoji.success} Cleared all the warns of **${member.user.username}**`)
                 .setTimestamp()
                 .setColor("GREEN")
                 )
             } else {
                 message.channel.send(new MessageEmbed()
                 .setColor('GREEN')
-                .setDescription('<:corexerror:860580531825147994> This user does not have any warns in this server!')
+                .setDescription(`${emoji.error} This user does not have any warns in this server!`)
                 .setTimestamp()                
                 )
             }

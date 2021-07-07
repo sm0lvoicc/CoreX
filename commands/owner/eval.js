@@ -5,11 +5,12 @@ module.exports = {
     timeout: 1000,
     hidden: true,
     run: async (client, message, args) => {
-      let array = ['538668078012039168', '451202806653648936']
-  
-      if(!array.includes(message.author.id.toString())) {
+      if (
+        !require("../../config.json").owners.includes(
+          message.author.id
+        )
+      )
         return;
-      }
         try {
           var code = args.join(" ");
           if (code === "client.token") return message.channel.send("Dont wanna do that 0_0")

@@ -1,3 +1,5 @@
+const emoji = require('../../emoji.json')
+
 module.exports = {
     name: 'poll',
     timeout: 1000,
@@ -16,7 +18,7 @@ module.exports = {
 		message.channel
 			.send(`**${msgArgs}${msgArgs.endsWith('?') ? '' : '?'}**`)
 			.then((messageReaction) => {
-				messageReaction.react('👍'), messageReaction.react('👎')
+				messageReaction.react(emoji.success), messageReaction.react(emoji.error)
 			})
 		message.delete()
     }

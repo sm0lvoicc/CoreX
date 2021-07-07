@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const schema = require('../../models/alt')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'alt-logs',
@@ -41,9 +42,9 @@ module.exports = {
                     newData.save()
                     const embed = new MessageEmbed()
                     .setColor('GREEN')
-                    .setDescription(`<:corexyes:860561725916053514> Alt-logs is set to  ${channel}`)
+                    .setDescription(`${emoji.success} Alt-logs is set to  ${channel}`)
                     .setTimestamp()
-                    message.reply(embed)
+                    message.channel.send(embed)
                 } else{
                     data.updateOne({
                         Channel: channel.id
@@ -51,20 +52,20 @@ module.exports = {
 
                     const embed2 = new MessageEmbed()
                     .setColor('GREEN')
-                    .setDescription(`<:corexyes:860561725916053514> Alt-logs is set to  ${channel}`)
+                    .setDescription(`${emoji.success} Alt-logs is updated to  ${channel}`)
                     .setTimestamp()
-                    message.reply(embed2)
+                message.channel.send(embed2)
             }
         })
     }
 
     if(opt === 'disable') {
         schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-            if(!data) message.channel.send('<:corexerror:860580531825147994> The Alt-logs is already disabled')
+            if(!data) message.channel.send(`${emoji.error} The Alt-logs is already disabled`)
             data.deleteOne(Channel)
             const embed = new MessageEmbed()
             .setColor('GREEN')
-            .setDescription('<:corexyes:860561725916053514> Alt logging has been disabled')
+            .setDescription(`${emoji.success} Alt logging has been disabled`)
             .setTimestamp()
             message.channel.send(embed)
         })

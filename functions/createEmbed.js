@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js");
+const emoji = require('../emoji.json')
 
 let mainColor = "#fff000"
 let failColor = "0xeb3452";
@@ -7,21 +8,13 @@ let successColor = "0x34eb86";
 module.exports = (type, description, ...otherArgs) => {
   const embed = new MessageEmbed()
     .setColor(
-      mainColor
-      //   type === "success"
-      //     ? successColor
-      //     : type === "fail"
-      //     ? failColor
-      //     : type === "main"
-      //     ? mainColor
-      //     : null
-    )
+      mainColor)
     .setDescription(
       `${
         type === "success"
-          ? "<:corexyes:860561725916053514>"
+          ? emoji.success
           : type === "fail"
-          ? "<:corexerror:860580531825147994>"
+          ? emoji.error
           : ""
       } ${description}`
     );

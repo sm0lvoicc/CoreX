@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const db = require('../../models/notes')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'notes',
@@ -25,7 +26,7 @@ module.exports = {
             if(err) throw err;
             if(data) {
                 message.channel.send(new MessageEmbed()
-                    .setTitle(`All Notes`)
+                    .setTitle(`${emoji.settings} All Notes`)
                     .setDescription(
                         data.content.map(
                             (w, i) =>
@@ -36,7 +37,7 @@ module.exports = {
                 )
             } else {
                 message.channel.send(new MessageEmbed()
-                    .setDescription(`<:corexerror:860580531825147994> **${user.user.tag}** doesn't have any notes.`)
+                    .setDescription(`${emoji.error} **${user.user.tag}** doesn't have any notes.`)
                     .setColor("GREEN")
                 )
             }

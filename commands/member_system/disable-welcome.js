@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const schema = require('../../models/welcome-channels')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'disable-welcome',
@@ -15,9 +16,9 @@ module.exports = {
      */
     run: async(client, message, args) => {
         schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-            if(!data) return message.channel.send('<:corexerror:860580531825147994> The welcome channel is already disabled')
+            if(!data) return message.channel.send(`${emoji.error} The welcome channel is already disabled`)
             data.delete()
-            message.channel.send('<:corexyes:860561725916053514> The welcome channel has been disabled')
+            message.channel.send(`${emoji.success} The welcome channel has been disabled`)
         })
     }
 }

@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const schema = require('../../models/logs-server')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'server-logs',
@@ -39,7 +40,7 @@ module.exports = {
                     newData.save()
                     const embed = new MessageEmbed()
                     .setColor('GREEN')
-                    .setDescription(`<:corexyes:860561725916053514> Server-logs is set to ${channel}`)
+                    .setDescription(`${emoji.success} Server-logs is set to ${channel}`)
                     message.channel.send(embed)
                 } else{
                     if(data) {
@@ -51,7 +52,7 @@ module.exports = {
                         data.save()
                         const embed2 = new MessageEmbed()
                         .setColor('GREEN')
-                        .setDescription(`<:corexyes:860561725916053514> Server-logs is set to ${channel}`)
+                        .setDescription(`${emoji.success} Server-logs is set to ${channel}`)
                         message.channel.send(embed2)
                 }
             }
@@ -60,9 +61,9 @@ module.exports = {
 
     if(opt === 'disable') {
         schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-            if(!data) message.channel.send('<:corexerror:860580531825147994> The Server-logs is already disabled')
+            if(!data) message.channel.send(`${emoji.error} The Server-logs is already disabled`)
             data.delete()
-            message.channel.send('<:corexyes:860561725916053514> Server logging has been disabled')
+            message.channel.send(`${emoji.success} Server logging has been disabled`)
         })
     }
 

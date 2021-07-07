@@ -2,6 +2,7 @@ const prefixSchema = require('../../models/prefix')
 const prefix = require('../../config.json').prefix
 const { confirmation } = require('@reconlx/discord.js')
 const { Message, MessageEmbed } = require('discord.js');
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name : 'reset-prefix',
@@ -20,12 +21,12 @@ module.exports = {
                 await prefixSchema.findOneAndDelete({ Guild : message.guild.id })
                 message.channel.send(new MessageEmbed()
                 .setColor('RED')
-                .setDescription(`<:corexyes:860561725916053514> The prefix has been reset to \`${prefix}\``)
+                .setDescription(`${emoji.success} The prefix has been reset to \`${prefix}\``)
                 )
             }
             if(emoji === '❌') {
                 msg.delete()
-                message.channel.send('<:corexerror:860580531825147994> reset prefix has been cancelled.')
+                message.channel.send(`${emoji.error} reset prefix has been cancelled.`)
             }
         })
 

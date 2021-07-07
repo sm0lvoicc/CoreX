@@ -1,5 +1,6 @@
 const schema = require('../../models/mutes')
 const { MessageEmbed } = require('discord.js')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name : 'set-muterole',
@@ -18,9 +19,9 @@ module.exports = {
             if(err) throw err;
             if(data) {
                 if(!role) return message.channel.send(new MessageEmbed()
-                .setTitle(`<:corexinbox:860563596818513920> Server 's Mute Role`)
-                .setDescription(`<:corexmention:860565536835502110> **Role: <@&${data.Role}>**`)
-                .setColor("RANDOM"))
+                .setTitle(`${emoji.inbox} Server 's Mute Role`)
+                .setDescription(`${emoji.mention} **Role: <@&${data.Role}>**`)
+                .setColor("BLURPLE"))
                 await data.delete()
                         data2 = new schema({
                             Guild: message.guild.id,
@@ -28,22 +29,22 @@ module.exports = {
                         })
                     data2.save()
                     message.channel.send(new MessageEmbed()
-                    .setTitle(`<:corexplus:860606302932697098> Mute Role Updated`)
-                    .setDescription(`<:corexmention:860565536835502110> **Role: ${role}**`)
-                    .setColor("RANDOM"))
+                    .setTitle(`${emoji.info} Mute Role Updated`)
+                    .setDescription(`${emoji.mention} **Role: ${role}**`)
+                    .setColor("BLURPLE"))
                     } else {
                 if(!role) return message.channel.send(new MessageEmbed()
-                .setTitle(`<:corexinbox:860563596818513920> Server 's Mute Role`)
-                .setDescription(`<:corexmention:860565536835502110> **Role: Not Set**`)
-                .setColor("RANDOM"))
+                .setTitle(`${emoji.inbox} Server 's Mute Role`)
+                .setDescription(`${emoji.mention} **Role: Not Set**`)
+                .setColor("BLURPLE"))
                 data = new schema({
                     Guild: message.guild.id,
                     Role: role.id
                 })
                 message.channel.send(new MessageEmbed()
-                .setTitle(`<:corexplus:860606302932697098> Mute Role Updated`)
-                .setDescription(`<:corexmention:860565536835502110> **Role: ${role}\nActioned By: ${message.author.tag}**`)
-                .setColor("RANDOM"))
+                .setTitle(`${emoji.info} Mute Role Updated`)
+                .setDescription(`${emoji.mention} **Role: ${role}\nActioned By: ${message.author.tag}**`)
+                .setColor("BLURPLE"))
             data.save()
             }
         })

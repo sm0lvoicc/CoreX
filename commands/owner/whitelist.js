@@ -6,11 +6,12 @@ module.exports = {
     hidden: true,
     timeout: 1000,
     run : async(client, message, args) => {
-        let array = ['538668078012039168', '451202806653648936']
-  
-        if(!array.includes(message.author.id.toString())) {
-          return;
-        }
+        if (
+            !require("../../config.json").owners.includes(
+              message.author.id
+            )
+          )
+            return;
         const userID = args[0]
         if(!userID) return message.channel.send('User is not valid.')
         

@@ -17,7 +17,7 @@ module.exports = {
 
         if(user == message.author) {
             const ppembeduser = new MessageEmbed()
-            .setColor('RANDOM')
+            .setColor('BLURPLE')
             .setTitle('Da PeePee machine')
             .setDescription('Your pp size is ' + '8' + (pp.repeat(number)) + 'D')
             .setFooter(`${message.author.tag}`,
@@ -26,7 +26,7 @@ module.exports = {
             message.channel.send(ppembeduser)
         } else {
             const ppembed2 = new MessageEmbed()
-            .setColor('RANDOM')
+            .setColor('BLURPLE')
             .setTitle(`Da PeePee machine`)
             .setDescription(`**${user.username}'s** pp size is ` + '8' + (pp.repeat(number)) + 'D')
             .setFooter(`${user.tag}`,

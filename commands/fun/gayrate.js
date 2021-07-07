@@ -20,7 +20,7 @@ module.exports = {
 
         if(user == message.author) {
             const gayEmbedUser = new MessageEmbed()
-            .setColor('RANDOM')
+            .setColor('BLURPLE')
             .setTitle('Your gayrate')
             .setDescription(`You are **${rate}**% gay :rainbow_flag:`)
             .setFooter(`${message.author.tag}`,
@@ -29,7 +29,7 @@ module.exports = {
             message.channel.send(gayEmbedUser)
         } else {
             const gayEmbed2 = new MessageEmbed()
-            .setColor('RANDOM')
+            .setColor('BLURPLE')
             .setTitle(`${user.username}'s gayrate`)
             .setDescription(`${user} is **${rate}**% gay :rainbow_flag:`)
             .setFooter(`${user.tag}`,

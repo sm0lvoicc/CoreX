@@ -13,9 +13,9 @@ client.on('messageDelete', async(message) => {
         if(message.embeds[0]) return;
         const channel = message.guild.channels.cache.get(data.Channel);
         if(!channel || channel.available) return;
-        if (message.author.bot) return;
 
         if (message.channel.type !== "text") return;
+        if(message.content.length > 2000) banReason = banReason.slice(0, 1997) + "...";
         const messageDeleteEmbed = new MessageEmbed()
         .setColor('RED')
         .setAuthor('Message Deleted', message.guild.iconURL())
@@ -24,7 +24,6 @@ client.on('messageDelete', async(message) => {
         .setDescription(`\`\`\`${message.content}\`\`\``)
         .setTimestamp(new Date())
         .setFooter(`Message ID: ${message.id}`)
-        if(message.content.length >= 2000) return;
 
         channel.send(messageDeleteEmbed)
     })

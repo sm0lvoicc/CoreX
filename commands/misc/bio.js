@@ -1,12 +1,13 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const Schema = require(`../../models/bio`);
+const emoji = require('../../emoji.json')
 
 module.exports = {
 	name: 'bio',
     timeout: 3000,
 	description: 'Shows your bio',
-	userPerms: [''],
-  	clientPerms: [''],
+	userPerms: ['SEND_MESSAGES'],
+  	clientPerms: ['SEND_MESSAGES'],
 	/**
 	 * @param {Client} client
 	 * @param {Message} message
@@ -24,7 +25,7 @@ module.exports = {
 			return message.channel.send(
 				new MessageEmbed()
 				.setColor('RED')
-				.setDescription(`<:corexerror:860580531825147994> ${member.toString()} doesn't have a bio`)
+				.setDescription(`${emoji.error} ${member.toString()} doesn't have a bio`)
 				.setFooter(`looks like there is no bio, you can set it by typing ${p}setbio`)
 			);
 		}

@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const schema = require('../../models/autorole')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'autorole',
@@ -31,7 +32,7 @@ module.exports = {
             const role = await message.mentions.roles.first() || message.guild.roles.cache.get(args[0])
         if(!role) return message.channel.send(`Please mention a role to set as the autorole`)
         
-        if(role.position >= message.guild.me.roles.highest.position) return message.channel.send('I cannot add a role that is higher/equal to my role')
+        if(role.position >= message.guild.me.roles.highest.position) return message.channel.send(`${emoji.error} I cannot add a role due to role heirarchy issues`)
         
         schema.findOne({ Guild: message.guild.id }, async(err, data) => {
             if(err) throw err
@@ -43,7 +44,8 @@ module.exports = {
                 })
                 newData.save()
                 const embed2 = new MessageEmbed()
-                .setDescription(`<:corexyes:860561725916053514> Auto-role has been updated to ${role}`)
+                .setColor('GREEN')
+                .setDescription(`${emoji.success} Auto-role has been updated to ${role}`)
                 .setTimestamp()
                 message.channel.send(embed2)
 
@@ -54,7 +56,8 @@ module.exports = {
                 })
                 await data.save()
                 const embed = new MessageEmbed()
-                .setDescription(`<:corexyes:860561725916053514> Auto-role has been set to ${role}`)
+                .setColor('GREEN')
+                .setDescription(`${emoji.success} Auto-role has been set to ${role}`)
                 .setTimestamp()
                 message.channel.send(embed)
             }

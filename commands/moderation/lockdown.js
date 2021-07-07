@@ -1,4 +1,5 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'lockdown',
@@ -44,7 +45,7 @@ module.exports = {
                 })
             });
             message.channel.send(new MessageEmbed()
-              .setDescription(`<:corexlock:861289466798538772> **${message.author.tag}** locked down the server`)
+              .setDescription(`${emoji.lock} **${message.author.tag}** locked down the server`)
               .setColor("GREEN")
             )
           } else if(args[0] == 'off') { 
@@ -69,7 +70,7 @@ module.exports = {
               })
           }
            message.channel.send(new MessageEmbed()
-              .setDescription(`<:corexlock:861289466798538772> **${message.author.tag}** unlocked the server`)
+              .setDescription(`${emoji.unlock} **${message.author.tag}** unlocked the server`)
               .setColor("GREEN")
            )
         }

@@ -1,4 +1,5 @@
 const client = require('../index')
+const emoji = require('../emoji.json')
 const { Collection, MessageEmbed } = require('discord.js')
 const { prefix, invite } = require('../config.json');
 const prefixSchema = require('../models/prefix')
@@ -66,13 +67,13 @@ client.on('message', async message =>{
                 if(!message.member.hasPermission(command.userPerms || [])) return message.lineReply(
                   new MessageEmbed()
                   .setColor('RED')
-                  .setDescription(`<:corexerror:860580531825147994> You do not have the permission \`${command.userPerms}\``)
+                  .setDescription(`${emoji.error} You do not have the permission \`${command.userPerms}\``)
                 )
 
                 if(!message.guild.me.hasPermission(command.clientPerms || [])) return message.lineReply(
                   new MessageEmbed()
                   .setColor('RED')
-                  .setDescription(`<:corexerror:860580531825147994> I do not have the permission \`${command.userPerms}\``)
+                  .setDescription(`${emoji.error} I do not have the permission \`${command.userPerms}\``)
                 )
                 //cooldown stuff
                 if(command.timeout) {

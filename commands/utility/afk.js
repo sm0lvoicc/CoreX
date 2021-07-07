@@ -1,6 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const db = require('quick.db')
-
+const emoji = require(`../../emoji.json`)
 module.exports = {
     name: 'afk',
     description: 'Sets you as afk.',
@@ -21,7 +21,7 @@ module.exports = {
 
         const embed = new MessageEmbed()
         .setColor('RANDOM')
-        .setDescription(`<:corexyes:860561725916053514> **${message.author.tag}**, You have been set as AFK.\nReason: \`${reason}\``)
+        .setDescription(`${emoji.success} **${message.author.tag}**, You have been set as AFK.\nReason: \`${reason}\``)
         .setTimestamp()
         message.channel.send(embed)
     }

@@ -1,6 +1,7 @@
 const fs = require('fs');
 const glob = require('glob');
 const { MessageEmbed } = require('discord.js')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'reload',
@@ -9,11 +10,12 @@ module.exports = {
     hidden: true,
     run: async (client, message, args) => {
         
-        let array = ['538668078012039168', '451202806653648936']
-  
-        if(!array.includes(message.author.id.toString())) {
-          return;
-        }
+		if (
+			!require("../../config.json").owners.includes(
+			  message.author.id
+			)
+		  )
+			return;
 
 		client.commands.sweep(() => true);
 		glob(`${__dirname}/../**/*.js`, async(err, filePaths) => {
@@ -34,7 +36,7 @@ module.exports = {
 				}
 			})
 			message.channel.send(new MessageEmbed()
-			.setDescription(`<:corexyes:860561725916053514>	Reloaded all the commands`)
+			.setDescription(`${emoji.success} Reloaded all the commands`)
 			)
 		})
 

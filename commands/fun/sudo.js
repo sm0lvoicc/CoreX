@@ -9,7 +9,7 @@ module.exports = {
       message.delete();
       let user =
         message.mentions.members.first();
-      if (!user) return message.channel.send("Please mention a user!");
+      if (!user) return message.lineReply("Please mention a user!");
       const webhook = await message.channel.createWebhook(user.displayName, {
         avatar: user.user.displayAvatarURL(),
         channel: message.channel.id

@@ -1,4 +1,5 @@
 const { Client, Message, MessageEmbed } = require('discord.js')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'unban',
@@ -24,17 +25,17 @@ module.exports = {
                 unBanReason = 'No reason specified'
             }
     
-            if(!userUnban) message.channel.send('Please specify a user id, to unban');
+            if(!userUnban || isNaN(userUnban)) message.channel.send('Please specify a user id to unban');
     
             const bannedMembers = await message.guild.fetchBans();
     
-            if(!bannedMembers.find((user) => user.user.id ===  userUnban)) return message.channel.send('This user is not banned');
+            if(!bannedMembers.find((user) => user.user.id ===  userUnban)) return message.channel.send(`${emoji.error} This user is not banned`);
     
             message.guild.members.unban(userUnban);
     
             message.channel.send(new MessageEmbed()
             .setColor('GREEN')
-            .setDescription(`<:corexyes:860561725916053514> <@${userUnban}> has been successfully unbanned `)
+            .setDescription(`${emoji.success} <@${userUnban}> has been successfully unbanned `)
             )
 
         } catch(e) {

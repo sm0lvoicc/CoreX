@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const schema = require('../../models/leave-channels')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'disable-leave',
@@ -16,9 +17,9 @@ module.exports = {
     run: async(client, message, args) => {
 
         schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-            if(!data) return message.channel.send('<:corexerror:860580531825147994> The leave channel is already disabled')
+            if(!data) return message.channel.send(`${emoji.error} The leave channel is already disabled`)
             data.delete()
-            message.channel.send('<:corexyes:860561725916053514> The leave channel has been disabled')
+            message.channel.send(`${emoji.success} The leave channel has been disabled`)
         })
     }
 }

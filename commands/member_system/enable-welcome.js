@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const schema = require('../../models/welcome-channels')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'enable-welcome',
@@ -20,7 +21,7 @@ module.exports = {
 
       const text = args.slice(1).join(" ")
       const noText = new MessageEmbed()
-      .setTitle(`<:corexsearch:860609884924149801> Available tags`)
+      .setTitle(`${emoji.settings} Available tags`)
       .setDescription(` **{user}** : @New-Member \n **{server}** : Server Name \n **{user.tag}** : New-Member-Tag \n **{user.id}** : New-Member-ID \n **{membercount}** : Total Members`)
       .setFooter(`More Soon`)
       .setColor("RANDOM")
@@ -30,11 +31,11 @@ module.exports = {
 
       if(!channel.permissionsFor(message.guild.me).has(["VIEW_CHANNEL", "SEND_MESSAGES"])) {
         try {
-         message.member.send(`<:corexerror:860580531825147994> I need the permissions \`VIEW_CHANNEL\` and \`SEND_MESSAGES\` in the welcome channel`)
+         message.member.send(`${emoji.error} I need the permissions \`VIEW_CHANNEL\` and \`SEND_MESSAGES\` in the welcome channel`)
 
         } catch(e){
           const NoPerm = guild.channels.cache.find(ch => ch.type === 'text' && channel.permissionsFor(guild.me).has('SEND_MESSAGES'))
-          NoPerm.send(`<:corexerror:860580531825147994> ${message.member} I tried to DM You with the error: ${e},
+          NoPerm.send(`${emoji.error} ${message.member} I tried to DM You with the error: ${e},
           I cannot send messages to ${channel} due to permission errors
           `)
         }

@@ -1,5 +1,6 @@
 const db = require('../../models/warns');
 const { Message, MessageEmbed } = require('discord.js');
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'remove-warn',
@@ -32,14 +33,14 @@ module.exports = {
                 data.content.splice(number, 1)
                 message.channel.send(new MessageEmbed()
                 .setColor('GREEN')
-                .setDescription(`<:corexyes:860561725916053514> Removed warns from ${member.user.tag}`)
+                .setDescription(`${emoji.success} Removed warns from ${member.user.tag}`)
                 .setTimestamp()                
                 )
                 data.save()
             } else {
                 message.channel.send(new MessageEmbed()
                 .setColor('GREEN')
-                .setDescription('<:corexerror:860580531825147994> This user does not have any warns')
+                .setDescription(`${emoji.error} This user does not have any warns`)
                 .setTimestamp()                
                 )
             }

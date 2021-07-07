@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const Nuggies = require('nuggies');
+const emoji = require(`../../emoji.json`)
 module.exports = {
     name: 'dp-create',
     description: 'creates dropdown roles',

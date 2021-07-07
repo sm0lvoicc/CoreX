@@ -1,4 +1,5 @@
 const schema = require('../../models/custom-commands');
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'cc-delete',
@@ -16,8 +17,8 @@ module.exports = {
         if(!name) return message.channel.send('Please specify a command name');
 
         const data = await schema.findOne({ Guild: message.guild.id, Command: name });
-        if(!data) return message.channel.send('<:corexerror:860580531825147994> That custom command does not exist!');
+        if(!data) return message.channel.send(`${emoji.error} That custom command does not exist!`);
         await schema.findOneAndDelete({ Guild: message.guild.id, Command: name });
-        message.channel.send(`<:corexyes:860561725916053514> Removed **${name}** from custom commands!`);
+        message.channel.send(`${emoji.success} Removed **${name}** from custom commands!`);
     }
 }

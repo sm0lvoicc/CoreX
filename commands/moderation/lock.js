@@ -1,4 +1,5 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'lock',
@@ -25,7 +26,7 @@ module.exports = {
         }
 
         const everyone = message.guild.roles.cache.find(role => role.name == '@everyone')
-        if(!channel.permissionsFor(everyone).has(["SEND_MESSAGES"])) return message.channel.send('This channel is already locked.')
+        if(!channel.permissionsFor(everyone).has(["SEND_MESSAGES"])) return message.channel.send(`${emoji.error} This channel is already locked.`)
         
         await channel.createOverwrite(client.user, {
             SEND_MESSAGES: true,
@@ -33,7 +34,7 @@ module.exports = {
         await channel.updateOverwrite(everyone, {
             SEND_MESSAGES: false,
         },`CoreX Moderation - Lock Command - Actioned By: ${message.author.tag}`)
-        channel.send(new MessageEmbed().setDescription(`<:corexlock:861289466798538772> **${message.author.tag}** locked this channel for: \`${reason}\``).setColor("GREEN"))
+        channel.send(new MessageEmbed().setDescription(`${emoji.lock} **${message.author.tag}** locked this channel for: \`${reason}\``).setColor("GREEN"))
         .catch(err => {
             message.channel.send(`There has been an error: **${err}**`)
         })

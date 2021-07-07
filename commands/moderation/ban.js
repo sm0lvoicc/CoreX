@@ -1,4 +1,5 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
+const emoji = require(`../../emoji.json`)
 
 module.exports = {
     name: 'ban',
@@ -26,8 +27,8 @@ module.exports = {
            message.channel.send('Please mention a member to ban.')
         }
         
-        if (message.member.roles.highest.position < member.roles.highest.permission) return message.channel.send('The target has a higher position than you.');
-        if (message.guild.me.roles.highest.position < member.roles.highest.permission) return message.channel.send('The target has a higher position than me.');
+        if (message.member.roles.highest.position < member.roles.highest.permission) return message.channel.send(`${emoji.error} The target has a higher position than you.`);
+        if (message.guild.me.roles.highest.position < member.roles.highest.permission) return message.channel.send(`${emoji.error} The target has a higher position than me.`);
 
 
 
@@ -41,8 +42,7 @@ module.exports = {
 
         const bannedEmbed = new MessageEmbed()
         .setColor('RED')
-        .setDescription(`<:corexyes:860561725916053514> ${member} was banned by ${message.author} for: \`${banReason}\``)
-        
+        .setDescription(`${emoji.success} ${member} was banned by ${message.author} for: \`${banReason}`)
 
         const dmEmbed = new MessageEmbed()
             .setTitle("Banned!")
@@ -59,7 +59,7 @@ module.exports = {
             try {
                 await member.send(dmEmbed)
 
-                message.channel.send('<:corexyes:860561725916053514> I have successfully sent the reason to the user!')
+                message.channel.send(`${emoji.success} I have successfully sent the reason to the user!`)
             } catch (e) {
                 message.channel.send(`There has been an error, **${e}**`)
             }

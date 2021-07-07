@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const schema = require('../../models/leave-channels')
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'enable-leave',
@@ -20,7 +21,7 @@ module.exports = {
 
         const text = args.slice(1).join(" ")
         if(!text) message.channel.send(new MesssageEmbed()
-        .setTitle('<:corexsearch:860609884924149801> Available Tags')
+        .setTitle(`${emoji.settings} Available Tags`)
         .setFooter(`More Soon`)
         .setColor("RANDOM")
         .setDescription(`**{user}** : @New-Member \n **{server}** : Server Name \n **{user.tag}** : New-Member-Tag \n **{user.id}** : New-Member-ID \n **{membercount}** : Total Members`)
@@ -28,10 +29,10 @@ module.exports = {
 
         if(!channel.permissionsFor(message.guild.me).has(["VIEW_CHANNEL", "SEND_MESSAGES"])){
             try {
-                message.member.send(`<:corexerror:860580531825147994> I need the permissions \`VIEW_CHANNEL\` and \`SEND_MESSAGES\` in the welcome channel`)
+                message.member.send(`${emoji.error} I need the permissions \`VIEW_CHANNEL\` and \`SEND_MESSAGES\` in the welcome channel`)
                } catch(e){
                  const NoPerm = guild.channels.cache.find(ch => ch.type === 'text' && channel.permissionsFor(guild.me).has('SEND_MESSAGES'))
-                 NoPerm.send(`<:corexerror:860580531825147994> ${message.member} I tried to DM You with the error: ${e},
+                 NoPerm.send(`${emoji.error} ${message.member} I tried to DM You with the error: ${e},
                  I cannot send leave messages, I need the permissions \`VIEW_CHANNEL\` and \`SEND_MESSAGES\` in ${channel}
                  `)
                }

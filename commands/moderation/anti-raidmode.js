@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const schema = require('../../models/raidmode')
+const emoji = require(`../../emoji.json`)
 
 module.exports = {
     name: 'anti-raidmode',
@@ -34,9 +35,9 @@ module.exports = {
                             Guild: message.guild.id,
                         })
                         data.save()
-                        message.channel.send(`<:corexyes:860561725916053514> Success! Anti-raidmode is enabled`)
+                        message.channel.send(`${emoji.success} Anti-raidmode is enabled`)
                     } else{
-                        message.channel.send(`<:corexerror:860580531825147994> Anti-raidmode is already enabled`)
+                        message.channel.send(`${emoji.error} Anti-raidmode is already enabled`)
                     }
                 })
             
@@ -44,9 +45,9 @@ module.exports = {
 
         if(opt === 'disable') {
             schema.findOne({ Guild: message.guild.id}, async(err,data) =>{
-            if(!data) return message.channel.send('<:corexerror:860580531825147994> The Anti-raidmode has already been disabled')
+            if(!data) return message.channel.send(`${emoji.error} Anti-raidmode has already been disabled`)
             data.delete()
-            message.channel.send('<:corexyes:860561725916053514> Anti-raidmode has been disabled')
+            message.channel.send(`${emoji.success} Anti-raidmode has been disabled`)
             
             })
             
