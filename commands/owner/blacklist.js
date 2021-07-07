@@ -25,12 +25,12 @@ module.exports = {
             blacklist.findOne({ id : user.id }, async(err, data) => {
                 if(err) throw err;
                 if(data) {
-                    message.channel.send(`${emoji.success} **${user.tag}** has already been blacklisted!`)
+                    message.channel.send(`${emoji.error} **${user.tag}** has already been blacklisted!`)
                 } else {
                     data = new blacklist({ id : user.id, reason : blReason })
                     data.save()
                     .catch(err => console.log(err))
-                message.channel.send(`${emoji.error} **${user.tag}** has been added to blacklist.`)
+                message.channel.send(`${emoji.success} **${user.tag}** has been added to blacklist.`)
                 }
                
             })
