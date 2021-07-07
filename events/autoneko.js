@@ -18,8 +18,6 @@ client.on('ready', () => {
         const sub = [
             "Cuteanimenekos",
             "Waifu",
-            
-           
         ];
 
         const Rads = sub[Math.floor(Math.random() * sub.length)];

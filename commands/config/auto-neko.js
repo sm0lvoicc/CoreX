@@ -29,6 +29,7 @@ module.exports = {
         if(opt === 'set') {
             const channel = await message.mentions.channels.first()
             if(!channel) return message.channel.send('Please mention a channel to set as the channel logs')
+            if(!channel.nsfw) return message.channel.send('Some of these pics require the channel to be NSFW')
 
             schema.findOne({ Guild: message.guild.id }, async(err, data) => {
                 if(!data) {
