@@ -20,8 +20,8 @@ module.exports = {
     var apiPing = Date.now() - message.createdTimestamp;
 
         const embedPing = new MessageEmbed() 
-        .setColor('RANDOM')
-        .setDescription(`${emoji.loading} Latency: **${ping}**ms \nAPI Latency: **${apiping}**ms`);
+        .setColor('BLURPLE')
+        .setDescription(`${emoji.loading} Latency: **${ping}**ms \nAPI Latency: **${apiPing}**ms`);
 
         message.channel.send(embedPing);
     }
