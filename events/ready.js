@@ -34,7 +34,7 @@ client.on('ready', async() => {
 
     const channel = client.channels.cache.get(`862315521168506920`)
     const time = moment().format("dddd, MMMM Do YYYY, h:mm:ss a"); 
-    const text = `${emoji.active} **${client.user.tag}** is now online \n \n ${emoji.success} **${time}** \n \n ${emoji.member} **Cached ${usersCount} Users**`
+    const text = `${emoji.online} **${client.user.tag}** is now online \n \n ${emoji.success} **${time}** \n \n ${emoji.member} **Cached ${usersCount} Users**`
 
     const embed = new Discord.MessageEmbed()
     .setDescription(text)
