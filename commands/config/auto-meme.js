@@ -62,7 +62,7 @@ module.exports = {
         schema.findOne({ Guild: message.guild.id}, async(err, data) => {
             if(!data) message.channel.send(`${emoji.error} The Auto-meme is already disabled`)
             data.delete()
-            message.channel.send(`${emoji.success} Channel logging has been disabled`)
+            message.channel.send(`${emoji.success} Auto-Meme has been disabled`)
         })
     }
 

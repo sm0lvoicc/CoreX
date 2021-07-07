@@ -40,7 +40,7 @@ module.exports = {
                     newData.save()
                     const embed = new MessageEmbed()
                     .setColor('GREEN')
-                    .setDescription(`${emoji.success} auto-neko is set to ${channel}`)
+                    .setDescription(`${emoji.success} Auto-Neko is set to ${channel}`)
                     message.channel.send(embed)
                 } else{
                     if(data) {
@@ -52,7 +52,7 @@ module.exports = {
                         data.save()
                         const embed2 = new MessageEmbed()
                         .setColor('GREEN')
-                        .setDescription(`${emoji.success} auto-neko is set to ${channel}`)
+                        .setDescription(`${emoji.success} Auto-Neko is set to ${channel}`)
                         message.channel.send(embed2)
                 }
             }
@@ -61,9 +61,9 @@ module.exports = {
 
     if(opt === 'disable') {
         schema.findOne({ Guild: message.guild.id}, async(err, data) => {
-            if(!data) message.channel.send(`${emoji.error} The auto-neko is already disabled`)
+            if(!data) message.channel.send(`${emoji.error} Auto-Neko is already disabled`)
             data.delete()
-            message.channel.send(`${emoji.success} Channel logging has been disabled`)
+            message.channel.send(`${emoji.success} Auto Neko has been disabled`)
         })
     }
 
