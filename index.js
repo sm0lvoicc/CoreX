@@ -1,5 +1,3 @@
-//test
-
 const {
     Collection,
     Client,
