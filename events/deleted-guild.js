@@ -10,6 +10,9 @@ const mutes = require('../models/mutes')
 const notes = require('../models/notes')
 const suggestions = require('../models/suggestions')
 const warns = require('../models/warns')
+const autoMeme = require('../models/automeme');
+const autoNeko = require('../models/autoneko');
+
 
 client.on('guildDelete', async(guild) => {
     anti_ad.findOne({ Guild: guild.id }, async (err, data) => {
@@ -79,6 +82,20 @@ client.on('guildDelete', async(guild) => {
         if (err) throw err;
         if (data) {
             warns.findOneAndDelete({ guildId : guild.id })
+        }
+    })
+
+    autoMeme.findOne({ Guild: guild.id }, async (err, data) => {
+        if (err) throw err;
+        if (data) {
+            autoMeme.findOneAndDelete({ Guild : guild.id })
+        }
+    })
+
+    autoNeko.findOne({ Guild: guild.id }, async (err, data) => {
+        if (err) throw err;
+        if (data) {
+            autoNeko.findOneAndDelete({ Guild : guild.id })
         }
     })
 })
