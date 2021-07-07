@@ -42,7 +42,7 @@ module.exports = {
             .addField(`${emoji.inbox} Created At`, `${moment(message.guild.createdTimestamp).format('LL')} ${moment(message.guild.createdTimestamp).format('LTS')} ${moment(message.guild.createdTimestamp).fromNow()}`)
             .addField(`${emoji.owner} Owner `, message.guild.owner, true)
             .addField(`${emoji.globe} Region of this server is`, message.guild.region, true)
-            .addField(`${emoji.bot} No. of Members`, message.guild.members.cache.size, true)
+            .addField(`${emoji.member} No. of Members`, message.guild.members.cache.size, true)
             .addField(`${emoji.slash} No. of Bots:`, message.guild.members.cache.filter(member => member.user.bot).size, true)
             .addField(`${emoji.image} Emojis:`, message.guild.emojis.cache.size, true)
             .addField(`${emoji.message} Total Text Channels:`, message.guild.channels.cache.filter(channel => channel.type === 'text').size, true)
