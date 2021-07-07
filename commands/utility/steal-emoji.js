@@ -1,5 +1,5 @@
 const { Client, Message, Util } = require('discord.js');
-const emoji = require(`../../emoji.json`)
+const emojis = require(`../../emoji.json`)
 
 module.exports = {
     name: 'steal-emoji',
@@ -35,7 +35,7 @@ module.exports = {
           message.guild.emojis
                  .create(URL, name)
                  .then(emoji => {
-                     message.channel.send(`${emoji.success} Emoji ${emoji} was successfully added`, {
+                     message.channel.send(`${emojis.success} Emoji ${emoji} was successfully added`, {
                          emojiName: emoji.name
                      })
                  })
