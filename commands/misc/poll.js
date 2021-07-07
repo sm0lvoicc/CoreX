@@ -10,13 +10,13 @@ module.exports = {
         let msgArgs = args.join(' ')
 
 		if (!args[0]) {
-			return message.channel.send(
+			return message.lineReply(
 				'Please tell me what you would like the poll to ask!'
 			)
 		}
 
 		message.channel
-			.send(`**${msgArgs}${msgArgs.endsWith('?') ? '' : '?'}**`)
+			.send(`${emoji.inbox} A poll has been started by **${message.member.user.tag}**\n\`\`\`${msgArgs}\`\`\``)
 			.then((messageReaction) => {
 				messageReaction.react(emoji.success), messageReaction.react(emoji.error)
 			})
