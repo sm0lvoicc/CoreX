@@ -3,7 +3,7 @@ module.exports = {
     description: "Makes a webhook to impersonate someone",
     usage: "<user> <message>",
     timeout: 5000,
-    userPerms: [''],
+    userPerms: ['SEND_MESSAGES'],
     clientPerms: ['MANAGE_WEBHOOKS'],
     run: async (client, message, args) => {
       message.delete();

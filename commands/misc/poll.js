@@ -5,7 +5,7 @@ module.exports = {
     timeout: 1000,
 	description: 'Make a poll.',
 	userPerms: ['MANAGE_MESSAGES'],
-	clientPerms: [''],
+	clientPerms: ['SEND_MESSAGES'],
     run: async(client, message, args) => {
         let msgArgs = args.join(' ')
 

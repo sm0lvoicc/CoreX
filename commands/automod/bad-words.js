@@ -44,13 +44,13 @@ module.exports = {
                     if(data.Words.includes(word)) return message.channel.send(`${emoji.error} This word is already added to the blacklist`)
                     data.Words.push(word)
                     data.save()
-                    message.channel.send(`${emoji.error} Added \`${word}\` to the blacklist`)
+                    message.channel.send(`${emoji.success} Added \`${word}\` to the blacklist`)
                 } else {
                     new schema({
                         Guild: message.guild.id,
                         Words: word,
                     }).save()
-                    message.channel.send(`${emoji.error} Added \`${word}\` to the blacklist`)
+                    message.channel.send(`${emoji.sucess} Added \`${word}\` to the blacklist`)
                 }
             })
         }

@@ -8,7 +8,7 @@ module.exports = {
   timeout: '5000',
   description: "Create an invite of the server",
   usage: '',
-  userPerms: [''],
+  userPerms: ['SEND_MESSAGES'],
   clientPerms: ['CREATE_INSTANT_INVITE'],
   run: async(client, message, args) => {
     try {

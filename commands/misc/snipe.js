@@ -7,7 +7,7 @@ module.exports = {
     timeout: 7000,
     usage: '<No. of snipe/5>',
     userPerms: ['MANAGE_MESSAGES'],
-    clientPerms: [''],
+    clientPerms: ['MANAGE_MESSAGES'],
     /** 
      * @param {Client} client 
      * @param {Message} message 

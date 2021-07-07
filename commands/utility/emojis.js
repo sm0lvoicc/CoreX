@@ -7,6 +7,8 @@ module.exports = {
     aliases: ["Serveremojis", "emojilist", "serveremojis"],
     usage: '',
     timeout: 2000,
+    userPerms: ['SEND_MESSAGES'],
+    clientPerms: ['MANAGE_EMOJIS'],
     primeOnly: true,
     run: async (client, message, args) => {
     let Emojis = "";

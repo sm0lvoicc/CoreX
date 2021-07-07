@@ -6,7 +6,7 @@ module.exports = {
     timeout: 1000,
     description: "Sends the top 10 inviters in the server",
     userPerms: ['MANAGE_GUILD'],
-    clientPerms: [''],
+    clientPerms: ['SEND_MESSAGES'],
     run: async(client, message) => {
     message.guild.fetchInvites().then((invites) => {
         const inviteCounter = {}

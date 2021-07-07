@@ -6,8 +6,8 @@ module.exports = {
   timeout: 10000,
   description: "Get info about an anime",
   usage: "<Anime>",
-  userPerms: [''],
-  clientPerms: [''],
+  userPerms: ['SEND_MESSAGES'],
+  clientPerms: ['SEND_MESSAGES'],
   run: async (client, message, args) => {
     //command
     const search = `${args}`;

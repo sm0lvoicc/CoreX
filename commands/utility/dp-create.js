@@ -8,7 +8,7 @@ module.exports = {
     usage: 'answer the messages',
     aliases: ['dropdown-roles'],    
 	userPerms: ['MANAGE_GUILD'],
-    clientPerms: [''],
+    clientPerms: ['MANAGE_ROLES'],
     /** 
      * @param {Client} client 
      * @param {Message} message 

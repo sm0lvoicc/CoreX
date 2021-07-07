@@ -8,7 +8,7 @@ module.exports = {
     usage: 'answer the messages',
     aliases: ['embed-gen'],
     userPerms: ['MANAGE_MESSAGES'],
-    clientPerms: [''],
+    clientPerms: ['SEND_MESSAGES'],
     /** 
      * @param {Client} client 
      * @param {Message} message 

@@ -7,6 +7,8 @@ module.exports = {
     timeout: 5000,
     usage: '[reason]',
     aliases: ['set-afk'],
+    userPerms: ['SEND_MESSAGES'],
+    clientPerms: ['SEND_MESSAGES'],
     /** 
      * @param {Client} client 
      * @param {Message} message 

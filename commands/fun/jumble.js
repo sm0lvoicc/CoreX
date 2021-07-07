@@ -7,8 +7,8 @@ module.exports = {
   description: 'Gives you a jumbled word, you have to unjumble it.',
   timeout: 1000,
   aliases: ['scramble'],
-  userPerms: [''],
-  clientPerms: [''],
+  userPerms: ['SEND_MESSAGES'],
+  clientPerms: ['SEND_MESSAGES'],
   run: async(client, message, args) => {
     const jumble = new Jumble();
     const word = jumble.generate();

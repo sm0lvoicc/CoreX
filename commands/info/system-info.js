@@ -2,6 +2,7 @@ const {MessageEmbed} = require('discord.js');
 const { mem, cpu, os } = require('node-os-utils');
 const { stripIndent } = require('common-tags');
 const { re } = require('mathjs');
+const emoji = require('../../emoji.json')
 
 module.exports = {
     name: 'system-info',
@@ -25,7 +26,7 @@ module.exports = {
         `;
 
         const embed = new MessageEmbed()
-        .setTitle(`<:corexdesktop:860563196100214785> My System Information!!`)
+        .setTitle(`${emoji.settings} My System Information!!`)
         .setDescription(`\`\`\`yaml\n${systeminfo}\`\`\``)
         .setTimestamp()
         .setColor(message.guild.me.displayHexColor)

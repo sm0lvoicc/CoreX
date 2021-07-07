@@ -5,8 +5,8 @@ module.exports= {
     name: 'meme',
     timeout: 1000 * 3,
     description: 'Generates a random meme.',
-	userPerms: [''],
-    clientPerms: [''],
+	userPerms: ['SEND_MESSAGES'],
+    clientPerms: ['SEND_MESSAGES'],
     run: async(client, message, args) => {
 	const embed = new Discord.MessageEmbed();
 	got('https://www.reddit.com/r/memes/random/.json')
