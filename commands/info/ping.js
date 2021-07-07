@@ -16,7 +16,7 @@ module.exports = {
    * @param {String[]} args 
    */
   run: async (client, message, args) => {
-    var ping = Date.now() - message.createdTimestamp;
+    var ping = Math.round(client.ws.ping)
         const embedPing = new MessageEmbed() 
         .setColor('RANDOM')
         .setDescription(`${emoji.loading} Latency: **${ping}**ms \nAPI Latency: **${Math.round(client.ws.ping)}**ms`);
