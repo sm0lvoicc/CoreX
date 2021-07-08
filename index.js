@@ -12,6 +12,7 @@ const prefix = config.prefix
 const token = config.token
 const mongo = config.mongo
 const fs = require('fs')
+const DiscordVoice = require("discord-voice");
 const client = new Client({
     disableMentions: 'everyone'
 })
@@ -86,4 +87,8 @@ client.prefix = async function (message) {
     }
     return custom;
 }
+const Voice = new DiscordVoice(client, config.mongo)
+client.discordVoice = Voice;
+
+
 client.login(token)
