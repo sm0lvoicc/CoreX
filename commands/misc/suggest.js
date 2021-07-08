@@ -29,24 +29,19 @@ module.exports = {
               `${emoji.error} Suggestion Text must be 256 or fewer in length`,
             );
           const suggestEmbed = new MessageEmbed()
-            .setDescription(suggest)
-            .setFooter(
-              `A Suggestion Requested By: ${message.author.tag}`,
-              message.author.displayAvatarURL({ dynamic: true }),
+            .setAuthor(
+              `${message.author.tag}`,
+              message.author.displayAvatarURL(),
             )
+            .setDescription(suggest)
+            .setTimestamp()
             .setColor("RANDOM");
-          channel
-            .createWebhook("CoreX Suggestions", {
-              avatar: client.user.displayAvatarURL({ format: "png" }),
-            })
-            .then((webhook) => {
-              webhook.send({
-                username: message.author.tag,
-                avatarURL: message.author.displayAvatarURL({ format: "png" }),
-                embeds: [suggestEmbed],
-              });
-              await webhook.delete();
-            });
+
+          channel.send(suggestEmbed).then(async function (message) {
+            await message.react(emoji.success);
+            await message.react(emoji.neutral);
+            await message.react(emoji.error);
+          });
 
           message.channel.send(
             new MessageEmbed().setDescription(
