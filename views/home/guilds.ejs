@@ -89,10 +89,16 @@
                                 <% } %>
                             <div class="card-body">
                               <p class="card-text"><strong>Member Count:</strong> <%=number.formatNumber(guilds.memberCount) %> </p>
+                              <p class="card-text"><strong>Owner:</strong> <%=(`${client.users.cache.get(guilds.owner.id).tag}`) %> </p>
+                              <p class= "card-text"><strong>Boost:</strong> <%=(`${guilds.premiumSubscriptionCount || '0'}`) %> </p>
+                              <p class= "card-text"><strong>Emojis:</strong> <%=(`${guilds.emojis.cache.size}`) %> </p>
+                              <p class= "card-text"><strong>Text Channels:</strong> <%=(`${guilds.channels.cache.filter(channel => channel.type === 'text').size}`) %> </p>
+                              <p class= "card-text"><strong>Voice Channels:</strong> <%=(`${guilds.channels.cache.filter(channel => channel.type === 'voice').size}`) %> </p>
                               <p class="card-text"><strong>Server ID:</strong> <%=guilds.id %> </p>
                               <p class="card-text"><strong>Region:</strong> <%=guilds.region %> </p>
                               <p class="card-text"><strong>Created:</strong> <%=dateformat(`${guilds.createdAt}`, 'dddd, mmmm dS, yyyy, h:MM TT') %> </p>
                               <p class="card-text"><strong>Joined:</strong> <%=dateformat(`${guilds.joinedAt}`, 'dddd, mmmm dS, yyyy, h:MM TT') %> </p>
+
 
                             </div>
                               <div class="card-footer-item"><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalAlertDanger<%=guilds.id%>">Leave Guild</a></div>

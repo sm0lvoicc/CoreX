@@ -7,7 +7,7 @@ canvas {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #607D8B;
+  background: #6d37da;
 }
 
 .text {
@@ -42,7 +42,7 @@ a:focus {
 
 .button {
   border-radius: 4px;
-  background-color: #546E7A;
+  background-color: #7289DA;
   border: none;
   color: #FFFFFF;
   text-align: center;
