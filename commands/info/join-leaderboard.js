@@ -1,5 +1,6 @@
 const { ReactionPages } = require("reconlx");
 const { Client, Message, MessageEmbed } = require("discord.js");
+const emoji = require("../../emoji.json");
 
 module.exports = {
   name: "join-leaderboard",
@@ -42,7 +43,7 @@ module.exports = {
       );
       message.channel.send(
         new MessageEmbed()
-          .setTitle("Join Leaderboard in " + message.guild.name)
+          .setTitle(`${emoji.info} Join Leaderboard in ` + message.guild.name)
           .setDescription(description)
           .setColor("RANDOM"),
       );

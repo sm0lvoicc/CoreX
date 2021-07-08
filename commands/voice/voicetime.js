@@ -5,6 +5,7 @@ let moment = require("moment");
 const { DiscordVoice } = require("discord-voice");
 const { duration } = require("moment");
 const Schema = require("../../models/voiceleaderboard");
+const emoji = require("../../emoji.json");
 
 module.exports = {
   name: "voice-time",
@@ -26,7 +27,7 @@ module.exports = {
     if (!user) {
       const nuser_ = new MessageEmbed()
         .setDescription(
-          `:x: Seems like the user has **no voice activity** so far.`,
+          `${emoji.error} Seems like the user has **no voice activity** so far.`,
         )
         .setColor("#FF0000");
       return message.channel.send(nuser_);
