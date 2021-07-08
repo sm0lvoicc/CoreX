@@ -11,11 +11,6 @@ module.exports = {
     userPerms: ['MANAGE_MESSAGES'],
     clientPerms: ['SEND_MESSAGES'],
     run: async (client, message, args) => {
-        // If the member doesn't have enough permissions
-        if (!message.member.hasPermission('MANAGE_MESSAGES') && !message.member.roles.cache.some((r) => r.name === "Giveaways")) {
-            return message.channel.send(':x: You need to have the Manage Messages permissions to start giveaways.');
-        }
-
         // Giveaway channel
         let giveawayChannel = message.mentions.channels.first();
         // If no channel is mentionned

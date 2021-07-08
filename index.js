@@ -86,7 +86,33 @@ client.prefix = async function (message) {
     }
     return custom;
 }
+const { GiveawaysManager } = require('discord-giveaways');
+// Giveaways
+const manager = new GiveawaysManager(client, {
+    storage: './storages/giveaways.json',
+    updateCountdownEvery: 10000,
+    hasGuildMembersIntent: false,
+    default: {
+        botsCanWin: false,
+        exemptPermissions: ['MANAGE_MESSAGES', 'ADMINISTRATOR'],
+        embedColor: '#FF0000',
+        reaction: '🎉'
+    }
+});
+client.giveawaysManager = manager;
 
+// Giveaways Console Logging
 
+client.giveawaysManager.on("giveawayReactionAdded", (giveaway, member, reaction) => {
+    console.log(`${member.user.tag} entered giveaway #${giveaway.messageID} (${reaction.emoji.name})`);
+});
+
+client.giveawaysManager.on("giveawayReactionRemoved", (giveaway, member, reaction) => {
+    console.log(`${member.user.tag} unreact to giveaway #${giveaway.messageID} (${reaction.emoji.name})`);
+});
+
+client.giveawaysManager.on("giveawayEnded", (giveaway, winners) => {
+    console.log(`Giveaway #${giveaway.messageID} ended! Winners: ${winners.map((member) => member.user.username).join(', ')}`);
+});
 
 client.login(token)
