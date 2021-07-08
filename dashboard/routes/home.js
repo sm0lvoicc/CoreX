@@ -3,7 +3,7 @@ const router = express.Router();
 const discord = require('../../index')
 const { ensureAuthenticated, forwardAuthenticated } = require('../auth/auth');
 const dateformat = require('dateformat');
-const config = require('../config/config.json')
+const config = require('../config.json')
 
 
 const number = require('easy-number-formatter')
