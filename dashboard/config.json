@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
     "clientID":"824942362542604299",
-=======
-    "clientID":"",
->>>>>>> a65ef3c52bfc3b1a373e6c4db2288b0b5bf4bf41
     "clientSecret":"",
     "callbackURL":"http://192.168.2.173:3000/login/api",
     "Admin":[""]
