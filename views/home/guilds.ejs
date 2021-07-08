@@ -90,7 +90,7 @@
                             <div class="card-body">
                               <p class="card-text"><strong>Member Count:</strong> <%=number.formatNumber(guilds.memberCount) %> </p>
                               <p class="card-text"><strong>Owner:</strong> <%=(`${client.users.cache.get(guilds.owner.id).tag}`) %> </p>
-                              <p class= "card-text"><strong>Boost:</strong> <%=(`${guilds.premiumSubscriptionCount || '0'}`) %> </p>
+                              <p class= "card-text"><strong>Boosts:</strong> <%=(`${guilds.premiumSubscriptionCount || '0'}`) %> </p>
                               <p class= "card-text"><strong>Emojis:</strong> <%=(`${guilds.emojis.cache.size}`) %> </p>
                               <p class= "card-text"><strong>Text Channels:</strong> <%=(`${guilds.channels.cache.filter(channel => channel.type === 'text').size}`) %> </p>
                               <p class= "card-text"><strong>Voice Channels:</strong> <%=(`${guilds.channels.cache.filter(channel => channel.type === 'voice').size}`) %> </p>
