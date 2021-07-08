@@ -32,8 +32,8 @@ module.exports = {
         if (!arguments) return message.channel.send("Please specify a nickname!");
         if(member.id == message.member.id) return message.channel.send(`${emoji.error} You cannot nick yourself`)
 
-        if (message.member.roles.highest.position < member.roles.highest.permission) return message.channel.send(`${emoji.error} The target has a higher position than you.`);
-        if (message.guild.me.roles.highest.position < member.roles.highest.permission) return message.channel.send(`${emoji.error} The target has a higher position than me.`);
+        if (message.member.roles.highest.position <= member.roles.highest.permission) return message.channel.send(`${emoji.error} You cannot nick this member due to role heirarchy issues.`);
+        if (message.guild.me.roles.highest.position <= member.roles.highest.permission) return message.channel.send(`${emoji.error} I cannot nick this member due to role heirarchy issues.`);
     
         try {
           member.setNickname(arguments);

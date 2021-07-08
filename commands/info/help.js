@@ -145,7 +145,7 @@ module.exports = {
       if (!command) {
         const embed = new MessageEmbed()
           .setTitle(
-            `<:corexerror:860580531825147994> Invalid category/command! Use \`${p}help\` for all of my commands!`,
+            `${emoji.error} Invalid category/command! Use \`${p}help\` for all of my commands!`,
           )
           .setColor("RED");
         return message.channel.send(embed);
