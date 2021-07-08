@@ -1,45 +1,66 @@
-const express = require("express");
+const express = require('express')
+const discord = require('../index')
+const flash = require('connect-flash');
+const session = require('express-session');
+const passport = require('passport');
+const fileUpload = require('express-fileupload');
+
 const app = express();
-const PORT = 3000;
-const authRoute = require("./routes/auth");
-const indexRoute = require("./routes/index");
-const dashboardRoute = require("./routes/dashboard");
-const session = require("express-session");
-const passport = require("passport");
-const db = require("./database/database");
-const path = require("path");
-const ejs = require("ejs");
-const discordStrategy = require("./strategies/discord");
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
-// DB
-db.then(() => console.log("Connected to MongoDB.")).catch((err) =>
-  console.log(err)
-);
+port = 3000;
 
+app.use(express.static('./public'));
+app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: true,limit: '5mb' }));
+app.use(fileUpload());
+
+require('./auth/passport')(passport);
+
+
+// Express session
 app.use(
-  session({
-    secret: "ssaadfsfasfafgs",
-    cookie: {
-      maxAge: 60000 * 60 * 24,
-    },
-    saveUninitialized: false,
-    resave: false,
-    name: "discord.oauth2",
-  })
+    session({
+      secret: '4135231b7f33c66406cdb2a78420fa76',
+      resave: true,
+      saveUninitialized: true
+    })
 );
-
-// Passport
+  
+// Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
-//Routes
-app.use("/auth", authRoute);
-app.use("/dashboard", dashboardRoute);
-app.use(indexRoute);
+// Connect flash
+app.use(flash());
 
-// Ejs
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
-app.use(express.static(path.join(__dirname, "public")));
+// Global variables
+app.use(function(req, res, next) {
+  res.locals.success = req.flash('success');
+  res.locals.error = req.flash('error');
+  next();
+});
 
-app.listen(PORT, () => console.log("Server Is Running! PORT " + PORT));
+app.use('/', require('./routes/home.js'));
+app.use('/', require('./routes/settings.js'));
+app.use('/', require('./routes/guilds.js'));
+app.use('/', require('./routes/support.js'));
+
+app.use('/login', require('./routes/login.js'));
+
+http.listen(port)
+
+io.sockets.on('connection', function(sockets){
+  setInterval(function(){ 
+    // Uptime Count
+    let days = Math.floor(discord.client.uptime / 86400000);
+    let hours = Math.floor(discord.client.uptime / 3600000) % 24;
+    let minutes = Math.floor(discord.client.uptime / 60000) % 60;
+    let seconds = Math.floor(discord.client.uptime / 1000) % 60;
+  
+    var BOTuptime = `${days}d ${hours}h ${minutes}m ${seconds}s` 
+    
+    // Emit count to browser 
+    sockets.emit('uptime',{uptime:BOTuptime}); }, 1000);
+})

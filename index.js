@@ -92,3 +92,4 @@ client.discordVoice = Voice;
 
 
 client.login(token)
+exports.client = client;
