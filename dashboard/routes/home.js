@@ -3,8 +3,8 @@ const router = express.Router();
 const discord = require('../../index')
 const { ensureAuthenticated, forwardAuthenticated } = require('../auth/auth');
 const dateformat = require('dateformat');
-const config = require('../../conifg.json')
-const ver = require('../config/version.json')
+const config = require('../config/config.json')
+
 
 const number = require('easy-number-formatter')
 var request = require("request");
@@ -24,24 +24,12 @@ router.get('/home', ensureAuthenticated,(req, res) => {
       }
       // Prase update request data to JSON.
       request(options, function (error, response, body) {
-        try 
-        {
-          jsonprased = JSON.parse(body)
-          verL = jsonprased.ver
-        } 
-        catch (e) 
-        {
-          console.log(chalk.red("Failed to check for updates you may continue using this version, please try again or contact LachlanDev#8014"))
-          verL = ver.ver
-        }
     res.render('home/home',{
         profile:req.user,
         client:discord.client,
         joinedDate:dateformat(`${discord.client.user.createdAt}`, 'dddd, mmmm dS, yyyy, h:MM TT'),
         prefix:config.prefix,
         number:number,
-        Latestversion:verL,
-        Currentversion:ver.ver
     })
     })
 })

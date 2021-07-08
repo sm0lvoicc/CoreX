@@ -1,6 +1,6 @@
 const passport = require('passport');
 var DiscordStrategy = require('passport-discord').Strategy;
-const config = require('../../conifg.json')
+const config = require('../config/config.json')
 
 module.exports = function(passport) {
     var scopes = ['identify', 'email', 'guilds', 'guilds.join'];
