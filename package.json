@@ -16,6 +16,7 @@
         "ascii-table": "0.0.9",
         "bindings": "^1.5.0",
         "canvacord": "^5.2.1",
+        "canvas": "^2.8.0",
         "common-tags": "^1.8.0",
         "connect-flash": "^0.1.1",
         "dateformat": "^4.5.1",
