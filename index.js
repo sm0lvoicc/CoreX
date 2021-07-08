@@ -1,5 +1,6 @@
 const { Collection, Client, MessageEmbed, Message } = require("discord.js");
 require("discord-reply");
+require(`./dashboard/server`)
 const mongoose = require("mongoose");
 const config = require("./config.json");
 const prefix = config.prefix;
