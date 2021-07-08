@@ -45,7 +45,7 @@ module.exports = {
                 avatarURL: message.author.displayAvatarURL({ format: "png" }),
                 embeds: [suggestEmbed],
               });
-              webhook.delete();
+              await webhook.delete();
             });
 
           message.channel.send(
