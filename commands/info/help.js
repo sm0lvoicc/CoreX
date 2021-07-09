@@ -8,6 +8,7 @@ module.exports = {
   name: "help",
   aliases: ["commands"],
   description: "Shows all available bot commands.",
+  usage: "[category | command]",
   timeout: 1000,
   userPerms: ["SEND_MESSAGES"],
   clientPerms: ["SEND_MESSAGES"],
