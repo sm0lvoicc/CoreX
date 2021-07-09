@@ -3,7 +3,7 @@ const { Canvas } = require('canvacord');
 
 module.exports = {
     name: 'jail',
-    timeout: 20000,
+    timeout: 5000,
     description: 'Avatar is jailed.',
     usage: '[@user]',
     userPerms: ['SEND_MESSAGES'],

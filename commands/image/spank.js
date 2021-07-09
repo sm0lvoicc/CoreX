@@ -3,7 +3,7 @@ const { Canvas } = require('canvacord');
 
 module.exports = {
     name: 'spank',
-    timeout: 20000,
+    timeout: 5000,
     description: 'Spanks the mentioned person.',
     usage: '<@user>',
     userPerms: ['SEND_MESSAGES'],

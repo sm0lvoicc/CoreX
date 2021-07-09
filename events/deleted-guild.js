@@ -13,7 +13,6 @@ const warns = require("../models/warns");
 const autoMeme = require("../models/automeme");
 const autoNeko = require("../models/autoneko");
 const voiceLb = require("../models/voiceleaderboard");
-const disabledCommands = require("../models/toggle-commands");
 
 client.on("guildDelete", async (guild) => {
   anti_ad.findOne({ Guild: guild.id }, async (err, data) => {
