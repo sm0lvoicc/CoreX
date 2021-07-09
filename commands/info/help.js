@@ -154,7 +154,7 @@ module.exports = {
       const commandCooldown =
         ((command.timeout % 60000) / 1000).toFixed(0) + "s";
       const embed = new MessageEmbed()
-        .setTitle("<:corexinfo:860565886111580172> Command Details:")
+        .setTitle(`${emoji.info} Command Details:`)
         .setDescription(
           `
                 **Command:** ${
