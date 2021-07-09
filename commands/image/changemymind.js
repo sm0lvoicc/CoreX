@@ -4,7 +4,7 @@ const { Canvas } = require('canvacord');
 module.exports = {
     name: 'changemymind',
     description: 'Try changing my mind.',
-    timeout: 20000,
+    timeout: 5000,
     aliases: ['mindchange'],
     usage: '<text>',
     userPerms: ['SEND_MESSAGES'],

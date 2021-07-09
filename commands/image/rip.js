@@ -3,7 +3,7 @@ const { Canvas } = require('canvacord');
 
 module.exports = {
     name: 'rip',
-    timeout: 20000,
+    timeout: 5000,
     description: 'F in the chat.',
     usage: '[@user]',
     userPerms: ['SEND_MESSAGES'],

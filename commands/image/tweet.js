@@ -4,7 +4,7 @@ const { Client, Message, MessageEmbed, MessageAttachment } = require('discord.js
 
 module.exports = {
     name: 'tweet',
-    timeout: 20000,
+    timeout: 5000,
     description: 'Sends a tweet comment with the provided text',
     usage: '<text>',
     aliases: ['biden'],

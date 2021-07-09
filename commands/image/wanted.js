@@ -3,7 +3,7 @@ const { Canvas } = require('canvacord');
 
 module.exports = {
     name: 'wanted',
-    timeout: 20000,
+    timeout: 5000,
     description: 'Sends and image of avatar being wanted.',
     usage: '[@user]',
     userPerms: ['SEND_MESSAGES'],

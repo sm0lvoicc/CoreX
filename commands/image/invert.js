@@ -3,7 +3,7 @@ const { Canvas } = require('canvacord');
 
 module.exports = {
     name: 'invert',
-    timeout: 20000,
+    timeout: 5000,
     description: 'Inverts avatar.',
     usage: '[@user]',
     userPerms: ['SEND_MESSAGES'],
