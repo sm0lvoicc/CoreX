@@ -13,6 +13,7 @@ const warns = require("../models/warns");
 const autoMeme = require("../models/automeme");
 const autoNeko = require("../models/autoneko");
 const voiceLb = require("../models/voiceleaderboard");
+const disabledCommands = require("../models/toggle-commands");
 
 client.on("guildDelete", async (guild) => {
   anti_ad.findOne({ Guild: guild.id }, async (err, data) => {
@@ -103,6 +104,13 @@ client.on("guildDelete", async (guild) => {
     if (err) throw err;
     if (data) {
       voiceLb.findOneAndDelete({ Guild: guild.id });
+    }
+  });
+
+  disabledCommands.findOne({ Guild: guild.id }, async (err, data) => {
+    if (err) throw err;
+    if (data) {
+      disabledCommands.findOneAndDelete({ Guild: guild.id });
     }
   });
 });

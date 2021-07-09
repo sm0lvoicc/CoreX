@@ -84,7 +84,7 @@ client.on("message", async (message) => {
 
       if (command) {
         //disabled Commands
-        const settings = await disableCommands.findOne({
+        const settings = await disabledCommands.findOne({
           Guild: message.guild.id,
         });
         if (settings.disabledCmd.includes(command.name)) {
