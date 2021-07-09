@@ -9,7 +9,6 @@ const premiumServer = require("../models/premium");
 const blacklist = require("../models/blacklist");
 const schema = require("../models/custom-commands");
 const antiPing = require("../models/anti-ping");
-const disabledCommands = require("../models/toggle-commands");
 
 client.on("message", async (message) => {
   if (!message.guild) return;
@@ -83,15 +82,6 @@ client.on("message", async (message) => {
       if (data) message.channel.send(data.Response);
 
       if (command) {
-        //disabled Commands
-        const settings = await disabledCommands.findOne({
-          Guild: message.guild.id,
-        });
-        if (settings.disabledCmd.includes(command.name)) {
-          return message.lineReply(
-            `${emoji.error} This command has been disabled`,
-          );
-        }
         if (command.primeOnly == true && !premium)
           return message.reply(`${emoji.error} This command is premium only!`);
         //permission handler
