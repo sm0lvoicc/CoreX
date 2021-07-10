@@ -128,7 +128,7 @@ client.on("message", async (message) => {
         new MessageEmbed()
           .setColor("RED")
           .setTitle(
-            `<:corexerror:860580531825147994> You have been blacklisted from using **${client.user.tag}**`,
+            `${emoji.ban} You have been blacklisted from using **${client.user.tag}**`,
           )
           .addField("Reason", `\`\`\`${data.reason}\`\`\``)
           .setDescription(
