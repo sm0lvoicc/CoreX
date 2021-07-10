@@ -23,7 +23,7 @@ module.exports = {
         member = await message.guild.members.cache.get(args[0]);
       }
 
-      if (!member) return message.reply("That user is not valid.");
+      if (!member) return message.channel.send("That user is not valid.");
 
       const rname = message.content.split(" ").splice(2).join(" ");
       const role = message.guild.roles.cache.find((val) => val.name === rname);
@@ -37,13 +37,13 @@ module.exports = {
       const rolePosition = role.position;
       const userRolePossition = message.member.roles.highest.position;
 
-      if (userRolePossition < rolePosition)
+      if (userRolePossition <= rolePosition)
         return message.reply("The target role has a higher position than you.");
-      if (botRolePosition < rolePosition)
+      if (botRolePosition <= rolePosition)
         return message.reply("The target role has a higher position than me.");
-      if (userRolePossition < member.roles.highest.position)
+      if (userRolePossition <= member.roles.highest.position)
         message.channel.send("The target has a higher position than you.");
-      if (botRolePosition < member.roles.highest.position)
+      if (botRolePosition <= member.roles.highest.position)
         message.channel.send("The target has a higher position than me.");
 
       member.roles.add(role).catch((e) => {
@@ -54,7 +54,7 @@ module.exports = {
         .setColor("GREEN")
         .setTitle("Role Added!")
         .setDescription(
-          `${emoji.success} **${message.author}**, I've added the **${rname}** role to **${member.user.tag}**`,
+          `${emoji.success} Added the **${rname}** role to ${member}`,
         );
       message.channel.send(be);
     } catch (e) {
