@@ -69,18 +69,17 @@ module.exports = {
         );
         console.log(err);
       }
-
-      client.modlogs(
-        {
-          Member: user,
-          Color: "RED",
-          Reason: `Nickname changed to: ${random}`,
-          Action: "Mod Nick",
-        },
-        message,
-      );
     } catch (e) {
       message.channel.send(`There has been an error, **${e}**`);
     }
+    client.modlogs(
+      {
+        Member: user,
+        Color: "RED",
+        Reason: `Nickname changed to: ${random}`,
+        Action: "Mod Nick",
+      },
+      message,
+    );
   },
 };

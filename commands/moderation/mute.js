@@ -123,18 +123,17 @@ module.exports = {
           }
         }
       });
-
-      client.modlogs(
-        {
-          Member: member,
-          Color: "RED",
-          Reason: muteReason,
-          Action: "Mute",
-        },
-        message,
-      );
     } catch (e) {
       message.channel.send(`There has been an error, **${e}**`);
     }
+    client.modlogs(
+      {
+        Member: member,
+        Color: "RED",
+        Reason: muteReason,
+        Action: "Mute",
+      },
+      message,
+    );
   },
 };

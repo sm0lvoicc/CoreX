@@ -94,18 +94,17 @@ module.exports = {
       } catch (e) {
         message.channel.send(`There has been an error, **${e}**`);
       }
-
-      client.modlogs(
-        {
-          Member: member,
-          Color: "RED",
-          Reason: banReason,
-          Action: "Ban",
-        },
-        message,
-      );
     } catch (e) {
       message.channel.send(`There has been an error, **${e}**`);
     }
+    client.modlogs(
+      {
+        Member: member,
+        Color: "RED",
+        Reason: banReason,
+        Action: "Ban",
+      },
+      message,
+    );
   },
 };

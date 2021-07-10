@@ -54,14 +54,5 @@ module.exports = {
         }
       },
     );
-    client.modlogs(
-      {
-        Member: member,
-        Color: "RED",
-        Reason: removeWarnReason,
-        Action: "Removed warn",
-      },
-      message,
-    );
   },
 };
