@@ -6,6 +6,7 @@ module.exports = {
   description: "Moderate a nickname that is not following the rules",
   timeout: 4000,
   usage: "<@user | user.id>",
+  aliases: ["modnick", "nickmod", "nick-mod"],
   userPerms: ["MANAGE_NICKNAMES"],
   clientPerms: ["MANAGE_NICKNAMES"],
   /**

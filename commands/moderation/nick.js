@@ -7,6 +7,7 @@ module.exports = {
     timeout: 3000,
     description: 'Changes the nickname of a user.',
     usage: '<@user>',
+    aliases: ['set-nick', 'setnick'],
     userPerms: ['MANAGE_NICKNAMES'],
     clientPerms: ['MANAGE_NICKNAMES'],
     /**

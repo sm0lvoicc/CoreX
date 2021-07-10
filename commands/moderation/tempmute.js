@@ -8,7 +8,7 @@ module.exports = {
   description: "Temp mutes mentioned member",
   timeout: 10000,
   usage: "<@member || member.id> <time> [reason]",
-  aliases: ["t-mute"],
+  aliases: ["t-mute", "temp-mute"],
   userPerms: ["MANAGE_ROLES"],
   clientPerms: ["MANAGE_ROLES"],
   /**
@@ -110,7 +110,7 @@ module.exports = {
             await member.send(dmEmbed);
           } catch (e) {
             message.channel.send(
-              "<:corexerror:860580531825147994> I could not DM the user! Reason logged.",
+              `${emoji.error} I could not DM the user! Reason logged.`,
             );
             message.channel.send(`There has been an error, **${e}**`);
           }
@@ -119,7 +119,7 @@ module.exports = {
             message.channel.send(
               new MessageEmbed()
                 .setDescription(
-                  `<:corexyes:860561725916053514> ${member.user.username} was unmuted || muteReason: \`Mute Duration was expired\``,
+                  `${emoji.success} ${member.user.username} was unmuted || Reason: \`Mute Duration was expired\``,
                 )
                 .setColor("GREEN")
                 .setFooter(

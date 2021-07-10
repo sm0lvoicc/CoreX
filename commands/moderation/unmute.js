@@ -7,6 +7,7 @@ module.exports = {
   description: "Unmutes a muted member",
   timeout: 8000,
   usage: "<@member || member.id> [reason]",
+  aliases: ["un-mute"],
   userPerms: ["MANAGE_ROLES"],
   clientPerms: ["MANAGE_ROLES"],
   /**
