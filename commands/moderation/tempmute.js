@@ -130,17 +130,17 @@ module.exports = {
           }, ms(time));
         }
       });
+      client.modlogs(
+        {
+          Member: member,
+          Color: "RED",
+          Reason: muteReason,
+          Action: "Tempmute",
+        },
+        message,
+      );
     } catch (e) {
       message.channel.send(`There has been an error, **${e}**`);
     }
-    client.modlogs(
-      {
-        Member: member,
-        Color: "RED",
-        Reason: muteReason,
-        Action: "Tempmute",
-      },
-      message,
-    );
   },
 };

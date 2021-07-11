@@ -105,12 +105,6 @@ module.exports = {
       )
       .setTimestamp()
       .setColor("RED");
-    try {
-      user.send(userSend);
-    } catch (e) {
-      message.channel.send(`There has been an error, **${e}**`);
-    }
-
     client.modlogs(
       {
         Member: user,
@@ -120,5 +114,10 @@ module.exports = {
       },
       message,
     );
+    try {
+      user.send(userSend);
+    } catch (e) {
+      message.channel.send(`There has been an error, **${e}**`);
+    }
   },
 };

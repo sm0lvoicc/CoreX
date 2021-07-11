@@ -104,17 +104,17 @@ module.exports = {
             });
         }
       });
+      client.modlogs(
+        {
+          Member: member,
+          Color: "RED",
+          Action: "Unmute",
+          Reason: reason,
+        },
+        message,
+      );
     } catch (e) {
       message.channel.send(`There has been an error, **${e}**`);
     }
-    client.modlogs(
-      {
-        Member: member,
-        Color: "RED",
-        Action: "Unmute",
-        Reason: reason,
-      },
-      message,
-    );
   },
 };
