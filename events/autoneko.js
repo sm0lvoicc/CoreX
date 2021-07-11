@@ -5,7 +5,7 @@ const client = require("../index");
 const schema = require("../models/autoneko");
 
 client.on("ready", () => {
-  schema.findOne({ Guild: message.guild.id }, async (err, data) => {
+  schema.findOne({ Guild: guild.id }, async (err, data) => {
     if (!data) return;
     if (err) throw err;
     const channel = client.channels.cache.get(data.Channel);
