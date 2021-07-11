@@ -10,6 +10,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@discordjs/opus": "^0.5.3",
         "@iamtraction/google-translate": "^1.1.2",
         "@reconlx/discord.js": "^1.1.101",
         "@top-gg/sdk": "^3.1.2",
@@ -27,6 +28,7 @@
         "discord-reply": "^0.1.2",
         "discord-voice": "^1.0.8",
         "discord.js": "^12.2.0",
+        "distube": "^2.8.15",
         "easy-number-formatter": "^1.0.3",
         "ejs": "^3.1.6",
         "express": "^4.17.1",
@@ -48,6 +50,7 @@
         "node-fetch": "^2.6.1",
         "node-os-utils": "^1.3.5",
         "nuggies": "^1.2.51",
+        "opusscript": "0.0.8",
         "passport": "^0.4.1",
         "passport-discord": "^0.1.4",
         "passport-discord.js": "0.0.6",
