@@ -33,7 +33,7 @@
         "express-fileupload": "^1.2.1",
         "express-session": "^1.17.2",
         "get-dadjoke": "^2.0.2",
-        "give-me-a-joke": "^0.3.2",
+        "give-me-a-joke": "^0.4.0",
         "glob": "^7.1.7",
         "goosecache": "^9.0.14",
         "got": "^11.8.2",
