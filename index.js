@@ -1,6 +1,6 @@
 const { Collection, Client, MessageEmbed, Message } = require("discord.js");
 require("discord-reply");
-require(`./dashboard/server`)
+//require(`./dashboard/server`)
 const mongoose = require("mongoose");
 const config = require("./config.json");
 const prefix = config.prefix;
@@ -14,7 +14,6 @@ const client = new Client({
 module.exports = client;
 require("events").EventEmitter.defaultMaxListeners = 200;
 require("discord-buttons")(client);
-
 client.commands = new Collection();
 client.aliases = new Collection();
 client.snipes = new Collection();
