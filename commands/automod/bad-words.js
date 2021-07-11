@@ -64,7 +64,7 @@ module.exports = {
             Words: word,
           }).save();
           message.channel.send(
-            `${emoji.sucess} Added \`${word}\` to the blacklist`,
+            `${emoji.success} Added \`${word}\` to the blacklist`,
           );
         }
       });

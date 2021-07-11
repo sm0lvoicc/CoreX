@@ -5,7 +5,7 @@ const emoji = require("../../emoji.json");
 module.exports = {
   name: "suggest",
   description: "Suggests something for the server",
-  timeout: "10000",
+  timeout: 10000,
   usage: "<text>",
   userPerms: ["SEND_MESSAGES"],
   clientPerms: ["SEND_MESSAGES"],
