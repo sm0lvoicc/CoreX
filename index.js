@@ -11,6 +11,8 @@ const DiscordVoice = require("discord-voice");
 const client = new Client({
   disableMentions: "everyone",
 });
+const logs = require('discord-logs');
+logs(client);
 module.exports = client;
 require("events").EventEmitter.defaultMaxListeners = 200;
 require("discord-buttons")(client);
