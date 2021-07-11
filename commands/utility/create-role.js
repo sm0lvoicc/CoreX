@@ -32,7 +32,7 @@ module.exports = {
       let roleColor = "#d3d3d3";
     }
 
-    let roleName = roleName.replace(`${roleColor}`, "");
+    roleName = roleName.replace(`${roleColor}`, "");
 
     if (roleColor >= 16777215 || roleColor <= 0)
       return message.channel.send(
