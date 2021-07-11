@@ -41,7 +41,7 @@
         "jumble-words": "^1.0.1",
         "mal-scraper": "^2.11.3",
         "mathjs": "^9.4.4",
-        "memer-api": "^2.2.3",
+        "memer-api": "^3.0.6",
         "moment": "^2.29.1",
         "mongoose": "^5.12.4",
         "ms": "^2.1.3",
