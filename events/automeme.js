@@ -7,7 +7,7 @@ const schema = require('../models/automeme');
 client.on('ready', () => {
 	
 
-    schema.findOne({}, async(err, data) => {
+    schema.findOne({Guild: message.guild.id}, async(err, data) => {
         if(!data) return;
         if(err) throw err;
         const channel = client.channels.cache.get(data.Channel)
