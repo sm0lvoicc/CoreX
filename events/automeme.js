@@ -5,6 +5,7 @@ const client = require("../index");
 const schema = require("../models/automeme");
 
 client.on("message", async (message) => {
+  if (!message.guild) return;
   await schema.findOne({ Guild: message.guild.id }, async (err, data) => {
     if (!data) return;
     if (err) throw err;
