@@ -72,14 +72,5 @@ module.exports = {
     } catch (e) {
       message.channel.send(`There has been an error, **${e}**`);
     }
-    client.modlogs(
-      {
-        Member: user,
-        Color: "RED",
-        Reason: `Nickname changed to: ${random}`,
-        Action: "Mod Nick",
-      },
-      message,
-    );
   },
 };
