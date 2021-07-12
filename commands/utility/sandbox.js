@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const emoji = require("../../emoji.json");
 
 module.exports = {
   name: "sandbox",
