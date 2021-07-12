@@ -1,5 +1,6 @@
-const { Client, Message, Util } = require("discord.js");
-const emojis = require(`../../emoji.json`);
+const { Util, MessageEmbed } = require("discord.js");
+const { parse } = require("twemoji-parser");
+const emoji = require(`../../emoji.json`);
 
 module.exports = {
   name: "steal-emoji",
@@ -9,43 +10,81 @@ module.exports = {
   aliases: ["add-emoji", "stealemoji", "addemoji"],
   userPerms: ["MANAGE_EMOJIS"],
   clientPerms: ["MANAGE_EMOJIS"],
-  /**
-   *
-   * @param {Client} client
-   * @param {Message} message
-   * @param {String[]} args
-   * @returns
-   */
   run: async (client, message, args) => {
+    const emoji = args[0];
+    const name = args.slice(1).join(" ");
+    if (!emoji) {
+      const embed = new MessageEmbed()
+               .setDescription(`Please Give Me A Emoji!`)
+               .setColor('RANDOM')
+      return message.channel.send(embed)
+    }
+
     try {
-      const emoji = args[0];
-      if (!emoji) return message.channel.send("Please provide emoji to add");
+      if (emoji.startsWith("https://cdn.discordapp.com")) {
+        await message.guild.emojis.create(emoji, name || "give_name");
 
-      let custom = Util.parseEmoji(emoji);
-
-      const name = args[1] ? args[1].replace(/[^a-z0-9]/gi, "") : null;
-      if (!name) {
-        return message.channel.send("Please provide a name to set");
+        const embed = new MessageEmbed()
+          .setTitle(`Emoji Added`)
+          .setThumbnail(`${emoji}`)
+          .setColor('#FF69B4')
+          .setDescription(
+            `Emoji Has Been Added! | Name: ${
+              name || "give_name"
+            } `
+          );
+        return message.channel.send(embed);
       }
-      if (name.length < 2 || name > 32) {
-        return message.channel.send(
-          "Emoji name length should be between 2 and 32",
-        );
-      }
-      const URL = `https://cdn.discordapp.com/emojis/${custom.id}.${
-        custom.animated ? "gif" : "png"
-      }`;
 
-      message.guild.emojis.create(URL, name).then((emoji) => {
-        message.channel.send(
-          `${emojis.success} Emoji ${emoji} was successfully added`,
-          {
-            emojiName: emoji.name,
-          },
+      const customEmoji = Util.parseEmoji(emoji);
+
+      if (customEmoji.id) {
+        const link = `https://cdn.discordapp.com/emojis/${customEmoji.id}.${
+          customEmoji.animated ? "gif" : "png"
+        }` ;
+
+        await message.guild.emojis.create(
+          `${link}`,
+          `${name || `${customEmoji.name}`}`
         );
-      });
+       
+        const embed = new MessageEmbed()
+          .setTitle(`Emoji Added <:${customEmoji.name}:${customEmoji.id}>`)
+          .setColor('#FF69B4')
+          .setThumbnail(`${link}`)
+          .setDescription(
+            `Emoji Has Been Added! | Name: ${
+              name || `${customEmoji.name}`
+            } | Preview: [Click me](${link})`
+          );
+        return message.channel.send(embed);
+      } else {
+        const foundEmoji = parse(emoji, { assetType: "png" });
+        if (!foundEmoji[0]) {
+           const embed = new MessageEmbed()
+               .setDescription(`Please provide a valid emoji. I can't work with this bs`)
+               .setColor('RANDOM')
+          return message.channel.send(embed);
+        }
+        const embed = new MessageEmbed()
+               .setDescription(`Bruv this is a normal emoji what you can use anywhere`)
+               .setColor('RANDOM')
+        message.channel.send(embed
+          
+        )
+      }
     } catch (e) {
-      message.channel.send(`There has been an error, **${e}**`);
+      if (
+        String(e).includes(
+          "DiscordAPIError: Maximum number of emojis reached (50)"
+        )
+      ) {
+         const embed = new MessageEmbed()
+               .setDescription(`Maximum emoji count reached for this Server!`)
+               .setColor('RANDOM')
+        
+        return message.channel.send(embed)
+      }
     }
   },
 };
