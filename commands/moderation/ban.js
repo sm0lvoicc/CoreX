@@ -57,7 +57,7 @@ module.exports = {
       const bannedEmbed = new MessageEmbed()
         .setColor("RED")
         .setDescription(
-          `${emoji.success} ${member} was banned by ${message.author} for: \`${banReason}`,
+          `${emoji.success} ${member} was banned by ${message.author} for: \`${banReason}\``,
         );
 
       const dmEmbed = new MessageEmbed()
