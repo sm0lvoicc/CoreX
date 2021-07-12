@@ -105,11 +105,4 @@ client.on("guildDelete", async (guild) => {
       voiceLb.findOneAndDelete({ Guild: guild.id });
     }
   });
-
-  disabledCommands.findOne({ Guild: guild.id }, async (err, data) => {
-    if (err) throw err;
-    if (data) {
-      disabledCommands.findOneAndDelete({ Guild: guild.id });
-    }
-  });
 });
