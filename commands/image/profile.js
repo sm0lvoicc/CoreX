@@ -9,7 +9,7 @@ module.exports = {
     run: async (client, message, args) => {
         if("floppa" === args[0].toLowerCase()) {
             const floppaembed = new Discord.MessageEmbed()
-            .setImage("https://discord.c99.nl/widget/theme-4/582012181638414357.png")
+            .setImage("https://discord.c99.nl/widget/theme-2/582012181638414357.png")
             .setColor(`RANDOM`)
             message.channel.send(floppaembed)
         }
