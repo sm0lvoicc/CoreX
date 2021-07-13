@@ -43,7 +43,7 @@ module.exports = {
         automod: emoji.spark,
         alt: emoji.kick,
         voice: emoji.voice,
-        music: emoji.music,
+        music: emoji.speaker,
       };
 
       readdirSync("./commands/").forEach((dir) => {
