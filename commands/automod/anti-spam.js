@@ -76,7 +76,7 @@ module.exports = {
         new MessageEmbed()
           .setColor("GREEN")
           .setDescription(
-            `${emoji.error} Anti-Spam has been set to **${messages}** messages and with an Action: **${action}**`,
+            `${emoji.success} Anti-Spam has been set to **${messages}** messages and with an Action: **${action}**`,
           ),
       );
     }
