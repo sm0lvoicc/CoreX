@@ -6,7 +6,7 @@ module.exports = {
   name: "whitelist-spam",
   description: "Whitelist channel from a anti-spam",
   timeout: 3000,
-  usage: "<add/remove/dislay <#channel>",
+  usage: "<add/remove/display <#channel>",
   aliases: ["wl-spam", "wlspam"],
   userPerms: ["ADMINISTRATOR"],
   clientPerms: ["MANAGE_GUILD"],

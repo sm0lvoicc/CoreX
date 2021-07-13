@@ -6,7 +6,7 @@ module.exports = {
   name: "whitelist-link",
   description: "Whitelist channel from a anti-link",
   timeout: 3000,
-  usage: "<add/remove/dislay <#channel>",
+  usage: "<add/remove/display <#channel>",
   aliases: ["wl-link", "wllink"],
   userPerms: ["ADMINISTRATOR"],
   clientPerms: ["MANAGE_GUILD"],

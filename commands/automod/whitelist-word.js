@@ -6,7 +6,7 @@ module.exports = {
   name: "whitelist-word",
   description: "Whitelist channel from a Anti-curse",
   timeout: 3000,
-  usage: "<add/remove/dislay <#channel>",
+  usage: "<add/remove/display <#channel>",
   aliases: ["wl-word", "wlword"],
   userPerms: ["ADMINISTRATOR"],
   clientPerms: ["MANAGE_GUILD"],

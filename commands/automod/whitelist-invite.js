@@ -6,7 +6,7 @@ module.exports = {
   name: "whitelist-invite",
   description: "Whitelist channel from a anti-invite",
   timeout: 3000,
-  usage: "<add/remove/dislay <#channel>",
+  usage: "<add/remove/display <#channel>",
   aliases: ["wl-invite", "wlinvite", "wlinv"],
   userPerms: ["ADMINISTRATOR"],
   clientPerms: ["MANAGE_GUILD"],
