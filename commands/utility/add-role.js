@@ -38,13 +38,21 @@ module.exports = {
       const userRolePossition = message.member.roles.highest.position;
 
       if (userRolePossition <= rolePosition)
-        return message.reply("The target role has a higher position than you.");
+        return message.reply(
+          "You cannot add that role due to role heirarchy issues.",
+        );
       if (botRolePosition <= rolePosition)
-        return message.reply("The target role has a higher position than me.");
+        return message.reply(
+          "I cannot add that role due to role heirarchy issues.",
+        );
       if (userRolePossition <= member.roles.highest.position)
-        message.channel.send("The target has a higher position than you.");
+        message.channel.send(
+          "You cannot add that role to that user due to role heirarchy issues.",
+        );
       if (botRolePosition <= member.roles.highest.position)
-        message.channel.send("The target has a higher position than me.");
+        message.channel.send(
+          "You cannot add that role to that user due to role heirarchy issues.",
+        );
 
       member.roles.add(role).catch((e) => {
         return message.channel.send(`${emoji.error} **Error:**\n${e}`);
