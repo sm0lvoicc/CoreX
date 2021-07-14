@@ -150,6 +150,4 @@ client.distube
     message.channel.send("An error encountered: " + e);
   });
 
-// Starboard Feature for On Message Reaction Add
-
 client.login(token);
