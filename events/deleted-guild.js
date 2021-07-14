@@ -8,7 +8,6 @@ const ghost_ping = require("../models/ghostping");
 const modlogs = require("../models/modlogs");
 const mutes = require("../models/mutes");
 const notes = require("../models/notes");
-const suggestions = require("../models/suggestions");
 const warns = require("../models/warns");
 const voiceLb = require("../models/voiceleaderboard");
 
@@ -66,13 +65,6 @@ client.on("guildDelete", async (guild) => {
     if (err) throw err;
     if (data) {
       notes.findOneAndDelete({ Guild: guild.id });
-    }
-  });
-
-  suggestions.findOne({ Guild: guild.id }, async (err, data) => {
-    if (err) throw err;
-    if (data) {
-      suggestions.findOneAndDelete({ Guild: guild.id });
     }
   });
 

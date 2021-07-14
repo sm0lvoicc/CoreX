@@ -1,55 +1,52 @@
-const schema = require("../../models/suggestions");
-const { MessageEmbed } = require("discord.js");
+const { Client, Message, MessageEmbed } = require("discord.js");
 const emoji = require("../../emoji.json");
+const db = require("quick.db");
 
 module.exports = {
   name: "suggest",
-  description: "Suggests something for the server",
-  timeout: 10000,
-  usage: "<text>",
+  description: "Suggest something for the server.",
+  timeout: 5000,
+  usage: "<suggestion>",
+  aliases: [""],
   userPerms: ["SEND_MESSAGES"],
   clientPerms: ["SEND_MESSAGES"],
+  /**
+   * @param {Client} client
+   * @param {Message} message
+   * @param {String[]} args
+   */
   run: async (client, message, args) => {
-    const suggest = args.join(" ");
-    if (!suggest)
-      return message.channel.send(`Please add some text to suggest`);
+    const channel = await db.fetch(`suggestions_${message.guild.id}`);
+    if (channel === null)
+      return message.channel.send(
+        `${emoji.error} The suggestion channel has not been set`,
+      );
 
-    schema.findOne({ Guild: message.guild.id }, async (err, data) => {
-      if (err) throw err;
-      if (!data) {
-        message.channel.send("The suggestion module has not been enabled");
-      } else {
-        const channel = message.guild.channels.cache.get(data.Channel);
-        if (!channel) {
-          return message.channel.send("There is no suggestion channel.");
-        }
-        if (channel) {
-          if (suggest.length > 256)
-            return message.lineReply(
-              `${emoji.error} Suggestion Text must be 256 or fewer in length`,
-            );
-          const suggestEmbed = new MessageEmbed()
-            .setAuthor(
-              `${message.author.tag}`,
-              message.author.displayAvatarURL(),
-            )
-            .setDescription(suggest)
-            .setTimestamp()
-            .setColor("RANDOM");
+    const suggestion = args.join(" ");
+    if (!suggestion)
+      return messsage.channel.send(`Please specify something to suggest`);
+    if (suggestion.length > 256)
+      return message.lineReply(
+        `${emoji.error} Suggestion Text must be 256 or fewer in length`,
+      );
 
-          channel.send(suggestEmbed).then(async function (message) {
-            await message.react(emoji.success);
-            await message.react(emoji.neutral);
-            await message.react(emoji.error);
-          });
+    const suggestEmbed = new MessageEmbed()
+      .setColor("GREEN")
+      .setAuthor(`${message.author.tag}`, message.author.displayAvatarURL())
+      .setDescription(suggestion)
+      .setTimestamp();
 
-          message.channel.send(
-            new MessageEmbed().setDescription(
-              `${emoji.success} Your Suggestion has been sent`,
-            ),
-          );
-        }
-      }
-    });
+    const msg = await message.guild.channels.cache
+      .get(channel)
+      .send(suggestEmbed);
+    await msg.react(emoji.success);
+    await msg.react(emoji.neutral);
+    await msg.react(emoji.error);
+
+    message.channel.send(
+      new MessageEmbed()
+        .setColor("GREEN")
+        .setDescription(`${emoji.success} Your Suggestion has been sent`),
+    );
   },
 };
