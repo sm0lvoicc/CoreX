@@ -21,7 +21,7 @@ client.aliases = new Collection();
 client.snipes = new Collection();
 
 //top.gg stuff
-const Topgg = require("@top-gg/sdk");
+const Topgg = require("@top-gg/sdk");//
 
 const api = new Topgg.Api("token");
 
