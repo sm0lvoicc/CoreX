@@ -1,5 +1,5 @@
 const client = require("../index");
-const db = require("../models/logs-message");
+const db = require("../models/logs");
 const { MessageEmbed } = require("discord.js");
 const pingSchema = require("../models/ghostping");
 
