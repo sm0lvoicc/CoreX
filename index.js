@@ -10,9 +10,8 @@ const fs = require("fs");
 const DiscordVoice = require("discord-voice");
 const client = new Client({
   disableMentions: "everyone",
-  partials: ['MESSAGE', 'REACTION']
 });
-const logs = require('discord-logs');
+const logs = require("discord-logs");
 logs(client);
 module.exports = client;
 require("events").EventEmitter.defaultMaxListeners = 200;
@@ -93,90 +92,64 @@ client.distube = new Distube(client, {
   leaveOnFinish: false,
   leaveOnStop: false,
 });
-const status = (queue) => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filter || "Off"}\` | Loop: \`${queue.repeatMode ? queue.repeatMode == 2 ? "All Queue" : "This Song" : "Off"}\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``;
+const status = (queue) =>
+  `Volume: \`${queue.volume}%\` | Filter: \`${
+    queue.filter || "Off"
+  }\` | Loop: \`${
+    queue.repeatMode
+      ? queue.repeatMode == 2
+        ? "All Queue"
+        : "This Song"
+      : "Off"
+  }\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``;
 
 client.distube
-    .on("playSong", (message, queue, song) => message.channel.send(
-        `Playing \`${song.name}\` - \`${song.formattedDuration}\`\nRequested by: ${song.user}\n${status(queue)}`
-    ))
-    .on("addSong", (message, queue, song) => message.channel.send(
-        `Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`
-    ))
-    .on("playList", (message, queue, playlist, song) => message.channel.send(
-        `Play \`${playlist.name}\` playlist (${playlist.songs.length} songs).\nRequested by: ${song.user}\nNow playing \`${song.name}\` - \`${song.formattedDuration}\`\n${status(queue)}`
-    ))
-    .on("addList", (message, queue, playlist) => message.channel.send(
-        `Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to queue\n${status(queue)}`
-    ))
-    // DisTubeOptions.searchSongs = true
-    .on("searchResult", (message, result) => {
-        let i = 0;
-        message.channel.send(`**Choose an option from below**\n${result.map(song => `**${++i}**. ${song.name} - \`${song.formattedDuration}\``).join("\n")}\n*Enter anything else or wait 60 seconds to cancel*`);
-    })
-    // DisTubeOptions.searchSongs = true
-    .on("searchCancel", (message) => message.channel.send(`Searching canceled`))
-    .on("error", (message, e) => {
-        console.error(e)
-        message.channel.send("An error encountered: " + e);
-    });
+  .on("playSong", (message, queue, song) =>
+    message.channel.send(
+      `Playing \`${song.name}\` - \`${
+        song.formattedDuration
+      }\`\nRequested by: ${song.user}\n${status(queue)}`,
+    ),
+  )
+  .on("addSong", (message, queue, song) =>
+    message.channel.send(
+      `Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`,
+    ),
+  )
+  .on("playList", (message, queue, playlist, song) =>
+    message.channel.send(
+      `Play \`${playlist.name}\` playlist (${
+        playlist.songs.length
+      } songs).\nRequested by: ${song.user}\nNow playing \`${song.name}\` - \`${
+        song.formattedDuration
+      }\`\n${status(queue)}`,
+    ),
+  )
+  .on("addList", (message, queue, playlist) =>
+    message.channel.send(
+      `Added \`${playlist.name}\` playlist (${
+        playlist.songs.length
+      } songs) to queue\n${status(queue)}`,
+    ),
+  )
+  // DisTubeOptions.searchSongs = true
+  .on("searchResult", (message, result) => {
+    let i = 0;
+    message.channel.send(
+      `**Choose an option from below**\n${result
+        .map(
+          (song) => `**${++i}**. ${song.name} - \`${song.formattedDuration}\``,
+        )
+        .join("\n")}\n*Enter anything else or wait 60 seconds to cancel*`,
+    );
+  })
+  // DisTubeOptions.searchSongs = true
+  .on("searchCancel", (message) => message.channel.send(`Searching canceled`))
+  .on("error", (message, e) => {
+    console.error(e);
+    message.channel.send("An error encountered: " + e);
+  });
 
 // Starboard Feature for On Message Reaction Add
 
-client.on('messageReactionAdd', async (reaction, user) => {
-    const handleStarboard = async () => {
-        const starboard = client.channels.cache.find(channel => channel.name.toLowerCase() === 'starboard');
-        const msgs = await starboard.messages.fetch({ limit: 100 });
-        const existingMsg = msgs.find(msg => 
-            msg.embeds.length === 1 ?
-            (msg.embeds[0].footer.text.startsWith(reaction.message.id) ? true : false) : false);
-        if(existingMsg) existingMsg.edit(`${reaction.count} - 🌟`);
-        else {
-            const embed = new MessageEmbed()
-                .setAuthor(reaction.message.author.tag, reaction.message.author.displayAvatarURL())
-                .addField('Url', reaction.message.url)
-                .setDescription(reaction.message.content)
-                .setFooter(reaction.message.id + ' - ' + new Date(reaction.message.createdTimestamp));
-            if(starboard)
-                starboard.send('1 - 🌟', embed);
-        }
-    }
-    if(reaction.emoji.name === '🌟') {
-        if(reaction.message.channel.name.toLowerCase() === 'starboard') return;
-        if(reaction.message.partial) {
-            await reaction.fetch();
-            await reaction.message.fetch();
-            handleStarboard();
-        }
-        else
-            handleStarboard();
-    }
-});
-
-// Starboard Feature for On Reaction Remove
-
-client.on('messageReactionRemove', async (reaction, user) => {
-    const handleStarboard = async () => {
-        const starboard = client.channels.cache.find(channel => channel.name.toLowerCase() === 'starboard');
-        const msgs = await starboard.messages.fetch({ limit: 100 });
-        const existingMsg = msgs.find(msg => 
-            msg.embeds.length === 1 ? 
-            (msg.embeds[0].footer.text.startsWith(reaction.message.id) ? true : false) : false);
-        if(existingMsg) {
-            if(reaction.count === 0)
-                existingMsg.delete({ timeout: 2500 });
-            else
-                existingMsg.edit(`${reaction.count} - 🌟`)
-        };
-    }
-    if(reaction.emoji.name === '🌟') {
-        if(reaction.message.channel.name.toLowerCase() === 'starboard') return;
-        if(reaction.message.partial) {
-            await reaction.fetch();
-            await reaction.message.fetch();
-            handleStarboard();
-        }
-        else
-            handleStarboard();
-    }
-});
 client.login(token);
