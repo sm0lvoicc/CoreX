@@ -14,8 +14,8 @@ module.exports = {
     credit4 = client.users.cache.get("805729557357133826"); 
     credit5 = client.users.cache.get("582012181638414357"); // developer
     credit6 = client.users.cache.get("537875750955778058");
-    credit7 = client.users.cache.get("708635694154776657"); // developer
-    credit8 = client.users.cache.get("510166383523528705"); // developer
+    credit7 = client.users.cache.get("708635694154776657");
+    credit8 = client.users.cache.get("510166383523528705");
 
     const embedCredits = new MessageEmbed()
       .setColor("BLURPLE")
@@ -45,7 +45,7 @@ module.exports = {
         },
           {
           name: credit8.tag,
-          value: "Core Developer of CoreX, He is the newest addition to the developer team, and I cant imagine how well the bot will be now he's here.",
+          value: "Core Developer of CoreX, He is the newest addition to the developer team, And we look forward to be working with him.",
         },
         {
           name: credit3.tag,
