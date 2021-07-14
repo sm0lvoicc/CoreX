@@ -1,6 +1,0 @@
-{
-    "clientID":"824942362542604299",
-    "clientSecret":"",
-    "callbackURL":"http://192.168.2.173:3000/login/api",
-    "Admin":[""]
-}
