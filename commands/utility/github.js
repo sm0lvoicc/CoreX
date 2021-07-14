@@ -38,6 +38,7 @@ module.exports = {
                   .addField(`Following`, `${following}`, true)
                   .addField(`Location`, `${location || "No Location"}`)
                   .addField(`Account Created`, moment.utc(created_at).format("dddd, MMMM, Do YYYY"))
+                  .addField(`Link to there profile`, `[Click Here!](https://github.com/${args.join('-')})`)
                   .setFooter(message.client.user.username, message.client.user.displayAvatarURL())
                   .setTimestamp()
                   message.channel.send(embed)
