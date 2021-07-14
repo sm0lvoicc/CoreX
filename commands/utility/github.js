@@ -24,7 +24,7 @@ module.exports = {
                     description: ` **User Not Found | Please Give Me A Valid Username!**`
                 }
             });
-          let { login, avatar_url, name, id, html_url, public_repos, followers, following, location, created_at, bio } = body;
+          let { login, avatar_url, name, id, html_url, public_repos, followers, following, location, created_at, bio, type, updated_at } = body;
       
                   const embed = new Discord.MessageEmbed()
                   .setAuthor(`${login} Information!`, avatar_url)
@@ -33,11 +33,13 @@ module.exports = {
                   .addField(`Username`, `${login}`)
                   .addField(`ID`, `${id}`)
                   .addField(`Bio`, `${bio || "No Bio"}`)
+                  .addField(`Type`, `${type}`)
                   .addField(`Public Repositories`, `${public_repos || "None"}`, true)
                   .addField(`Followers`, `${followers}`, true)
                   .addField(`Following`, `${following}`, true)
                   .addField(`Location`, `${location || "No Location"}`)
                   .addField(`Account Created`, moment.utc(created_at).format("dddd, MMMM, Do YYYY"))
+                  .addField(`Account Last Updated`, `${updated_at}`)
                   .addField(`Link to there profile`, `[Click Here!](https://github.com/${args.join('-')})`)
                   .setFooter(message.client.user.username, message.client.user.displayAvatarURL())
                   .setTimestamp()
