@@ -9,13 +9,11 @@ module.exports = {
   run: async (client, message, args) => {
     credit1 = client.users.cache.get("451202806653648936"); // developer
     credit2 = client.users.cache.get("538668078012039168"); // developer
-    credit3 = client.users.cache.get("533776358980059137"); 
     credit4 = client.users.cache.get("805729557357133826"); 
     credit5 = client.users.cache.get("582012181638414357"); // developer
     credit6 = client.users.cache.get("537875750955778058");
     credit7 = client.users.cache.get("708635694154776657"); // developer
     credit8 = client.users.cache.get("510166383523528705"); // developer
-    credit9 = client.users.cache.get("865171867514175490"); // developer
     credit9 = client.users.cache.get("703975707310555247"); // developer
 
     const embedCredits = new MessageEmbed()
@@ -51,11 +49,6 @@ module.exports = {
         {
         name: credit9.tag,
         value: "Core Developer of CoreX, And we look forward to be working with his expertise.",
-        },
-        {
-          name: credit3.tag,
-          value:
-            "A team member in CoreX, he has helped fix bugs and make CoreX better, also you can join his [Server](https://discord.gg/8qPDvefgHz)",
         },
         {
           name: credit4.tag,
