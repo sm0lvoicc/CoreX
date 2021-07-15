@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf2334b3-c203-4400-b410-37c5c09acdb9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/music/resume.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music/resume.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/music/seek.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music/seek.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/music/skip.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music/skip.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/music/stop.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music/stop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/music/volume.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music/volume.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/music/play.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music/play.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +12,20 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="main" />
+                <branch-info repo="$PROJECT_DIR$" source="beta" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="Lag4lyfe" />

@@ -1,0 +1,21 @@
+Index: config.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n    \"prefix\": \"?\",\r\n    \"token\": \"ODE5NjQzMzI1MTc3OTIxNTg3.YEpmVA.8Hl76b5zZqfiyNVpZttwBtjkBCc\",\r\n    \"mongo\": \"mongodb+srv://corex:rzIXCNi0e4V3fwUE@corex-bot.u3ju5.mongodb.net/Data\",\r\n    \"owners\" : [\"538668078012039168\", \"451202806653648936\", \"582012181638414357\", \"708635694154776657\"],\r\n    \"invite\": \"https://discord.gg/VuzcK4Fa6K\",\r\n    \"clientID\":\"824942362542604299\",\r\n    \"clientSecret\":\"vNCAoJsElLcu2DY5l4_qpt1d5S_2wf42\",\r\n    \"callbackURL\":\"http://192.168.2.173:3000/login/api\",\r\n    \"Admin\":[\"582012181638414357\", \"\"]\r\n}\r\n
+===================================================================
+diff --git a/config.json b/config.json
+--- a/config.json	
++++ b/config.json	
+@@ -1,8 +1,8 @@
+ {
+-    "prefix": "?",
+-    "token": "ODE5NjQzMzI1MTc3OTIxNTg3.YEpmVA.8Hl76b5zZqfiyNVpZttwBtjkBCc",
+-    "mongo": "mongodb+srv://corex:rzIXCNi0e4V3fwUE@corex-bot.u3ju5.mongodb.net/Data",
+-    "owners" : ["538668078012039168", "451202806653648936", "582012181638414357", "708635694154776657"],
++    "prefix": "!",
++    "token": "ODI0OTQyMzYyNTQyNjA0Mjk5.YF2tcQ.03odlP1A9Hes3WvMuCLC4Ug5eko",
++    "mongo": "mongodb+srv://corex:rzIXCNi0e4V3fwUE@corex-bot.u3ju5.mongodb.net/Test",
++    "owners" : ["538668078012039168", "451202806653648936", "582012181638414357", "708635694154776657", "703975707310555247"],
+     "invite": "https://discord.gg/VuzcK4Fa6K",
+     "clientID":"824942362542604299",
+     "clientSecret":"vNCAoJsElLcu2DY5l4_qpt1d5S_2wf42",

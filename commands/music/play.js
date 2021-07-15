@@ -39,10 +39,7 @@ module.exports = {
           }
     
           try {
-            voiceChannel.join().then(connection => {
-              connection.voice.setSelfDeaf(true)
-            })
-            client.distube.play(message, songName)
+            client.player.play(message, songName)
           } catch (err) {
             message.channel.send(`There Has been an Error while playing the song! \n Error: ||${err}||`)
           }
