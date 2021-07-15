@@ -30,6 +30,15 @@ module.exports = {
       });
     } else {
       await schema.findOne({ Guild: message.guild.id }, async (err, data) => {
+        if (
+          !channel
+            .permissionsFor(message.guild.me)
+            .has(["VIEW_CHANNEL", "SEND_MESSAGES"])
+        ) {
+          message.channel.send(
+            `${emoji.error} I need the permissions \`VIEW_CHANNEL\` and \`SEND_MESSAGES\` in the logs channel`,
+          );
+        }
         if (!data) {
           const newData = schema({
             Guild: message.guild.id,

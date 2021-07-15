@@ -93,3 +93,23 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
     channel.send(messageUpdateEmbed);
   });
 });
+
+client.on("messageDeleteBulk", async (messages) => {
+  if (!messages.guild) return;
+  db.findOne({ Guild: messages.guild.id }, async (err, data) => {
+    if (!data) return;
+    if (err) throw err;
+    const channel = messages.guild.channels.cache.get(data.Channel);
+
+    if (!channel || channel.available) return;
+
+    const embed = new MessageEmbed()
+      .setColor("GREEN")
+      .setDescription(
+        `\`${messages.length}\` messages deleted in ${messages.channel}`,
+      )
+      .setTimestamp();
+
+    channel.send(embed);
+  });
+});
