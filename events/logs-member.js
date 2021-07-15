@@ -1,4 +1,4 @@
-const db = require("../models/logs-member");
+const db = require("../models/logs");
 const client = require("../index");
 const { MessageEmbed } = require("discord.js");
 const moment = require("moment");
@@ -13,7 +13,7 @@ client.on("guildMemberAdd", async (member) => {
 
     const guildMemberAddEmbed = new MessageEmbed()
       .setAuthor("New member", member.guild.iconURL())
-      .addField("Member Name", `<@${member.id}>`)
+      .addField("Member Name", `${member}`)
       .addField("Member ID", member.id)
       .addField("Account created at", created)
       .addField("Joined At", join)
@@ -36,7 +36,7 @@ client.on("guildMemberRemove", async (member) => {
 
     const guildMemberRemoveEmbed = new MessageEmbed()
       .setAuthor("Member Left", member.guild.iconURL())
-      .addField("Member Name", `<@${member.id}>`)
+      .addField("Member Name", `${member}`)
       .addField("Member ID", member.id)
       .addField("Account created at", created)
       .addField("Joined At", join)
@@ -176,15 +176,5 @@ client.on("guildBanRemove", async (guild, user) => {
       .setTimestamp(new Date());
 
     channel.send(guildBanRemoveEmbed);
-  });
-});
-
-client.on("guildDelete", async (guild) => {
-  db.findOne({ Guild: guild.id }, async (err, data) => {
-    if (!data) return;
-    if (err) throw err;
-    if (data) {
-      db.findOneAndDelete({ Guild: guild.id });
-    }
   });
 });

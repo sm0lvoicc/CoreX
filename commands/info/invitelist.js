@@ -8,6 +8,7 @@ module.exports = {
   aliases: ["inviters"],
   userPerms: ["MANAGE_GUILD"],
   clientPerms: ["SEND_MESSAGES"],
+  
   run: async (client, message) => {
     message.guild.fetchInvites().then((invites) => {
       const inviteCounter = {};

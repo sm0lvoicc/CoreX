@@ -7,6 +7,7 @@ module.exports = {
     description: 'Vote for the bot.',
     userPerms: ['SEND_MESSAGES'],
     clientPerms: ['SEND_MESSAGES'],
+    
     run: async(client, message, args) => {
         const b = new MessageEmbed()
 		.setTitle('Please vote for the bot!')

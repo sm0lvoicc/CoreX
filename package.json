@@ -28,7 +28,6 @@
         "discord-reply": "^0.1.2",
         "discord-voice": "^1.0.8",
         "discord.js": "^12.2.0",
-        "distube": "^2.8.15",
         "easy-number-formatter": "^1.0.3",
         "ejs": "^3.1.6",
         "express": "^4.17.1",
@@ -58,6 +57,7 @@
         "random-words": "^1.1.1",
         "redis": "^3.1.2",
         "roastme": "^0.0.1",
-        "socket.io": "^4.1.3"
+        "socket.io": "^4.1.3",
+        "superagent": "^6.1.0"
     }
 }

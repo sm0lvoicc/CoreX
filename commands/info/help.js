@@ -12,13 +12,7 @@ module.exports = {
   timeout: 1000,
   userPerms: ["SEND_MESSAGES"],
   clientPerms: ["SEND_MESSAGES"],
-  /**
-   *
-   * @param {Client} client
-   * @param {Message} message
-   * @param {String} args
-   * @returns
-   */
+
   run: async (client, message, args) => {
     const p = await client.prefix(message);
 
@@ -42,8 +36,7 @@ module.exports = {
         backup: emoji.cloud,
         automod: emoji.spark,
         alt: emoji.kick,
-        voice: emoji.voice,
-        music: emoji.speaker,
+        search: emoji.search,
       };
 
       readdirSync("./commands/").forEach((dir) => {

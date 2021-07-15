@@ -1,5 +1,5 @@
 const client = require("../index");
-const db = require("../models/logs-message");
+const db = require("../models/logs");
 const { MessageEmbed } = require("discord.js");
 const pingSchema = require("../models/ghostping");
 
@@ -94,12 +94,22 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
   });
 });
 
-client.on("guildDelete", async (guild) => {
-  db.findOne({ Guild: guild.id }, async (err, data) => {
+client.on("messageDeleteBulk", async (messages) => {
+  if (!messages.guild) return;
+  db.findOne({ Guild: messages.guild.id }, async (err, data) => {
     if (!data) return;
     if (err) throw err;
-    if (data) {
-      db.findOneAndDelete({ Guild: guild.id });
-    }
+    const channel = messages.guild.channels.cache.get(data.Channel);
+
+    if (!channel || channel.available) return;
+
+    const embed = new MessageEmbed()
+      .setColor("GREEN")
+      .setDescription(
+        `\`${messages.length}\` messages deleted in ${messages.channel}`,
+      )
+      .setTimestamp();
+
+    channel.send(embed);
   });
 });
