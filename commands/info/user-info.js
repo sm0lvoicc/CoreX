@@ -8,6 +8,7 @@ module.exports = {
   aliases: ["userinfo", "whois", "who-is"],
   userPerms: ["SEND_MESSAGES"],
   clientPerms: ["SEND_MESSAGES"],
+  
   run: async (client, message, args) => {
     let user =
       message.mentions.members.first() ||

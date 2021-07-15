@@ -9,12 +9,7 @@ module.exports = {
   aliases: ["server-i", "serveri"],
   userPerms: ["SEND_MESSAGES"],
   clientPerms: ["SEND_MESSAGES"],
-  /**
-   * @param {Client} client
-   * @param {Message} message
-   * @param {String[]} args
-   */
-
+  
   run: async (client, message, args) => {
     const verificationLevels = {
       NONE: "None",

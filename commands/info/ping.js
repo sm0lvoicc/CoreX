@@ -9,12 +9,7 @@ module.exports = {
   usage: 'ping',
   userPerms: ['SEND_MESSAGES'],
   clientPerms: ['SEND_MESSAGES'],
-  /**
-   * 
-   * @param {Client} client 
-   * @param {Message} message 
-   * @param {String[]} args 
-   */
+
   run: async (client, message, args) => {
     // var ping = Math.round(client.ws.ping)
     // var apiPing = Date.now() - message.createdTimestamp;

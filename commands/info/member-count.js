@@ -9,11 +9,7 @@ module.exports = {
     aliases: ['member-c'],
     userPerms: ['SEND_MESSAGES'],
     clientPerms: ['SEND_MESSAGES'],
-    /** 
-     * @param {Client} client 
-     * @param {Message} message 
-     * @param {String[]} args 
-     */
+
     run: async(client, message, args) => {
         const embed = new MessageEmbed()
         .setDescription(`${emoji.member} Human Count: ${message.guild.members.cache.filter(u => !u.user.bot).size}\n\n${emoji.slash} Bots Count: ${message.guild.members.cache.filter(u => u.user.bot).size}\n\n${emoji.globe} Total Members: ${message.guild.memberCount}\n\n`)

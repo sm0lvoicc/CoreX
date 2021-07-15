@@ -8,11 +8,7 @@ module.exports = {
   aliases: ["server-ic"],
   userPerms: ["SEND_MESSAGES"],
   clientPerms: ["SEND_MESSAGES"],
-  /**
-   * @param {Client} client
-   * @param {Message} message
-   * @param {String[]} args
-   */
+
   run: async (client, message, args) => {
     const serverIcon = new MessageEmbed()
       .setColor("BLURPLE")

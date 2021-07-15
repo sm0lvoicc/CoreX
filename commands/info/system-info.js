@@ -12,6 +12,7 @@ module.exports = {
     usage: '',
     userPerms: ['SEND_MESSAGES'],
     clientPerms: ['SEND_MESSAGES'],
+    
     run: async(client, message, args) => {
 
         const { totalMemMb, usedMemMb } = await mem.info();
