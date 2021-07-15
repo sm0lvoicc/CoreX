@@ -3,11 +3,10 @@ require("discord-reply");
 //require(`./dashboard/server`)
 const mongoose = require("mongoose");
 const config = require("./config.json");
-const prefix = config.prefix;
-const token = config.token;
-const mongo = config.mongo;
+const prefix = config.bot.prefix;
+const token = config.bot.token;
+const mongo = config.database.mongodb;
 const fs = require("fs");
-const DiscordVoice = require("discord-voice");
 const client = new Client({
   disableMentions: "everyone",
 });
@@ -83,9 +82,6 @@ client.prefix = async function (message) {
   }
   return custom;
 };
-const Voice = new DiscordVoice(client, config.mongo);
-client.discordVoice = Voice;
-
 const { Player } = require("discord-player");
 client.player = new Player(client, {
   leaveOnEnd: true,
