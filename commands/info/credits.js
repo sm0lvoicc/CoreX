@@ -43,8 +43,6 @@ module.exports = {
         {
           name: credit8.tag,
           value:
-            "Core Developer of CoreX, He is the newest addition to the developer team, And we look forward to be working with him.",
-          value:
             "Core Developer of CoreX, And we look forward to be working with him.",
         },
         {
