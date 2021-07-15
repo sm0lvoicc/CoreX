@@ -10,6 +10,7 @@ const mutes = require("../models/mutes");
 const notes = require("../models/notes");
 const warns = require("../models/warns");
 const voiceLb = require("../models/voiceleaderboard");
+const logs = require("../models/logs");
 
 client.on("guildDelete", async (guild) => {
   anti_ad.findOne({ Guild: guild.id }, async (err, data) => {
@@ -79,6 +80,13 @@ client.on("guildDelete", async (guild) => {
     if (err) throw err;
     if (data) {
       voiceLb.findOneAndDelete({ Guild: guild.id });
+    }
+  });
+
+  logs.findOne({ Guild: guild.id }, async (err, data) => {
+    if (err) throw err;
+    if (data) {
+      logs.findOneAndDelete({ Guild: guild.id });
     }
   });
 });
