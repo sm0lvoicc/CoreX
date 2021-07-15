@@ -1,3 +1,4 @@
+/*
 const client = require("../index");
 const adSchema = require("../models/anti-ad");
 const { MessageEmbed } = require("discord.js");
@@ -291,3 +292,4 @@ client.on(" message", async (message) => {
     }
   });
 });
+*/
