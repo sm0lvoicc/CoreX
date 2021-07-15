@@ -31,6 +31,9 @@ module.exports = {
         const dev1 = client.users.cache.get(`538668078012039168`)  //Tagliatelle
         const dev2 = client.users.cache.get(`451202806653648936`) //Nova
         const dev3 = client.users.cache.get(`582012181638414357`) //floppa
+        const dev4 = client.users.cache.get(`708635694154776657`) //Jake
+        const dev5 = client.users.cache.get(`510166383523528705`) //Shash
+        const dev6 = client.users.cache.get(`703975707310555247`) //Lag
 
 
         let Uptime = await RemoveUseless(`${Days}${Days > 1 ? "d" : "d"} ${Hours}${Hours > 1 ? "h" : "h"} ${Minutes}${Minutes > 1 ? "m" : "m"} ${Seconds}${Seconds > 1 ? "s" : "s"}`);
@@ -50,7 +53,7 @@ module.exports = {
             .addField(`${emoji.settings} Bot Ping`, `\`\`\`Latency: ${Date.now()-message.createdTimestamp} ms\nAPI Latency: ${Math.round(client.ws.ping)} ms\`\`\``, true)
             .addField(`${emoji.inbox} Command Size`, `\`\`\`${client.commands.size} Commands\`\`\``, true)
             .addField(`${emoji.question} Prefix`, `\`\`\`${p}\`\`\``, true)
-            .addField(`${emoji.owner} Developers`, `\`\`\`${dev1.tag} | ${dev2.tag} | ${dev3.tag}\`\`\``, true)
+            .addField(`${emoji.owner} Developers`, `\`\`\`${dev1.tag} | ${dev2.tag} | ${dev3.tag} | ${dev4.tag} | ${dev5.tag} | ${dev6.tag}\`\`\``, true)
             .addField(`${emoji.online} Uptime`, `\`\`\`${Uptime}\`\`\``, true)
             .addField(`${emoji.link} Links`, `[Add Me](https://dsc.gg/corex) | [Join Server](https://discord.gg/VuzcK4Fa6K) | [Vote](https://top.gg/bot/819643325177921587/vote)`)
             .setColor(message.guild.me.displayHexColor)
