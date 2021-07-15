@@ -82,23 +82,23 @@ client.prefix = async function (message) {
   }
   return custom;
 };
-const { Player } = require("discord-player");
-client.player = new Player(client, {
-  leaveOnEnd: true,
-  leaveOnEndCooldown: 60000,
-  leaveOnEmpty: true,
-  leaveOnEmptyCooldown: 60000,
-  autoSelfDeaf: true,
-  enableLive: true,
+// const { Player } = require("discord-player");
+// client.player = new Player(client, {
+//   leaveOnEnd: true,
+//   leaveOnEndCooldown: 60000,
+//   leaveOnEmpty: true,
+//   leaveOnEmptyCooldown: 60000,
+//   autoSelfDeaf: true,
+//   enableLive: true,
 
-});
-client.filters = require('./filters.json').filters;
-const player = fs.readdirSync('./player').filter(file => file.endsWith('.js'));
+// });
+// client.filters = require('./filters.json').filters;
+// const player = fs.readdirSync('./player').filter(file => file.endsWith('.js'));
 
-for (const file of player) {
-    const event = require(`./player/${file}`);
-    client.player.on(file.split(".")[0], event.bind(null, client));
-};
+// for (const file of player) {
+//     const event = require(`./player/${file}`);
+//     client.player.on(file.split(".")[0], event.bind(null, client));
+// };
 
 
 // Starboard Feature for On Message Reaction Add
