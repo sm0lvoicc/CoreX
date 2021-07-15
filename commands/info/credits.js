@@ -16,7 +16,7 @@ module.exports = {
     credit7 = client.users.cache.get("708635694154776657"); // developer
     credit8 = client.users.cache.get("510166383523528705"); // developer
     credit9 = client.users.cache.get("865171867514175490"); // developer
-    credit9 = client.users.cache.get("865171867514175490"); // developer
+    credit9 = client.users.cache.get("703975707310555247"); // developer
 
     const embedCredits = new MessageEmbed()
       .setColor("BLURPLE")
