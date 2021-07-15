@@ -1,5 +1,7 @@
-config.json
 node_modules
 json.sqlite
+<<<<<<< Updated upstream
 dashboard/config.json
 .idea
+=======
+>>>>>>> Stashed changes
