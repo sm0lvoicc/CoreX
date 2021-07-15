@@ -10,6 +10,7 @@ module.exports = {
   usage: "[ip address]",
   userPerms: ["SEND_MESSAGES"],
   clientPerms: ["SEND_MESSAGES"],
+  
   run: async (client, message, args) => {
     const whois = await fetch(
       `http://ip-api.com/json/${args[0]}?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,zip,timezone,currency,isp,org,as,mobile,proxy,hosting,query`,

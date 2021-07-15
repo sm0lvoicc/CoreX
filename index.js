@@ -11,6 +11,8 @@ const DiscordVoice = require("discord-voice");
 const client = new Client({
   disableMentions: "everyone",
 });
+const logs = require("discord-logs");
+logs(client);
 module.exports = client;
 require("events").EventEmitter.defaultMaxListeners = 200;
 require("discord-buttons")(client);
@@ -19,7 +21,7 @@ client.aliases = new Collection();
 client.snipes = new Collection();
 
 //top.gg stuff
-const Topgg = require("@top-gg/sdk");//
+const Topgg = require("@top-gg/sdk");
 
 const api = new Topgg.Api("token");
 
@@ -83,5 +85,26 @@ client.prefix = async function (message) {
 };
 const Voice = new DiscordVoice(client, config.mongo);
 client.discordVoice = Voice;
+
+const { Player } = require("discord-player");
+client.player = new Player(client, {
+  leaveOnEnd: true,
+  leaveOnEndCooldown: 60000,
+  leaveOnEmpty: true,
+  leaveOnEmptyCooldown: 60000,
+  autoSelfDeaf: true,
+  enableLive: true,
+
+});
+client.filters = require('./filters.json').filters;
+const player = fs.readdirSync('./player').filter(file => file.endsWith('.js'));
+
+for (const file of player) {
+    const event = require(`./player/${file}`);
+    client.player.on(file.split(".")[0], event.bind(null, client));
+};
+
+
+// Starboard Feature for On Message Reaction Add
 
 client.login(token);
