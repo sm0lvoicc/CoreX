@@ -93,4 +93,3 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
     channel.send(messageUpdateEmbed);
   });
 });
-
