@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const config = require("./config.json");
 const prefix = config.bot.prefix;
 const token = config.bot.token;
-const mongo = config.bot.mongodb;
+const mongo = config.database.mongodb;
 const fs = require("fs");
 const DiscordVoice = require("discord-voice");
 const client = new Client({
@@ -81,7 +81,5 @@ client.prefix = async function (message) {
   }
   return custom;
 };
-const Voice = new DiscordVoice(client, config.mongo);
-client.discordVoice = Voice;
 
 client.login(token);
