@@ -3,9 +3,9 @@ require("discord-reply");
 //require(`./dashboard/server`)
 const mongoose = require("mongoose");
 const config = require("./config.json");
-const prefix = config.prefix;
-const token = config.token;
-const mongo = config.mongo;
+const prefix = config.bot.prefix;
+const token = config.bot.token;
+const mongo = config.database.mongodb;
 const fs = require("fs");
 const client = new Client({
   disableMentions: "everyone",
