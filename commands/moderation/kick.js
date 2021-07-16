@@ -63,7 +63,7 @@ module.exports = {
         message.channel.send("Couldn't DM the person");
       }
 
-      await member.kick({ reason: kickReason });
+      await member.kick(kickReason);
 
       message.channel.send(
         new MessageEmbed()

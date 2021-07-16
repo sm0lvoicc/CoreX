@@ -1,3 +1,4 @@
+/*
 const client = require("../index");
 //Models
 const anti_ad = require("../models/anti-ad");
@@ -90,3 +91,4 @@ client.on("guildDelete", async (guild) => {
     }
   });
 });
+*/

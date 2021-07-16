@@ -1,3 +1,4 @@
+/*
 const client = require("../index");
 const spamSchema = require("../models/anti-spam");
 const whitelist = require("../models/whitelist-channel");
@@ -293,3 +294,4 @@ client.on("message", async (message) => {
     }
   });
 });
+*/
