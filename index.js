@@ -17,7 +17,6 @@ require("discord-buttons")(client);
 client.commands = new Collection();
 client.aliases = new Collection();
 client.snipes = new Collection();
-require("dotenv").config();
 
 //top.gg stuff
 const Topgg = require("@top-gg/sdk");
