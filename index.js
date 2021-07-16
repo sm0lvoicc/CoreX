@@ -1,10 +1,10 @@
-const { Collection, Client, MessageEmbed, Message } = require("discord.js");
+const { Collection, Client, MessageEmbed } = require("discord.js");
 require("discord-reply");
 const mongoose = require("mongoose");
 const config = require("./config.json");
-const prefix = config.bot.prefix;
-const token = config.bot.token;
-const mongo = config.database.mongodb;
+const prefix = config.prefix;
+const token = config.token;
+const mongo = config.mongodb;
 const fs = require("fs");
 const client = new Client({
   disableMentions: "everyone",
