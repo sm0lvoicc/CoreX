@@ -1,0 +1,41 @@
+<%- include("partials/header") %>
+
+<title>User Stats » <%= bot.username %> Dashboard</title>
+
+<style>
+    </style> <!-- Please ignore the Syntax Error here. If there is a fix for this, please send a PR. -->
+    
+    <div class="text-center text-light" style="padding-top: 65px; padding-bottom: 20px;">
+        <div class="p-5 text-center" style="padding-top: 110px; background-color: #3B465E;">
+            <img class="img-fluid rounded-circle" src="https://cdn.discordapp.com/avatars/<%= user1.id %>/<%= user1.avatar %>" width="128px" height="auto">
+            <br>
+            <br>
+            <h1 class="mb-3"><%= user1.username %>#<%= user1.discriminator %></h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <table class="table text-light">
+            <thead class="thead text-center text-light mdb-color lighten-1 lighten-1">
+                <tr>
+                <th style="font-size: 20px;" scope="col">Type</th>
+                <th style="font-size: 20px;" scope="col">Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="text-center">
+                    <td style="font-size: 20px;"><i class="fas fa-users"></i> ID</td>
+                    <td style="font-size: 20px;"><%= user1.id %></td>
+                </tr>
+                <tr class="text-center">
+                    <td style="font-size: 20px;"><i class="fas fa-hashtag"></i> Discriminator</td>
+                    <td style="font-size: 20px;">#<%= user1.discriminator %></td>
+                </tr>
+                <tr class="text-center">
+                    <td style="font-size: 20px;"><i class="fas fa-calendar"></i> Created</td>
+                    <td style="font-size: 20px;"><%= moment(user1.createdAt).format("LLLL") %></td>
+                </tr>
+                <tr class="text-center">
+                    <td style="font-size: 20px;"><i class="fas fa-comment-alt"></i> Messages Count</td>
+                    <td style="font-size: 20px;"><%= message %></td>
+                </tr>

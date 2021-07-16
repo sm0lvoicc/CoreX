@@ -18,6 +18,19 @@ require("discord-buttons")(client);
 client.commands = new Collection();
 client.aliases = new Collection();
 client.snipes = new Collection();
+require("dotenv").config()
+
+
+
+client.on("ready", async () => {
+  console.log(`${client.user.tag} is now online`);
+
+  const webPortal = require("./dashboard/server");
+  webPortal.load(client);
+});
+
+
+
 
 //top.gg stuff
 const Topgg = require("@top-gg/sdk");
