@@ -1,3 +1,4 @@
+/*
 const client = require("../index");
 const blacklistWord = require("../models/bad-word");
 const { MessageEmbed } = require("discord.js");
@@ -277,3 +278,4 @@ client.on("message", async (message) => {
     }
   });
 });
+*/
