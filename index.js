@@ -22,14 +22,6 @@ require("dotenv").config()
 
 
 
-client.on("ready", async () => {
-  console.log(`${client.user.tag} is now online`);
-
-  const webPortal = require("./dashboard/server");
-  webPortal.load(client);
-});
-
-
 
 
 //top.gg stuff
