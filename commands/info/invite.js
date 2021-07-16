@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // const { MessageEmbed } = require("discord.js");
 // const client = require("../../index.js");
 // <<<<<<< beta
@@ -12,6 +13,18 @@
 //   aliases: ["inviteme"],
 //   userPerms: ["SEND_MESSAGES"],
 //   clientPerms: ["SEND_MESSAGES"],
+=======
+const Discord = require("discord.js");
+const client = require("../../index.js");
+module.exports = {
+  name: "invite",
+  description: "Invite this bot to your server!",
+  usage: "invite",
+  timeout: 1000,
+  aliases: ["inviteme"],
+  userPerms: ["SEND_MESSAGES"],
+  clientPerms: ["SEND_MESSAGES"],
+>>>>>>> parent of 5c9312b (Update invite.js)
 
 //   run: async (client, message, args) => {
 //     const embed = new MessageEmbed()
