@@ -11,7 +11,9 @@ module.exports = {
     const voiceChannel = message.member.voice.channel;
 
     if (!voiceChannel)
-      return message.channel.send(`${emoji.error} I'm Not In A Voice Channel`);
+      return message.channel.send(
+        `${emoji.error} I'm Not In Your Voice Channel`,
+      );
 
     try {
       voiceChannel.leave();

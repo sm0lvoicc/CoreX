@@ -108,7 +108,7 @@ client.distube
         .setDescription(
           `${emoji.success} Playing \`${song.name}\` - \`${
             song.formattedDuration
-          }\`\nRequested by: ${song.user}\n${status(queue)}`,
+          }\n\`\nRequested by: ${song.user}\n${status(queue)}`,
         ),
     ),
   )
