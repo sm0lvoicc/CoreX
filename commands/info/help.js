@@ -36,7 +36,7 @@ module.exports = {
         backup: emoji.cloud,
         automod: emoji.spark,
         alt: emoji.kick,
-        search: emoji.search,
+        music: emoji.speaker,
       };
 
       readdirSync("./commands/").forEach((dir) => {

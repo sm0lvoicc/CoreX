@@ -17,7 +17,7 @@ require("discord-buttons")(client);
 client.commands = new Collection();
 client.aliases = new Collection();
 client.snipes = new Collection();
-
+const emoji = require("./emoji.json");
 //top.gg stuff
 const Topgg = require("@top-gg/sdk");
 
@@ -81,4 +81,87 @@ client.prefix = async function (message) {
   }
   return custom;
 };
+
+//music stuff
+const Distube = require("distube");
+client.distube = new Distube(client, {
+  searchSongs: false,
+  leaveOnFinish: false,
+  leaveOnStop: false,
+});
+const status = (queue) =>
+  `Volume: \`${queue.volume}%\` | Filter: \`${
+    queue.filter || "Off"
+  }\` | Loop: \`${
+    queue.repeatMode
+      ? queue.repeatMode == 2
+        ? "All Queue"
+        : "This Song"
+      : "Off"
+  }\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``;
+
+client.distube
+  .on("playSong", (message, queue, song) =>
+    message.channel.send(
+      new MessageEmbed()
+        .setColor("GREEN")
+        .setDescription(
+          `${emoji.success} Playing \`${song.name}\` - \`${
+            song.formattedDuration
+          }\`\nRequested by: ${song.user}\n${status(queue)}`,
+        ),
+    ),
+  )
+  .on("addSong", (message, queue, song) =>
+    message.channel.send(
+      new MessageEmbed()
+        .setColor("GREEN")
+        .setDescription(
+          `${emoji.success} Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`,
+        ),
+    ),
+  )
+  .on("playList", (message, queue, playlist, song) =>
+    message.channel.send(
+      new MessageEmbed()
+        .setColor("BLURPLE")
+        .setDescription(
+          `Play \`${playlist.name}\` playlist (${
+            playlist.songs.length
+          } songs).\nRequested by: ${song.user}\nNow playing \`${
+            song.name
+          }\` - \`${song.formattedDuration}\`\n${status(queue)}`,
+        ),
+    ),
+  )
+  .on("addList", (message, queue, playlist) =>
+    message.channel.send(
+      new MessageEmbed()
+        .setColor("GREEN")
+        .setDescription(
+          `${emoji.success} Added \`${playlist.name}\` playlist (${
+            playlist.songs.length
+          } songs) to queue\n${status(queue)}`,
+        ),
+    ),
+  )
+  // DisTubeOptions.searchSongs = true
+  .on("searchResult", (message, result) => {
+    let i = 0;
+    message.channel.send(
+      `**Choose an option from below**\n${result
+        .map(
+          (song) => `**${++i}**. ${song.name} - \`${song.formattedDuration}\``,
+        )
+        .join("\n")}\n*Enter anything else or wait 60 seconds to cancel*`,
+    );
+  })
+  // DisTubeOptions.searchSongs = true
+  .on("searchCancel", (message) =>
+    message.channel.send(`${emoji.success} Searching canceled`),
+  )
+  .on("error", (message, e) => {
+    console.error(e);
+    message.channel.send("An error encountered: " + e);
+  });
 client.login(token);
