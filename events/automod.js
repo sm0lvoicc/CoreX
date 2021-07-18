@@ -20,7 +20,10 @@ client.on("guildMemberAdd", async (member) => {
 
 const usersMap = new Map();
 client.on("message", async (message) => {
-  if (message.member.hasPermission(["ADMINISTRATOR", "MANAGE_GUILD"])) return;
+  if (message.member.hasPermission("ADMINISTRATOR")) return;
+  if (message.member.hasPermission("MANAGE_GUILD")) return;
+  if (message.member.hasPermission("MANAGE_MESSAGES")) return;
+
   //Anti-Spam
   if (message.author.bot) return;
   if (!message.guild) return;
