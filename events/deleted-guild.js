@@ -1,47 +1,13 @@
-/*
 const client = require("../index");
 //Models
-const anti_ad = require("../models/anti-ad");
-const anti_link = require("../models/anti-link");
-const anti_spam = require("../models/anti-spam");
-const bad_word = require("../models/bad-word");
 const ghost_ping = require("../models/ghostping");
 const modlogs = require("../models/modlogs");
 const mutes = require("../models/mutes");
 const notes = require("../models/notes");
 const warns = require("../models/warns");
-const voiceLb = require("../models/voiceleaderboard");
 const logs = require("../models/logs");
 
 client.on("guildDelete", async (guild) => {
-  anti_ad.findOne({ Guild: guild.id }, async (err, data) => {
-    if (err) throw err;
-    if (data) {
-      anti_ad.findOneAndDelete({ Guild: guild.id });
-    }
-  });
-
-  anti_link.findOne({ Guild: guild.id }, async (err, data) => {
-    if (err) throw err;
-    if (data) {
-      anti_link.findOneAndDelete({ Guild: guild.id });
-    }
-  });
-
-  anti_spam.findOne({ Guild: guild.id }, async (err, data) => {
-    if (err) throw err;
-    if (data) {
-      anti_spam.findOneAndDelete({ Guild: guild.id });
-    }
-  });
-
-  bad_word.findOne({ Guild: guild.id }, async (err, data) => {
-    if (err) throw err;
-    if (data) {
-      bad_word.findOneAndDelete({ Guild: guild.id });
-    }
-  });
-
   ghost_ping.findOne({ Guild: guild.id }, async (err, data) => {
     if (err) throw err;
     if (data) {
@@ -77,13 +43,6 @@ client.on("guildDelete", async (guild) => {
     }
   });
 
-  voiceLb.findOne({ Guild: guild.id }, async (err, data) => {
-    if (err) throw err;
-    if (data) {
-      voiceLb.findOneAndDelete({ Guild: guild.id });
-    }
-  });
-
   logs.findOne({ Guild: guild.id }, async (err, data) => {
     if (err) throw err;
     if (data) {
@@ -91,4 +50,3 @@ client.on("guildDelete", async (guild) => {
     }
   });
 });
-*/
