@@ -7,7 +7,8 @@ const token = config.token;
 const mongo = config.mongodb;
 const fs = require("fs");
 const client = new Client({
-  disableMentions: "everyone",
+  allowedMentions: { parse: [] },
+  intents: ['32767']
 });
 const logs = require("discord-logs");
 logs(client);
@@ -90,14 +91,12 @@ client.distube = new Distube(client, {
   leaveOnStop: false,
 });
 const status = (queue) =>
-  `Volume: \`${queue.volume}%\` | Filter: \`${
-    queue.filter || "Off"
-  }\` | Loop: \`${
-    queue.repeatMode
-      ? queue.repeatMode == 2
-        ? "All Queue"
-        : "This Song"
-      : "Off"
+  `Volume: \`${queue.volume}%\` | Filter: \`${queue.filter || "Off"
+  }\` | Loop: \`${queue.repeatMode
+    ? queue.repeatMode == 2
+      ? "All Queue"
+      : "This Song"
+    : "Off"
   }\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``;
 
 client.distube
@@ -106,8 +105,7 @@ client.distube
       new MessageEmbed()
         .setColor("GREEN")
         .setDescription(
-          `${emoji.success} Playing \`${song.name}\` - \`${
-            song.formattedDuration
+          `${emoji.success} Playing \`${song.name}\` - \`${song.formattedDuration
           }\n\`\nRequested by: ${song.user}\n${status(queue)}`,
         ),
     ),
@@ -126,10 +124,8 @@ client.distube
       new MessageEmbed()
         .setColor("BLURPLE")
         .setDescription(
-          `Play \`${playlist.name}\` playlist (${
-            playlist.songs.length
-          } songs).\nRequested by: ${song.user}\nNow playing \`${
-            song.name
+          `Play \`${playlist.name}\` playlist (${playlist.songs.length
+          } songs).\nRequested by: ${song.user}\nNow playing \`${song.name
           }\` - \`${song.formattedDuration}\`\n${status(queue)}`,
         ),
     ),
@@ -139,8 +135,7 @@ client.distube
       new MessageEmbed()
         .setColor("GREEN")
         .setDescription(
-          `${emoji.success} Added \`${playlist.name}\` playlist (${
-            playlist.songs.length
+          `${emoji.success} Added \`${playlist.name}\` playlist (${playlist.songs.length
           } songs) to queue\n${status(queue)}`,
         ),
     ),
